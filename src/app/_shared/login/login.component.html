@@ -1,0 +1,106 @@
+<section>
+  <div class="container">
+    <div class="section flex" id="hero-section">
+        <div class="visual">
+         <img src="assets/imagefolder/loginpage.png" alt="Login Image Lets Bunk Again"/>
+       </div>
+       <div class="text">
+        <span style="float:right;margin-bottom:15px;color: rgb(165, 164, 164);font-size: 14px;cursor: pointer;" class="crossbtn" routerLink="/"><i class="far fa-times-circle fa-2x"></i></span>
+            <div class="loginpage">
+                <p class="heading mobile"><span class="yellow">Let's </span><span class="blue">Bunk </span><span class="yellow">Again</span><br> Your Personal Meetup App</p>
+                <p class="heading desktop"><span class="yellow">Let's </span><span class="blue">Bunk </span><span class="yellow">Again </span><br>
+                  <span style="font-size: 18px;">
+                    Your Personal Meetup App
+                  </span>
+                </p>
+                <div class="option">
+                  <div class="otpmessage">
+                    Login With OTP or Password
+                  </div>
+                </div>
+                <div class="inputbox">
+                  <label class="toggle">
+                    <input type="checkbox" (change)="loginMediumUpdate()" checked>
+                    <span class="slider"></span>
+                    <span class="labels" data-on="Using OTP" data-off="Password"></span>
+                  </label>
+                </div>
+                <div class="option">
+                  <hr>
+                  <span class="or">Log in or sign up</span>
+                  <div class="otpmessage">
+                    Please Enter Your 10 Digit Mobile Number
+                  </div>
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="!isLoginWithOtp?loginWithPassword():sendingOTP?sendOtp():verifyOtp()">
+                  <div class="inputbox">
+                    <input class="input" type="tel" placeholder="Enter Mobile Number (Don't use +91.)" formControlName="username" [readOnly]="!sendingOTP">
+                    <div *ngIf="submitted && loginForm.invalid && f['username'].errors">
+                      <div *ngIf="f['username'].errors['required']" class="invalid-error">
+                        <p>Mobile Number is required</p>
+                      </div>
+                      <div *ngIf="f['username'].errors['pattern']" class="invalid-error">
+                        <p>Mobile Number must be valid and Upto 10 digits.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- For Password -->
+                  <div class="inputbox" *ngIf="!isLoginWithOtp">
+                    <br>
+                    <input class="input" [type]="isPasswordShow?'text':'password'" placeholder="Enter Password" formControlName="password">
+                    <span><i class="fas fa-eye" *ngIf="!isPasswordShow" (click)="isPasswordShow = true" title="Show Password"></i></span>
+                    <span><i class="fas fa-eye-slash" *ngIf="isPasswordShow" (click)="isPasswordShow = false" title="Hide password"></i></span>
+                    <div *ngIf="submitted && loginForm.invalid && f['password'].errors">
+                      <div *ngIf="f['password'].errors['required']" class="invalid-error">
+                        <p>Password is required</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="button" *ngIf="!isLoginWithOtp">
+                    <button class="otpbtn">Login</button>
+                  </div>
+                  <!-- Password END Here -->
+
+                  <!-- For OTP -->
+                  <div class="otpbox" *ngIf="isLoginWithOtp">
+                    <div class="otpmessage" *ngIf="!sendingOTP">
+                      Please Enter 4 Digit OTP
+                    </div>
+                    <div class="otpfillingbox" *ngIf="!sendingOTP">
+                      <div class="form-group col-sm-2" *ngFor="let t of [1,2,3,4]; let i = index" formGroupName="code">
+                        <input #formRow class="fillotp" type="number" pattern="[0-9]{1}" [formControlName]="'input'+[t]" inputmode="numeric" maxlength="1" (keyup)="keyUpEvent($event, i)">
+                      </div>
+                    </div>
+                    <div class="button">
+                        <button class="otpbtn" *ngIf="sendingOTP">Send OTP</button>
+                        <button class="otpbtn" *ngIf="!sendingOTP">Verify OTP</button>
+                    </div>
+                    <div class="changenumber" *ngIf="!sendingOTP">
+                        <a (click)="resendOtp()" class="resend">Resend OTP</a>
+                        <a (click)="sendingOTP = true" class="changenumber">Change Number</a>
+                    </div>
+                  </div>
+                  <!-- OTP End Here -->
+                </form>
+                <div class="option">
+                    <hr>
+                    <span class="or">or</span>
+                </div>
+                <div (click)="signInWithGoogle()" style="cursor:pointer;border:0.5px solid rgb(105, 105, 105);">
+                    <a><img src="https://static.vecteezy.com/system/resources/previews/010/353/285/original/colourful-google-logo-on-white-background-free-vector.jpg" style="width:50px;height: 50px;border-radius:50%;padding: 10px;"/></a>
+                    &nbsp;
+                    <span style="cursor:pointer">Login with Google</span>
+                </div>
+                <div class="additionalcontent">
+                    <span>By continuing, you agree to our</span>
+                    <p><a routerLink="../policies/privacy-policy">Privacy Policy</a></p>
+                </div>
+            </div>
+       </div>
+     </div>
+  </div>
+</section>
+<div id="preloader" [hidden]="!loading">
+  <div id="loader"></div>
+</div>

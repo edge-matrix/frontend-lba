@@ -1,0 +1,116 @@
+.dashboardheader{
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+  padding:15px 0px;
+
+  .searchbar{
+    input{
+      width: 300px;
+      background: #FFFCF3;
+      box-shadow:2px #C9C9C9;
+      border-radius:30px;
+      border:1px solid #FDCCAD;
+      padding:10px 0px 10px 15px!important;
+    }
+
+    img{
+      width:20px;
+      height:20px;
+      position: relative;
+      left:-45px;
+      background-color:#FFFCF3;
+    }
+  }
+
+  .profileandnotification{
+    display:flex;
+    align-items: center;
+    gap:25px;
+  }
+}
+
+@media screen and (max-width:768px){
+  .profile{
+      margin-right:0px;
+  }
+  .searchbar{
+    input{
+      width:190px !important;
+    }
+    img {
+      left:85%;
+      height: 18px;
+      top:0px;
+    }
+  }
+}
+
+
+
+
+//
+#targetnoti {
+  padding: 10px;
+  max-width: 300px;
+  width: 300px;
+  border-radius: 15px;
+  background: #FFFCF3;
+  position: absolute;
+  left: 82%;
+  z-index: 99;
+}
+#accountinfo{
+  padding: 10px;
+  max-width: 200px;
+  border-radius: 15px;
+  position: absolute;
+  background: #FFFCF3;
+  left: 90%;
+  z-index: 99;
+}
+.notifiheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 0px 5px 0px;
+}
+.notification{
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+}
+.notifiheaderbutton button {
+  background: #FA5656;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 10px;
+  color: #FFFFFF;
+  border: none;
+  padding: 6px 10px;
+}
+.notifiactiondetails,.accountinfooptions {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+}
+.notifisenderimg {
+  border-radius: 50%;
+  margin-right: 25px;
+}
+.accountinfoicons{
+  margin-right: 10px;
+}
+.logoutdiv{
+  border-top: 1px solid #ffffff;
+}
+.notifimessageheader,.accountinfooptionsheading{
+  font-weight: 700;
+  font-size: 15px;
+}
+.notifimessagetime{
+  font-weight: 700;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.3);
+}

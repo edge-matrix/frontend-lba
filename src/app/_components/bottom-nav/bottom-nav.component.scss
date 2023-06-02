@@ -1,0 +1,34 @@
+
+.dashboardmobilebottomnavigation{
+  display: none;
+}
+@media screen and (max-width:768px){
+  .mobileoptions{
+      display: flex;
+      justify-content: center;
+
+    .dashboardmobilebottomnavigation{
+        width:100%;
+        position:fixed;
+        bottom:0px;
+        display: flex;
+        justify-content: space-evenly;
+        background:var(--secondarycolor);
+        border-radius: 10px;
+        padding:25px 10px;
+
+        .dahboardmobileoption{
+          flex-shrink: 0;
+          text-align: center;
+          width: 45px;
+          padding: 10px;
+          color:var(--primarytextcolor);
+        }
+        .activemobilebar{
+            background-color:var(--primarytextcolor);
+            border-radius: 10px;
+            color: var(--primarycolor);
+        }
+    }
+  }
+}
