@@ -1,0 +1,36 @@
+.categories-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px 15px 0px;
+    .categoryheading{
+        h1{
+            font-weight: 600;
+            font-size:18px;
+            color: #000000;
+        }
+    }
+    .categorybtn{
+        .seemorebtn{
+            font-weight:500;
+            font-size:16px;
+            color: #15597E;
+            text-decoration: none;
+        }
+    }
+}
+.categorylist{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding: 0px 0px 15px 0px;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+.itemimage{
+    width: 100px;
+    height: 100px;
+    object-fit:cover;
+    border:2px solid #FC9C67;
+    border-radius: 50%;
+}

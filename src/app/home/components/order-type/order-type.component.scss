@@ -1,0 +1,45 @@
+.ordertype{
+    display: flex;
+    align-items: center;
+    gap:8px;
+    padding: 10px 0px;
+    .qrorder{
+        width: 34%;
+        padding:15px auto;
+        height:50px;
+        background: #FFFCF3;
+        font-size:16px;
+        color: #FC9C67;
+        border: none;
+        border-radius: 10px;
+        border: 1px solid #FC9C67;
+        white-space: nowrap;
+    }
+    .dinein{
+        width: 33%;
+        padding:15px auto;
+        height:50px;
+        background: #FFFCF3;
+        font-size:16px;
+        color: #FC9C67;
+        border: none;
+        border-radius: 10px;
+        border: 1px solid #FC9C67;
+        white-space: nowrap;
+    }
+    .delivery{
+        width: 33%;
+        padding:15px auto;
+        height:50px;
+        background: #FFFCF3;
+        font-size:16px;
+        color: #FC9C67;
+        border: none;
+        border-radius: 10px;
+        border: 1px solid #FC9C67;
+    }
+}
+.active{
+    background: #FC9C67 !important;
+    color: #FFFFFF !important;
+}
