@@ -1,0 +1,52 @@
+.resturantlist{
+    .listheading{
+        font-weight: 600;
+        font-size:22px;
+        color: #000000;
+        padding-bottom: 20px;
+    }
+    .lists{
+        .list{
+            width: 100%;
+            display: flex;
+            gap:30px;
+            padding-bottom:15px;
+            .resturantimage{
+                img{
+                    width:100px;
+                    height:100px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }
+            .resturantdetails{
+                .shopname{
+                    font-weight: 600;
+                    font-size:20px;
+                    color: #000000;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width:200px;
+                }
+                .description{
+                    font-weight: 400;
+                    font-size:15px;
+                    color: rgba(0, 0, 0, 0.5);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width:200px;
+                }
+                .rating{
+                    .ratingvalue{
+                        font-weight: 600;
+                        font-size:15px;
+                        color: #000000;
+                        padding-left:5px;
+                    }
+                }
+            }
+        }
+    }
+}
