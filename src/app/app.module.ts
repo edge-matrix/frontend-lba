@@ -5,8 +5,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
-import { JwtInterceptor, ErrorInterceptor, InternetInterceptor, LoaderInterceptor, SentryErrorHandler, EncryptDecryptAuthInterceptor } from './_helpers';
-import { AuthGuard, AdminGuard, VendorGuard } from './_guards';
+import { JwtInterceptor, ErrorInterceptor, InternetInterceptor, LoaderInterceptor, SentryErrorHandler } from './_helpers';
+import { AuthGuard } from './_guards';
 import { AppComponent } from './app.component';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 import { PageNotFoundComponent, LoginComponent } from './_shared';
@@ -57,12 +57,9 @@ import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: EncryptDecryptAuthInterceptor, multi: true },
     { provide: RECAPTCHA_V3_SITE_KEY, useValue: environment.GoogleCaptchaKey },
     {provide: ErrorHandler, useClass: SentryErrorHandler},
     AuthGuard,
-    AdminGuard,
-    VendorGuard
   ],
   bootstrap: [AppComponent]
 })

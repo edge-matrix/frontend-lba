@@ -7,7 +7,7 @@ import { User } from '@models';
 })
 export class SharedService {
 
-  version = '23.06.01.01';
+  version = '23.06.07.01';
   user: User;
   sideMenuSelectedIndex = 0;
   pages: Array<{id: number, page: number}> = [];
