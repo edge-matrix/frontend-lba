@@ -17,12 +17,15 @@
             white-space: nowrap;
         }
 }
-    .rewards{
-        .rewardtitle{
-            font-weight:500;
-            font-size:16px;
-            color: #FC9C67;
-            padding-left: 10px;
+    .headerrightside{
+        display: flex;
+        align-items: center;
+        gap:20px;
+        padding-right: 10px;
+        span{
+            i{
+                font-size:25px;
+            }
         }
     }
 }

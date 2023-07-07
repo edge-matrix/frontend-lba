@@ -1,0 +1,102 @@
+.recommendedcomponent{
+    width: 100%;
+}
+.headingsection{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.recommendheading{
+    color: #000000;
+    font-size:18px;
+    font-weight: 500;
+}
+.seeallbtn{
+    font-weight: 500;
+    font-size: 16px;
+    color: #15597E;
+}
+.recommendedsection{
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.recommendedcard{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 250px;
+}
+.favouritelogo{
+    background-color: #FFFFFF;
+    height: 26px;
+    width: 28px;
+    border-radius: 50%;
+    position: relative;
+    top: 40px;
+    left: 208px;
+    text-align: center;
+    cursor: pointer;
+}
+.favouritelogo img{
+    height: 18px;
+    width: 18px;
+    position: relative;
+    top: 4px;
+
+}
+.recommendedimage{
+    height: 190px;
+}
+.recommendedimage img{
+    height: 190px;
+    width: 250px;
+    object-fit: cover;
+    border-radius: 8px 8px 0px 0px;
+}
+.recommendeditemdetail{
+    padding: 16px 8px;
+    background: #FFFCF3;
+    border-radius: 0px 0px 8px 8px;
+}
+.pricingsection{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.itemname{
+    color: #3E4462;
+    font-size: 16px;
+    font-weight: 500;
+    width: 240px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.itemdescription{
+    color: #7E7E7E;
+    font-size:14px;
+    font-weight: 500;
+    margin: 5px 0px;
+}
+.effectiveprice{
+    color:#3E4462;
+    font-size:16px;
+    font-weight: 500;
+    margin-right: 8px;
+}
+.originalprice{
+    color:#CACACA;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.itemsleft{
+    border-radius: 5px;
+    background: #FC9C67;
+    color: #FFFCF3;
+    font-size:14px;
+    font-weight:500;
+    padding:6px 18px;
+}

@@ -11,6 +11,9 @@ body {
   align-items: flex-start;
   font-family: Inter;
   font-style: normal;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
 }
 body::-webkit-scrollbar {
   display: none !important;
@@ -50,6 +53,7 @@ body::-webkit-scrollbar {
   padding: 15px 10px 10px 10px;
 }
 .mainpage {
+  width: 100%;
   zoom: 0.90;
   padding-bottom: 90px;
   display: flex;
