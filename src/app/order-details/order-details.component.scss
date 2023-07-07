@@ -1,0 +1,263 @@
+.orderstatuspage{
+  width: 100%;
+}
+/* css of cooking section */
+.cooking{
+  text-align: center;
+  /* display: none; */
+}
+.headingsection{
+  background-color: #FFFCF3;
+}
+.backbtn{
+  float: left;
+}
+.orderid{
+  color: #FFAAA6;
+  font-size: 15px;
+  font-weight: 600;
+}
+.heading{
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 15px 0px 10px 0px;
+}
+.timer{
+  color: #fc9c67b5;
+  font-size: 12px;
+  font-weight: 400;
+}
+.headingsectionimage img{
+  height: 100px;
+  width: 100px;
+  margin: 40px 0px 0px 0px;
+}
+.checkoutsection{
+  padding:20px 0px 0px 0px;
+  text-align: left;
+}
+.table{
+  border: 1px solid #00000033;
+  border-radius: 10px !important;
+  white-space: nowrap;
+}
+.wrap{
+  white-space: normal;
+}
+.gasttext{
+  font-size: 10px;
+}
+.orderdetailsbtn button{
+  border-radius: 10px;
+  background: #FC9C67;
+  border: none;
+  outline: none;
+  padding: 12px 70px;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+}
+.cancelbtn button{
+  border-radius: 10px;
+  background: #FA5457;
+  border: none;
+  outline: none;
+  padding: 12px 70px;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.extraingredientssection{
+  padding: 10px 0px;
+}
+.extraingredientheading{
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.ingradientscardcontainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardsection{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ingredientimage img{
+  height: 50px;
+  width: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.ingredientname{
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+}
+.ingredientweight{
+  color: #00000080;
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 5px;
+}
+.addonprices{
+  color: #000000;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+
+
+
+/* css of order confirmed section */
+.orderconfirmed{
+  text-align: center;
+  display: none;
+}
+/* css of ready to serve section */
+.readytoserve{
+  text-align: center;
+  display: none;
+}
+/* css of rejected section */
+.rejected{
+  text-align: center;
+  display: none;
+}
+.grandtotalfont{
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* css of bucket section */
+
+.bucketsection{
+  padding: 20px 0px;
+}
+.mybucketheadingarea,.itemcardsection{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardsection{
+  display: flex;
+  gap:10px;
+  padding: 5px 0px;
+}
+.additemsbtn button{
+  border: none;
+  outline: none;
+  color: #FC9C67;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #FFFFFF;
+}
+.mybucketheading{
+  color: #3E4462;
+  font-size: 22px;
+  font-weight: 500;
+}
+.deletebtn{
+  display: none;
+}
+.deletebtn i{
+  font-size: 20px;
+  cursor: pointer;
+}
+.itemimage img{
+  border-radius: 5px;
+  height: 70px;
+  width: 60px;
+}
+.checkoutpageitemname{
+  color: #3E4462;
+  font-size: 16px;
+  font-weight: 500;
+}
+.effectiveprice{
+  color:#7E7E7E;
+  font-size: 14px;
+  font-weight: 500;
+}
+.originalprice{
+  text-decoration: line-through;
+  color:#CACACA;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+.freedeliveryheading{
+  color:#7E7E7E;
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+.percent{
+  color:#FFFFFF;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: #FC9C67;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  display: inline-block;
+}
+.itemquantitysection{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  color:#3E4462;
+  font-size: 12px;
+  font-weight: 500;
+  display: none;
+}
+.decreasequantity{
+  color: #FFFFFF;
+  border-radius: 5px;
+  background: #E1E1E1;
+  height: 30px;
+  width: 30px;
+}
+.increasequantity{
+  color: #FFFFFF;
+  border-radius: 5px;
+  background: #FC9C67;
+  height: 30px;
+  width: 30px;
+}
+.quantity{
+  background:#F8F5F2;
+}
+.increasedecrease{
+  position: relative;
+  top: 5px;
+}
+
+.paymentsection{
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFCF3;
+}
+.paymentheading{
+  color: #000000;
+  font-size: 15px;
+  font-weight: 600;
+}
+.stausbadge{
+  border-radius: 10px;
+  background: #47B214;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+}

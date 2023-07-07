@@ -1,19 +1,7 @@
 <div class="bottompartofmainpage">
   <div class="bottomnavigation">
-      <div class="options active">
-          <i class="fa-solid fa-house"></i>
-      </div>
-      <div class="options">
-          <i class="fa-solid fa-cart-shopping"></i>
-      </div>
-      <div class="options">
-          <i class="fa-solid fa-qrcode"></i>
-      </div>
-      <div class="options" routerLink="/order-history">
-          <i class="fa-solid fa-shop"></i>
-      </div>
-      <div class="options">
-          <i class="fa-solid fa-gear"></i>
+      <div class="options" [ngClass]="{'active': menu.isActive}" *ngFor="let menu of menus" [routerLink]="menu.link">
+          <i class="fa-solid {{menu.icon}}"></i>
       </div>
   </div>
 </div>

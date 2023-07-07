@@ -1,132 +1,65 @@
-/* order page */
-
-.orderhistory {
+.favoritepage{
   width: 100%;
 }
-.orderhistoryheading h1{
-  color: #000;
+.favoritepageheading h1{
+  color: #000000;
   font-size:22px;
   font-weight: 600;
   padding-bottom: 10px;
 }
-.searchbar input {
-  height: 45px;
-  border-radius: 10px;
-  background: #FFFCF3;
-  padding: 0 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  border: 1px solid rgba(252, 156, 103, 0.50);
-  box-sizing: border-box;
-  outline: none;
-}
-.searchbar input::placeholder {
-  color: #FC9C67;
-  font-size: 15px;
-}
-.orderhistorylist{
-  padding-top: 20px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+.favoritelist{
+  display:flex;
+  align-items:center;
   gap:10px;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
-.pastorderdetails{
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.20);
-  background: #FFF;
-}
-.pastorderdetails .upperpart{
-  display: flex;
-  gap:10px;
-  border-radius: 10px 10px 0 0;
-  padding:10px 8px;
-  background: #FFFCF3;
-}
-.resturantimage img{
-  width:60px;
-  height:60px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.resturantdetails .shopname{
-  font-size:16px;
-  font-weight: 600;
-  width: 150px;
+.favoriteitemcard{
+  width:48%;
+  background-color: #000000;
+  border-radius:8px;
   white-space: nowrap;
+  box-shadow: 0px 0px 53px 9px rgba(0,0,0,0.1);
+}
+.favoriteitemcard img{
+  width:100%;
+  height:130px;
+  object-fit: cover;
+  border-top-left-radius:8px !important;
+  border-top-right-radius:8px;
+}
+.favoriteitemdetails{
+  background: #FFFCF3;
+  padding: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom:4px;
-}
-.resturantdetails .shopaddress{
-  font-size:12px;
-  font-weight:500;
-  width:150px;
-  margin-bottom:4px;
-}
-.resturantdetails .orderbefore{
-  font-size:12px;
-}
-.viewmenu{
-  font-size:12px;
-  font-weight: 600;
-  margin-left:auto;
-  white-space: nowrap;
-}
-.viewmenu a{
-  color: #FC9C67;
-  text-decoration: none;
-}
-.belowpart{
-  padding:20px 8px 0px 8px;
-}
-.itemlist{
-  display: flex;
-  flex-direction: column;
-  gap:10px;
-  padding-bottom: 10px;
-}
-.item{
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content:space-between;
 }
-.item img{
-  width:40px;
-  height:40px;
-  border-radius: 50%;
-  object-fit: cover;
+.favoriteitemdetails .itemname{
+  color:#3E4462;
+  font-size:16px;
+  font-weight:600;
+  padding-bottom:8px;
+  width:100px;
 }
-.item span{
-  font-size: 14px;
-  font-weight: 400;
+.favoriteitemdetails .itemcategory{
+  color:#7E7E7E;
+font-size:12px;
+font-weight:500;
+text-transform: capitalize;
+width:85px;
+overflow: hidden;
 }
-.totalbill{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 8px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.20);
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.20);
+.favoriteitemdetails .itemprice{
+  color:#3E4462;
+  font-size:14px;
+  font-weight:700;
 }
-.extrasection{
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 8px;
-}
-.orderstatus{
-  font-size: 14px;
-  font-weight: 600;
-}
-.reorderbtn button{
-  padding: 5px 20px;
+.favoriteitemdetails .itemaddbutton button{
+  border-radius: 4px;
+  background: #FC9C67;
   border: none;
-  border-radius: 5px;
-  background: rgba(252, 156, 103, 0.50);
-}
-
-/* badges */
-
-.completed{
-  color:green;
+  padding:2px 15px;
+  color: #ffffff;
 }

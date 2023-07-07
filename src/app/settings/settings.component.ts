@@ -3,13 +3,13 @@ import { SharedService } from '@service';
 
 
 @Component({
-  templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.scss']
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss']
 })
-export class FavoritesComponent implements OnInit {
+export class SettingsComponent implements OnInit {
 
   constructor(public sharedService: SharedService,) {
-    this.sharedService.sideMenuSelectedIndex = 1;
+    this.sharedService.sideMenuSelectedIndex = 4;
   }
 
   ngOnInit(): void {

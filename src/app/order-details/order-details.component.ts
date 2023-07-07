@@ -3,10 +3,10 @@ import { SharedService } from '@service';
 
 
 @Component({
-  templateUrl: './order-history.component.html',
-  styleUrls: ['./order-history.component.scss']
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.scss']
 })
-export class OrderHistoryComponent implements OnInit {
+export class OrderDetailsComponent implements OnInit {
 
   constructor(public sharedService: SharedService,) {
     this.sharedService.sideMenuSelectedIndex = 3;

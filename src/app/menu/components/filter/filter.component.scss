@@ -1,66 +1,56 @@
-.menupaheheader{
-    .headerheading{
-        h1{
-            font-size: 20px;
-            font-weight: 600;
-            text-align: center;
-        }
-    }
+.upperpartofitemlist h1{
+  font-size:24px;
+  font-weight:600;
+  padding-top: 15px;
 }
-.productsoption{
-    display: flex;
-    width: 100%;
-    .allproducts{
-        width: 50%;
-        margin-bottom: 10px;
-        button{
-            width: 100%;
-            background: #FFFCF3;
-            border-radius: 10px 0px 0px 10px;
-            border: none;
-            padding: 18px 0px;
-            color: #FC9C67;
-        }
-    }
-    .deliveryproducts{
-        width: 50%;
-        button{
-            width: 100%;
-            background: #FFFCF3;
-            border-radius: 0px 10px 10px 0px;
-            border: none;
-            padding: 18px 0px;
-            color: #FC9C67;
-        }
-    }
+.itempageinput input::placeholder {
+  color: #FC9C67;
+  font-size: 15px;
 }
-.active{
-    background: #FC9C67 !important;
-    color: #FFFFFF !important;
+.shopdetials{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.menufilter{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    gap:15px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    .menuoptionimage{
-        img{
-            width:80px;
-            height:80px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-    }
-    .menuoptionvalue{
-        h1{
-            text-align:center;
-            padding:7px 0px;
-            font-weight:500;
-            font-size:16px;
-            color: #000000;
-            white-space:nowrap;
-        }
-    }
+.shopname{
+  font-size: 24px;
+  font-weight:500;
+}
+.vistshopbutton button{
+  border: none;
+  border-radius: 4px;
+  background:#E84C4F;
+  padding:7px 15px;
+  color:#fff;
+}
+.upperpartofitemlist .itempageinput input{
+  height: 45px;
+  border-radius: 10px;
+  background: #FFFCF3;
+  padding: 0 10px;
+  margin:10px 0px 15px 0px;
+  width: 100% !important;
+  border: 1px solid rgba(252, 156, 103, 0.50);
+  box-sizing: border-box;
+  outline: none;
+}
+.itemcategorylist{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-y:hidden;
+  overflow-x: auto;
+}
+.category img{
+  width:70px;
+  height:70px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.category h1{
+  font-size: 16px !important;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 5px !important;
 }
