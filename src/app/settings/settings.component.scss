@@ -1,5 +1,5 @@
 .settingpage{
-  width: 100%;
+  width: 100% !important;
 }
 .settingpageheader{
   display: flex;
@@ -60,10 +60,6 @@
   font-size: 18px;
   font-weight:500;
   color: #000000;
-}
-
-.offcanvas-backdrop.show {
-  opacity:0 !important;
 }
 .offcanvas-body{
   z-index: 1000;

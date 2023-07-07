@@ -9,14 +9,7 @@
 @import "./common/base";
 
 app-root{
-    width: 100%;
-}
-@media screen and (min-width:500px){
-    app-root{
-        display:flex;
-        justify-content: center;
-        align-items: center;
-    }
+    width: 100% !important;
 }
 $scrollbar-width: 0; // Set the width of the scrollbar to 0
 
