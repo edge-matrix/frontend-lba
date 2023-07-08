@@ -8,11 +8,16 @@ import { SharedService } from '@service';
 })
 export class HomeComponent implements OnInit {
 
+  orderType = 0;
   constructor(public sharedService: SharedService,) {
     this.sharedService.sideMenuSelectedIndex = 0;
   }
 
   ngOnInit(): void {
+  }
+
+  updateOrderType(ev: number){
+    this.orderType = ev;
   }
 
 }

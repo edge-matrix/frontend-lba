@@ -9,337 +9,38 @@
           <input type="text" placeholder="Search for a restaurant....">
         </div>
         <div class="orderhistorylist">
-          <div class="pastorderdetails">
-            <div class="upperpart" routerLink="/order-details/1">
+          <div class="pastorderdetails" *ngFor="let order of data">
+            <div class="upperpart" [routerLink]="'/order-details/'+order.orderId">
               <div class="resturantimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="restaurant">
+                <img src="assets/imagefolder/resturantimg.jfif" *ngIf="order.shop && (order.shop.profileImage === null || order.shop.profileImage === '')" referrerpolicy="no-referrer" [alt]="order.orderId">
+                <img [src]="storageUrl + order.shop.profileImage" *ngIf="order.shop && order.shop.profileImage !== null && order.shop.profileImage !== ''" referrerpolicy="no-referrer" [alt]="order.orderId" />
               </div>
               <div class="resturantdetails">
-                <div class="shopname">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, quod voluptatem
-                  beatae nemo quae impedit necessitatibus earum nihil, atque tempore obcaecati, aperiam tempora
-                  blanditiis! Quod delectus itaque recusandae dolores architecto, provident atque consequuntur, laboriosam
-                  obcaecati voluptatem saepe. Neque culpa illum, placeat quidem ab quae aut impedit, unde blanditiis sequi
-                  eveniet.</div>
-                <div class="shopaddress">Address of the shop will be display here</div>
-                <div class="orderbefore">Order before</div>
+                <div class="shopname">{{order.shop?.title}}  #{{order.orderId.slice(-5)}}</div>
+                <div class="shopaddress" *ngIf="order.shop && order.shop.address && order.shop.address.length > 0">{{order.shop.address[0].addressLine}}, {{order.shop.address[0].landmark}}</div>
+                <div class="orderbefore">{{order.booking_details?.bookingDate | date}}</div>
               </div>
               <div class="viewmenu">
-                <a href="#">View Menu</a>
+                <a>View Order</a>
               </div>
             </div>
             <div class="belowpart">
               <div class="itemlist">
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
+                <div class="item" *ngFor="let product of order.products">
+                  <img src="assets/imagefolder/resturantimg.jfif" *ngIf="product.image === null || product.image === ''" referrerpolicy="no-referrer" alt="item image">
+                <img [src]="storageUrl + product.image" *ngIf="product.image !== null && product.image !== ''" referrerpolicy="no-referrer" alt="item image" />
+                  <span> {{product.quantity}} * {{product.name}}</span>
                 </div>
               </div>
               <div class="totalbill">
                 <div class="totalbillheading">Total Bill</div>
-                <div class="totalbillamount">&#8377; 500</div>
+                <div class="totalbillamount">{{ order.payableAmount | currency: 'INR' }}</div>
               </div>
               <div class="extrasection">
-                <div class="orderstatus completed">
-                  Completed
+                <div class="orderstatus {{getStatus(order.status).class}}">
+                  {{getStatus(order.status).title}}
                 </div>
-                <div class="reorderbtn">
-                  <button>Reorder</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pastorderdetails">
-            <div class="upperpart">
-              <div class="resturantimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="restaurant">
-              </div>
-              <div class="resturantdetails">
-                <div class="shopname">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, quod voluptatem
-                  beatae nemo quae impedit necessitatibus earum nihil, atque tempore obcaecati, aperiam tempora
-                  blanditiis! Quod delectus itaque recusandae dolores architecto, provident atque consequuntur, laboriosam
-                  obcaecati voluptatem saepe. Neque culpa illum, placeat quidem ab quae aut impedit, unde blanditiis sequi
-                  eveniet.</div>
-                <div class="shopaddress">Address of the shop will be display here</div>
-                <div class="orderbefore">Order before</div>
-              </div>
-              <div class="viewmenu">
-                <a href="#">View Menu</a>
-              </div>
-            </div>
-            <div class="belowpart">
-              <div class="itemlist">
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-              </div>
-              <div class="totalbill">
-                <div class="totalbillheading">Total Bill</div>
-                <div class="totalbillamount">&#8377; 500</div>
-              </div>
-              <div class="extrasection">
-                <div class="orderstatus completed">
-                  Completed
-                </div>
-                <div class="reorderbtn">
-                  <button>Reorder</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pastorderdetails">
-            <div class="upperpart">
-              <div class="resturantimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="restaurant">
-              </div>
-              <div class="resturantdetails">
-                <div class="shopname">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, quod voluptatem
-                  beatae nemo quae impedit necessitatibus earum nihil, atque tempore obcaecati, aperiam tempora
-                  blanditiis! Quod delectus itaque recusandae dolores architecto, provident atque consequuntur, laboriosam
-                  obcaecati voluptatem saepe. Neque culpa illum, placeat quidem ab quae aut impedit, unde blanditiis sequi
-                  eveniet.</div>
-                <div class="shopaddress">Address of the shop will be display here</div>
-                <div class="orderbefore">Order before</div>
-              </div>
-              <div class="viewmenu">
-                <a href="#">View Menu</a>
-              </div>
-            </div>
-            <div class="belowpart">
-              <div class="itemlist">
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-              </div>
-              <div class="totalbill">
-                <div class="totalbillheading">Total Bill</div>
-                <div class="totalbillamount">&#8377; 500</div>
-              </div>
-              <div class="extrasection">
-                <div class="orderstatus completed">
-                  Completed
-                </div>
-                <div class="reorderbtn">
-                  <button>Reorder</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pastorderdetails">
-            <div class="upperpart">
-              <div class="resturantimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="restaurant">
-              </div>
-              <div class="resturantdetails">
-                <div class="shopname">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, quod voluptatem
-                  beatae nemo quae impedit necessitatibus earum nihil, atque tempore obcaecati, aperiam tempora
-                  blanditiis! Quod delectus itaque recusandae dolores architecto, provident atque consequuntur, laboriosam
-                  obcaecati voluptatem saepe. Neque culpa illum, placeat quidem ab quae aut impedit, unde blanditiis sequi
-                  eveniet.</div>
-                <div class="shopaddress">Address of the shop will be display here</div>
-                <div class="orderbefore">Order before</div>
-              </div>
-              <div class="viewmenu">
-                <a href="#">View Menu</a>
-              </div>
-            </div>
-            <div class="belowpart">
-              <div class="itemlist">
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-              </div>
-              <div class="totalbill">
-                <div class="totalbillheading">Total Bill</div>
-                <div class="totalbillamount">&#8377; 500</div>
-              </div>
-              <div class="extrasection">
-                <div class="orderstatus completed">
-                  Completed
-                </div>
-                <div class="reorderbtn">
-                  <button>Reorder</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pastorderdetails">
-            <div class="upperpart">
-              <div class="resturantimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="restaurant">
-              </div>
-              <div class="resturantdetails">
-                <div class="shopname">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, quod voluptatem
-                  beatae nemo quae impedit necessitatibus earum nihil, atque tempore obcaecati, aperiam tempora
-                  blanditiis! Quod delectus itaque recusandae dolores architecto, provident atque consequuntur, laboriosam
-                  obcaecati voluptatem saepe. Neque culpa illum, placeat quidem ab quae aut impedit, unde blanditiis sequi
-                  eveniet.</div>
-                <div class="shopaddress">Address of the shop will be display here</div>
-                <div class="orderbefore">Order before</div>
-              </div>
-              <div class="viewmenu">
-                <a href="#">View Menu</a>
-              </div>
-            </div>
-            <div class="belowpart">
-              <div class="itemlist">
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-              </div>
-              <div class="totalbill">
-                <div class="totalbillheading">Total Bill</div>
-                <div class="totalbillamount">&#8377; 500</div>
-              </div>
-              <div class="extrasection">
-                <div class="orderstatus completed">
-                  Completed
-                </div>
-                <div class="reorderbtn">
-                  <button>Reorder</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pastorderdetails">
-            <div class="upperpart">
-              <div class="resturantimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="restaurant">
-              </div>
-              <div class="resturantdetails">
-                <div class="shopname">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, quod voluptatem
-                  beatae nemo quae impedit necessitatibus earum nihil, atque tempore obcaecati, aperiam tempora
-                  blanditiis! Quod delectus itaque recusandae dolores architecto, provident atque consequuntur, laboriosam
-                  obcaecati voluptatem saepe. Neque culpa illum, placeat quidem ab quae aut impedit, unde blanditiis sequi
-                  eveniet.</div>
-                <div class="shopaddress">Address of the shop will be display here</div>
-                <div class="orderbefore">Order before</div>
-              </div>
-              <div class="viewmenu">
-                <a href="#">View Menu</a>
-              </div>
-            </div>
-            <div class="belowpart">
-              <div class="itemlist">
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-              </div>
-              <div class="totalbill">
-                <div class="totalbillheading">Total Bill</div>
-                <div class="totalbillamount">&#8377; 500</div>
-              </div>
-              <div class="extrasection">
-                <div class="orderstatus completed">
-                  Completed
-                </div>
-                <div class="reorderbtn">
-                  <button>Reorder</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pastorderdetails">
-            <div class="upperpart">
-              <div class="resturantimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="restaurant">
-              </div>
-              <div class="resturantdetails">
-                <div class="shopname">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, quod voluptatem
-                  beatae nemo quae impedit necessitatibus earum nihil, atque tempore obcaecati, aperiam tempora
-                  blanditiis! Quod delectus itaque recusandae dolores architecto, provident atque consequuntur, laboriosam
-                  obcaecati voluptatem saepe. Neque culpa illum, placeat quidem ab quae aut impedit, unde blanditiis sequi
-                  eveniet.</div>
-                <div class="shopaddress">Address of the shop will be display here</div>
-                <div class="orderbefore">Order before</div>
-              </div>
-              <div class="viewmenu">
-                <a href="#">View Menu</a>
-              </div>
-            </div>
-            <div class="belowpart">
-              <div class="itemlist">
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-                <div class="item">
-                  <img src="assets/imagefolder/itemimage.jfif" alt="item image" />
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, quas!</span>
-                </div>
-              </div>
-              <div class="totalbill">
-                <div class="totalbillheading">Total Bill</div>
-                <div class="totalbillamount">&#8377; 500</div>
-              </div>
-              <div class="extrasection">
-                <div class="orderstatus completed">
-                  Completed
-                </div>
-                <div class="reorderbtn">
+                <div class="reorderbtn" *ngIf="order.status === 8">
                   <button>Reorder</button>
                 </div>
               </div>
@@ -348,7 +49,7 @@
         </div>
       </div>
     </div>
-    <cart></cart>
+    <!-- <cart></cart> -->
     <bottom-nav></bottom-nav>
   </div>
 </div>

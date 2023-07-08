@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'home-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
@@ -22,6 +21,7 @@ export class CategoriesComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.categoriesList();
+    this.sharedService.sideMenuSelectedIndex = 1;
     this.sharedService.getMyBunkDetails().subscribe((value) => {
       this.bunkDetails = value;
     });
@@ -38,7 +38,6 @@ export class CategoriesComponent implements OnInit {
           response.data.forEach(cat => {
             this.categories.push({data: cat, isActive: false});
           });
-          this.categories = this.categories.splice(0,10);
         }
       }
     },

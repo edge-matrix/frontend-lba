@@ -2,12 +2,19 @@
   <div class="wrapper">
     <div class="mainpage">
       <header></header>
-      <home-order-type></home-order-type>
-      <home-search></home-search>
-      <home-banner></home-banner>
-      <home-categories></home-categories>
-      <home-fav-shop></home-fav-shop>
-      <home-recommended></home-recommended>
+      <home-order-type [type]="orderType" (newItemEvent)="updateOrderType($event)"></home-order-type>
+      <ng-container *ngIf="orderType === 0; else upcomming">
+        <home-search></home-search>
+        <home-banner></home-banner>
+        <home-top-filter></home-top-filter>
+        <home-categories></home-categories>
+        <home-fav-shop></home-fav-shop>
+        <home-top-brands></home-top-brands>
+        <home-recommended></home-recommended>
+      </ng-container>
+      <ng-template #upcomming>
+        <home-upcoming></home-upcoming>
+      </ng-template>
     </div>
     <!-- <cart></cart> -->
     <bottom-nav></bottom-nav>

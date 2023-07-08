@@ -3,6 +3,8 @@ export * from './common/response.model';
 export * from './common/paginate.model';
 export * from './common/link.model';
 export * from './common/orderstatus.model';
+export * from './common/bunkDetails.model';
+export * from './common/location.model';
 
 /* Defaults Models */
 export * from './defaults/permission.model';

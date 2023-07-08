@@ -4,27 +4,13 @@
             <h1>Categories</h1>
         </div>
         <div class="categorybtn">
-            <a href="#" class="seemorebtn">View more</a>
+            <a routerLink="/categories" class="seemorebtn">View more</a>
         </div>
     </div>
     <div class="categorylist">
-        <div class="items">
-            <img src="https://letsbunkagain.com/backend/storage/itemsCategories/Y0fbV8hQVOk35ry3esgnyn90H4NA8Er6qipvpP9z.jpg" class="itemimage" alt="first" width="60px" height="60px" />
-        </div>
-        <div class="items">
-            <img src="https://letsbunkagain.com/backend/storage/itemsCategories/hV7wtnqlx1h3RvsIOHHJPpjHeX6EpAIaJkaNY8Ya.jpg" class="itemimage" alt="first" width="60px" height="60px" />
-        </div>
-        <div class="items">
-            <img src="https://letsbunkagain.com/backend/storage/itemsCategories/hV7wtnqlx1h3RvsIOHHJPpjHeX6EpAIaJkaNY8Ya.jpg" class="itemimage" alt="first" width="60px" height="60px" />
-        </div>
-        <div class="items">
-            <img src="assets/imagefolder/resturantimg.jfif" class="itemimage" alt="first" width="60px" height="60px" />
-        </div>
-        <div class="items">
-            <img src="assets/imagefolder/resturantimg.jfif" class="itemimage" alt="first" width="60px" height="60px" />
-        </div>
-        <div class="items">
-            <img src="assets/imagefolder/resturantimg.jfif" class="itemimage" alt="first" width="60px" height="60px" />
+        <div class="items" [ngClass]="{'active': cat.isActive}" *ngFor="let cat of categories" [title]="cat.data.name" (click)="updateCategory(cat.data.id)">
+            <img src="assets/imagefolder/resturantimg.jfif" *ngIf="cat.data.image === null || cat.data.image === ''" referrerpolicy="no-referrer" class="itemimage" alt="first" width="60px" height="60px" [alt]="cat.data.name">
+            <img [src]="storageUrl + cat.data.image" *ngIf="cat.data.image !== null && cat.data.image !== ''" referrerpolicy="no-referrer" class="itemimage" alt="first" width="60px" height="60px" [alt]="cat.data.name" />
         </div>
     </div>
 </div>

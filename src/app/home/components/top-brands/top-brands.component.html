@@ -1,0 +1,17 @@
+<div class="Topshop" *ngIf="shops && shops.length > 0">
+  <div class="topshop-header">
+      <div class="heading">
+          <h1>Top Brands</h1>
+      </div>
+      <div class="topbtn">
+          <a href="#" class="seemorebtn">View more</a>
+      </div>
+  </div>
+  <div class="toplist">
+      <div class="shops" [routerLink]="'./shops/'+shop.slug" *ngFor="let shop of shops">
+        <img [src]="storageLink + shop.profileImage" alt="shop" width="35px" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
+        <img src="assets/imagefolder/favshops.png" alt="shop" width="35px"  *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
+        <span>{{shop.title}}</span>
+      </div>
+  </div>
+</div>

@@ -5,11 +5,11 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'home-fav-shop',
-  templateUrl: './fav-shop.component.html',
-  styleUrls: ['./fav-shop.component.scss']
+  selector: 'home-top-brands',
+  templateUrl: './top-brands.component.html',
+  styleUrls: ['./top-brands.component.scss']
 })
-export class FavShopComponent implements OnInit {
+export class TopBrandsComponent implements OnInit {
 
   shops: Array<Shop> = [];
   storageLink = environment.storage;
@@ -20,11 +20,11 @@ export class FavShopComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
-    this.favShop();
+    this.topBrands();
   }
 
-  favShop(){
-    this.comboDetailService.getFavShop().subscribe((response: Response) => {
+  topBrands(){
+    this.comboDetailService.getTopBrands().subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
         this.toastr.error(this.sharedService.errorMessage(response.Error));
       } else {

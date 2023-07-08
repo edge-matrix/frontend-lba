@@ -1,35 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Response, User } from '@models';
+import { catchError, Observable, throwError } from 'rxjs';
+import { Response } from '@models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShopService {
+export class NotifyService {
+
   url:String;
 
   constructor(
     private http: HttpClient) {
-    this.url = environment.baseUrl + '/shop/vendor';
+    this.url = environment.baseUrl + '/user/notify';
   }
 
-  shopCategoriesList(): Observable<Response> {
-    return this.http.get<Response>(`${this.url}/shop-categories`).pipe(
+  getAll(userId: number,page: number): Observable<Response>{
+    return this.http.get<Response>(`${this.url}?cid=${userId}&page=${page}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  currentShopProfile(): Observable<Response> {
-    return this.http.get<Response>(`${this.url}/shop`).pipe(
+  get(id: number): Observable<Response>{
+    return this.http.get<Response>(`${this.url}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  updateShop(shop: FormData): Observable<Response>{
-    return this.http.post<Response>(`${this.url}/shop/0`,shop).pipe(
+  markAsRead(id: number): Observable<Response>{
+    return this.http.get<Response>(`${this.url}/read/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  markAsAllRead(id: number): Observable<Response>{
+    return this.http.get<Response>(`${this.url}/readAll/${id}`).pipe(
       catchError(this.handleError)
     );
   }

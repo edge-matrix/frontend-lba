@@ -1,23 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Response, User } from '@models';
+import { catchError, Observable, throwError } from 'rxjs';
+import { Response } from '@models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class CommonService {
+
   url:String;
 
   constructor(
     private http: HttpClient) {
-    this.url = environment.baseUrl + '/shop/user';
+    this.url = environment.baseUrl + '/common';
   }
 
-  updateUserDetails(id: number, name: string, contact: string): Observable<Response> {
-    return this.http.post<Response>(`${this.url}/update-user-details`,{id, name, contact}).pipe(
+  contactUs(details: any): Observable<Response>{
+    return this.http.post<Response>(`${this.url}/contact`,details).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  campusForm(details: any): Observable<Response>{
+    return this.http.post<Response>(`${this.url}/submitCampusData`,details).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  vendorForm(details: any): Observable<Response>{
+    return this.http.post<Response>(`${this.url}/vendor-form`,details).pipe(
       catchError(this.handleError)
     );
   }

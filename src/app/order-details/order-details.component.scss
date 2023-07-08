@@ -4,7 +4,7 @@
 /* css of cooking section */
 .cooking{
   text-align: center;
-  /* display: none; */
+  /* //display: none; */
 }
 .headingsection{
   padding-top: 10px;
@@ -120,17 +120,17 @@
 /* css of order confirmed section */
 .orderconfirmed{
   text-align: center;
-  display: none;
+  //display: none;
 }
 /* css of ready to serve section */
 .readytoserve{
   text-align: center;
-  display: none;
+  //display: none;
 }
 /* css of rejected section */
 .rejected{
   text-align: center;
-  display: none;
+  //display: none;
 }
 .grandtotalfont{
   color: #000000;
@@ -166,9 +166,6 @@
   font-size: 22px;
   font-weight: 500;
 }
-.deletebtn{
-  display: none;
-}
 .deletebtn i{
   font-size: 20px;
   cursor: pointer;
@@ -189,7 +186,7 @@
   font-weight: 500;
 }
 .originalprice{
-  text-decoration: line-through;
+  // text-decoration: line-through;
   color:#CACACA;
   font-size: 14px;
   font-weight: 400;
@@ -219,7 +216,7 @@
   color:#3E4462;
   font-size: 12px;
   font-weight: 500;
-  display: none;
+  //display: none;
 }
 .decreasequantity{
   color: #FFFFFF;

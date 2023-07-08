@@ -1,36 +1,17 @@
-<div class="Favoriteshop">
+<div class="Favoriteshop" *ngIf="shops && shops.length > 0">
     <div class="favoriteshop-header">
         <div class="heading">
-            <h1>Favorite shop</h1>
+            <h1>Previously Ordered</h1>
         </div>
         <div class="favoritebtn">
             <a href="#" class="seemorebtn">View more</a>
         </div>
     </div>
     <div class="favoritelist">
-        <div class="shops" routerLink="/menu">
-            <img src="assets/imagefolder/favshops.png" alt="shop" width="35px">
-            <span>Shop name</span>
-        </div>
-        <div class="shops">
-            <img src="assets/imagefolder/favshops.png" alt="shop" width="35px">
-            <span>Shop name</span>
-        </div>
-        <div class="shops">
-            <img src="assets/imagefolder/favshops.png" alt="shop" width="35px">
-            <span>Shop name</span>
-        </div>
-        <div class="shops">
-            <img src="assets/imagefolder/favshops.png" alt="shop" width="35px">
-            <span>Shop name</span>
-        </div>
-        <div class="shops">
-            <img src="assets/imagefolder/favshops.png" alt="shop" width="35px">
-            <span>Shop name</span>
-        </div>
-        <div class="shops">
-            <img src="assets/imagefolder/favshops.png" alt="shop" width="35px">
-            <span>Shop name</span>
+        <div class="shops" [routerLink]="'./shops/'+shop.slug" *ngFor="let shop of shops">
+          <img [src]="storageLink + shop.profileImage" alt="shop" width="35px" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
+          <img src="assets/imagefolder/favshops.png" alt="shop" width="35px"  *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
+          <span>{{shop.title}}</span>
         </div>
     </div>
 </div>

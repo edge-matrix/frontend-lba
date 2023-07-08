@@ -1,5 +1,3 @@
 <div class="ordertype">
-    <button class="qrorder active">QR Ordering</button>
-    <button class="dinein">Dine In</button>
-    <button class="delivery">Delivery</button>
+    <button class="qrorder" [ngClass]="{'active': type.isActive}" *ngFor="let type of orderTypes" (click)="updateOrderType(type.id)">{{type.title}}</button>
 </div>
