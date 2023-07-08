@@ -1,7 +1,7 @@
 .upperpartofitemlist h1{
-  font-size:24px;
+  font-size:18px;
   font-weight:600;
-  padding-top: 15px;
+  padding-top:10px;
 }
 .itempageinput input::placeholder {
   color: #FC9C67;
@@ -46,6 +46,7 @@
   height:70px;
   border-radius: 50%;
   object-fit: contain;
+  box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.1);
 }
 
 .category h1{

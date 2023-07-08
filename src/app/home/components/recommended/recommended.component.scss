@@ -30,21 +30,20 @@
 }
 .favouritelogo{
     background-color: #FFFFFF;
-    height: 26px;
-    width: 28px;
+    height:35px;
+    width:35px;
     border-radius: 50%;
     position: relative;
-    top: 40px;
+    top:50px;
     left: 208px;
     text-align: center;
     cursor: pointer;
 }
-.favouritelogo img{
-    height: 18px;
-    width: 18px;
+.favouritelogo span i{
+    font-size:18px;
     position: relative;
-    top: 4px;
-
+    top:6px;
+    color: #FC9C67;
 }
 .recommendedimage{
     height: 190px;

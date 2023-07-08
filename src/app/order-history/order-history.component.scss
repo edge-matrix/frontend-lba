@@ -41,6 +41,7 @@
   gap:10px;
   border-radius: 10px 10px 0 0;
   padding:10px 8px;
+  overflow: hidden;
   background: #FFFCF3;
 }
 .resturantimage img{
@@ -52,7 +53,7 @@
 .resturantdetails .shopname{
   font-size:16px;
   font-weight: 600;
-  width: 150px;
+  width: 180px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -61,7 +62,6 @@
 .resturantdetails .shopaddress{
   font-size:12px;
   font-weight:500;
-  width:150px;
   margin-bottom:4px;
 }
 .resturantdetails .orderbefore{
@@ -106,11 +106,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 8px;
+  font-weight: 600;
   border-top: 1px dashed rgba(0, 0, 0, 0.20);
   border-bottom: 1px dashed rgba(0, 0, 0, 0.20);
 }
 .extrasection{
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 10px 8px;
 }
