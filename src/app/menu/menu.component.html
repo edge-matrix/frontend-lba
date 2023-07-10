@@ -2,13 +2,15 @@
   <div class="wrapper">
       <div class="mainpage">
         <div class="itemlistingpage">
-          <div class="itemlisting">
-            <menu-filter></menu-filter>
-            <menu-item></menu-item>
+          <div class="itemlisting" *ngIf="shops">
+            <menu-filter [catId]="catId" [shop]="shops" (newItemEvent)="updateCat($event)"></menu-filter>
+            <menu-item *ngIf="items && items.length > 0" [shop]="shops" [menu]="items"></menu-item>
+            <no-item-page *ngIf="items && items.length === 0" text="No Item Present"></no-item-page>
           </div>
         </div>
       </div>
-      <bottom-nav></bottom-nav>
+    <footer></footer>
+    <bottom-nav></bottom-nav>
   </div>
 </div>
 

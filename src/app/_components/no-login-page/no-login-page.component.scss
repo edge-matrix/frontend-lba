@@ -1,0 +1,27 @@
+.pageifnotlogin{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  padding:0px 10px;
+}
+.loginnowheading{
+  font-size:22px;
+  font-weight: 600;
+}
+.loginnowbutton button{
+  border-radius: 10px;
+  background: #FC9C67;
+  color:#fff;
+  border: none;
+  margin:25px 0px;
+  padding: 10px 35px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.loginnowimage img{
+  width:300px;
+  padding:0px 0px 30px 0px;
+}

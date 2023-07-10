@@ -1,31 +1,12 @@
-<div class="topbrandsection">
+<div class="topbrandsection" *ngIf="shops && shops.length > 0">
   <div class="topbrandheading">
       <h1>Top Brands</h1>
   </div>
   <div class="topbrandlist">
-      <div class="brands">
-        <img src="https://blog.logomyway.com/wp-content/uploads/2017/01/mcdonalds-logo-1.jpg">
-        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, eligendi?</span>
-      </div>
-      <div class="brands">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Burger_King_logo_%281999%29.svg/2024px-Burger_King_logo_%281999%29.svg.png">
-        <span>Brand Name</span>
-      </div>
-      <div class="brands">
-        <img src="https://blog.logomyway.com/wp-content/uploads/2017/01/mcdonalds-logo-1.jpg">
-        <span>Brand Name</span>
-      </div>
-      <div class="brands">
-        <img src="https://blog.logomyway.com/wp-content/uploads/2017/01/mcdonalds-logo-1.jpg">
-        <span>Brand Name</span>
-      </div>
-      <div class="brands">
-        <img src="https://blog.logomyway.com/wp-content/uploads/2017/01/mcdonalds-logo-1.jpg">
-        <span>Brand Name</span>
-      </div>
-      <div class="brands">
-        <img src="https://blog.logomyway.com/wp-content/uploads/2017/01/mcdonalds-logo-1.jpg">
-        <span>Brand Name</span>
+      <div class="brands" [routerLink]="'./menu/'+shop.slug" *ngFor="let shop of shops">
+        <img [src]="storageLink + shop.profileImage" alt="shop" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
+        <img src="assets/imagefolder/favshops.png" alt="shop"  *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
+        <span>{{shop.title}}</span>
       </div>
   </div>
 </div>

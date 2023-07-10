@@ -1,0 +1,30 @@
+<div class="overveiwcontainer" *ngIf="shop">
+  <div class="aboutplace">About the Place</div>
+  <div class="aboutplacedescrip">{{shop.about}}</div>
+  <div class="populardishes" *ngIf="shop.popularDishes && shop.popularDishes.split(',').length > 0">Popular Dishes</div>
+  <div class="disheslist">
+      <ul>
+          <li *ngFor="let popular of shop.popularDishes?.split(',')">{{popular}}</li>
+      </ul>
+  </div>
+  <div class="cuisinesheading" *ngIf="shop.speciality && shop.speciality.split(',').length > 0">Cuisines</div>
+  <div class="cuisinessbadges">
+      <div class="badges" *ngFor="let popular of shop.speciality?.split(',')">{{popular}}</div>
+  </div>
+  <div class="peoplesaying" *ngIf="shop.peoplesPoint">People Say This Place is known for</div>
+  <div class="peoplesayingcardcontainer" *ngIf="shop.peoplesPoint">
+      <div class="card">
+          <div class="cardimg"><img src="assets/imagefolder/peopleimg.png" alt=""></div>
+          <!-- <div class="peoplename">Name</div> -->
+          <div class="comments">{{shop.peoplesPoint}}</div>
+      </div>
+  </div>
+  <div class="vendornoteheading" *ngIf="shop.note">Vendor Note</div>
+  <div class="vendornotesection" *ngIf="shop.note">
+      {{shop.note}}
+  </div>
+  <div class="contactus">Contact Us</div>
+  <div class="phonenumber">1234566789</div>
+  <div class="addresheading">Address</div>
+  <div class="address" *ngIf="shop.address && shop.address.length > 0">{{shop.address[0].addressLine}}, {{shop.address[0].landmark}}, {{shop.address[0].city}}, {{shop.address[0].pincode}}</div>
+</div>

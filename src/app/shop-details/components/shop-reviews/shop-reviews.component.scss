@@ -1,0 +1,130 @@
+/* css of reviews section */
+.reviewsheading{
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 20px 0px 15px 0px;
+}
+.overallratings{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.totalresponses{
+  color: #00000080;
+  font-size: 14px;
+  font-weight: 600;
+}
+.finalrating{
+  color: #000000;
+  font-size: 24px;
+  font-weight: 600;
+}
+.points{
+  font-size: 18px;
+}
+.customerreview{
+  border-radius: 10px;
+  background: #FFFCF3;
+  border: 1px solid #fc9c6780;
+  padding: 12px;
+}
+.timeduration{
+  color: #00000075;
+  font-size: 15px;
+  font-weight: 500;
+}
+.customerimg img{
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.customernamesection{
+  display: flex;
+  justify-content: space-between;
+}
+.customerimgsection{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.customercomment{
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 10px 0px;
+}
+.replysection{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.replysection{
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #00000080;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  margin-left: 15px;
+}
+.sharesection{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  font-size: 18px;
+}
+.viewallreviews{
+  text-align: right;
+}
+.viewallreviews button{
+  border-radius: 10px;
+  border: 1px solid #fc9c6780;
+  background: #FFFCF3;
+  color: #fc9c67b5;
+  font-size: 10px;
+  font-weight: 500;
+  outline: none;
+  padding: 6px 12px;
+  margin: 10px 0px;
+}
+.graphcontainer{
+  padding: 20px 0px;
+}
+.graph{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ranger1 input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #47B214;
+  border-radius: 0.5rem;
+  height: 15px;
+}
+.ranger2 input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #7CDD2F;
+  border-radius: 0.5rem;
+  height: 15px;
+}
+.ranger3 input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #FEB300A3;
+  border-radius: 0.5rem;
+  height: 15px;
+}
+.ranger4 input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #FC9C6780;
+  border-radius: 0.5rem;
+  height: 15px;
+}
+.ranger5 input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #FA5457;
+  border-radius: 0.5rem;
+  height: 15px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+}

@@ -18,15 +18,15 @@
                 <div class="itemdescription">{{item.item.category?.name}}</div>
                 <div class="pricingsection">
                     <div><span class="effectiveprice"><span>{{item.item.price | currency: 'INR'}}</span></span></div>
-                    <div class="itemsleft" *ngIf="!item.isSelected" (click)="addInCart(item.item.id)">
+                    <div class="itemsleft" *ngIf="!item.isSelected" (click)="addToCart(item.item.id)">
                       Add
                     </div>
                     <div class="itemnumbercounter" *ngIf="item.isSelected">
-                      <span><button class="decremental"><i class="fa-solid fa-minus"></i></button></span>
+                      <span><button class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></button></span>
                       <span class="itemcount">
-                          1
+                          {{item.count}}
                       </span>
-                      <span><button class="incremental"><i class="fa-solid fa-plus"></i></button></span>
+                      <span><button class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></button></span>
                     </div>
                 </div>
             </div>

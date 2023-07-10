@@ -29,7 +29,7 @@ export class TopBrandsComponent implements OnInit {
         this.toastr.error(this.sharedService.errorMessage(response.Error));
       } else {
         if(response.data){
-          this.shops = response.data
+          this.shops = response.data;
         }
       }
     },

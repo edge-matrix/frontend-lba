@@ -1,0 +1,35 @@
+<div class="shopnameandimages" *ngIf="shop">
+  <div class="shopnameheading">{{shop.title}}</div>
+  <div class="shopimage">
+    <img [src]="storageLink + shop.profileImage" alt="shop"*ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
+    <img src="assets/imagefolder/favshops.png" alt="shop" *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
+  </div>
+  <div class="moreshopimages"><button (click)="updateTab(3)">See All Images</button></div>
+  <div class="shopdescripheading">Shop Description</div>
+  <div class="shopdescription">{{shop.about}}</div>
+  <div class="shopaddress" *ngIf="shop.address && shop.address.length > 0">{{shop.address[0].addressLine}}, {{shop.address[0].landmark}}, {{shop.address[0].city}}</div>
+  <div class="addressandratingsection">
+      <div class="timingsection">
+          <div class="openningtime" *ngIf="showTimings === 1">{{timingText}} &nbsp;</div>
+          <div class="closingtime" *ngIf="showTimings === 2">{{timingText}} &nbsp;</div>
+      </div>
+      <div class="ratings">
+          <span><i class="fas fa-star" style="color: #ffffff;"></i></span><span>4.5</span>
+      </div>
+  </div>
+  <div class="reviews"><span>{{numberOfRating}}</span><span>  Reviews</span></div>
+  <div class="buttonsection">
+      <div><button class="buttonsectionbtns" (click)="getDirection()">
+          <span class="buttonsectionimg"><i class="fa-solid fa-location-dot"></i></span>
+          <span>Direction</span></button>
+      </div>
+      <div><button class="buttonsectionbtns" (click)="addFav()">
+          <span class="buttonsectionimg"><i class="fa-solid fa-bookmark"></i></span>
+          <span>Favourite</span></button>
+      </div>
+      <div><button class="buttonsectionbtns" (click)="share()">
+          <span class="buttonsectionimg"><i class="fa-solid fa-paper-plane"></i></span>
+          <span>Share</span></button>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+.aboutplace{
+  color: #15597E;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 20px 0px 15px 0px;
+}
+.populardishes,.cuisinesheading{
+  color: #15597E;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 20px 0px 15px 0px;
+}
+.disheslist{
+  color: #000;
+  font-size: 14px;
+  font-weight: 300;
+}
+.cuisinessbadges{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.peoplesayingcardcontainer{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.badges{
+  border-radius: 10px;
+  border: 1px solid #fc9c6780;
+  background: #FFFCF3;
+  padding: 6px 12px;
+}
+.peoplesaying,.vendornoteheading,.contactus,.addresheading{
+  color: #15597E;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 20px 0px 15px 0px;
+}
+.card{
+  border-radius: 10px;
+  border: 1px solid #fc9c6780;
+  background: #FFFCF3;
+  width: 120px;
+  padding: 10px;
+}
+.peoplename{
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+}
+.comments{
+  color: #00000080;
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 6px;
+  white-space: none;
+  width: 120px;
+}
+.cardimg img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.vendornotesection{
+  border-radius: 10px;
+  border: 1px solid #fc9c6780;
+  background: #FFFFFF;
+  padding: 6px 12px;
+  color: #00000080;
+  font-size: 14px;
+  font-weight: 300;
+}
+.phonenumber,.address{
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+}

@@ -1,38 +1,19 @@
 <div class="upperpartofitemlist">
   <div class="shopdetials">
-      <div class="shopname">Shop Name</div>
-      <div class="vistshopbutton">
+      <div class="shopname">{{ shop.title }}</div>
+      <div class="vistshopbutton" [routerLink]="'/shop/' + shop.slug">
           <button>Vist Shop</button>
       </div>
   </div>
-  <h1>Menu</h1>
+
   <div class="itempageinput">
-      <input type="text" placeholder="Search for a dish....">
+      <input type="text" placeholder="Search for a dish...." (focus)="openSearch()">
   </div>
   <div class="itemcategorylist">
-      <div class="category">
-          <img src="assets/imagefolder/itemimage.jfif" alt="item image"/>
-          <h1>All</h1>
-      </div>
-      <div class="category">
-          <img src="assets/imagefolder/itemimage.jfif" alt="item image"/>
-          <h1>All</h1>
-      </div>
-      <div class="category">
-          <img src="assets/imagefolder/itemimage.jfif" alt="item image"/>
-          <h1>All</h1>
-      </div>
-      <div class="category">
-          <img src="assets/imagefolder/itemimage.jfif" alt="item image"/>
-          <h1>All</h1>
-      </div>
-      <div class="category">
-          <img src="assets/imagefolder/itemimage.jfif" alt="item image"/>
-          <h1>All</h1>
-      </div>
-      <div class="category">
-          <img src="assets/imagefolder/itemimage.jfif" alt="item image"/>
-          <h1>All</h1>
-      </div>
+    <div class="category" *ngFor="let cat of categories" [title]="cat.data.name" (click)="updateCategory(cat.data.id)">
+      <img src="assets/imagefolder/resturantimg.jfif" *ngIf="cat.data.image === null || cat.data.image === ''" referrerpolicy="no-referrer" [alt]="cat.data.name">
+      <img [src]="storageUrl + cat.data.image" *ngIf="cat.data.image !== null && cat.data.image !== ''" referrerpolicy="no-referrer" [alt]="cat.data.name" />
+      <span>{{cat.data.name}}</span>
+    </div>
   </div>
 </div>

@@ -1,0 +1,107 @@
+.shopimage img{
+  height: 250px;
+  width: 100%;
+  border-radius: 10px;
+  margin: 15px 0px 0px 0px;
+}
+.shopnameheading{
+  text-align: left;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+}
+.moreshopimages button{
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #FC9C67;
+  font-size:15px;
+  font-weight: 500;
+  padding: 5px 12px;
+  margin: 10px 0px;
+}
+.moreshopimages{
+  text-align: right;
+}
+.shopdescripheading{
+  color: #000000;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.shopdescription{
+  color: #000000;
+  font-size: 14px;
+  font-weight: 300;
+}
+.addressandratingsection{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.shopaddress{
+  color: #000000;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 10px 0px;
+}
+.timingsection{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.closingtime{
+  color: #FA5457;
+}
+.openningtime{
+  color: #47B214;
+}
+.ratings{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius:7px;
+  background: #47B214;
+  height: 22px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 16px;
+}
+.reviews{
+  text-align: right;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+}
+.buttonsection{
+  display: flex;
+  align-items: center;
+  gap:15px;
+  overflow-y: hidden !important;
+  overflow-x: auto !important;
+  padding: 15px 0px;
+}
+.buttonsectionimg img{
+  height: 14px;
+  width: 16px;
+}
+.buttonsectionbtns{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 110px;
+  color: #f65e0c;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: #FFFCF3;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 8px 0px;
+  justify-content: center;
+}

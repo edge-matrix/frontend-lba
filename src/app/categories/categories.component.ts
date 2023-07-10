@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BunkDetails, ItemCategories, Response } from '@models';
+import { ItemCategories, Response } from '@models';
 import { ComboDetailsService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
@@ -12,19 +12,14 @@ export class CategoriesComponent implements OnInit {
 
   categories!: Array<{data: ItemCategories, isActive: boolean}>;
   storageUrl = environment.storage;
-  bunkDetails!: BunkDetails;
   constructor(
     private comboDetailService: ComboDetailsService,
     private sharedService: SharedService,
-    private storageService: StorageService,
     private toastr: ToastrService,
   ) { }
   ngOnInit(): void {
     this.categoriesList();
     this.sharedService.sideMenuSelectedIndex = 1;
-    this.sharedService.getMyBunkDetails().subscribe((value) => {
-      this.bunkDetails = value;
-    });
   }
 
   categoriesList(){
@@ -54,7 +49,5 @@ export class CategoriesComponent implements OnInit {
         cat.isActive = false;
       }
     });
-    this.bunkDetails.category = id;
-    this.storageService.updatemyBunkDetails(this.bunkDetails);
   }
 }

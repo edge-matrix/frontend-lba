@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BunkDetails, Location } from '@models';
+import { Cart, Location } from '@models';
 import { SharedService } from '@service';
 
 @Injectable({
@@ -13,11 +13,6 @@ export class StorageService {
   updateUser(data: any){
     localStorage.setItem('currentUser', JSON.stringify(data));
     this.sharedService.user = JSON.parse(localStorage.getItem('currentUser') || 'null');
-  }
-
-  updatemyBunkDetails(data: BunkDetails){
-    localStorage.setItem('myBunkDetails', JSON.stringify(data));
-    this.sharedService.setMyBunkDetails(data);
   }
 
   updatemySearchHistory(data: Array<string>){
@@ -35,18 +30,16 @@ export class StorageService {
     this.sharedService.myLocationHistory = JSON.parse(localStorage.getItem('myLocationHistory') || 'null')||[];
   }
 
-  updateCouponByURL(code: string){
-    localStorage.setItem('couponByURL', code);
-    this.sharedService.couponByURL = localStorage.getItem('couponByURL') || 'null';
+  updatemyCart(data: Array<Cart>){
+    localStorage.setItem('cart', JSON.stringify(data));
+    this.sharedService.setCartDetails(data);
   }
 
   removeStorage(){
     localStorage.removeItem("currentUser");
-    localStorage.removeItem("myBunkDetails");
     localStorage.removeItem("mySearchHistory");
     localStorage.removeItem("myLocation");
     localStorage.removeItem("myLocationHistory");
     localStorage.removeItem("cart");
-    localStorage.removeItem("couponByURL");
   }
 }

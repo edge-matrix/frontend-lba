@@ -4,11 +4,11 @@
             <h1>Previously Ordered</h1>
         </div>
         <div class="favoritebtn">
-            <a href="#" class="seemorebtn">View more</a>
+            <a routerLink="/shops" class="seemorebtn">View more</a>
         </div>
     </div>
     <div class="favoritelist">
-        <div class="shops" [routerLink]="'./shops/'+shop.slug" *ngFor="let shop of shops">
+        <div class="shops" [routerLink]="'./menu/'+shop.slug" *ngFor="let shop of shops">
           <img [src]="storageLink + shop.profileImage" alt="shop" width="35px" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
           <img src="assets/imagefolder/favshops.png" alt="shop" width="35px"  *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
           <span>{{shop.title}}</span>

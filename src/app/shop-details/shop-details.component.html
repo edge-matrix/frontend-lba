@@ -1,0 +1,23 @@
+<div class="centering">
+  <div class="wrapper">
+    <div class="mainpage">
+      <header></header>
+      <div class="shopnamecontainer">
+        <shop-details *ngIf="shops" [tab]="selectedTab" [shop]="shops" (newItemEvent)="updateTab($event)"></shop-details>
+        <div class="tabnavigation">
+          <div class="navigationheader">
+              <div [ngClass]="{'active': selectedTab === 0 }" (click)="updateTab(0)">Overview</div>
+              <div [ngClass]="{'active': selectedTab === 1 }" (click)="updateTab(1)">Items</div>
+              <div [ngClass]="{'active': selectedTab === 2 }" (click)="updateTab(2)">Review</div>
+              <div [ngClass]="{'active': selectedTab === 3 }" (click)="updateTab(3)">Photos</div>
+          </div>
+          <shop-overview *ngIf="shops && selectedTab === 0" [shop]="shops"></shop-overview>
+          <shop-reviews *ngIf="shops && selectedTab === 2" [reviews]="shops.shopReviews"></shop-reviews>
+          <shop-photos *ngIf="shops && selectedTab === 3" [photos]="shops.photos"></shop-photos>
+        </div>
+      </div>
+    </div>
+    <cart></cart>
+    <bottom-nav></bottom-nav>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+.searchresult{
+  width: 100%;
+}
+.searchbox{
+  padding: 20px;
+  background-color: #FFFFFF;
+  z-index: 99;
+}
+.searchbar input{
+  width: 90%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #FC9C67 !important;
+  padding: 12px 18px;
+  background-color: #FFFCF3;
+  font-size: 12px;
+  font-weight: 600;
+}
+.searchbar input::placeholder{
+  color: #FC9C67;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.recentsearchsuggestion{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.arrow img{
+  transform: rotate(45deg);
+  height: 20px;
+  width: 20px;
+}
+.suggestionsection{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.clock img{
+  height: 20px;
+  width: 20px;
+}
+.searchresult{
+  color: #000;
+  font-size: 12px;
+  font-weight: 400;
+}
+.recentsearchsuggestion{
+  margin: 10px;
+}

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import { HeaderComponent, FooterComponent, BottomNavComponent, CartComponent, CurrentOrderComponent } from '.';
+import { HeaderComponent, FooterComponent, BottomNavComponent, CartComponent, CurrentOrderComponent, NoLoginPageComponent, NoItemPageComponent } from '.';
 import { SharedComponentModule } from "../_shared/shared.module";
 
 @NgModule({
@@ -12,7 +12,9 @@ import { SharedComponentModule } from "../_shared/shared.module";
         FooterComponent,
         BottomNavComponent,
         CartComponent,
-        CurrentOrderComponent
+        CurrentOrderComponent,
+        NoLoginPageComponent,
+        NoItemPageComponent,
     ],
     exports: [
         /* Components */
@@ -20,7 +22,9 @@ import { SharedComponentModule } from "../_shared/shared.module";
         FooterComponent,
         BottomNavComponent,
         CartComponent,
-        CurrentOrderComponent
+        CurrentOrderComponent,
+        NoLoginPageComponent,
+        NoItemPageComponent,
     ],
     imports: [
         CommonModule,
