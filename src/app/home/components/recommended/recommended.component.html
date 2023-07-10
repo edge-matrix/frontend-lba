@@ -5,53 +5,29 @@
     </div>
 
     <div class="recommendedsection">
-        <div class="recommendedcard">
+        <div class="recommendedcard" *ngFor="let item of itemLists">
             <div class="favouritelogo">
                 <span><i class="fa-regular fa-heart"></i></span>
             </div>
             <div class="recommendedimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="">
+                <img [src]="storageUrl + item.item.image" alt="item" *ngIf="item.item.image !== null && item.item.image !== ''"/>
+                <img src="assets/imagefolder/resturantimg.jfif" alt="item" *ngIf="item.item.image === null || item.item.image === ''"/>
             </div>
             <div class="recommendeditemdetail">
-                <div class="itemname">Fruit salad mix</div>
-                <div class="itemdescription">Delics Fruit salad, Ngasem</div>
+                <div class="itemname">{{item.item.name}}</div>
+                <div class="itemdescription">{{item.item.category?.name}}</div>
                 <div class="pricingsection">
-                    <div><span class="effectiveprice">&#8377; <span> 149.00</span></span></div>
-                    <div class="itemsleft">Add</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="recommendedcard">
-            <div class="favouritelogo">
-                <span><i class="fa-regular fa-heart"></i></span>
-            </div>
-            <div class="recommendedimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="">
-            </div>
-            <div class="recommendeditemdetail">
-                <div class="itemname">Fruit salad mix</div>
-                <div class="itemdescription">Delics Fruit salad, Ngasem</div>
-                <div class="pricingsection">
-                    <div><span class="effectiveprice">&#8377; <span> 149.00</span></span></div>
-                    <div class="itemsleft">Add</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="recommendedcard">
-            <div class="favouritelogo">
-                <span><i class="fa-regular fa-heart"></i></span>
-            </div>
-            <div class="recommendedimage">
-                <img src="assets/imagefolder/resturantimg.jfif" alt="">
-            </div>
-            <div class="recommendeditemdetail">
-                <div class="itemname">Fruit salad mix</div>
-                <div class="itemdescription">Delics Fruit salad, Ngasem</div>
-                <div class="pricingsection">
-                    <div><span class="effectiveprice">&#8377; <span> 149.00</span></span></div>
-                    <div class="itemsleft">Add</div>
+                    <div><span class="effectiveprice"><span>{{item.item.price | currency: 'INR'}}</span></span></div>
+                    <div class="itemsleft" *ngIf="!item.isSelected" (click)="addInCart(item.item.id)">
+                      Add
+                    </div>
+                    <div class="itemnumbercounter" *ngIf="item.isSelected">
+                      <span><button class="decremental"><i class="fa-solid fa-minus"></i></button></span>
+                      <span class="itemcount">
+                          1
+                      </span>
+                      <span><button class="incremental"><i class="fa-solid fa-plus"></i></button></span>
+                    </div>
                 </div>
             </div>
         </div>

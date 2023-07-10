@@ -46,6 +46,12 @@ export class ComboDetailsService {
     );
   }
 
+  getRecommended(): Observable<Response> {
+    return this.http.get<Response>(`${this.url}/getRecommended`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // Error handling
   handleError(error: any) {
     let errorMessage = '';
