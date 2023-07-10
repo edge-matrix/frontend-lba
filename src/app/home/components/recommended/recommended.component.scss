@@ -99,3 +99,26 @@
     font-weight:500;
     padding:6px 18px;
 }
+/* counter */
+
+.itemnumbercounter{
+  margin-left:auto;
+}
+.itemcount{
+  background-color:#F8F5F2;
+  padding:6px 12px;
+}
+.decremental{
+  border-radius: 4px;
+  background: #E1E1E1;
+  border: none;
+  padding:5px 12px;
+  color:#ffffff ;
+}
+.incremental{
+  border-radius: 4px;
+  background:#47B214;
+  border: none;
+  padding:5px 12px;
+  color: #ffffff;
+}
