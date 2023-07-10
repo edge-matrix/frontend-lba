@@ -15,10 +15,10 @@
   margin: 0 auto;
 }
 .favoriteitemcard{
+  display: flex;
+  flex-direction: column;
   width:48%;
-  background-color: #000000;
   border-radius:8px;
-  white-space: nowrap;
   box-shadow: 0px 0px 53px 9px rgba(0,0,0,0.1);
 }
 .favoriteitemcard img{
@@ -28,38 +28,47 @@
   border-top-left-radius:8px !important;
   border-top-right-radius:8px;
 }
-.favoriteitemdetails{
+.favoriteitemdescription{
   background: #FFFCF3;
-  padding: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
+  padding: 10px 5px;
 }
-.favoriteitemdetails .itemname{
+.favoriteitemdescription .favitemname{
   color:#3E4462;
-  font-size:16px;
-  font-weight:600;
-  padding-bottom:8px;
-  width:100px;
+  font-size:15px;
+  font-weight:500;
+  max-height:60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
 }
-.favoriteitemdetails .itemcategory{
+.favoriteitemdescription .favdecriptionname{
   color:#7E7E7E;
-font-size:12px;
-font-weight:500;
-text-transform: capitalize;
-width:85px;
-overflow: hidden;
+  font-size:12px;
+  font-weight: 400;
+  max-height:60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
 }
-.favoriteitemdetails .itemprice{
+.priceandbtn{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 5px 0px 5px;
+}
+.favitemprice{
   color:#3E4462;
   font-size:14px;
-  font-weight:700;
+  font-weight: 500;
 }
-.favoriteitemdetails .itemaddbutton button{
+.favitembtn button{
   border-radius: 4px;
-  background: #FC9C67;
   border: none;
   padding:2px 15px;
-  color: #ffffff;
+  background: #FC9C67;
+  color: #fff;
 }
