@@ -1,6 +1,8 @@
 .shortcutsection{
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 15px;
   gap: 15px;
 }
 .shortcut img{
@@ -15,11 +17,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
 }
 .shortcutheading{
   color: #15597E;
-  font-size: 12px;
+  font-size:14px;
   font-weight: 500;
+  padding-top: 8px;
 }
 .shortcutcontainer{
   display: flex;

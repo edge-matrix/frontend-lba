@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0px 15px 0px;
+    padding: 25px 0px 10px 0px;
     .categoryheading{
         h1{
             font-weight: 600;
@@ -22,8 +22,7 @@
 .categorylist{
     display: flex;
     align-items: center;
-    gap:10px;
-    padding: 0px 0px 15px 0px;
+    gap:12px;
     overflow-y: hidden;
     overflow-x: auto;
 }
@@ -32,5 +31,5 @@
     height:70px;
     object-fit:cover;
     border-radius: 50%;
-    box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.1);
 }
