@@ -13,7 +13,7 @@
                     <span>⭐</span>
                     <span class="ratingvalue">4.5</span>
                 </div>
-                <div *ngIf="shop.address && shop.address.length > 0">
+                <div class="shopaddress"*ngIf="shop.address && shop.address.length > 0">
                     {{ shop.address[0].addressLine }}, {{ shop.address[0].landmark }}, {{ shop.address[0].city }}
                 </div>
             </div>

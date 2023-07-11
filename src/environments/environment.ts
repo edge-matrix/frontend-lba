@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  appUrl: 'http://127.0.0.1:4200/',
-  baseUrl: 'http://127.0.0.1:8000/api',
-  storage: 'http://127.0.0.1:8000/storage/',
+  appUrl: 'https://dev.letsbunkagain.com/',
+  baseUrl: 'https://dev.letsbunkagain.com/backend/api',
+  storage: 'https://dev.letsbunkagain.com/backend/storage/',
   redirectUrl: 'https://dev.letsbunkagain.com/login',
   GoogleCaptchaKey: '6LftGB4jAAAAAGLknjW4C5iBBPxcclUv6BfhXm6J',
   Google_client_id: '997443453271-0cqbcm3icjuglbl8cg7nld72jqq40suv.apps.googleusercontent.com',

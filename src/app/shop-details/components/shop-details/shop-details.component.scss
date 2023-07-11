@@ -3,6 +3,7 @@
   width: 100%;
   border-radius: 10px;
   margin: 15px 0px 0px 0px;
+  object-fit: cover;
 }
 .shopnameheading{
   text-align: left;
@@ -19,7 +20,7 @@
   font-size:15px;
   font-weight: 500;
   padding: 5px 12px;
-  margin: 10px 0px;
+  margin: 10px 0px 0px 0px;
 }
 .moreshopimages{
   text-align: right;
@@ -69,7 +70,7 @@
   color: #FFFFFF;
   font-size: 14px;
   font-weight: 500;
-  padding: 4px 16px;
+  padding:10px 16px;
 }
 .reviews{
   text-align: right;

@@ -9,6 +9,7 @@
         .list{
             width: 100%;
             display: flex;
+            align-items: center;
             gap:15px;
             padding-bottom:15px;
             .resturantimage{
@@ -50,4 +51,13 @@
             }
         }
     }
+}
+.shopaddress{
+    font-weight:400;
+    max-height:50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
 }
