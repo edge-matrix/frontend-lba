@@ -1,10 +1,11 @@
 <div class="centering">
     <div class="wrapper">
     <div class="mainpage">
-        <div class="favoritepage">
-            <div class="favoritepageheading">
-                <h1>Favorites</h1>
-            </div>
+      <div class="favoritepage">
+          <div class="favoritepageheading">
+              <h1>Favorites</h1>
+          </div>
+          <ng-container *ngIf="this.sharedService.user && this.sharedService.user.id !== 0; else noLogin">
             <div class="favoritelist">
                 <div class="favoriteitemcard">
                     <img src="assets/imagefolder/imageofitem.png" alt="item image"/>
@@ -46,7 +47,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+          </ng-container>
+          <ng-template #noLogin>
+            <no-login-page></no-login-page>
+          </ng-template>
+      </div>
     </div>
     <footer></footer>
     <bottom-nav></bottom-nav>

@@ -8,45 +8,55 @@
         <div class="searchbar">
           <input type="text" placeholder="Search for a restaurant....">
         </div>
-        <div class="orderhistorylist">
-          <div class="pastorderdetails" *ngFor="let order of data">
-            <div class="upperpart" [routerLink]="'/order-details/'+order.orderId">
-              <div class="resturantimage">
-                <img src="assets/imagefolder/resturantimg.jfif" *ngIf="order.shop && (order.shop.profileImage === null || order.shop.profileImage === '')" referrerpolicy="no-referrer" [alt]="order.orderId">
-                <img [src]="storageUrl + order.shop.profileImage" *ngIf="order.shop && order.shop.profileImage !== null && order.shop.profileImage !== ''" referrerpolicy="no-referrer" [alt]="order.orderId" />
-              </div>
-              <div class="resturantdetails">
-                <div class="shopname">{{order.shop?.title}}  #{{order.orderId.slice(-5)}}</div>
-                <div class="shopaddress" *ngIf="order.shop && order.shop.address && order.shop.address.length > 0">{{order.shop.address[0].addressLine}}, {{order.shop.address[0].landmark}}</div>
-                <div class="orderbefore">{{order.booking_details?.bookingDate | date}}</div>
-              </div>
-              <div class="viewmenu">
-                <a>View Order</a>
-              </div>
-            </div>
-            <div class="belowpart">
-              <div class="itemlist">
-                <div class="item" *ngFor="let product of order.products">
-                  <img src="assets/imagefolder/resturantimg.jfif" *ngIf="product.image === null || product.image === ''" referrerpolicy="no-referrer" alt="item image">
-                  <img [src]="storageUrl + product.image" *ngIf="product.image !== null && product.image !== ''" referrerpolicy="no-referrer" alt="item image" />
-                  <span> {{product.quantity}} * {{product.name}}</span>
+        <ng-container *ngIf="sharedService.user && sharedService.user.id !== 0; else noLogin">
+          <div class="orderhistorylist">
+            <ng-container *ngIf="data && data.length > 0; else noItem">
+              <div class="pastorderdetails" *ngFor="let order of data">
+                <div class="upperpart" [routerLink]="'/order-details/'+order.orderId">
+                  <div class="resturantimage">
+                    <img src="assets/imagefolder/resturantimg.jfif" *ngIf="order.shop && (order.shop.profileImage === null || order.shop.profileImage === '')" referrerpolicy="no-referrer" [alt]="order.orderId">
+                    <img [src]="storageUrl + order.shop.profileImage" *ngIf="order.shop && order.shop.profileImage !== null && order.shop.profileImage !== ''" referrerpolicy="no-referrer" [alt]="order.orderId" />
+                  </div>
+                  <div class="resturantdetails">
+                    <div class="shopname">{{order.shop?.title}}  #{{order.orderId.slice(-5)}}</div>
+                    <div class="shopaddress" *ngIf="order.shop && order.shop.address && order.shop.address.length > 0">{{order.shop.address[0].addressLine}}, {{order.shop.address[0].landmark}}</div>
+                    <div class="orderbefore">{{order.booking_details?.bookingDate | date}}</div>
+                  </div>
+                  <div class="viewmenu">
+                    <a>View Order</a>
+                  </div>
+                </div>
+                <div class="belowpart">
+                  <div class="itemlist">
+                    <div class="item" *ngFor="let product of order.products">
+                      <img src="assets/imagefolder/resturantimg.jfif" *ngIf="product.image === null || product.image === ''" referrerpolicy="no-referrer" alt="item image">
+                      <img [src]="storageUrl + product.image" *ngIf="product.image !== null && product.image !== ''" referrerpolicy="no-referrer" alt="item image" />
+                      <span> {{product.quantity}} * {{product.name}}</span>
+                    </div>
+                  </div>
+                  <div class="totalbill">
+                    <div class="totalbillheading">Total Bill</div>
+                    <div class="totalbillamount">{{ order.payableAmount | currency: 'INR' }}</div>
+                  </div>
+                  <div class="extrasection">
+                    <div class="orderstatus {{getStatus(order.status).class}}">
+                      {{getStatus(order.status).title}}
+                    </div>
+                    <div class="reorderbtn" *ngIf="order.status === 8">
+                      <button>Reorder</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="totalbill">
-                <div class="totalbillheading">Total Bill</div>
-                <div class="totalbillamount">{{ order.payableAmount | currency: 'INR' }}</div>
-              </div>
-              <div class="extrasection">
-                <div class="orderstatus {{getStatus(order.status).class}}">
-                  {{getStatus(order.status).title}}
-                </div>
-                <div class="reorderbtn" *ngIf="order.status === 8">
-                  <button>Reorder</button>
-                </div>
-              </div>
-            </div>
+            </ng-container>
+            <ng-template #noItem>
+              <no-item-page text="No Order Placed Yet"></no-item-page>
+            </ng-template>
           </div>
-        </div>
+        </ng-container>
+        <ng-template #noLogin>
+          <no-login-page></no-login-page>
+        </ng-template>
       </div>
     </div>
     <footer></footer>

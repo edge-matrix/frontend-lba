@@ -12,6 +12,7 @@
               <div [ngClass]="{'active': selectedTab === 3 }" (click)="updateTab(3)">Photos</div>
           </div>
           <shop-overview *ngIf="shops && selectedTab === 0" [shop]="shops"></shop-overview>
+          <menus *ngIf="shops && selectedTab === 1" [shop]="shops"></menus>
           <shop-reviews *ngIf="shops && selectedTab === 2" [reviews]="shops.shopReviews"></shop-reviews>
           <shop-photos *ngIf="shops && selectedTab === 3" [photos]="shops.photos"></shop-photos>
         </div>

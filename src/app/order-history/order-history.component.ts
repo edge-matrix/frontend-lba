@@ -15,14 +15,16 @@ export class OrderHistoryComponent implements OnInit {
   links!: Array<Link>;
   page = 1;
   storageUrl = environment.storage;
-  constructor(private sharedService: SharedService,
+  constructor(public sharedService: SharedService,
     private orderService: OrdersService,
     private toastr: ToastrService) {
     this.sharedService.sideMenuSelectedIndex = 3;
   }
 
   ngOnInit(): void {
-    this.orderList();
+    if(this.sharedService.user && this.sharedService.user.id !== 0){
+      this.orderList();
+    }
   }
 
   orderList(){

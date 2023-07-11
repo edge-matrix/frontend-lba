@@ -19,6 +19,10 @@ import { FilterComponent, ItemComponent } from './components';
     ReactiveFormsModule,
     FormsModule,
     CommonComponentModule
+  ],
+  exports: [
+    FilterComponent,
+    ItemComponent,
   ]
 })
 export class MenuModule { }

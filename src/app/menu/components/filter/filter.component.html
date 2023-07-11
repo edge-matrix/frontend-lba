@@ -1,5 +1,5 @@
 <div class="upperpartofitemlist">
-  <div class="shopdetials">
+  <div class="shopdetials" *ngIf="type === 0">
       <div class="shopname">{{ shop.title }}</div>
       <div class="vistshopbutton" [routerLink]="'/shop/' + shop.slug">
           <button>Vist Shop</button>

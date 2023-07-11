@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FilterComponent implements OnInit {
 
+  @Input() type = 0;
   @Input() catId!: number;
   @Input() shop!: Shop;
   @Output() newItemEvent = new EventEmitter<number>();
