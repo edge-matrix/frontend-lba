@@ -1,6 +1,7 @@
 export * from './shared-service/shared.service';
 export * from './shared-service/storage.service';
 export * from './shared-service/constants.service';
+export * from './shared-service/common-function.service';
 
 /* Auth Services  */
 export * from './auth-service/authentication.service';
@@ -16,3 +17,4 @@ export * from './page-service/home/pages.service';
 export * from './page-service/user/users.service';
 export * from './page-service/user/orders.service';
 export * from './page-service/user/notify.service';
+export * from './page-service/user/fav.service';

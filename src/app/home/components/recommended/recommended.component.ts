@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart, Items, Paginate, Response } from '@models';
-import { ComboDetailsService, SharedService, StorageService } from '@service';
+import { ComboDetailsService, CommonFunctionService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
@@ -19,6 +19,7 @@ export class RecommendedComponent implements OnInit {
     private comboDetailService: ComboDetailsService,
     private sharedService: SharedService,
     private storageService: StorageService,
+    public commonService: CommonFunctionService,
     private toastr: ToastrService,
   ) { }
 

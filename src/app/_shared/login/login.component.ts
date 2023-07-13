@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Response } from '@models'
 import { ToastrService } from 'ngx-toastr'
-import { AuthenticationService, SharedService, SocialService } from '@service';
+import { AuthenticationService, CommonFunctionService, SharedService, SocialService } from '@service';
 import { environment } from 'src/environments/environment';
 import { StorageService } from 'src/app/_services/shared-service/storage.service';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     private socialService: SocialService,
     private sharedService: SharedService,
     private storageService: StorageService,
+    private commonFunctionService: CommonFunctionService,
     private toastr: ToastrService) {
   }
 
@@ -162,6 +163,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.toastr.success("Login Successfully !!");
           this.storageService.updateUser(data.data);
+          this.commonFunctionService.getFavs();
           this.router.navigate([this.returnUrl]);
         }
         this.loading = false;
@@ -218,6 +220,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.toastr.success("Login Successfully !!");
           this.storageService.updateUser(data.data);
+          this.commonFunctionService.getFavs();
           this.router.navigate([this.returnUrl]);
         }
         this.loading = false;

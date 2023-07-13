@@ -12,7 +12,8 @@
                   <div class="itemcategory">{{item.item.category?.name}}</div>
               </div>
               <div class="addtofaviorite">
-                  <i class="far fa-heart"></i>
+                <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
+                <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
               </div>
           </div>
           <div class="addbutton" *ngIf="!item.isSelected">

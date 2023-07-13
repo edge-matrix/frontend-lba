@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cart, Shop, Response, Shoptimings, CreateOrder } from '@models';
 import { BookService, ComboDetailsService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
@@ -23,10 +24,15 @@ export class CheckoutComponent implements OnInit {
     discount: 0,
     payableAmount: 0
   };
+  orderId = '';
+  isOrderCreated = false;
+  isPaymentStart = false;
   constructor(public sharedService: SharedService,
     private storageService: StorageService,
     private comboDetailService: ComboDetailsService,
     private bookService: BookService,
+    private router: Router,
+    private activeRoute: ActivatedRoute,
     private toastr: ToastrService,) {
     this.sharedService.sideMenuSelectedIndex = 1;
   }
@@ -37,6 +43,11 @@ export class CheckoutComponent implements OnInit {
       this.calculatePayments();
     });
     this.getShopDetails();
+    this.activeRoute.queryParams.subscribe(params => {
+      if(params['transactionId']){
+        this.updatePaymentStatus(params['transactionId']);
+      }
+    });
   }
 
   findItemFromCart(i: number){
@@ -162,7 +173,6 @@ export class CheckoutComponent implements OnInit {
     if(itemsQuantity !== ''){
       itemsQuantity = itemsQuantity.slice(0, -1)
     }
-
     let request: CreateOrder = {
       user_id: this.sharedService.user.id,
       shop_id: this.shops.id,
@@ -173,9 +183,9 @@ export class CheckoutComponent implements OnInit {
       orderType: 0,
 
       groupSize: 2,
-      bookingDate: new Date().getFullYear() + '-' + new Date().getMonth + '-' + new Date().getDate(),
-      startTime: new Date().getHours + ':' + new Date().getMinutes(),
-      endTime: new Date().getHours + ':' + new Date().getMinutes(),
+      bookingDate: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, "0")  + '-' + new Date().getDate().toString().padStart(2, "0"),
+      startTime: new Date().getHours().toString().padStart(2, "0") + ':' + new Date().getMinutes().toString().padStart(2, "0"),
+      endTime: new Date().getHours().toString().padStart(2, "0") + ':' + new Date().getMinutes().toString().padStart(2, "0"),
       isTimeBound: 0,
       note: '',
       medium: 'LBA',
@@ -201,7 +211,6 @@ export class CheckoutComponent implements OnInit {
       this.toastr.error("No item is selected");
       return;
     }
-
     //Order Request Below
     let request = this.prepareOrderData();
     this.bookService.placeOrder(request).subscribe((response: Response) => {
@@ -210,18 +219,59 @@ export class CheckoutComponent implements OnInit {
       } else {
         if(response.success){
           this.toastr.success("Order Placed Successfully.");
-          // this.isOrderCreated = true;
-          // this.orderId = response.success;
-          // if(this.paymentMethod === 1 && this.payableAmount > 0){
-          //   this.isPaymentStart = true;
-          // }else{
-          //   this.reOrder();
-          // }
+          this.isOrderCreated = true;
+          this.orderId = response.success;
+          if(this.paymentMethod.filter(e => e.active)[0].id === 1 && this.payments.payableAmount > 0){
+            this.isPaymentStart = true;
+          }else{
+            this.reOrder();
+          }
         }
       }
     },
     error => {
       this.toastr.error('Something Went Wrong');
     });
+  }
+
+  reOrder(){
+    if(this.paymentMethod.filter(e => e.active)[0].id === 1 && this.payments.payableAmount > 0){
+      this.isPaymentStart = true;
+      return;
+    }else{
+      const paymentDetails = {
+        paymentMethod: 0,
+        transactionId: this.orderId,
+      };
+      this.updatePaymentDetails(paymentDetails);
+    }
+  }
+
+  updatePaymentDetails(data: { paymentMethod: number; transactionId: string;}){
+    this.bookService.updatePaymentDetails(data).subscribe((response: Response) => {
+      if (response.statusCode != 200 && response.statusCode != 201) {
+        this.toastr.error(this.sharedService.errorMessage(response.Error));
+      } else {
+        this.storageService.updatemyCart([]);
+        if(response.singleData){
+          this.orderId = response.singleData;
+          this.router.navigate(['/order-details/'+this.orderId],{ queryParams: { orderPlaced: "true"}});
+        }
+      }
+    },
+    error => {
+      this.toastr.error('Something Went Wrong');
+    });
+  }
+
+  updatePaymentStatus(transactionId: string){
+    this.isPaymentStart = false;
+    if(transactionId !== ''){
+      const paymentDetails = {
+        paymentMethod: 1,
+        transactionId: transactionId,
+      };
+      this.updatePaymentDetails(paymentDetails);
+    }
   }
 }

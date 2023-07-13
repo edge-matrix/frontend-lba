@@ -38,6 +38,7 @@ export * from './user/medium.model';
 export * from './user/notification.model';
 export * from './user/referal.model';
 export * from './user/bunkCoins.model';
+export * from './user/fav.model';
 
 /* Request Models */
 export * from './request/orders.model';

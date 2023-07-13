@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent, PageNotFoundComponent } from './_shared';
+import { AuthGuard } from './_guards';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path: 'favorite', loadChildren: () => import('./favorites/favorites.module').then(m => m.FavoritesModule) },
-  { path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule) },
+  { path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule), canActivate: [AuthGuard], },
   { path: 'categories', loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule) },
   { path: 'shops', loadChildren: () => import('./shop-list/shop-list.module').then(m => m.ShopListModule) },
   { path: 'menu/:slug', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },

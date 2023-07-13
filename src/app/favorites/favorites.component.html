@@ -3,46 +3,55 @@
     <div class="mainpage">
       <div class="favoritepage">
           <div class="favoritepageheading">
-              <h1>Favorites</h1>
+              <h1>Favorites
+                <span (click)="type = type === 0 ?1:0">Change</span>
+              </h1>
           </div>
           <ng-container *ngIf="this.sharedService.user && this.sharedService.user.id !== 0; else noLogin">
-            <div class="favoritelist">
-                <div class="favoriteitemcard">
-                    <img src="assets/imagefolder/imageofitem.png" alt="item image"/>
-                    <div class="favoriteitemdescription">
-                        <div class="favitemname">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad magnam laboriosam sunt impedit, illo quaerat dolore eligendi. Repellendus, voluptatibus fugiat?</div>
-                        <div class="favdecriptionname">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad magnam laboriosam sunt impedit, illo quaerat dolore eligendi. Repellendus, voluptatibus fugiat?</div>
-                        <div class="priceandbtn">
-                            <div class="favitemprice">&#8377; 2000</div>
-                            <div class="favitembtn">
-                                <button>Add</button>
-                            </div>
-                        </div>
+            <div class="lists" *ngIf="type === 0">
+              <div class="list" *ngFor="let shop of shopLists" [routerLink]="'/menu/' + shop.slug">
+                <div class="resturantimage">
+                  <img [src]="storageUrl + shop.profileImage" alt="shop" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
+                  <img src="assets/imagefolder/favshops.png" alt="shop"  *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
+                </div>
+                <div class="resturantdetails">
+                    <div class="shopname">{{shop.title}}</div>
+                    <div class="description">{{shop.category?.name}}</div>
+                    <div class="rating">
+                        <span>⭐</span>
+                        <span class="ratingvalue">4.5</span>
+                    </div>
+                    <div class="shopaddress"*ngIf="shop.address && shop.address.length > 0">
+                        {{ shop.address[0].addressLine }}, {{ shop.address[0].landmark }}, {{ shop.address[0].city }}
                     </div>
                 </div>
-                <div class="favoriteitemcard">
-                    <img src="assets/imagefolder/imageofitem.png" alt="item image"/>
+            </div>
+            </div>
+            <div class="favoritelist" *ngIf="type === 1">
+                <div class="favoriteitemcard" *ngFor="let item of itemLists">
+                  <div class="favouritelogo">
+                    <span>
+                      <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
+                      <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
+                    </span>
+                  </div>
+                  <img [src]="storageUrl + item.item.image" alt="item" *ngIf="item.item.image !== null && item.item.image !== ''"/>
+                  <img src="assets/imagefolder/resturantimg.jfif" alt="item" *ngIf="item.item.image === null || item.item.image === ''"/>
                     <div class="favoriteitemdescription">
-                        <div class="favitemname">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad magnam laboriosam sunt impedit, illo quaerat dolore eligendi. Repellendus, voluptatibus fugiat?</div>
-                        <div class="favdecriptionname">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad magnam laboriosam sunt impedit, illo quaerat dolore eligendi. Repellendus, voluptatibus fugiat?</div>
+                        <div class="favitemname">{{item.item.name}}</div>
+                        <div class="favdecriptionname">{{item.item.category?.name}}</div>
                         <div class="priceandbtn">
-                            <div class="favitemprice">&#8377; 2000</div>
-                            <div class="favitembtn">
-                                <button>Add</button>
-                            </div>
+                            <div class="favitemprice">{{item.item.price | currency: 'INR'}}</div>
+                            <div class="favitembtn" *ngIf="!item.isSelected" (click)="addToCart(item.item.id)">
+                              <button>Add</button>
+                          </div>
                         </div>
-                    </div>
-                </div>
-                <div class="favoriteitemcard">
-                    <img src="assets/imagefolder/imageofitem.png" alt="item image"/>
-                    <div class="favoriteitemdescription">
-                        <div class="favitemname">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad magnam laboriosam sunt impedit, illo quaerat dolore eligendi. Repellendus, voluptatibus fugiat?</div>
-                        <div class="favdecriptionname">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad magnam laboriosam sunt impedit, illo quaerat dolore eligendi. Repellendus, voluptatibus fugiat?</div>
-                        <div class="priceandbtn">
-                            <div class="favitemprice">&#8377; 2000</div>
-                            <div class="favitembtn">
-                                <button>Add</button>
-                            </div>
+                        <div class="itemnumbercounter" *ngIf="item.isSelected">
+                          <span><button class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></button></span>
+                          <span class="itemcount">
+                              {{item.count}}
+                          </span>
+                          <span><button class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></button></span>
                         </div>
                     </div>
                 </div>

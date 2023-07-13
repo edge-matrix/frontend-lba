@@ -13,12 +13,12 @@
           </div>
           <shop-overview *ngIf="shops && selectedTab === 0" [shop]="shops"></shop-overview>
           <menus *ngIf="shops && selectedTab === 1" [shop]="shops"></menus>
-          <shop-reviews *ngIf="shops && selectedTab === 2" [reviews]="shops.shopReviews"></shop-reviews>
+          <shop-reviews *ngIf="shops && selectedTab === 2" [reviews]="shops.shop_reviews"></shop-reviews>
           <shop-photos *ngIf="shops && selectedTab === 3" [photos]="shops.photos"></shop-photos>
         </div>
       </div>
     </div>
-    <cart></cart>
+    <footer></footer>
     <bottom-nav></bottom-nav>
   </div>
 </div>

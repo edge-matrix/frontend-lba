@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { Router } from '@angular/router';
+import { CommonFunctionService } from '@service';
 
 declare const window: any;
 
@@ -23,7 +24,7 @@ export class ShopDetailsComponent implements OnInit {
   timingText = '';
   showTimings = 0;
   timingTitle = '';
-  constructor(private toastr: ToastrService, private clipboard: Clipboard, private router: Router) { }
+  constructor(private toastr: ToastrService, private clipboard: Clipboard, private router: Router, public commonService: CommonFunctionService) { }
 
   ngOnInit(): void {
     let day = new Date().getDay();
@@ -78,10 +79,6 @@ export class ShopDetailsComponent implements OnInit {
 
   updateTab(num : number){
     this.newItemEvent.emit(num);
-  }
-
-  addFav(){
-    this.toastr.info('Will work on this feature later');
   }
 
   share(){

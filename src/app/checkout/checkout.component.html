@@ -65,11 +65,13 @@
             </div>
 
             <div class="paynowbtn" (click)="placeOrder()">
-                <button>Place Order</button>
+              <button (click)="isOrderCreated?reOrder():placeOrder()">Place Order</button>
             </div>
         </div>
         </div>
     </div>
     <bottom-nav></bottom-nav>
+    <footer [show]="false"></footer>
     </div>
 </div>
+<online-payments *ngIf="isPaymentStart" [orderId]="orderId"></online-payments>

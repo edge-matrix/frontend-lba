@@ -1,130 +1,197 @@
-/* css of reviews section */
-.reviewsheading{
-  color: #000;
-  font-size: 16px;
+.restaurant-detail-heading{
+  padding-bottom:10px;
   font-weight: 600;
-  margin: 20px 0px 15px 0px;
+  font-size: 30px;
+  color: #15597E;
+  border-bottom: 2px solid #15597E;
 }
-.overallratings{
+/* total review card css */
+
+.total-review{
+  width:100%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding:29px;
+  margin-bottom:35px;
+}
+.total-review-heading{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #15597E;
+}
+.average-review{
+  max-width:280px;
+  padding-top:8px;
+  padding-bottom:8px;
+  display:flex;
+  justify-content:space-evenly;
+  background: #FFFCF3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom:20px;
+}
+.stars{
+  color:#FEB300;
+}
+.google-review {
+  margin-top: 40px;
+}
+.rating-review-item {
   display: flex;
   align-items: center;
-  gap: 15px;
 }
-.totalresponses{
-  color: #00000080;
+.rating-review-item .left-rating {
+  flex: 1 1 20%;
+  max-width: 20%;
+}
+.rating-review-item .left-rating .star-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.rating-review-item .left-rating .star-rating h3 {
+  margin: 0 12px 0 0;
+  font-size: 40px;
+}
+.rating-review-item .left-rating .star-rating .fa-star {
+  font-size: 30px;
+  color: #28a745;
+}
+.rating-review-item .left-rating .number-rating span {
+  display: block;
+  margin-bottom: 2px;
+  color: #474848;
   font-size: 14px;
-  font-weight: 600;
 }
-.finalrating{
-  color: #000000;
-  font-size: 24px;
-  font-weight: 600;
+.rating-review-item .right-rating {
+  flex: 1 1 80%;
+  max-width: 80%;
 }
-.points{
-  font-size: 18px;
+.rating-review-item .right-rating ul.order-list {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
 }
-.customerreview{
+.rating-review-item .right-rating ul.order-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.rating-review-item .right-rating ul.order-list li:last-child {
+  margin-bottom: 0;
+}
+.rating-review-item .right-rating ul.order-list li .star-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  min-width: 25px;
+}
+.rating-review-item .right-rating ul.order-list li .star-value h5 {
+  margin: 0 2px 0 0;
+  font-size: 16px;
+}
+.rating-review-item .right-rating ul.order-list li .star-value .fa-star {
+  font-size: 14px;
+}
+.rating-review-item .right-rating ul.order-list li .progress {
+  flex: 1 1 315px;
+  max-width: 315px;
+  height:15px;
+  margin-right: 20px;
+  margin-bottom: 0;
+  background-color: #ddd;
   border-radius: 10px;
-  background: #FFFCF3;
-  border: 1px solid #fc9c6780;
-  padding: 12px;
 }
-.timeduration{
-  color: #00000075;
-  font-size: 15px;
+.rating-review-item .right-rating ul.order-list li .rating-hit {
+  color: #b2b2b2;
+  font-size: 16px;
+}
+.progress-bar{
+  color: #FEB300 !important;
+}
+/* ends here */
+
+
+/* Review user card css */
+.review-card{
+  width:100%;
+  background: #FFFFFF;
+  border-bottom: 3px solid #C9C9C9;
+  overflow: hidden;
+}
+.reviews{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom:20px;
+}
+.userimg-name-star{
+  display:flex;
+  align-items: center;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+.user-name{
   font-weight: 500;
+  font-size: 20px;
+  color: #15597E;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
 }
-.customerimg img{
-  height: 90px;
-  width: 90px;
-  border-radius: 50%;
+.user-img{
+  margin-right:25px;
+}
+.time-of-review{
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.46);
+  float: right !important;
+}
+.star{
+  color:#FEB300;
+}
+.review-statement{
+  font-weight: 500;
+  font-size: 15px;
+  color: #000000;
+  padding-bottom:30px;
+}
+.review-button{
+  display: flex;
+  justify-content:space-between;
+}
+.image img{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-right:15px;
+  margin-bottom: 20px;
+}
+.reply,.share{
+  background: #FFFFFF;
+  border: 1px solid #C9C9C9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  color: #15597E;
+  padding:8px 45px;
+}
+/* Ends here */
+/* Main area 1 css */
+@media screen and (max-width: 768px) {
+  .reply,.share{
+    padding: 8px 20px;
+  }
+.image img{
+  width:100%;
   object-fit: cover;
 }
-.customernamesection{
-  display: flex;
-  justify-content: space-between;
-}
-.customerimgsection{
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.customercomment{
-  color: #000000;
-  font-size: 14px;
-  font-weight: 500;
-  margin: 10px 0px;
-}
-.replysection{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.replysection{
-  border-radius: 10px;
-  background: #FFFFFF;
-  color: #00000080;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 6px 12px;
-  margin-left: 15px;
-}
-.sharesection{
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  border-radius: 10px;
-  background: #FFFFFF;
-  font-size: 18px;
-}
-.viewallreviews{
-  text-align: right;
-}
-.viewallreviews button{
-  border-radius: 10px;
-  border: 1px solid #fc9c6780;
-  background: #FFFCF3;
-  color: #fc9c67b5;
-  font-size: 10px;
-  font-weight: 500;
-  outline: none;
-  padding: 6px 12px;
-  margin: 10px 0px;
-}
-.graphcontainer{
-  padding: 20px 0px;
-}
-.graph{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.ranger1 input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #47B214;
-  border-radius: 0.5rem;
-  height: 15px;
-}
-.ranger2 input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #7CDD2F;
-  border-radius: 0.5rem;
-  height: 15px;
-}
-.ranger3 input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #FEB300A3;
-  border-radius: 0.5rem;
-  height: 15px;
-}
-.ranger4 input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #FC9C6780;
-  border-radius: 0.5rem;
-  height: 15px;
-}
-.ranger5 input[type="range"]::-webkit-slider-runnable-track {
-  background-color: #FA5457;
-  border-radius: 0.5rem;
-  height: 15px;
-}
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none !important;
 }

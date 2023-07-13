@@ -42,8 +42,8 @@
                     <div class="orderstatus {{getStatus(order.status).class}}">
                       {{getStatus(order.status).title}}
                     </div>
-                    <div class="reorderbtn" *ngIf="order.status === 8">
-                      <button>Reorder</button>
+                    <div class="reorderbtn" *ngIf="order.status === 7 || order.status === 8">
+                      <button (click)="reOrder(order.id)">Reorder</button>
                     </div>
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from '@service';
 
 @Component({
@@ -8,6 +8,7 @@ import { SharedService } from '@service';
 })
 export class FooterComponent implements OnInit {
 
+  @Input() show = true;
   constructor(public sharedService: SharedService) { }
 
   ngOnInit(): void {

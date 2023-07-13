@@ -1,75 +1,69 @@
-<div class="reviewcontainer">
-  <div class="reviewsheading">Customer reviews</div>
-  <div class="overallratings">
-      <div class="finalrating">4.5</div>
-      <div class="points">
-          <span><i class="fas fa-heart" style="color: #fc9c67;"></i></span>
-          <span><i class="fas fa-heart" style="color: #fc9c67;"></i></span>
-          <span><i class="fas fa-heart" style="color: #fc9c67;"></i></span>
-          <span><i class="fas fa-heart" style="color: #fc9c67;"></i></span>
-      </div>
-      <div class="totalresponses"><span>1200</span><span>   reviews</span></div>
-  </div>
+<div>
+  <!-- Main area 2 html -->
+  <div class="restaurant-detail">
+    <span class="restaurant-detail-heading">User Review</span>
+    <!-- Total review HTML card -->
+    <div class="total-review">
+        <div class="total-review-heading">Rate your dining experience</div>
+        <div class="average-review">
+            <i class="fas fa-star stars"></i>
+            <i class="fas fa-star stars"></i>
+            <i class="fas fa-star stars"></i>
+            <i class="fas fa-star stars"></i>
+            <i class="fas fa-star stars"></i>
+        </div>
+        <div class="ratepercentage" *ngIf="ratingRatio.length > 0 && reviews.length > 0">
+            <div class="rating-review-item">
+                <div class="right-rating">
+                  <ul class="order-list">
+                    <li *ngFor="let rate of ratingRatio">
+                      <div class="star-value">
+                        <h5>{{rate.index}}</h5>
+                        star
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{'width': calculateRate(rate.rate)}" style="background-color:#FEB300;"></div>
+                      </div>
+                      <div class="rating-hit">{{calculateRate(rate.rate)}}</div>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Total review card HTML ends -->
 
- <div class="graphcontainer">
-  <div class="graph">
-      <div>5</div>
-      <div class="ranger1"><input type="range"></div>
-      <div>90%</div>
-      <div>952</div>
-  </div>
-  <div class="graph">
-      <div>5</div>
-      <div class="ranger2"><input type="range"></div>
-      <div>90%</div>
-      <div>952</div>
-  </div>
-  <div class="graph">
-      <div>5</div>
-      <div class="ranger3"><input type="range"></div>
-      <div>90%</div>
-      <div>952</div>
-  </div>
-  <div class="graph">
-      <div>5</div>
-      <div class="ranger4"><input type="range"></div>
-      <div>90%</div>
-      <div>952</div>
-  </div>
-  <div class="graph">
-      <div>5</div>
-      <div class="ranger5"><input type="range"></div>
-      <div>90%</div>
-      <div>952</div>
-  </div>
- </div>
 
-  <div class="customerreview">
-      <div class="customernamesection">
-          <div class="customerimgsection">
-              <div class="customerimg"><img src="assets/imagefolder/peopleimg.png" alt=""></div>
-              <div class="customernamerating">
-                  <div>Phenom</div>
-                  <div class="points">
-                      <span><i class="fas fa-star" style="color: #ffd700;"></i></span>
-                      <span><i class="fas fa-star" style="color: #ffd700;"></i></span>
-                      <span><i class="fas fa-star" style="color: #ffd700;"></i></span>
-                      <span><i class="fas fa-star" style="color: #ffd700;"></i></span>
-                  </div>
-              </div>
+    <!-- review card html ends-->
+    <div class="review-card" *ngFor="let review of reviews">
+        <div class="reviews">
+            <div class="userimg-name-star">
+                <img class="user-img"src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" width="80px"height="80px"style="border-radius:50%;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"/>
+                <div class="details">
+                    <div class="user-name">{{review.user?.name}}</div>
+                    <span class="star">
+                      <i class="fas fa-star" *ngFor="let i of rateCounter(review.rate)"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="time-of-review">
+                {{review.created_at | date}}
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 images">
+            <div class="image" *ngIf="review.images">
+              <img [src]="storageLink + review.images" width="250px" height="150px" />
+            </div>
           </div>
-          <div class="timeduration">
-              <span>3</span><span>   Days</span>
-          </div>
-      </div>
-      <div class="customercomment">I really like the food here,delicious and cheap 😁</div>
-      <div class="replysection">
-         <div class="replysection">Reply</div>
-         <div class="sharesection">
-          <div><i class="fas fa-heart" style="color: #fc9c67;"></i></div>
-          <div><i class="fas fa-share-square" style="color: #fc9c67;"></i></div>
-         </div>
-      </div>
+        </div>
+        <div class="review-statement">{{review.review}}</div>
+        <div class="review-button">
+            <a class="reply"><i class="fas fa-heart"></i>&nbsp;{{review.likes}}</a>
+            <a class="share"><i class="fas fa-share-square"></i></a>
+        </div>
+    </div>
+    <!-- review card html ends -->
   </div>
-  <div class="viewallreviews"><button>Veiw All Reviews</button></div>
+  <!-- ends here -->
 </div>

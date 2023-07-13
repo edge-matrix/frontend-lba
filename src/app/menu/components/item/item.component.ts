@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cart, Items, Shop } from '@models';
-import { SharedService, StorageService } from '@service';
+import { CommonFunctionService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
@@ -19,6 +19,7 @@ export class ItemComponent implements OnInit {
   constructor(
     private sharedService: SharedService,
     private storageService: StorageService,
+    public commonService: CommonFunctionService,
     private toastr: ToastrService,
   ) { }
 

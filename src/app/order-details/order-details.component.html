@@ -1,19 +1,22 @@
  <div class="centering">
   <div class="wrapper">
     <div class="mainpage">
+      <header></header>
       <div class="orderstatuspage">
         <div [class]="getStatus(order.status).class">
             <div class="headingsection">
-              <div class="backbtn"><i class="fas fa-arrow-left"></i></div>
+              <div class="backbtn" (click)="sharedService.back()"><i class="fas fa-arrow-left"></i></div>
               <div class="orderid">Order Id #{{order.orderId.slice(-5)}}</div>
               <div class="heading">{{getStatus(order.status).title}}</div>
-              <div class="timer">Ready in 12:20</div>
+              <div class="timer">{{ order.booking_details?.bookingDate | date }} {{ order.booking_details?.startTime }}</div>
               <div class="headingsectionimage"><img src="assets/imagefolder/{{getStatus(order.status).img}}" alt=""></div>
             </div>
             <div class="bucketsection">
               <div class="mybucketheadingarea">
                 <div class="mybucketheading">My Bucket</div>
-                <div class="additemsbtn"><button>+ Add Items</button></div>
+                <!-- <div class="additemsbtn">
+                  <button>+ Add Items</button>
+                </div> -->
               </div>
 
               <div class="itemcardcontainer" *ngFor="let product of order.products">
@@ -39,9 +42,17 @@
               </div>
             </div>
             <div class="paymentsection">
-              <div class="paymentheading">Payment status</div>
-              <div class="stausbadge">
-                {{order.paymentStatus === 0?'Pending':order.paymentStatus === 2?'Completed':'Partial Paid'}}
+              <div class="paymentheading">
+                <span>Payment status</span>
+              </div>
+              <div [class]="getPaymentStatus(order.paymentStatus).class">
+                {{getPaymentStatus(order.paymentStatus).title}}
+              </div>
+            </div>
+            <div class="paymentsection">
+              <div class="paymentheading">Payment Method</div>
+              <div>
+                {{ order.paymentMethod === 1?'Pay Now':'Pay At Shop' }}
               </div>
             </div>
             <div class="checkoutsection">
@@ -50,24 +61,29 @@
                         <tbody>
                           <tr>
                             <td>SubTotal</td>
-                            <td class="grandtotalfont">&#8377; 429</td>
+                            <td class="grandtotalfont">{{order.subTotal | currency: 'INR'}}</td>
+                          </tr>
+                          <tr>
+                            <td class="wrap">Taxes <span class="gasttext">(GST + Service charge) </span></td>
+                            <td>{{order.taxAmount | currency: 'INR'}}</td>
                           </tr>
                           <tr>
                             <td>Grand Total</td>
-                            <td>&#8377; 429</td>
-                          </tr><tr>
-                            <td class="wrap">Taxes <span class="gasttext">(GST + Service charge) </span> <span>0 %</span></td>
-                            <td>&#8377; 429</td>
+                            <td>{{order.grandTotal | currency: 'INR'}}</td>
+                          </tr>
+                          <tr>
+                            <td>Paid Amount</td>
+                            <td>{{order.paidAmount | currency: 'INR'}}</td>
                           </tr>
                           <tr class="grandtotalfont">
-                            <td>Grand Total</td>
-                            <td>&#8377; 429</td>
+                            <td>Payable Amount</td>
+                            <td>{{order.payableAmount | currency: 'INR'}}</td>
                           </tr>
                         </tbody>
                       </table>
                 </div>
             </div>
-            <div class="extraingredientssection">
+            <!-- <div class="extraingredientssection">
               <div class="extraingredientheading">Add extra ingredients</div>
 
               <div class="ingradientscardcontainer">
@@ -100,12 +116,12 @@
                 </div>
                 <div class="checkbox"><input type="checkbox" name="" id=""></div>
               </div>
-            </div>
-            <div class="cancelbtn">
+            </div> -->
+            <div class="cancelbtn" *ngIf="order.status === 1 || order.status === 2">
                 <button>Cancel</button>
             </div>
-            <div class="orderdetailsbtn">
-                <button>Order Details</button>
+            <div class="orderdetailsbtn" *ngIf="order.status === 7 || order.status === 8">
+                <button (click)="reOrder()">Re-order</button>
             </div>
         </div>
       </div>

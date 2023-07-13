@@ -1,0 +1,54 @@
+.statuscommon{
+  padding: 6px 8px;
+  font-weight: 500;
+  text-align: center;
+  margin:0px 5px;
+  border-radius: 10px;
+  font-size: 10px;
+  // width:65px;
+  white-space: nowrap;
+}
+.pending{
+  background: var(--primarybtn);
+  border: 1px solid var(--ternarybtncolor);
+  color: var(--ternarybtncolor);
+}
+.cooking{
+  background: var(--primarybtn);
+  border: 1px solid var(--ternarybtncolor);
+  color: var(--ternarybtncolor);
+}
+.accepted{
+  background: var(--primarybtn);
+  border: 1px solid var(--secondarybtncolor);;
+  color: var(--secondarybtncolor);
+}
+.rejected{
+  background: var(--primarybtn);
+  border: 1px solid var(--primarybtncolor);
+  color: var(--primarybtncolor);
+}
+.completed{
+  background: var(--primarybtn);
+  border: 1px solid var(--lightgreen);
+  color: var(--lightgreen);
+}
+
+.paymentstatus{
+  background: #FFFFFF;
+  border: 1px solid #47B314;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #47B314;
+  padding:3px 10px;
+}
+.orderstatus{
+  background: #FFFFFF;
+  border: 1px solid #FEB300;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #FEB300;
+  padding:3px 10px;
+}

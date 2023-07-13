@@ -2,49 +2,40 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Orders, Response } from '@models';
+import { Response } from '@models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
+export class FavService {
 
   url:String;
 
   constructor(
     private http: HttpClient) {
-    this.url = environment.baseUrl + '/common/book';
+    this.url = environment.baseUrl + '/user/fav';
   }
 
-  placeOrder(order: any): Observable<Response>{
-    return this.http.post<Response>(`${this.url}/order`,order).pipe(
+  getAll(): Observable<Response>{
+    return this.http.get<Response>(`${this.url}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  couponCode(code: string){
-    return this.http.get<Response>(`${this.url}/getCoupon/${code}`).pipe(
+  addFav(type: number, id: number): Observable<Response>{
+    return this.http.post<Response>(`${this.url}`, {type, id}).pipe(
       catchError(this.handleError)
     );
   }
 
-  moreCoupon(shopId: number){
-    return this.http.get<Response>(`${this.url}/moreCouponCode/${shopId}`).pipe(
+  get(id: number): Observable<Response>{
+    return this.http.get<Response>(`${this.url}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  orderDetails(order: string){
-    return this.http.get<Response>(`${this.url}/getOrder/${order}`).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  updatePaymentDetails(data: { paymentMethod: number; transactionId: string;}){
-    return this.http.post<Response>(`${this.url}/updatePaymentDetails`,{
-      'orderId': data.transactionId,
-      'paymentMethod': data.paymentMethod
-    }).pipe(
+  deleteFav(type: number, id: number): Observable<Response>{
+    return this.http.post<Response>(`${this.url}/delete`, {type, id}).pipe(
       catchError(this.handleError)
     );
   }

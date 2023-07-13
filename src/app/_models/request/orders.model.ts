@@ -22,7 +22,7 @@ export interface Orders {
     status: number;
     booking_details?: BookingDetails;
     products?: Array<OrdersProducts>;
-    payment_details?: PaymentDetails;
+    payment_details?: Array<PaymentDetails>;
     reject_order?: RejectOrders;
     created_at?: string;
     updated_at?: string;

@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  appUrl: 'https://dev.letsbunkagain.com/',
-  baseUrl: 'https://dev.letsbunkagain.com/backend/api',
-  storage: 'https://dev.letsbunkagain.com/backend/storage/',
-  redirectUrl: 'https://dev.letsbunkagain.com/login',
+  appUrl: 'http://127.0.0.1:4200/',
+  baseUrl: 'http://127.0.0.1:8000/api',
+  storage: 'http://127.0.0.1:8000/storage/',
+  redirectUrl: 'http://127.0.0.1:4200/login',
   GoogleCaptchaKey: '6LftGB4jAAAAAGLknjW4C5iBBPxcclUv6BfhXm6J',
   Google_client_id: '997443453271-0cqbcm3icjuglbl8cg7nld72jqq40suv.apps.googleusercontent.com',
   Google_map_api: 'AIzaSyBcGxO02ZpNo6DHzALYUToWpTXolnmrO14',
@@ -20,7 +20,7 @@ export const environment = {
     appId: "1:347467439723:web:3d9fbf8a128b56b55d1b2e",
     measurementId: "G-WCQ5LJLX8S"
   },
-  paymentUrl: 'https://test.instamojo.com/@edgematrixtechnologies/',
+  paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator',
   bunkCoinPercentage: 10,
   taxesRate: 0,
 

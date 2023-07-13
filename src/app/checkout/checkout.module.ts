@@ -4,10 +4,13 @@ import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { CheckoutRoutingModule } from './checkout-routing.module';
 import { CheckoutComponent } from './checkout.component';
 import { CommonComponentModule } from '../_components/common-component.module';
+import { OnlinePaymentsComponent } from './components';
 
 @NgModule({
   declarations: [
-    CheckoutComponent
+    CheckoutComponent,
+
+    OnlinePaymentsComponent
 
   ],
   imports: [

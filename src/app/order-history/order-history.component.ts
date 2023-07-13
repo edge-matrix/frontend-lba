@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Paginate, Link, Response, Orders } from '@models';
-import { OrdersService, SharedService } from '@service';
+import { Paginate, Link, Response, Orders, Cart } from '@models';
+import { OrdersService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
@@ -16,6 +16,7 @@ export class OrderHistoryComponent implements OnInit {
   page = 1;
   storageUrl = environment.storage;
   constructor(public sharedService: SharedService,
+    private storageService: StorageService,
     private orderService: OrdersService,
     private toastr: ToastrService) {
     this.sharedService.sideMenuSelectedIndex = 3;
@@ -64,6 +65,27 @@ export class OrderHistoryComponent implements OnInit {
       {id: 8, title: 'Complete & Paid', class: 'completed'}
     ];
     return status.filter(e => e.id === id)[0];
+  }
+
+  reOrder(id: number){
+    const order =  this.data.filter(e => e.id === id)[0];
+    let cart: Array<Cart> = [];
+    if(order){
+      order.products?.forEach(pro => {
+        if(pro.item && order.shop){
+          cart.push({
+            itemId: pro.items_id,
+            itemDetails: pro.item,
+            shop_id: order.shop_id,
+            shop: order.shop,
+            type: 'Item',
+            quantity: pro.quantity,
+            date: new Date().toISOString()
+          });
+        }
+      });
+      this.storageService.updatemyCart(cart);
+    }
   }
 
 }

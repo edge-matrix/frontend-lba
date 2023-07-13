@@ -25,7 +25,7 @@ export interface Shop {
     address?: Array<ShopAddress>;
     combos: Array<Combos>;
     items: Array<Items>;
-    shopReviews: Array<ShopReviews>;
+    shop_reviews: Array<ShopReviews>;
     photos: Array<ShopPhotos>;
     timings: Array<Shoptimings>;
     settings?: ShopSettings;

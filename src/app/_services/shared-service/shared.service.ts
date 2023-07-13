@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Location, User } from '@models';
+import { Fav, Location, User } from '@models';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Cart } from '@models';
+import { Location as Loc } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class SharedService {
 
   version = '23.07.11.01';
   user: User;
+  userFav: Array<Fav> = [];
   sideMenuSelectedIndex = 0;
   public isLoading = new BehaviorSubject(false);
   mySearchHistory: Array<string>;
@@ -17,8 +19,11 @@ export class SharedService {
   myLocationHistory: Array<Location>;
   private cart: BehaviorSubject<Array<Cart>>;
 
-  constructor() {
+  constructor(
+    private location: Loc
+  ) {
     this.user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    this.userFav = JSON.parse(localStorage.getItem('userFav') || 'null')||[];
     this.mySearchHistory = JSON.parse(localStorage.getItem('mySearchHistory') || 'null')||[];
     this.myLocation = JSON.parse(localStorage.getItem('myLocation') || 'null')||[];
     this.myLocationHistory = JSON.parse(localStorage.getItem('myLocationHistory') || 'null')||[];
@@ -34,5 +39,9 @@ export class SharedService {
 
   errorMessage(error:string|undefined){
     return JSON.stringify(error).replace('{','').replace('}','').replace('[','').replace(']','');
+  }
+
+  back(){
+    this.location.back();
   }
 }
