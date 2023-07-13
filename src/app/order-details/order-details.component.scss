@@ -1,6 +1,9 @@
 .orderstatuspage{
   width: 100%;
 }
+header{
+  width: 100%;
+}
 /* css of cooking section */
 .cooking{
   text-align: center;
@@ -70,7 +73,6 @@
   font-weight: 700;
   margin-top: 15px;
 }
-
 .extraingredientssection{
   padding: 10px 0px;
 }
@@ -88,7 +90,7 @@
 }
 .cardsection{
   display: flex;
-  align-items: center;
+  // align-items: center;
   gap: 10px;
 }
 .ingredientimage img{
@@ -145,8 +147,11 @@
 }
 .mybucketheadingarea,.itemcardsection{
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: space-between;
+}
+.itemcardsection{
+  margin:15px 0px;
 }
 .cardsection{
   display: flex;
@@ -165,32 +170,47 @@
   color: #3E4462;
   font-size: 22px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 .deletebtn i{
   font-size: 20px;
   cursor: pointer;
+  box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.1);
 }
 .itemimage img{
   border-radius: 5px;
   height: 70px;
   width:70px;
+  object-fit: cover;
+}
+.itemcarddetails{
+  text-align: left !important;
 }
 .checkoutpageitemname{
   color: #3E4462;
   font-size: 16px;
   font-weight: 500;
+  text-align: left;
+  max-width:255px;
+  max-height:50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+  text-transform: capitalize;
 }
 .effectiveprice{
   color:#7E7E7E;
   font-size: 14px;
   font-weight: 500;
+  text-align: left;
 }
 .originalprice{
   // text-decoration: line-through;
   color:#CACACA;
   font-size: 14px;
   font-weight: 400;
-  margin-left: 8px;
 }
 .freedeliveryheading{
   color:#7E7E7E;
@@ -212,7 +232,7 @@
   display: flex;
   align-items: center;
   justify-content: end;
-  gap: 10px;
+  // gap: 10px;
   color:#3E4462;
   font-size: 12px;
   font-weight: 500;
@@ -233,6 +253,7 @@
   width: 30px;
 }
 .quantity{
+  padding: 6px 15px;
   background:#F8F5F2;
 }
 .increasedecrease{
@@ -246,6 +267,8 @@
   align-items: center;
   justify-content: space-between;
   background: #FFFCF3;
+  margin: 0px 0px 15px 0px;
+  box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.1);
 }
 .paymentheading{
   color: #000000;
