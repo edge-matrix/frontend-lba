@@ -255,7 +255,7 @@ export class CheckoutComponent implements OnInit {
         this.storageService.updatemyCart([]);
         if(response.singleData){
           this.orderId = response.singleData;
-          this.router.navigate(['/order-details/'+this.orderId],{ queryParams: { orderPlaced: "true"}});
+          this.router.navigate(['/order-page/'+this.orderId],{ queryParams: { orderPlaced: "true"}});
         }
       }
     },

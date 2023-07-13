@@ -1,0 +1,48 @@
+<div class="centering">
+  <div class="wrapper">
+      <div class="mainpage">
+        <div class="notificationpage">
+          <div class="notificationcontainer">
+              <div class="notificationheader">
+                  <div class="notificationheading"><span>Notifications</span><span>({{notifications.length}})</span></div>
+              </div>
+              <div class="tabcontainer">
+                  <div class="tabs notificationactive">All</div>
+                  <!-- <div class="tabs"><span><i class="fas fa-percentage"></i></span><span>Offers</span></div>
+                  <div class="tabs"><span><i class="fas fa-exclamation-circle"></i></span><span>Reminders</span></div> -->
+              </div>
+              <ng-container *ngIf="sharedService.user && sharedService.user.id !== 0; else noLogin">
+                <div class="messageboxcontainer">
+                  <div class="meassagecontainerheader">
+                      <div class="timeofmessage">New</div>
+                      <div class="markasread" (click)="markAsAllRead()"><span class="doubletick"><img src="assets/icons/markasread.png" alt=""></span><span>Mark as read</span></div>
+                  </div>
+                  <ng-container *ngIf="notifications && notifications.length > 0; else noItem">
+                    <div class="messagecontainer offerscontainer" *ngFor="let notify of notifications;let i = index" (click)="markAsRead(notify.id)" [routerLink]="'/'+notify.link">
+                      <div class="typeofmessage">
+                          <img src="assets/icons/offer.png" alt="offers">
+                      </div>
+                      <div class="meassagedetails">
+                          <div class="messagecontent">{{notify.description}}</div>
+                          <div class="messagedatetime">{{notify.created_at | date: 'medium'}}</div>
+                      </div>
+                      <div class="profilepic">
+                          <img src="assets/imagefolder/userimage.jfif" alt="profile pic">
+                      </div>
+                    </div>
+                  </ng-container>
+                  <ng-template #noItem>
+                    <no-item-page text="0 Notifications Found"></no-item-page>
+                  </ng-template>
+              </div>
+              </ng-container>
+              <ng-template #noLogin>
+                <no-login-page></no-login-page>
+              </ng-template>
+          </div>
+        </div>
+      </div>
+      <footer></footer>
+      <bottom-nav></bottom-nav>
+  </div>
+</div>

@@ -9,7 +9,7 @@ import { Location as Loc } from '@angular/common';
 })
 export class SharedService {
 
-  version = '23.07.11.01';
+  version = '23.07.13.01';
   user: User;
   userFav: Array<Fav> = [];
   sideMenuSelectedIndex = 0;

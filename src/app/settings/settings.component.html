@@ -2,47 +2,49 @@
     <div class="wrapper">
     <div class="mainpage">
         <div class="settingpage">
-        <div class="settingpageheader">
-            <div class="settngpageheading">Account</div>
-            <div class="settingpagequickaccess">
-                <span><i class="fa-solid fa-bell"></i></span>
-                <span><i class="fa-regular fa-heart"></i></span>
-            </div>
-        </div>
-        <div class="settingpageuserprofile">
-            <img src="assets/imagefolder/userimage.jfif" alt="user profile image"/>
-            <div class="username">user Name</div>
-        </div>
-        <div class="settingpageoption">
-            <div class="settingoption">
-                <span><i class="fa-solid fa-user-pen"></i></span>
-                <span class="optionheading">Edit profile information</span>
-            </div>
-            <div class="settingoption">
-                <span><i class="fa-solid fa-file-contract"></i></span>
-                <span class="optionheading">Legal & Policies</span>
-            </div>
-            <div class="settingoption">
-                <span><i class="fa-solid fa-gear"></i></span>
-                <span class="optionheading">Setting</span>
-            </div>
-            <div class="settingoption" data-bs-toggle="offcanvas" data-bs-target="#logoutpopup" aria-controls="offcanvasBottom">
-                <span><i class="fa-solid fa-download"></i></span>
-                <span class="optionheading">Logout</span>
-            </div>
-            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="downloadapp" aria-labelledby="offcanvasBottomLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasBottomLabel"></h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body small">
-                    <div class="getappsection">
-                        <div><button class="getappbtn">Get The App</button></div>
-                        <div><button class="mobilewebbtn">Continue with mobile web</button></div>
-                    </div>
-                </div>
-            </div>
-            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="logoutpopup" aria-labelledby="offcanvasBottomLabel">
+          <ng-container *ngIf="sharedService.user && sharedService.user.id !== 0; else noLogin">
+            <div class="settingpageheader">
+              <div class="settngpageheading">Account</div>
+              <div class="settingpagequickaccess">
+                  <span routerLink="/notification"><i class="fa-solid fa-bell"></i></span>
+                  <span routerLink="/favorite"><i class="fa-regular fa-heart"></i></span>
+              </div>
+          </div>
+          <div class="settingpageuserprofile">
+              <img *ngIf="sharedService.user.profileImage === '' || sharedService.user.profileImage === null" src="assets/imagefolder/userimage.jfif">
+              <img *ngIf="sharedService.user.profileImage !== '' && sharedService.user.profileImage !== null" [src]="storageLink + sharedService.user.profileImage">
+              <div class="username">{{sharedService.user.name}}</div>
+          </div>
+          <div class="settingpageoption">
+              <div class="settingoption">
+                  <span><i class="fa-solid fa-user-pen"></i></span>
+                  <span class="optionheading">Edit profile information</span>
+              </div>
+              <div class="settingoption">
+                  <span><i class="fa-solid fa-file-contract"></i></span>
+                  <span class="optionheading">Legal & Policies</span>
+              </div>
+              <div class="settingoption">
+                  <span><i class="fa-solid fa-gear"></i></span>
+                  <span class="optionheading">Setting</span>
+              </div>
+              <div class="settingoption" data-bs-toggle="offcanvas" data-bs-target="#logoutpopup" aria-controls="offcanvasBottom">
+                  <span><i class="fa-solid fa-download"></i></span>
+                  <span class="optionheading">Logout</span>
+              </div>
+              <div class="offcanvas offcanvas-bottom" tabindex="-1" id="downloadapp" aria-labelledby="offcanvasBottomLabel">
+                  <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasBottomLabel"></h5>
+                      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+                      <div class="getappsection">
+                          <div><button class="getappbtn">Get The App</button></div>
+                          <div><button class="mobilewebbtn">Continue with mobile web</button></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="offcanvas offcanvas-bottom" tabindex="-1" id="logoutpopup" aria-labelledby="offcanvasBottomLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasBottomLabel"></h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -50,11 +52,18 @@
                 <div class="offcanvas-body small">
                     <div class="logoutconfirmation">
                         <div class="confirmationheading">Are you sure you want to logout ?</div>
-                        <div class="btns"><button class="cancelbtn">Cancel</button><button class="logoutbtn">Logout</button></div>
+                        <div class="btns">
+                          <button class="cancelbtn">Cancel</button>
+                          <button class="logoutbtn" (click)="logout()">Logout</button>
+                        </div>
                     </div>
                 </div>
-                </div>
-        </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #noLogin>
+            <no-login-page></no-login-page>
+          </ng-template>
         </div>
     </div>
     <bottom-nav></bottom-nav>

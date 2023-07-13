@@ -29,13 +29,13 @@ export class NotifyService {
   }
 
   markAsRead(id: number): Observable<Response>{
-    return this.http.get<Response>(`${this.url}/read/${id}`).pipe(
+    return this.http.get<Response>(`${this.url}/notifyUpdate/read/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
-  markAsAllRead(id: number): Observable<Response>{
-    return this.http.get<Response>(`${this.url}/readAll/${id}`).pipe(
+  markAsAllRead(): Observable<Response>{
+    return this.http.get<Response>(`${this.url}/notifyUpdate/readAll`).pipe(
       catchError(this.handleError)
     );
   }

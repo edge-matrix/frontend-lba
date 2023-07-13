@@ -12,7 +12,7 @@
           <div class="orderhistorylist">
             <ng-container *ngIf="data && data.length > 0; else noItem">
               <div class="pastorderdetails" *ngFor="let order of data">
-                <div class="upperpart" [routerLink]="'/order-details/'+order.orderId">
+                <div class="upperpart" [routerLink]="'/order-page/'+order.orderId">
                   <div class="resturantimage">
                     <img src="assets/imagefolder/resturantimg.jfif" *ngIf="order.shop && (order.shop.profileImage === null || order.shop.profileImage === '')" referrerpolicy="no-referrer" [alt]="order.orderId">
                     <img [src]="storageUrl + order.shop.profileImage" *ngIf="order.shop && order.shop.profileImage !== null && order.shop.profileImage !== ''" referrerpolicy="no-referrer" [alt]="order.orderId" />
@@ -59,7 +59,7 @@
         </ng-template>
       </div>
     </div>
-    <footer></footer>
+    <footer [show]="false"></footer>
     <bottom-nav></bottom-nav>
   </div>
 </div>

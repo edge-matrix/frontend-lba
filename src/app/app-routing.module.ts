@@ -13,9 +13,11 @@ const routes: Routes = [
   { path: 'menu/:slug', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
   { path: 'shop/:slug', loadChildren: () => import('./shop-details/shop-details.module').then(m => m.ShopDetailModule) },
   { path: 'order-history', loadChildren: () => import('./order-history/order-history.module').then(m => m.OrderHistoryModule) },
-  { path: 'order-details/:orderId', loadChildren: () => import('./order-details/order-details.module').then(m => m.OrderDetailsModule) },
+  { path: 'order-page/:orderId', loadChildren: () => import('./order-details/order-details.module').then(m => m.OrderDetailsModule) },
   { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
   { path: 'search', loadChildren: () => import('./search-result/search-result.module').then(m => m.SearchResultModule) },
+
+  { path: 'notification', loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule), canActivate: [AuthGuard], },
   { path: '**', component: PageNotFoundComponent }
 ];
 
