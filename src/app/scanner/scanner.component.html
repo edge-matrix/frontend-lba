@@ -1,0 +1,37 @@
+ <div class="centering">
+  <div class="wrapper">
+    <div class="mainpage">
+      <div class="scannerpage">
+        <div class="scannerpart">
+            <div class="scannerpageheading">
+                <span class="heading">Scan Any QR Code</span>
+                <span (click)="handle(action, 'stop');" routerLink="/"><i class="fa-solid fa-circle-xmark"></i></span>
+            </div>
+            <div class="scannercamera">
+              <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event)" style="height:440px;"></ngx-scanner-qrcode>
+            </div>
+            <div class="subheading">Please align the QR within the scanner</div>
+        </div>
+        <div class="scannerbottompage">
+            <div class="scannersearcharea">
+                <div class="scannerpagesearchbox">
+                    <input type="text" placeholder="Enter the name of the shop" (focus)="openSearch()">
+                </div>
+                <div class="scannerpageheading">
+                    <h1>Recent Scan</h1>
+                </div>
+                <div class="recentshoplist">
+                    <div class="recentshop" [routerLink]="'./menu/'+shop.slug" *ngFor="let shop of shops">
+                      <img [src]="storageLink + shop.profileImage" alt="shop" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
+                      <img src="assets/imagefolder/favshops.png" alt="shop"  *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
+                        <h3>{{shop.title}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <footer [show]="false"></footer>
+    <bottom-nav></bottom-nav>
+  </div>
+</div>

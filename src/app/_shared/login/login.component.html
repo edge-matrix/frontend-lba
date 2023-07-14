@@ -21,28 +21,35 @@
       <div class="loginheading">
         Please Enter Your 10 Digit Mobile Number
       </div>
-      <div class="inputbox">
-        <input class="input" type="tel" placeholder="Enter Mobile Number (Don't use +91)"/><br>
-        <button>Send OTP</button>
-      </div>
-      <div class="otpbox">
-        <div class="otpheading">Enter 4 digit OTP</div>
-        <div class="otp">
-          <input type="number" maxlength="1" size="1"/>
-          <input type="number" maxlength="1" size="1"/>
-          <input type="number" maxlength="1" size="1"/>
-          <input type="number" maxlength="1" size="1"/>
+      <form [formGroup]="loginForm" (ngSubmit)="!isLoginWithOtp?loginWithPassword():sendingOTP?sendOtp():verifyOtp()">
+        <div class="inputbox">
+          <input type="tel" placeholder="Enter Mobile Number (Don't use +91)" formControlName="username" [readOnly]="!sendingOTP"/><br>
+          <div *ngIf="submitted && loginForm.invalid && f['username'].errors">
+            <div *ngIf="f['username'].errors['required']" class="invalid-error">
+              <p>Mobile Number is required</p>
+            </div>
+            <div *ngIf="f['username'].errors['pattern']" class="invalid-error">
+              <p>Mobile Number must be valid and Upto 10 digits.</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="verfiybtn">
-        <button>Verify OTP</button>
-      </div>
-      <div class="otpoption">
-        <div class="changenumber">
-          <a class="resend" href="#">Resend OTP</a>
-          <a class="resend" href="#">Change Number</a>
-      </div>
-      </div>
+        <div class="otpbox" *ngIf="isLoginWithOtp">
+          <div class="otpheading" *ngIf="!sendingOTP">Enter 4 digit OTP</div>
+          <div class="otp" *ngIf="!sendingOTP" formGroupName="code">
+            <input #formRow class="fillotp" type="number" pattern="[0-9]{1}" *ngFor="let t of [1,2,3,4]; let i = index" [formControlName]="'input'+[t]" inputmode="numeric" maxlength="1" (keyup)="keyUpEvent($event, i)">
+          </div>
+        </div>
+        <div class="verfiybtn">
+          <button class="otpbtn" *ngIf="sendingOTP">Send OTP</button>
+          <button class="otpbtn" *ngIf="!sendingOTP">Verify OTP</button>
+        </div>
+        <div class="otpoption" *ngIf="!sendingOTP">
+          <div class="changenumber">
+            <a class="resend" (click)="resendOtp()">Resend OTP</a>
+            <a class="resend" (click)="sendingOTP = true">Change Number</a>
+          </div>
+        </div>
+      </form>
       <div class="option">
         <hr>
         <span class="or">or</span>

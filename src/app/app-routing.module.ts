@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'shop/:slug', loadChildren: () => import('./shop-details/shop-details.module').then(m => m.ShopDetailModule) },
   { path: 'order-history', loadChildren: () => import('./order-history/order-history.module').then(m => m.OrderHistoryModule) },
   { path: 'order-page/:orderId', loadChildren: () => import('./order-details/order-details.module').then(m => m.OrderDetailsModule) },
+  { path: 'scanner', loadChildren: () => import('./scanner/scanner.module').then(m => m.ScannerModule) },
   { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
   { path: 'search', loadChildren: () => import('./search-result/search-result.module').then(m => m.SearchResultModule) },
 

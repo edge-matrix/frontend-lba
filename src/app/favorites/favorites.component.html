@@ -4,17 +4,15 @@
       <div class="favoritepage">
           <div class="favoritepageheading">
             <div class="favheading">
-              <h1>Favorites
-                <span (click)="type = type === 0 ?1:0">Change</span>
-              </h1>
-              <div>10 items</div>
+              <h1>Favorites</h1>
+              <div>{{ type === 1? shopLists.length + ' Shops': itemLists.length + ' Items' }}</div>
             </div>
             <div class="favswitch">
-              <div class="favoptions active">
+              <div class="favoptions" [ngClass]="{'active': type === 1}" (click)="type = 1">
                 <img src="assets/imagefolder/green.png"/>
                 <span>Shop</span>
               </div>
-              <div class="favoptions">
+              <div class="favoptions"  [ngClass]="{'active': type === 0}" (click)="type = 0">
                 <img src="assets/imagefolder/green.png"/>
                 <span>Items</span>
               </div>
