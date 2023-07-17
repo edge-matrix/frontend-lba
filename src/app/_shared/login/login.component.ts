@@ -58,6 +58,13 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
+  ngOnDestroy() {
+    const element = document.getElementsByClassName('grecaptcha-badge')[0] as HTMLElement;
+    if (element) {
+      element.style.visibility = 'hidden';
+    }
+  }
+
   loginMediumUpdate(){
     this.isLoginWithOtp = this.isLoginWithOtp?false:true;
     if(this.isLoginWithOtp){
