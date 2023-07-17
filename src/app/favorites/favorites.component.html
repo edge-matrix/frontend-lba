@@ -5,14 +5,14 @@
           <div class="favoritepageheading">
             <div class="favheading">
               <h1>Favorites</h1>
-              <div>{{ type === 1? shopLists.length + ' Shops': itemLists.length + ' Items' }}</div>
+              <div>{{ type === 0? shopLists.length + ' Shops': itemLists.length + ' Items' }}</div>
             </div>
             <div class="favswitch">
-              <div class="favoptions" [ngClass]="{'active': type === 1}" (click)="type = 1">
+              <div class="favoptions" [ngClass]="{'active': type === 0}" (click)="type = 0">
                 <img src="assets/imagefolder/green.png"/>
                 <span>Shop</span>
               </div>
-              <div class="favoptions"  [ngClass]="{'active': type === 0}" (click)="type = 0">
+              <div class="favoptions"  [ngClass]="{'active': type === 1}" (click)="type = 1">
                 <img src="assets/imagefolder/green.png"/>
                 <span>Items</span>
               </div>
@@ -40,10 +40,10 @@
             </div>
             <div class="favoritelist" *ngIf="type === 1">
                 <div class="favoriteitemcard" *ngFor="let item of itemLists">
-                  <div class="favouritelogo">
+                  <div class="favouritelogo" *ngIf="sharedService.user && sharedService.user.id !== 0">
                     <span>
                       <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
-                      <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
+                      <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="removeFavItem(item.item.id)"></i>
                     </span>
                   </div>
                   <img [src]="storageUrl + item.item.image" alt="item" *ngIf="item.item.image !== null && item.item.image !== ''"/>

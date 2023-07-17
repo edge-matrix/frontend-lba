@@ -9,7 +9,7 @@ import { Location as Loc } from '@angular/common';
 })
 export class SharedService {
 
-  version = '23.07.13.01';
+  version = '23.07.17.02';
   user: User;
   userFav: Array<Fav> = [];
   sideMenuSelectedIndex = 0;
@@ -17,6 +17,18 @@ export class SharedService {
   mySearchHistory: Array<string>;
   myLocation : Location;
   myLocationHistory: Array<Location>;
+  myBunkDetails: {
+    location: Location;
+    radius?: number;
+    type: number;
+    category?: number;
+    search?: string;
+  } = {
+    location: { lat: 0, lng: 0 },
+    radius: 5,
+    type: 0,
+    category: 0,
+  };
   private cart: BehaviorSubject<Array<Cart>>;
 
   constructor(

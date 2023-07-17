@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ItemCategories, Response } from '@models';
 import { ComboDetailsService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
@@ -15,6 +16,7 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private comboDetailService: ComboDetailsService,
     private sharedService: SharedService,
+    private router: Router,
     private toastr: ToastrService,
   ) { }
   ngOnInit(): void {
@@ -49,5 +51,6 @@ export class CategoriesComponent implements OnInit {
         cat.isActive = false;
       }
     });
+    this.router.navigate(['/shops']);
   }
 }

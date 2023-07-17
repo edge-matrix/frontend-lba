@@ -17,7 +17,7 @@ export class RecommendedComponent implements OnInit {
   cart!: Array<Cart>;
   constructor(
     private comboDetailService: ComboDetailsService,
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     private storageService: StorageService,
     public commonService: CommonFunctionService,
     private toastr: ToastrService,

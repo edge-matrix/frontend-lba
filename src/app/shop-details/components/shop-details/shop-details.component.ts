@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { Router } from '@angular/router';
-import { CommonFunctionService } from '@service';
+import { CommonFunctionService, SharedService } from '@service';
 
 declare const window: any;
 
@@ -24,7 +24,7 @@ export class ShopDetailsComponent implements OnInit {
   timingText = '';
   showTimings = 0;
   timingTitle = '';
-  constructor(private toastr: ToastrService, private clipboard: Clipboard, private router: Router, public commonService: CommonFunctionService) { }
+  constructor(public sharedService: SharedService,private toastr: ToastrService, private clipboard: Clipboard, private router: Router, public commonService: CommonFunctionService) { }
 
   ngOnInit(): void {
     let day = new Date().getDay();

@@ -11,7 +11,7 @@
                   <div class="itemprice">{{item.item.price | currency: 'INR'}}</div>
                   <div class="itemcategory">{{item.item.category?.name}}</div>
               </div>
-              <div class="addtofaviorite">
+              <div class="addtofaviorite" *ngIf="sharedService.user && sharedService.user.id !== 0">
                 <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
                 <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
               </div>

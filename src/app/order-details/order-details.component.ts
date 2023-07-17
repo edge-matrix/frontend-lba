@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { Cart, Orders, Response } from '@models';
-import { BookService, SharedService, StorageService } from '@service';
+import { BookService, OrdersService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+import { Location as Loc } from '@angular/common';
 
 @Component({
   templateUrl: './order-details.component.html',
@@ -22,7 +22,9 @@ export class OrderDetailsComponent implements OnInit {
     private storageService: StorageService,
     private toastr: ToastrService,
     private bookService: BookService,
+    private orderService: OrdersService,
     private router: Router,
+    private location: Loc,
     private activeRoute: ActivatedRoute
   ){
     this.sharedService.sideMenuSelectedIndex = 3;
@@ -98,5 +100,20 @@ export class OrderDetailsComponent implements OnInit {
       }
     });
     this.storageService.updatemyCart(cart);
+  }
+
+  cancleOrder(){
+    this.orderService.cancelOrder(this.order.id, "Customer wants to cancel order", '').subscribe((response: Response) => {
+      if (response.statusCode != 200 && response.statusCode != 201) {
+        this.toastr.error(this.sharedService.errorMessage(response.Error));
+      } else {
+        if(response.success){
+          this.location.back();
+        }
+      }
+    },
+    error => {
+      this.toastr.error('Something Went Wrong');
+    });
   }
 }

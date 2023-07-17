@@ -22,6 +22,12 @@ export class OrdersService {
     );
   }
 
+  cancelOrder(id: number, reason: string, comment: string): Observable<Response>{
+    return this.http.post<Response>(`${this.url}/reject-order-status`, { id, reason, comment }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // Error handling
   handleError(error: any) {
     let errorMessage = '';

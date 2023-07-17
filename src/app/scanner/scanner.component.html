@@ -7,10 +7,15 @@
                 <span class="heading">Scan Any QR Code</span>
                 <span (click)="handle(action, 'stop');" routerLink="/"><i class="fa-solid fa-circle-xmark"></i></span>
             </div>
-            <div class="scannercamera">
-              <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event)" style="height:440px;"></ngx-scanner-qrcode>
+            <div class="subheading">
+              <select [ngModel]="null" (ngModelChange)="action.playDevice($event)" class="form-select form-select-sm">
+                <option [value]="null" selected>Select device</option>
+                <option *ngFor="let c of action.devices.value; let i = index" [ngValue]="c.deviceId" [selected]="i == action.deviceActive">{{c.label}}</option>
+              </select>
             </div>
-            <div class="subheading">Please align the QR within the scanner</div>
+            <div class="scannercamera">
+              <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event)"></ngx-scanner-qrcode>
+            </div>
         </div>
         <div class="scannerbottompage">
             <div class="scannersearcharea">
