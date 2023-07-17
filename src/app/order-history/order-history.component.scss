@@ -51,12 +51,15 @@
   object-fit: cover;
 }
 .resturantdetails .shopname{
-  font-size:16px;
-  font-weight: 600;
-  width: 180px;
-  white-space: nowrap;
+  font-size:15px;
+  font-weight:500;
+  width:150px;
+  max-height:50px;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   margin-bottom:4px;
 }
 .resturantdetails .shopaddress{
@@ -99,7 +102,7 @@
 }
 .item span{
   font-size: 14px;
-  font-weight: 400;
+  font-weight:500;
 }
 .totalbill{
   display: flex;

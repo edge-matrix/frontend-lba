@@ -56,6 +56,13 @@
     color: #696969;
     padding: 0px 10px;
 }
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .inputbox{
     width:90%;
     text-align: center;

@@ -2,7 +2,7 @@
   position: fixed;
   bottom:70px;
   background-color: #FFFCF3;
-  width:95%;
+  width:97%;
   max-width: 450px;
   display:flex;
   justify-content:space-between;
@@ -25,7 +25,7 @@
   width:50px;
   height:50px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
   display: flex;
 }
 .cartshopdetails .shopname{
@@ -50,7 +50,7 @@
 }
 .cartrightpart button{
   border: none;
-  padding:2px 25px !important;
+  padding:2px 20px !important;
   border-radius:10px;
   background: #FA5457;
 }
