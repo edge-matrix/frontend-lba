@@ -17,7 +17,7 @@ export class ItemComponent implements OnInit {
   itemLists: Array<{item: Items, isSelected: boolean, count: number}> = [];
   cart!: Array<Cart>;
   constructor(
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     private storageService: StorageService,
     public commonService: CommonFunctionService,
     private toastr: ToastrService,

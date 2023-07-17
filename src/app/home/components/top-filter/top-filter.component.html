@@ -1,5 +1,5 @@
 <div class="shortcutsection">
-  <div class="shortcutcontainer" *ngFor="let op of options" [routerLink]="op.link">
+  <div class="shortcutcontainer" *ngFor="let op of options" (click)="update(op.type, op.link)">
       <div class="shortcut"><img src="assets/imagefolder/{{op.image}}" [alt]="op.title"></div>
       <div class="shortcutheading">{{op.title}}</div>
   </div>

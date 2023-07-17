@@ -23,7 +23,7 @@
           <span class="buttonsectionimg"><i class="fa-solid fa-location-dot"></i></span>
           <span>Direction</span></button>
       </div>
-      <div><button class="buttonsectionbtns" (click)="commonService.checkFav(0,shop.id)?commonService.deleteFav(0,shop.id):commonService.addToFav(0,shop.id)">
+      <div *ngIf="sharedService.user && sharedService.user.id !== 0"><button class="buttonsectionbtns" (click)="commonService.checkFav(0,shop.id)?commonService.deleteFav(0,shop.id):commonService.addToFav(0,shop.id)">
           <span class="buttonsectionimg">
             <i *ngIf="!commonService.checkFav(0,shop.id)" class="far fa-heart"></i>
             <i *ngIf="commonService.checkFav(0,shop.id)" class="fas fa-heart"></i>

@@ -125,4 +125,9 @@ isShopSame(shopId: number){
     }
     this.storageService.updatemyCart(this.cart);
   }
+
+  removeFavItem(id: number){
+    this.commonService.deleteFav(1, id);
+    //window.location.reload();
+  }
 }

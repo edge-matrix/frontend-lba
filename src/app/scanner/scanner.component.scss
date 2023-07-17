@@ -27,12 +27,18 @@
   font-size: 18px;
 }
 .scannercamera{
-  width:200px;
-  height:200px;
-  margin-top:100px;
+  width: 350px;
+  height:358px;
+  margin-top: 50px;
   border-radius: 10px;
   border: 3px solid rgba(252, 156, 103, 0.50);
   background: linear-gradient(180deg, rgba(252, 156, 103, 0.50) 0%, #363634 45.31%, #000 100%);
+
+  ::ng-deep{
+    .origin-video{
+      height: 350px !important;
+    }
+  }
 }
 .subheading{
   padding-top:15px;

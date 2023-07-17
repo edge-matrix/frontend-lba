@@ -39,7 +39,7 @@
                     <div class="totalbillamount">{{ order.payableAmount | currency: 'INR' }}</div>
                   </div>
                   <div class="extrasection">
-                    <div class="orderstatus {{getStatus(order.status).class}}">
+                    <div class="statuscommon {{getStatus(order.status).class}}">
                       {{getStatus(order.status).title}}
                     </div>
                     <div class="reorderbtn" *ngIf="order.status === 7 || order.status === 8">
