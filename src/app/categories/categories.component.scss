@@ -26,19 +26,22 @@ header{
   margin-top:20px;
 }
 .allcategorylist .category img{
-  width:80px;
-  height:80px;
+  width:75px;
+  height:75px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
 .allcategorylist .category span{
-  font-size:14px;
+  font-size:15px;
   font-weight: 500;
   margin-top: 5px;
-  width:100px;
-  text-align: center;
-  white-space: nowrap;
+  width:95px;
+  max-height:50px;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+  text-align: center;
 }

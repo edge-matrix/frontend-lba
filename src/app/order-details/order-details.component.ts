@@ -62,13 +62,13 @@ export class OrderDetailsComponent implements OnInit {
 
   getStatus(id: number){
     const status = [
-      {id: 0, title: 'Placed', class: 'cooking', img: ''},
-      {id: 1, title: 'Pending', class: 'cooking', img: 'orderconfirmed.png'},
+      {id: 0, title: 'Placed', class: 'ordercooking', img: ''},
+      {id: 1, title: 'Pending', class: 'ordercooking', img: 'orderconfirmed.png'},
       {id: 2, title: 'Accepted', class: 'orderconfirmed', img: 'orderconfirmed.png'},
-      {id: 3, title: 'Rejected', class: 'rejected', img: 'rejected.png'},
-      {id: 4, title: 'In Process', class: 'cooking', img: ''},
-      {id: 5, title: 'Cooking', class: 'cooking', img: 'cooking.png'},
-      {id: 6, title: 'Ready To Serve', class: 'readytoserve', img: 'readytoserve.png'},
+      {id: 3, title: 'Rejected', class: 'orderrejected', img: 'rejected.png'},
+      {id: 4, title: 'In Process', class: 'ordercooking', img: ''},
+      {id: 5, title: 'Cooking', class: 'ordercooking', img: 'cooking.png'},
+      {id: 6, title: 'Ready To Serve', class: 'orderreadytoserve', img: 'readytoserve.png'},
       {id: 7, title: 'Complete', class: 'orderconfirmed', img: 'orderconfirmed.png'},
       {id: 8, title: 'Complete & Paid', class: 'orderconfirmed', img: 'orderconfirmed.png'}
     ];
