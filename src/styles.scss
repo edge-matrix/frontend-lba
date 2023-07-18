@@ -74,3 +74,10 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
 }
+
+.modal-backdrop.show {
+  opacity:0 !important;
+}
+.offcanvas-backdrop.show {
+  opacity:0 !important;
+}

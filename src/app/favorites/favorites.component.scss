@@ -78,7 +78,7 @@
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:8px 5px 0px 5px;
+  padding:8px 0px 0px 0px;
 }
 .favitemprice{
   color:#3E4462;
@@ -99,23 +99,31 @@
 }
 .itemcount{
   background-color:#F8F5F2;
-  padding:6px 12px;
+  padding:3px 4px 4px 4px;
+  font-size: 14px;
 }
 .decremental{
   border-radius: 4px;
   background: #E1E1E1;
   border: none;
-  padding:5px 12px;
+  padding: 2px 7px 4px 7px;
   color:#ffffff ;
+  text-align: center;
 }
 .incremental{
   border-radius: 4px;
   background:#47B214;
+  padding: 2px 7px 4px 7px;
   border: none;
-  padding:5px 12px;
   color: #ffffff;
+  text-align: center;
 }
-
+.incremental i{
+  font-size:12px;
+}
+.decremental i{
+  font-size:12px;
+}
 //Shop
 .lists{
   .list{

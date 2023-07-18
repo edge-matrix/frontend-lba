@@ -40,11 +40,7 @@
             </div>
             <div class="favoritelist" *ngIf="type === 1">
                 <div class="favoriteitemcard" *ngFor="let item of itemLists">
-<<<<<<< HEAD
                   <!-- <div class="favouritelogo">
-=======
-                  <div class="favouritelogo" *ngIf="sharedService.user && sharedService.user.id !== 0">
->>>>>>> 622c8d577a3ef00dce07e0f8f35bacfdab9b9c86
                     <span>
                       <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
                       <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="removeFavItem(item.item.id)"></i>
@@ -59,14 +55,14 @@
                             <div class="favitemprice">{{item.item.price | currency: 'INR'}}</div>
                             <div class="favitembtn" *ngIf="!item.isSelected" (click)="addToCart(item.item.id)">
                               <button>Add</button>
-                          </div>
-                        </div>
-                        <div class="itemnumbercounter" *ngIf="item.isSelected">
-                          <span><button class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></button></span>
-                          <span class="itemcount">
-                              {{item.count}}
-                          </span>
-                          <span><button class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></button></span>
+                            </div>
+                            <div class="itemnumbercounter" *ngIf="item.isSelected">
+                              <span><span class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></span></span>
+                              <span class="itemcount">
+                                  {{item.count}}
+                              </span>
+                              <span><span class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></span></span>
+                            </div>
                         </div>
                     </div>
                 </div>
