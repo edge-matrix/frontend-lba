@@ -12,8 +12,8 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 import { PageNotFoundComponent, LoginComponent } from './_shared';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+// import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 
 
 @NgModule({
@@ -49,8 +49,8 @@ import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
       registrationStrategy: 'registerImmediately'
     }),
     RecaptchaV3Module,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireMessagingModule
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // AngularFireMessagingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InternetInterceptor, multi: true },

@@ -16,13 +16,15 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
     "lib": [
-      "es2020",
+      "ES2022",
       "dom"
     ],
     "paths": {
+      "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"],
       "@service" : ["src/app/_services"],
       "@models" : ["src/app/_models"],
       "@components" : ["src/app/_components"]

@@ -21,7 +21,6 @@ export class ScannerComponent implements OnInit {
     vibrate: 400,
     isBeep: false,
     // decode: 'macintosh',
-    deviceActive: 1,
     constraints: {
       audio: false,
       video: {
