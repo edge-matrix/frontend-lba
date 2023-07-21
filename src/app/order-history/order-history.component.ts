@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Paginate, Link, Response, Orders, Cart } from '@models';
-import { OrdersService, SharedService, StorageService } from '@service';
+import { Router } from '@angular/router';
+import { Paginate, Link, Response, Orders, Cart, OrdersProducts } from '@models';
+import { ComboDetailsService, OrdersService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
@@ -18,6 +19,8 @@ export class OrderHistoryComponent implements OnInit {
   constructor(public sharedService: SharedService,
     private storageService: StorageService,
     private orderService: OrdersService,
+    private comboService: ComboDetailsService,
+    private router: Router,
     private toastr: ToastrService) {
     this.sharedService.sideMenuSelectedIndex = 3;
   }
@@ -71,21 +74,37 @@ export class OrderHistoryComponent implements OnInit {
     const order =  this.data.filter(e => e.id === id)[0];
     let cart: Array<Cart> = [];
     if(order){
+      let cart: Array<Cart> = [];
       order.products?.forEach(pro => {
-        if(pro.item && order.shop){
+        this.getItemById(cart, pro, pro.items_id);
+      });
+      this.storageService.updatemyCart(cart);
+      this.router.navigate(['/checkout']);
+    }
+  }
+
+  getItemById(cart: Array<Cart>, pro: OrdersProducts, id: number){
+    this.comboService.getItemById(id).subscribe((response: Response) => {
+      if (response.statusCode != 200 && response.statusCode != 201) {
+        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.router.navigate(['/']);
+      } else {
+        if(response.singleData){
           cart.push({
             itemId: pro.items_id,
-            itemDetails: pro.item,
-            shop_id: order.shop_id,
-            shop: order.shop,
+            itemDetails: response.singleData,
+            shop_id: response.singleData.shop_id,
+            shop: response.singleData.shop,
             type: 'Item',
             quantity: pro.quantity,
             date: new Date().toISOString()
           });
         }
-      });
-      this.storageService.updatemyCart(cart);
-    }
+      }
+    },
+    error => {
+      this.toastr.error('Something Went Wrong');
+    });
   }
 
 }

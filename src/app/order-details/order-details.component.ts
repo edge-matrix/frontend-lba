@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
-import { Cart, Orders, Response } from '@models';
-import { BookService, OrdersService, SharedService, StorageService } from '@service';
+import { Cart, Orders, OrdersProducts, Response } from '@models';
+import { BookService, ComboDetailsService, OrdersService, SharedService, StorageService } from '@service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -22,6 +22,7 @@ export class OrderDetailsComponent implements OnInit {
     private storageService: StorageService,
     private toastr: ToastrService,
     private bookService: BookService,
+    private comboService: ComboDetailsService,
     private orderService: OrdersService,
     private router: Router,
     private location: Loc,
@@ -49,6 +50,7 @@ export class OrderDetailsComponent implements OnInit {
     this.bookService.orderDetails(this.orderId).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
         this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.router.navigate(['/']);
       } else {
         if(response.singleData){
           this.order = response.singleData;
@@ -87,19 +89,34 @@ export class OrderDetailsComponent implements OnInit {
   reOrder(){
     let cart: Array<Cart> = [];
     this.order.products?.forEach(pro => {
-      if(pro.item && this.order.shop){
-        cart.push({
-          itemId: pro.items_id,
-          itemDetails: pro.item,
-          shop_id: this.order.shop_id,
-          shop: this.order.shop,
-          type: 'Item',
-          quantity: pro.quantity,
-          date: new Date().toISOString()
-        });
-      }
+      this.getItemById(cart, pro, pro.items_id);
     });
     this.storageService.updatemyCart(cart);
+    this.router.navigate(['/checkout']);
+  }
+
+  getItemById(cart: Array<Cart>, pro: OrdersProducts, id: number){
+    this.comboService.getItemById(id).subscribe((response: Response) => {
+      if (response.statusCode != 200 && response.statusCode != 201) {
+        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.router.navigate(['/']);
+      } else {
+        if(response.singleData){
+          cart.push({
+            itemId: pro.items_id,
+            itemDetails: response.singleData,
+            shop_id: this.order.shop_id,
+            shop: response.singleData.shop,
+            type: 'Item',
+            quantity: pro.quantity,
+            date: new Date().toISOString()
+          });
+        }
+      }
+    },
+    error => {
+      this.toastr.error('Something Went Wrong');
+    });
   }
 
   cancleOrder(){
@@ -116,4 +133,6 @@ export class OrderDetailsComponent implements OnInit {
       this.toastr.error('Something Went Wrong');
     });
   }
+
+
 }

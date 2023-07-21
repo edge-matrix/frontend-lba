@@ -51,7 +51,7 @@ export class MenuComponent implements OnInit {
       } else {
         if(response.singleData){
           this.shops = response.singleData;
-          this.updateCat(this.catId);
+          this.updateCat({catId: this.catId, search: ''});
         }
       }
     },
@@ -60,12 +60,14 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  updateCat(ev: number){
-    this.catId = ev;
+  updateCat(ev: {catId: number, search: string}){
+    this.catId = ev.catId;
     this.items = [];
     this.shops.items.forEach(e => {
       if(e.items_categories_id === this.catId || this.catId === 0){
-        this.items.push(e);
+        if(ev.search === '' || e.name.toLowerCase().match(ev.search.toLowerCase())){
+          this.items.push(e);
+        }
       }
     });
   }

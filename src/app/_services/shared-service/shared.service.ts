@@ -9,12 +9,12 @@ import { Location as Loc } from '@angular/common';
 })
 export class SharedService {
 
-  version = '23.07.17.02';
+  version = '23.07.21.01';
   user: User;
   userFav: Array<Fav> = [];
   sideMenuSelectedIndex = 0;
   public isLoading = new BehaviorSubject(false);
-  mySearchHistory: Array<string>;
+  mySearchHistory: Array<{title: string, url: string, type: number}>;
   myLocation : Location;
   myLocationHistory: Array<Location>;
   myBunkDetails: {

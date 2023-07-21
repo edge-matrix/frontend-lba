@@ -15,9 +15,10 @@ export class FilterComponent implements OnInit {
   @Input() type = 0;
   @Input() catId!: number;
   @Input() shop!: Shop;
-  @Output() newItemEvent = new EventEmitter<number>();
+  @Output() newItemEvent = new EventEmitter<{catId: number, search: string}>();
   categories!: Array<{data: ItemCategories, isActive: boolean}>;
   storageUrl = environment.storage;
+  searchKeyword = '';
   constructor(
     private comboDetailService: ComboDetailsService,
     private sharedService: SharedService,
@@ -57,11 +58,14 @@ export class FilterComponent implements OnInit {
         cat.isActive = false;
       }
     });
-    this.newItemEvent.emit(id);
+    this.newItemEvent.emit({catId: id, search: ''});
   }
 
-  openSearch(){
-    this.router.navigate(['/search']);
+  search(){
+    if(this.searchKeyword === ''){
+      this.newItemEvent.emit({catId: 0, search: ''});
+    }else{
+      this.newItemEvent.emit({catId: 0, search: this.searchKeyword});
+    }
   }
-
 }

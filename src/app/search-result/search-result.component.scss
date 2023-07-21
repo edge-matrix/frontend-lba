@@ -9,6 +9,9 @@ header{
   background-color: #FFFFFF;
   z-index: 99;
 }
+.searchbar{
+  display: flex;
+}
 .searchbar input{
   width:100%;
   outline: none;
@@ -51,4 +54,7 @@ header{
 .recentsearchsuggestion{
   margin: 10px;
   padding:5px 0px;
+}
+i{
+  color: #FC9C67;
 }

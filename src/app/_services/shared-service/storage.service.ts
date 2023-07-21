@@ -20,7 +20,7 @@ export class StorageService {
     this.sharedService.userFav = JSON.parse(localStorage.getItem('userFav') || 'null');
   }
 
-  updatemySearchHistory(data: Array<string>){
+  updatemySearchHistory(data: Array<{title: string, url: string, type: number}>){
     localStorage.setItem('mySearchHistory', JSON.stringify(data));
     this.sharedService.mySearchHistory = JSON.parse(localStorage.getItem('mySearchHistory') || 'null')||[];
   }

@@ -7,7 +7,11 @@
   </div>
 
   <div class="itempageinput">
-      <input type="text" placeholder="Search for a dish...." (focus)="openSearch()">
+    <div class="search-fields">
+      <input type="text" placeholder="Search for a dish...." [(ngModel)]="searchKeyword" (keyup)="search()">
+      <div class="arrow" (click)="searchKeyword = ''"><i class="fas fa-times-circle" title="Remove History"></i></div>
+    </div>
+
   </div>
   <div class="itemcategorylist">
     <div class="category" *ngFor="let cat of categories" [title]="cat.data.name" (click)="updateCategory(cat.data.id)">

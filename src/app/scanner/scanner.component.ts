@@ -26,7 +26,19 @@ export class ScannerComponent implements OnInit {
       video: {
         width: window.innerWidth
       }
-    }
+    },
+    canvasStyles: [
+      { /* layer */
+        lineWidth: 5,
+        fillStyle: '#00950685',
+        strokeStyle: '#00950685',
+      },
+      { /* text */
+        font: '2px serif',
+        fillStyle: '#ffffff',
+        strokeStyle: '#ffffff',
+      }
+    ],
   };
   public qrCodeResult: ScannerQRCodeSelectedFiles[] = [];
 
@@ -72,7 +84,7 @@ export class ScannerComponent implements OnInit {
     }, 50);
     setTimeout(() => {
       this.action.devices.value.forEach((e) => {
-        if(e.label.includes("facing back")){
+        if(e.label.includes("back")){
           this.action.playDevice(e.deviceId);
         }
       });

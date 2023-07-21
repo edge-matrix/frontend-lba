@@ -52,6 +52,18 @@ export class ComboDetailsService {
     );
   }
 
+  getItemById(id: number){
+    return this.http.get<Response>(`${this.url}/getItem/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  search(keyword: string){
+    return this.http.get<Response>(`${this.url}/search/${keyword}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // Error handling
   handleError(error: any) {
     let errorMessage = '';
