@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
-import { AuthenticationService } from '@service';
+import { AuthenticationService, SharedService } from '@service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService, private toastr: ToastrService) {}
+    constructor(private authenticationService: AuthenticationService, private sharedService: SharedService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
@@ -29,7 +28,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               });
           }
           if (err.statusText == 'Unknown Error') {
-            this.toastr.error("Internet is Missing...");
+            this.sharedService.showMessage(1,"Internet is Missing...");
           }
           const error = 'something went wrong';
           return throwError(() => error);

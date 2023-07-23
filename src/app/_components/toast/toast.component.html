@@ -1,0 +1,10 @@
+<div class="toastmessage" *ngIf="toastService.toastVar.show">
+  <div class="success" *ngIf="toastService.toastVar.type === 0">
+      <div class="successimg"><img src="assets/icons/correct.png" alt=""></div>
+      <div>{{toastService.toastVar.msg}}</div>
+  </div>
+  <div class="failure" *ngIf="toastService.toastVar.type === 1">
+      <div class="failureimg"><img src="assets/icons/failure.png" alt=""></div>
+      <div>{{toastService.toastVar.msg}}</div>
+  </div>
+</div>

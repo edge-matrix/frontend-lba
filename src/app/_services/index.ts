@@ -2,6 +2,7 @@ export * from './shared-service/shared.service';
 export * from './shared-service/storage.service';
 export * from './shared-service/constants.service';
 export * from './shared-service/common-function.service';
+export * from './shared-service/toast.service';
 
 /* Auth Services  */
 export * from './auth-service/authentication.service';

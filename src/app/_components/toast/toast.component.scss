@@ -1,0 +1,44 @@
+/* toast message popup css */
+.toastmessage{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.success{
+  position: fixed;
+  bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #47B214;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 15px 20px;
+  z-index: 100;
+}
+.successimg img{
+  width: 30px;
+  height: 30px;
+}
+
+.failure{
+  position: fixed;
+  bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: rgb(236, 85, 85);
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 15px 20px;
+  z-index: 100;
+}
+.failureimg img{
+  width: 30px;
+  height: 30px;
+}

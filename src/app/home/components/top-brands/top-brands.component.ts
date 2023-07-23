@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Shop, Response } from '@models';
 import { ComboDetailsService, SharedService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,7 +16,7 @@ export class TopBrandsComponent implements OnInit {
   constructor(
     private sharedService: SharedService,
     private comboDetailService: ComboDetailsService,
-    private toastr: ToastrService
+
   ) {
   }
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class TopBrandsComponent implements OnInit {
   topBrands(){
     this.comboDetailService.getTopBrands().subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.data){
           this.shops = response.data;
@@ -34,7 +34,7 @@ export class TopBrandsComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 }

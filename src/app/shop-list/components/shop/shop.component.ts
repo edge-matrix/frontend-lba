@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Shop, Response, Link } from '@models';
 import { ComboDetailsService, SharedService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -18,7 +18,7 @@ export class ShopComponent implements OnInit {
   constructor(
     private sharedService: SharedService,
     private comboDetailService: ComboDetailsService,
-    private toastr: ToastrService
+
   ) {
   }
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class ShopComponent implements OnInit {
   getShops(){
     this.comboDetailService.getShops(this.sharedService.myBunkDetails).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.paginate){
           this.shops = response.paginate.data;
@@ -37,7 +37,7 @@ export class ShopComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 

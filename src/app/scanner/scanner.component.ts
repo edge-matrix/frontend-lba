@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ComboDetailsService, SharedService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
 import { Shop, Response } from '@models';
 import { ScannerQRCodeConfig, ScannerQRCodeSelectedFiles, NgxScannerQrcodeService, ScannerQRCodeResult, NgxScannerQrcodeComponent} from 'ngx-scanner-qrcode';
@@ -48,7 +48,7 @@ export class ScannerComponent implements OnInit {
     public sharedService: SharedService,
     private router: Router,
     private comboDetailService: ComboDetailsService,
-    private toastr: ToastrService
+
   ){
     this.sharedService.sideMenuSelectedIndex = 2;
   }
@@ -64,7 +64,7 @@ export class ScannerComponent implements OnInit {
   favShop(){
     this.comboDetailService.getFavShop().subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.data){
           this.shops = response.data
@@ -72,7 +72,7 @@ export class ScannerComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 
@@ -98,7 +98,7 @@ export class ScannerComponent implements OnInit {
         $('#close').click();
         this.router.navigateByUrl(e[0].value.replace(appLink,''));
       }else{
-        this.toastr.error('QR Code is Invalid');
+        this.sharedService.showMessage(1,'QR Code is Invalid');
         this.handle(this.action,'pause');
       }
     }

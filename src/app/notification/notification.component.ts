@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Response, Notification, Paginate, Link } from '@models';
 import { SharedService, NotifyService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -17,7 +17,7 @@ export class NotificationComponent implements OnInit {
   page = 1;
   constructor(public sharedService: SharedService,
     private notifyService: NotifyService,
-    private toastr: ToastrService,
+
     private router: Router) {
   }
 
@@ -30,7 +30,7 @@ export class NotificationComponent implements OnInit {
 
     this.notifyService.getAll(this.sharedService.user.id,this.page).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
         this.router.navigate(['../..']);
       } else {
         if(response.paginate){
@@ -43,7 +43,7 @@ export class NotificationComponent implements OnInit {
 
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
 
     });
   }
@@ -57,7 +57,7 @@ export class NotificationComponent implements OnInit {
 
     this.notifyService.markAsRead(id).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         this.notifications.forEach(e=>{
           if(e.id === id){
@@ -68,7 +68,7 @@ export class NotificationComponent implements OnInit {
 
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
 
       this.router.navigate(['../..']);
     });
@@ -78,7 +78,7 @@ export class NotificationComponent implements OnInit {
 
     this.notifyService.markAsAllRead().subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         this.notifications.forEach(e=>{
             e.status = 1;
@@ -87,7 +87,7 @@ export class NotificationComponent implements OnInit {
 
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
 
       this.router.navigate(['../..']);
     });

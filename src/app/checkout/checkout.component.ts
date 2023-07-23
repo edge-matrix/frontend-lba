@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cart, Shop, Response, Shoptimings, CreateOrder } from '@models';
 import { BookService, ComboDetailsService, SharedService, StorageService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
 
 
@@ -33,7 +33,7 @@ export class CheckoutComponent implements OnInit {
     private bookService: BookService,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private toastr: ToastrService,) {
+    ) {
     this.sharedService.sideMenuSelectedIndex = 1;
   }
 
@@ -83,7 +83,7 @@ export class CheckoutComponent implements OnInit {
   getShopDetails(){
     this.comboDetailService.getShopDetails(this.cart[0].shop.slug).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.singleData){
           this.shops = response.singleData;
@@ -102,7 +102,7 @@ export class CheckoutComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 
@@ -209,17 +209,17 @@ export class CheckoutComponent implements OnInit {
     }
 
     if(this.payments.payableAmount <= 0 && this.cart.length === 0){
-      this.toastr.error("No item is selected");
+      this.sharedService.showMessage(1,"No item is selected");
       return;
     }
     //Order Request Below
     let request = this.prepareOrderData();
     this.bookService.placeOrder(request).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.success){
-          this.toastr.success("Order Placed Successfully.");
+          this.sharedService.showMessage(0,"Order Placed Successfully.");
           this.isOrderCreated = true;
           this.orderId = response.success;
           if(this.paymentMethod.filter(e => e.active)[0].id === 1 && this.payments.payableAmount > 0){
@@ -231,7 +231,7 @@ export class CheckoutComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 
@@ -251,7 +251,7 @@ export class CheckoutComponent implements OnInit {
   updatePaymentDetails(data: { paymentMethod: number; transactionId: string;}){
     this.bookService.updatePaymentDetails(data).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         this.storageService.updatemyCart([]);
         if(response.singleData){
@@ -261,7 +261,7 @@ export class CheckoutComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 

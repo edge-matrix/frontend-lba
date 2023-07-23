@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ComboDetailsService, SharedService, StorageService } from '@service';
 import { Response } from '@models';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'search-result',
@@ -17,7 +17,7 @@ export class SearchResultComponent implements OnInit {
   searchKeyword = "";
   showNoItem = 0
   constructor(public sharedService: SharedService, private storageService: StorageService, private router: Router, private comboService: ComboDetailsService,
-    private toastr: ToastrService,) { }
+    ) { }
 
   ngOnInit(): void {
     this.searchHistory = this.sharedService.mySearchHistory;
@@ -32,7 +32,7 @@ export class SearchResultComponent implements OnInit {
       this.suggestionStatus = 1;
       this.comboService.search(this.searchKeyword).subscribe((response: Response) => {
         if (response.statusCode != 200 && response.statusCode != 201) {
-          this.toastr.error(this.sharedService.errorMessage(response.Error));
+          this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
           this.router.navigate(['/']);
         } else {
           if(response.data){
@@ -47,7 +47,7 @@ export class SearchResultComponent implements OnInit {
         }
       },
       error => {
-        this.toastr.error('Something Went Wrong');
+        this.sharedService.showMessage(1,'Something Went Wrong');
       });
     }else{
       this.suggestionStatus = 0;

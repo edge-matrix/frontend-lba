@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { FavService, SharedService, StorageService } from '@service';
-import { ToastrService } from 'ngx-toastr';
 import { Response } from '@models';
 
 @Injectable({
@@ -10,14 +9,13 @@ export class CommonFunctionService {
 
   constructor(private sharedService: SharedService,
     private storageService: StorageService,
-    private toastr: ToastrService,
     private favService: FavService,) {
   }
 
   addToFav(type: number, id: number){
     this.favService.addFav(type, id).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.success){
           this.getFavs();
@@ -25,14 +23,14 @@ export class CommonFunctionService {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 
   deleteFav(type: number, id: number){
     this.favService.deleteFav(type, id).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.success){
           this.getFavs();
@@ -40,7 +38,7 @@ export class CommonFunctionService {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 
@@ -60,7 +58,7 @@ export class CommonFunctionService {
   getFavs(){
     this.favService.getAll().subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.data){
           this.sharedService.userFav = response.data;
@@ -69,7 +67,7 @@ export class CommonFunctionService {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cart, Items, Shop } from '@models';
 import { CommonFunctionService, SharedService, StorageService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -20,7 +20,7 @@ export class ItemComponent implements OnInit {
     public sharedService: SharedService,
     private storageService: StorageService,
     public commonService: CommonFunctionService,
-    private toastr: ToastrService,
+
   ) { }
 
   ngOnChanges(){
@@ -61,7 +61,7 @@ export class ItemComponent implements OnInit {
     let itemDetail = this.itemLists.find(e => e.item.id === id);
     if(itemDetail && !this.isShopSame(itemDetail.item.shop_id))
     {
-      this.toastr.error("Item's shop is different from cart shop, clear cart to add this.");
+      this.sharedService.showMessage(1,"Item's shop is different from cart shop, clear cart to add this.");
       return;
     }
     let shop = this.shop;

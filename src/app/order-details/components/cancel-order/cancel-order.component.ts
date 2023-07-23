@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { OrdersService, SharedService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { Response } from '@models';
 
 @Component({
@@ -23,7 +23,7 @@ export class CancleOrderComponent implements OnInit {
   comment = '';
   constructor(
     public sharedService: SharedService,
-    private toastr: ToastrService,
+
     private orderService: OrdersService,
   ) {
   }
@@ -36,15 +36,17 @@ export class CancleOrderComponent implements OnInit {
     if(this.reason !== ''){
       this.orderService.cancelOrder(this.orderId, this.reason, this.comment).subscribe((data: Response) => {
         if (data.statusCode != 200 && data.statusCode != 201) {
-          this.toastr.error(this.sharedService.errorMessage(data.Error));
+          this.sharedService.showMessage(1,this.sharedService.errorMessage(data.Error));
         } else {
-          this.toastr.success(data.success);
+          if(data.success){
+            this.sharedService.showMessage(0,data.success);
+          }
           $('#close').click();
           this.newItemEvent.emit(1);
         }
       },
       error => {
-        this.toastr.error('Something Went Wrong');
+        this.sharedService.showMessage(1,'Something Went Wrong');
       });
     }
   }

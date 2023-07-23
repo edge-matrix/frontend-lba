@@ -3,13 +3,14 @@ import { Fav, Location, User } from '@models';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Cart } from '@models';
 import { Location as Loc } from '@angular/common';
+import { ToastService } from '@service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
-  version = '23.07.23.01';
+  version = '23.07.23.02';
   user: User;
   userFav: Array<Fav> = [];
   sideMenuSelectedIndex = 0;
@@ -32,7 +33,8 @@ export class SharedService {
   private cart: BehaviorSubject<Array<Cart>>;
 
   constructor(
-    private location: Loc
+    private location: Loc,
+    private toastService: ToastService
   ) {
     this.user = JSON.parse(localStorage.getItem('currentUser') || 'null');
     this.userFav = JSON.parse(localStorage.getItem('userFav') || 'null')||[];
@@ -55,5 +57,9 @@ export class SharedService {
 
   back(){
     this.location.back();
+  }
+
+  showMessage(type: number, msg: string){
+    this.toastService.show(type, msg);
   }
 }

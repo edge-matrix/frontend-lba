@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BookService, SharedService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { Orders, Response } from '@models';
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +15,7 @@ export class OnlinePaymentsComponent implements OnInit {
   order!: Orders;
   constructor(
     public sharedService: SharedService,
-    private toastr: ToastrService,
+
     private bookService: BookService,
   ) {
   }
@@ -27,7 +27,7 @@ export class OnlinePaymentsComponent implements OnInit {
   orderDetails(){
     this.bookService.orderDetails(this.orderId).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.singleData){
           this.order = response.singleData;
@@ -36,7 +36,7 @@ export class OnlinePaymentsComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 

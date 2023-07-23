@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Paginate, Link, Response, Orders, Cart, OrdersProducts } from '@models';
 import { ComboDetailsService, OrdersService, SharedService, StorageService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
 
 
@@ -23,7 +23,7 @@ export class OrderHistoryComponent implements OnInit {
     private orderService: OrdersService,
     private comboService: ComboDetailsService,
     private router: Router,
-    private toastr: ToastrService) {
+    ) {
     this.sharedService.sideMenuSelectedIndex = 3;
   }
 
@@ -36,7 +36,7 @@ export class OrderHistoryComponent implements OnInit {
   orderList(){
     this.orderService.getOrder(this.page).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.paginate){
           let paginate: Paginate = response?.paginate;
@@ -48,7 +48,7 @@ export class OrderHistoryComponent implements OnInit {
 
     },
     () => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
 
     });
   }
@@ -92,7 +92,7 @@ export class OrderHistoryComponent implements OnInit {
   getItemById(cart: Array<Cart>, pro: OrdersProducts, id: number){
     this.comboService.getItemById(id).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
         this.router.navigate(['/']);
       } else {
         if(response.singleData){
@@ -109,7 +109,7 @@ export class OrderHistoryComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart, Items, Paginate, Response } from '@models';
 import { ComboDetailsService, CommonFunctionService, SharedService, StorageService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -20,7 +20,7 @@ export class RecommendedComponent implements OnInit {
     public sharedService: SharedService,
     private storageService: StorageService,
     public commonService: CommonFunctionService,
-    private toastr: ToastrService,
+
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class RecommendedComponent implements OnInit {
   getItemList(){
     this.comboDetailService.getRecommended().subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.data){
           response.data.forEach(e => {
@@ -49,7 +49,7 @@ export class RecommendedComponent implements OnInit {
 
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
 
     });
   }
@@ -72,7 +72,7 @@ export class RecommendedComponent implements OnInit {
     let itemDetail = this.itemLists.find(e => e.item.id === id);
     if(itemDetail && !this.isShopSame(itemDetail.item.shop_id))
     {
-      this.toastr.error("Item's shop is different from cart shop, clear cart to add this.");
+      this.sharedService.showMessage(1,"Item's shop is different from cart shop, clear cart to add this.");
       return;
     }
     if(itemDetail && itemDetail.item.shop){

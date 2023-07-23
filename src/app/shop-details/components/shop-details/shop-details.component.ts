@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Shop, Shoptimings } from '@models';
-import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { Router } from '@angular/router';
@@ -24,7 +23,7 @@ export class ShopDetailsComponent implements OnInit {
   timingText = '';
   showTimings = 0;
   timingTitle = '';
-  constructor(public sharedService: SharedService,private toastr: ToastrService, private clipboard: Clipboard, private router: Router, public commonService: CommonFunctionService) { }
+  constructor(public sharedService: SharedService, private clipboard: Clipboard, private router: Router, public commonService: CommonFunctionService) { }
 
   ngOnInit(): void {
     let day = new Date().getDay();
@@ -82,7 +81,7 @@ export class ShopDetailsComponent implements OnInit {
   }
 
   share(){
-    this.toastr.info('Shop address copied to clipboard !');
+    this.sharedService.showMessage(0, 'Shop address copied to clipboard !');
     this.clipboard.copy(environment.appUrl + this.router.url);
   }
 

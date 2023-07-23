@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonFunctionService, SharedService, StorageService } from '@service';
 import { Cart, Items, Shop } from '@models';
 import { environment } from 'src/environments/environment';
-import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -19,7 +19,7 @@ export class FavoritesComponent implements OnInit {
   constructor(public sharedService: SharedService,
     private storageService: StorageService,
     public commonService: CommonFunctionService,
-    private toastr: ToastrService,
+
     ) {
     this.sharedService.sideMenuSelectedIndex = 1;
   }
@@ -69,7 +69,7 @@ isShopSame(shopId: number){
     let itemDetail = this.itemLists.find(e => e.item.id === id);
     if(itemDetail && !this.isShopSame(itemDetail.item.shop_id))
     {
-      this.toastr.error("Item's shop is different from cart shop, clear cart to add this.");
+      this.sharedService.showMessage(1,"Item's shop is different from cart shop, clear cart to add this.");
       return;
     }
     if(itemDetail && itemDetail.item.shop){

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { Shop, Response, Items } from '@models';
 import { ComboDetailsService, SharedService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -22,7 +22,7 @@ export class ShopDetailComponent implements OnInit {
   selectedTab = 0;
   constructor(
     public sharedService: SharedService,
-    private toastr: ToastrService,
+
     private comboDetailService: ComboDetailsService,
     private router: Router,
     private activeRoute: ActivatedRoute
@@ -52,7 +52,7 @@ export class ShopDetailComponent implements OnInit {
   getShopDetails(){
     this.comboDetailService.getShopDetails(this.slug).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.singleData){
           this.shops = response.singleData;
@@ -61,7 +61,7 @@ export class ShopDetailComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 

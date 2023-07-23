@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Paginate, Link, Response, Orders } from '@models';
 import { OrdersService, SharedService } from '@service';
-import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,7 +15,7 @@ export class CurrentOrderComponent implements OnInit {
   storageUrl = environment.storage;
   constructor(public sharedService: SharedService,
     private orderService: OrdersService,
-    private toastr: ToastrService) {
+    ) {
     this.sharedService.sideMenuSelectedIndex = 3;
   }
 
@@ -29,7 +28,7 @@ export class CurrentOrderComponent implements OnInit {
   orderList(){
     this.orderService.getOrder(this.page).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.paginate){
           let paginate: Paginate = response?.paginate;
@@ -45,7 +44,7 @@ export class CurrentOrderComponent implements OnInit {
 
     },
     () => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
 
     });
   }

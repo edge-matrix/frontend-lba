@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemCategories, Response, Shop } from '@models';
 import { ComboDetailsService, SharedService } from '@service';
-import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -23,7 +23,7 @@ export class FilterComponent implements OnInit {
     private comboDetailService: ComboDetailsService,
     private sharedService: SharedService,
     private router: Router,
-    private toastr: ToastrService,
+
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class FilterComponent implements OnInit {
   categoriesList(){
     this.comboDetailService.getItemCategories().subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
+        this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.data){
           this.categories = [];
@@ -46,7 +46,7 @@ export class FilterComponent implements OnInit {
       }
     },
     error => {
-      this.toastr.error('Something Went Wrong');
+      this.sharedService.showMessage(1,'Something Went Wrong');
     });
   }
 
