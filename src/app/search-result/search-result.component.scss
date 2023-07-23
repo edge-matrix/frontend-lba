@@ -11,6 +11,7 @@ header{
 }
 .searchbar{
   display: flex;
+  align-items: center;
 }
 .searchbar input{
   width:100%;
@@ -19,7 +20,7 @@ header{
   border-bottom: 1px solid #FC9C67 !important;
   padding: 12px 18px;
   background-color: #FFFCF3;
-  font-size: 12px;
+  font-size:14px;
   font-weight: 600;
 }
 .searchbar input::placeholder{
@@ -32,10 +33,11 @@ header{
   align-items: center;
   justify-content: space-between;
 }
-.arrow img{
-  transform: rotate(45deg);
+.arrow i{
   height: 20px;
   width: 20px;
+  position:relative;
+  right: 10px;
 }
 .suggestionsection{
   display: flex;

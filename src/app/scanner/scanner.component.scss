@@ -27,16 +27,16 @@
   font-size: 18px;
 }
 .scannercamera{
-  width: 350px;
-  height:358px;
-  margin-top: 50px;
-  border-radius: 10px;
+  width: 250px;
+  height:250px;
+  margin-top:30px;
+  border-radius:12px;
   border: 3px solid rgba(252, 156, 103, 0.50);
   background: linear-gradient(180deg, rgba(252, 156, 103, 0.50) 0%, #363634 45.31%, #000 100%);
 
   ::ng-deep{
     .origin-video{
-      height: 350px !important;
+      height:243px !important;
     }
   }
 }
@@ -45,7 +45,16 @@
   color: rgba(252, 156, 103, 0.50);
   font-size: 15px;
   font-weight: 400;
+  width:80%;
+  color: #ffffff;
+  select{
+    padding: 10px;
+    background-color: #000;
+    color: #ffffff;
+    border: 1px soild #fff;
+  }
 }
+
 .scannerheaderpart{
   display: flex;
   align-items: center;
@@ -56,16 +65,17 @@
   bottom:0px;
   width: 100%;
   max-width: 556px;
-  border-radius: 10px 10px 0px 0px;
+  border-radius:5px 10px 0px 0px;
   background:#fff;
+  padding: 10px 0px;
 }
 .scannersearcharea{
   width: 100%;
-  padding: 30px 20px 50px 20px;
+  padding:15px 10px 50px 10px;
 }
 .scannerpagesearchbox input{
   width: 100%;
-  height: 50px;
+  height:50px;
   background-color: #fff;
   border-radius:10px;
   padding: 0px 10px;
@@ -89,15 +99,15 @@
   gap:15px;
 }
 .recentshop img{
-  width: 100px;
-  height: 100px;
+  width:80px;
+  height:80px;
   border-radius:50%;
   object-fit: cover;
   margin-bottom: 10px;
 }
 .recentshop h3{
   color: #000;
-  font-size:15px;
+  font-size:14px;
   font-weight:500;
   text-align: center;
 }

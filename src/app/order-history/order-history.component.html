@@ -31,7 +31,10 @@
                     <div class="item" *ngFor="let product of order.products">
                       <img src="assets/imagefolder/resturantimg.jfif" *ngIf="product.image === null || product.image === ''" referrerpolicy="no-referrer" alt="item image">
                       <img [src]="storageUrl + product.image" *ngIf="product.image !== null && product.image !== ''" referrerpolicy="no-referrer" alt="item image" />
-                      <span> {{product.quantity}} * {{product.name}}</span>
+                      <span>
+                        <span class="itemquantityorderhistory">{{product.quantity}}&nbsp;&nbsp;X</span>
+                        <span>&nbsp;&nbsp;&nbsp;{{product.name}}</span>
+                      </span>
                     </div>
                   </div>
                   <div class="totalbill">

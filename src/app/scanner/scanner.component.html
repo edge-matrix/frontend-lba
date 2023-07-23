@@ -9,7 +9,7 @@
             </div>
             <div class="subheading">
               <select [ngModel]="null" (ngModelChange)="action.playDevice($event)" class="form-select form-select-sm">
-                <option [value]="null" selected>Select device</option>
+                <option [value]="null" selected>Select Camera</option>
                 <option *ngFor="let c of action.devices.value; let i = index" [ngValue]="c.deviceId" [selected]="i == action.deviceIndexActive">{{c.label}}</option>
               </select>
             </div>
