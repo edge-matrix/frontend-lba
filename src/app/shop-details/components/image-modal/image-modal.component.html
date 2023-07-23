@@ -1,0 +1,23 @@
+<button id="openModalButton" [hidden]="true" data-bs-toggle="modal" data-bs-target="#imageModal"> Open Modal</button>
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="btn-close" (click)="newItemEvent.emit('0')" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="slidercontainer">
+            <div class="carousel-container">
+                <div class="mySlides animate" *ngFor="let photo of shopPhotos" [ngStyle]="{'display': photo.image === currentImage ? 'block' : 'none' }">
+                  <img *ngIf="photo.isLink && photo.isImage" [src]="photo.image" class="d-block w-100" alt="...">
+                  <img *ngIf="!photo.isLink && photo.isImage" [src]="storageLink + photo.image" class="d-block w-100" alt="...">
+                </div>
+                <!-- Next and previous buttons -->
+                <a class="prev" (click)="prev()">&#10094;</a>
+                <a class="next" (click)="next()">&#10095;</a>
+            </div>
+          </div>
+        </div>
+  </div>
+  </div>
+</div>

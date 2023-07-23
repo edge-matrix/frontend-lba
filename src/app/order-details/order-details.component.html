@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="mainpage">
       <header></header>
-      <div class="orderstatuspage">
+      <div class="orderstatuspage" [ngClass]="{'disabled': cancleStatus }">
         <div [class]="getStatus(order.status).class">
             <div class="headingsection">
               <div class="backbtn" (click)="sharedService.back()"><i class="fas fa-arrow-left"></i></div>
@@ -83,7 +83,7 @@
                           </tr>
                           <tr class="grandtotalfont">
                             <td>Payable Amount</td>
-                            <td>{{order.payableAmount | currency: 'INR'}}</td>
+                            <td>{{ (order.payableAmount) | currency: 'INR'}}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -131,6 +131,7 @@
             </div>
         </div>
       </div>
+      <cancel-order *ngIf="cancleStatus" [orderId]="this.order.id" (newItemEvent)="output($event)"></cancel-order>
     </div>
     <footer [show]="false"></footer>
     <bottom-nav></bottom-nav>

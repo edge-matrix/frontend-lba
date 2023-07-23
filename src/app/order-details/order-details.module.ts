@@ -4,10 +4,13 @@ import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { OrderDetailsRoutingModule } from './order-details-routing.module';
 import { OrderDetailsComponent } from './order-details.component';
 import { CommonComponentModule } from '../_components/common-component.module';
+import { CancleOrderComponent } from './components';
 
 @NgModule({
   declarations: [
-    OrderDetailsComponent
+    OrderDetailsComponent,
+
+    CancleOrderComponent
 
   ],
   imports: [

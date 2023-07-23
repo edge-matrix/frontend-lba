@@ -16,6 +16,7 @@ export class ConstantsService {
     {id: 6, label: 'Ready To Serve', slug:'ready_to_serve', status: true},
     {id: 7, label: 'Complete', slug:'completed', status: true},
     {id: 8, label: 'Completed & Paid', slug:'completed_and_paid', status: true},
+    {id: 9, label: 'Canceled', slug:'canceled', status: true},
   ];
 
   quickAccessOrderClass = [
@@ -28,6 +29,7 @@ export class ConstantsService {
     {id: 6, activeClass: 'readyheaderbtn', inActiveClass: 'newreadyheaderbtn', activeImg: 'ready_to_serve-white', inActiveImg: 'ready_to_serve', icon: 'fa-utensils'},
     {id: 7, activeClass: 'readyheaderbtn', inActiveClass: 'newreadyheaderbtn', activeImg: 'completed-white', inActiveImg: 'completed', icon: 'fa-check'},
     {id: 8, activeClass: 'readyheaderbtn', inActiveClass: 'newreadyheaderbtn', activeImg: 'completed-white', inActiveImg: 'completed', icon: 'fa-check'},
+    {id: 9, activeClass: 'cancelheaderbtn', inActiveClass: 'newcancelheaderbtn', activeImg: 'rejected-white', inActiveImg: 'rejected', icon: 'fa-times'},
   ];
 
   badgeOrderClass = [
@@ -39,7 +41,8 @@ export class ConstantsService {
     {id: 5, class: 'cooking'},
     {id: 6, class: 'completed'},
     {id: 7, class: 'completed'},
-    {id: 8, class: 'completed'}
+    {id: 8, class: 'completed'},
+    {id: 9, class: 'rejected'},
   ];
 
   btnOrderClass = [
@@ -51,7 +54,8 @@ export class ConstantsService {
     {id: 5, btn: 'cookbtn'},
     {id: 6, btn: 'readybtn'},
     {id: 7, btn: 'completebtn'},
-    {id: 8, btn: 'completebtn'}
+    {id: 8, btn: 'completebtn'},
+    {id: 9, btn: 'rejectbtn'}
   ];
 
   btnByStatus = [
@@ -64,6 +68,7 @@ export class ConstantsService {
     {id: 6, btns: [7]},
     {id: 7, btns: [8]},
     {id: 8, btns: []},
+    {id: 9, btns: []},
   ];
 
   paymentStatus = [

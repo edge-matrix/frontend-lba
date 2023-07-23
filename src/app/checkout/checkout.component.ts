@@ -175,6 +175,7 @@ export class CheckoutComponent implements OnInit {
     }
     let request: CreateOrder = {
       user_id: this.sharedService.user.id,
+      name: this.sharedService.user.name,
       shop_id: this.shops.id,
 
       coinRedeemed: 0,

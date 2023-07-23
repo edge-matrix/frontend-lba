@@ -1,0 +1,32 @@
+<button [hidden]="true" data-bs-toggle="modal" data-bs-target="#rejectModal" id="openModal"></button>
+
+<!-- Modal -->
+<div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel"aria-hidden="true" data-bs-backdrop="false" data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+  <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to cancel the order?</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close" (click)="close()"></button>
+      </div>
+      <div class="modal-body">
+          <div class="cancelorderheading">Cancel Reasons <span class="imp">*</span></div>
+          <div class="reasons">
+            <select [(ngModel)]="reason" name="reason">
+              <option [value]="reason" *ngFor="let reason of reasons">{{reason}}</option>
+            </select>
+          </div>
+          <div class="mentionreason">
+              <div class="commenrheading">Please mention the reason... <span class="imp">*</span></div>
+          <div class="commentsection">
+              <textarea [(ngModel)]="comment" rows="5" placeholder="Write your reason here"></textarea>
+          </div>
+          </div>
+          <div class="information">In such cases,the order will be cancelled and the money will be refunded to you within 24-48 business hours after the cancellation request.</div>
+          <div class="btns">
+              <div><button class="submitbtns" (click)="reject()">Submit</button></div>
+              <div><button class="resetbtns" (click)="close()">Cancel</button></div>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>

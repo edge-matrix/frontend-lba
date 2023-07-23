@@ -4,6 +4,7 @@ import { ShopUser } from "../permissions/shop-user.model";
 export interface User {
     id: number;
     name: string;
+    isNameReal: number;
     profileImage?: string;
     username: string;
     password?: string;

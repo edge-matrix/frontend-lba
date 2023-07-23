@@ -1,6 +1,7 @@
-<div class="photoscontainer">
+<div class="photoscontainer" [ngClass]="{'disabled': showModal }">
   <div class="photos" *ngFor="let photo of photos" (click)="shopImageModal(photo.image)">
     <img *ngIf="photo.isLink && photo.isImage" [src]="photo.image" alt="restaurant image">
     <img *ngIf="!photo.isLink && photo.isImage" [src]="storageLink + photo.image" alt="restaurant image">
   </div>
 </div>
+<shop-image-modal *ngIf="showModal" [shopPhotos]="photos" [currentImage]="currentImage" (newItemEvent)="closeModal($event)"></shop-image-modal>

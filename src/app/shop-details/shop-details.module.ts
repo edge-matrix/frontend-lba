@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { ShopDetailRoutingModule } from './shop-details-routing.module';
 import { ShopDetailComponent } from './shop-details.component';
 import { CommonComponentModule } from '../_components/common-component.module';
-import { MenusComponent, ShopDetailsComponent, ShopOverviewComponent, ShopPhotosComponent, ShopReviewsComponent } from './components';
+import { ImageModalComponent, MenusComponent, ShopDetailsComponent, ShopOverviewComponent, ShopPhotosComponent, ShopReviewsComponent } from './components';
 import { MenuModule } from '../menu/menu.module';
 
 @NgModule({
@@ -16,6 +16,7 @@ import { MenuModule } from '../menu/menu.module';
     ShopPhotosComponent,
     ShopReviewsComponent,
     MenusComponent,
+    ImageModalComponent
   ],
   imports: [
     CommonModule,

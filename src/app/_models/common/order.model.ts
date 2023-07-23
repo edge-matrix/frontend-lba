@@ -1,5 +1,6 @@
 export interface CreateOrder{
   user_id: number;
+  name?: string;
   shop_id: number;
   coupon_id?: number;
 

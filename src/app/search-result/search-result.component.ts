@@ -58,10 +58,11 @@ export class SearchResultComponent implements OnInit {
 
   jumpToSuggest(index: number, type: number){
     if(type === 0){
+      const history = this.searchHistory[index];
       this.searchHistory.splice(index, 1);
-      this.searchHistory.push(this.searchHistory[index]);
+      this.searchHistory.push(history);
       this.storageService.updatemySearchHistory(this.searchHistory);
-      this.router.navigate([this.searchHistory[index].url]);
+      this.router.navigate([history.url]);
     }else{
       this.searchHistory.push(this.searchSuggestion[index]);
       this.storageService.updatemySearchHistory(this.searchHistory);

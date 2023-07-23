@@ -17,6 +17,7 @@ export class OrderDetailsComponent implements OnInit {
   order!: Orders;
   navSubscription!: Subscription;
   storageUrl = environment.storage;
+  cancleStatus = false
   constructor(
     public sharedService: SharedService,
     private storageService: StorageService,
@@ -72,12 +73,16 @@ export class OrderDetailsComponent implements OnInit {
       {id: 5, title: 'Cooking', class: 'ordercooking', img: 'cooking.png'},
       {id: 6, title: 'Ready To Serve', class: 'orderreadytoserve', img: 'readytoserve.png'},
       {id: 7, title: 'Complete', class: 'orderconfirmed', img: 'orderconfirmed.png'},
-      {id: 8, title: 'Complete & Paid', class: 'orderconfirmed', img: 'orderconfirmed.png'}
+      {id: 8, title: 'Complete & Paid', class: 'orderconfirmed', img: 'orderconfirmed.png'},
+      {id: 9, title: 'Cancled', class: 'orderrejected', img: 'rejected.png'},
     ];
     return status.filter(e => e.id === id)[0];
   }
 
   getPaymentStatus(id: number){
+    if(this.order.payableAmount - this.order.paidAmount === 0){
+      id = 2;
+    }
     const status = [
       {id: 0, title: 'Pending', class: 'orderstatus'},
       {id: 1, title: 'Partial Paid', class: 'orderstatus'},
@@ -91,8 +96,10 @@ export class OrderDetailsComponent implements OnInit {
     this.order.products?.forEach(pro => {
       this.getItemById(cart, pro, pro.items_id);
     });
-    this.storageService.updatemyCart(cart);
-    this.router.navigate(['/checkout']);
+    setTimeout(() => {
+      this.storageService.updatemyCart(cart);
+      this.router.navigate(['/checkout']);
+    }, 1000);
   }
 
   getItemById(cart: Array<Cart>, pro: OrdersProducts, id: number){
@@ -120,19 +127,13 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   cancleOrder(){
-    this.orderService.cancelOrder(this.order.id, "Customer wants to cancel order", '').subscribe((response: Response) => {
-      if (response.statusCode != 200 && response.statusCode != 201) {
-        this.toastr.error(this.sharedService.errorMessage(response.Error));
-      } else {
-        if(response.success){
-          this.location.back();
-        }
-      }
-    },
-    error => {
-      this.toastr.error('Something Went Wrong');
-    });
+    this.cancleStatus = true;
   }
 
-
+  output(ev: number){
+    this.cancleStatus = false;
+    if(ev === 1){
+      this.location.back()
+    }
+  }
 }
