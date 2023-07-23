@@ -11,7 +11,7 @@
 
           <!-- recent searches -->
 
-          <div class="recentsearchsuggestion" *ngFor="let history of searchHistory;let i = index" (click)="jumpToSuggest(i, 0)">
+          <div class="recentsearchsuggestion" *ngFor="let history of searchHistory.reverse();let i = index" (click)="jumpToSuggest(i, 0)">
               <div class="suggestionsection">
                   <div class="clock"><img src="assets/imagefolder/history.png" alt="recent history"></div>
                   <div class="searchresult">{{history.title}}</div>

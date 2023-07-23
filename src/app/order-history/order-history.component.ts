@@ -13,9 +13,11 @@ import { environment } from 'src/environments/environment';
 export class OrderHistoryComponent implements OnInit {
 
   data!: Array<Orders>;
+  allData!: Array<Orders>;
   links!: Array<Link>;
   page = 1;
   storageUrl = environment.storage;
+  searchKeyword = '';
   constructor(public sharedService: SharedService,
     private storageService: StorageService,
     private orderService: OrdersService,
@@ -39,6 +41,7 @@ export class OrderHistoryComponent implements OnInit {
         if(response.paginate){
           let paginate: Paginate = response?.paginate;
           this.data = paginate.data;
+          this.allData = paginate.data;
           this.links = paginate.links;
         }
       }
@@ -65,7 +68,8 @@ export class OrderHistoryComponent implements OnInit {
       {id: 5, title: 'Cooking', class: 'cooking'},
       {id: 6, title: 'Ready To Serve', class: 'completed'},
       {id: 7, title: 'Complete', class: 'completed'},
-      {id: 8, title: 'Complete & Paid', class: 'completed'}
+      {id: 8, title: 'Complete & Paid', class: 'completed'},
+      {id: 9, title: 'Cancled', class: 'rejected'},
     ];
     return status.filter(e => e.id === id)[0];
   }
@@ -78,8 +82,10 @@ export class OrderHistoryComponent implements OnInit {
       order.products?.forEach(pro => {
         this.getItemById(cart, pro, pro.items_id);
       });
-      this.storageService.updatemyCart(cart);
-      this.router.navigate(['/checkout']);
+      setTimeout(() => {
+        this.storageService.updatemyCart(cart);
+        this.router.navigate(['/checkout']);
+      }, 1000);
     }
   }
 
@@ -107,4 +113,16 @@ export class OrderHistoryComponent implements OnInit {
     });
   }
 
+  search(){
+    if(this.searchKeyword === ''){
+      this.data = this.allData;
+    }else{
+      this.data = [];
+      this.allData.forEach(e => {
+        if(e.orderId.toLowerCase().match(this.searchKeyword.toLowerCase())){
+          this.data.push(e);
+        }
+      });
+    }
+  }
 }

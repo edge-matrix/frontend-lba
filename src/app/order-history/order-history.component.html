@@ -6,7 +6,8 @@
           <h1>Order History</h1>
         </div>
         <div class="searchbar">
-          <input type="text" placeholder="Search for a restaurant....">
+          <input type="text" placeholder="Search with token number..." [(ngModel)]="searchKeyword" (keyup)="search()">
+          <div class="arrow" (click)="searchKeyword = ''; search()"><i class="fas fa-times-circle" title="Remove History"></i></div>
         </div>
         <ng-container *ngIf="sharedService.user && sharedService.user.id !== 0; else noLogin">
           <div class="orderhistorylist">

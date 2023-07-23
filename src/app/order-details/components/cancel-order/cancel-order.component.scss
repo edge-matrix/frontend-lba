@@ -1,0 +1,61 @@
+.modal-body{
+  background-color: #FFFCF3;
+}
+.imp{
+  color: #e40707;
+}
+.reasons select{
+  width: 100%;
+  margin: 12px 0px;
+  border-radius: 5px;
+  border: 1px solid #ffb57280;
+  background: #FFFFFF;
+  outline: none;
+  padding: 6px 12px;
+}
+.commentsection textarea{
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ffb57280;
+  background: #FFFFFF;
+  outline: none;
+  resize: none;
+  padding: 6px 12px;
+  margin: 12px 0px;
+}
+.btns{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.cancelorderheading,.commenrheading{
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+}
+.submitbtns{
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  background: #47B214;
+  border: none;
+  outline: none;
+  padding: 6px 12px;
+}
+.resetbtns{
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  background: #FA5457;
+  border: none;
+  outline: none;
+  padding: 6px 18px;
+}
+.information{
+  margin: 0px 0px 10px 0px;
+  color: #00000080;
+  font-size: 14px;
+  font-weight: 500;
+}
