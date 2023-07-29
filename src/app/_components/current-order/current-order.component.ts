@@ -59,9 +59,9 @@ export class CurrentOrderComponent implements OnInit {
       {id: 5, title: 'Cooking', class: 'cooking'},
       {id: 6, title: 'Ready To Serve', class: 'completed'},
       {id: 7, title: 'Complete', class: 'completed'},
-      {id: 8, title: 'Complete & Paid', class: 'completed'}
+      {id: 8, title: 'Complete & Paid', class: 'completed'},
+      {id: 9, title: 'Cancled', class: 'rejected'},
     ];
     return status.filter(e => e.id === id)[0];
   }
-
 }
