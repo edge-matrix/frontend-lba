@@ -4,7 +4,7 @@
         <div class="notificationpage">
           <div class="notificationcontainer">
               <div class="notificationheader">
-                  <div class="notificationheading"><span>Notifications</span><span>({{notifications.length}})</span></div>
+                  <div class="notificationheading"><span>Notifications</span><span>({{total}})</span></div>
               </div>
               <div class="tabcontainer">
                   <div class="tabs notificationactive">All</div>
@@ -14,13 +14,13 @@
               <ng-container *ngIf="sharedService.user && sharedService.user.id !== 0; else noLogin">
                 <div class="messageboxcontainer">
                   <div class="meassagecontainerheader">
-                      <div class="timeofmessage">New</div>
+                      <div class="timeofmessage"></div>
                       <div class="markasread" (click)="markAsAllRead()"><span class="doubletick"><img src="assets/icons/markasread.png" alt=""></span><span>Mark as read</span></div>
                   </div>
                   <ng-container *ngIf="notifications && notifications.length > 0; else noItem">
                     <div class="messagecontainer offerscontainer" *ngFor="let notify of notifications;let i = index" (click)="markAsRead(notify.id)" [routerLink]="'/'+notify.link">
                       <div class="typeofmessage">
-                          <img src="assets/icons/offer.png" alt="offers">
+                          <img src="assets/icons/order.png" alt="offers">
                       </div>
                       <div class="meassagedetails">
                           <div class="messagecontent">{{notify.description}}</div>
@@ -34,6 +34,7 @@
                   <ng-template #noItem>
                     <no-item-page text="0 Notifications Found"></no-item-page>
                   </ng-template>
+                  <paginate *ngIf="links && links.length > 3" [page]="page" [links]="links" [lastPage]="lastPage" (paginate)="paginate($event)"></paginate>
               </div>
               </ng-container>
               <ng-template #noLogin>

@@ -56,6 +56,7 @@
             <ng-template #noItem>
               <no-item-page text="No Order Placed Yet"></no-item-page>
             </ng-template>
+            <paginate *ngIf="links && links.length > 3" [page]="page" [links]="links" [lastPage]="lastPage" (paginate)="paginate($event)"></paginate>
           </div>
         </ng-container>
         <ng-template #noLogin>

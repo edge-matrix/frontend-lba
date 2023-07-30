@@ -16,6 +16,7 @@ export class OrderHistoryComponent implements OnInit {
   allData!: Array<Orders>;
   links!: Array<Link>;
   page = 1;
+  lastPage = 0;
   storageUrl = environment.storage;
   searchKeyword = '';
   constructor(public sharedService: SharedService,
@@ -43,6 +44,7 @@ export class OrderHistoryComponent implements OnInit {
           this.data = paginate.data;
           this.allData = paginate.data;
           this.links = paginate.links;
+          this.lastPage = paginate.last_page?paginate.last_page:0;
         }
       }
 

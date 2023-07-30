@@ -1,0 +1,17 @@
+<!--  Try TO Use https://codepen.io/miko-github/pen/rNGobJq URL to add paginate design -->
+
+<section class="pagination">
+  <button type="button" class="pagination__button" *ngIf="page > 1" (click)="jumpToPage((page - 1).toString())">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+
+  <ul class="pagination__list">
+    <li class="pagination__item" *ngFor="let link of links.slice(1,-1)" (click)="jumpToPage(link.label)"  [ngClass]="{'pagination_active': page.toString() === link.label}">
+      <span type="button">{{link.label}}</span>
+    </li>
+  </ul>
+
+  <button type="button" class="pagination__button" *ngIf="page < lastPage" (click)="jumpToPage((page + 1).toString())">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</section>
