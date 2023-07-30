@@ -64,5 +64,4 @@ export class CurrentOrderComponent implements OnInit {
     ];
     return status.filter(e => e.id === id)[0];
   }
-
 }

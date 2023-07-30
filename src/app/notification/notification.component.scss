@@ -86,7 +86,7 @@
 }
 .messagecontent{
   color: #000000;
-  font-size:18px;
+  font-size:16px;
   font-weight:500;
   margin-bottom: 10px;
   max-height:50px;
@@ -95,9 +95,10 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp:2;
+  word-break: break-word;
 }
 .messagedatetime{
   color: #393939;
-  font-size: 16px;
+  font-size: 14px;
   font-weight:500;
 }
