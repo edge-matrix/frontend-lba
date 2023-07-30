@@ -26,7 +26,7 @@
                     <h1>Recent Scan</h1>
                 </div>
                 <div class="recentshoplist">
-                    <div class="recentshop" [routerLink]="'./menu/'+shop.slug" *ngFor="let shop of shops">
+                    <div class="recentshop" [routerLink]="'/menu/'+shop.slug" *ngFor="let shop of shops">
                       <img [src]="storageLink + shop.profileImage" alt="shop" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
                       <img src="assets/imagefolder/favshops.png" alt="shop"  *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
                         <h3>{{shop.title}}</h3>

@@ -123,7 +123,7 @@
                 <div class="checkbox"><input type="checkbox" name="" id=""></div>
               </div>
             </div> -->
-            <div class="cancelbtn" *ngIf="order.status === 1 || order.status === 2">
+            <div class="cancelbtn" *ngIf="order.status === 0 || order.status === 1">
                 <button (click)="cancleOrder()" >Cancel</button>
             </div>
             <div class="orderdetailsbtn" *ngIf="order.status === 7 || order.status === 8">

@@ -34,7 +34,7 @@ export class CurrentOrderComponent implements OnInit {
           let paginate: Paginate = response?.paginate;
           paginate.data.forEach(e => {
             const timeParams = new Date(e.booking_details.bookingDate +' '+ e.booking_details.startTime).getTime() <= new Date().getTime();
-            if(e.status !== 7 && e.status !==8 && e.status !== 3 && timeParams)
+            if(e.status !== 7 && e.status !==8 && e.status !== 3 && e.status !== 9 && timeParams)
             {
               this.data = e;
             }
@@ -59,7 +59,8 @@ export class CurrentOrderComponent implements OnInit {
       {id: 5, title: 'Cooking', class: 'cooking'},
       {id: 6, title: 'Ready To Serve', class: 'completed'},
       {id: 7, title: 'Complete', class: 'completed'},
-      {id: 8, title: 'Complete & Paid', class: 'completed'}
+      {id: 8, title: 'Complete & Paid', class: 'completed'},
+      {id: 9, title: 'Cancled', class: 'rejected'},
     ];
     return status.filter(e => e.id === id)[0];
   }

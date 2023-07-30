@@ -24,21 +24,21 @@ export class SettingsComponent implements OnInit {
   }
 
   logout(){
-    console.log('jhsdf');
-    // this.authenticationService.logout().subscribe(() => {
-    //   this.storageService.removeStorage();
-    //   this.sharedService.user = {
-    //     id: 0,
-    //     name: '',
-    //     username: '',
-    //     user_role_id: 2,
-    //     status: 0,
-    // };
-    //   this.router.navigate(['../login']);
-    // },
-    // error => {
-    //   console.log('Unable to Logout');
-    // });
+    this.authenticationService.logout().subscribe(() => {
+      this.storageService.removeStorage();
+      this.sharedService.user = {
+        id: 0,
+        name: '',
+        isNameReal: 0,
+        username: '',
+        user_role_id: 2,
+        status: 0,
+    };
+      this.router.navigate(['../login']);
+    },
+    error => {
+      console.log('Unable to Logout');
+    });
   }
 
 }

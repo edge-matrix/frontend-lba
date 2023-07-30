@@ -21,11 +21,6 @@ export const environment = {
     measurementId: "G-WCQ5LJLX8S"
   },
   paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator',
-  bunkCoinPercentage: 10,
-  taxesRate: 0,
-
-  EncryptKey: 'bbZMZJWf90AhF9tOeJSQ0XOrIaFlsB8b4G1BLflovY4=',
-  EncryptIV: 'AES-256-CBC'
 };
 
 /*

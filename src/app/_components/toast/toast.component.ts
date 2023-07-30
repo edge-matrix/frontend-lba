@@ -9,7 +9,6 @@ import { ToastService } from '@service';
 export class ToastComponent implements OnInit {
 
   constructor(public toastService: ToastService) {
-    console.log(toastService.toastVar);
   }
 
   ngOnInit(): void {
