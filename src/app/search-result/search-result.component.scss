@@ -38,7 +38,14 @@ header{
   height: 20px;
   width: 20px;
   position:relative;
-  right: 10px;
+  right: 20px;
+}
+.arrowimg img{
+  height: 20px;
+  width: 20px;
+}
+.arrowimg{
+  transform: rotate(45deg);
 }
 .suggestionsection{
   display: flex;

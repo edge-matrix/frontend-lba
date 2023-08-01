@@ -17,11 +17,11 @@
 .tabcontainer{
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   padding: 15px 0px 15px 0px;
 }
 .tabs{
-  border-radius:10px;
+  border-radius:20px;
   border: 1px solid #d9d9d980;
   background: #FFFFFF;
   color: #00000080;
