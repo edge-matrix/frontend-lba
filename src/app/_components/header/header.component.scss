@@ -4,12 +4,10 @@
     justify-content: space-between;
     padding-bottom: 10px;
     .location{
-        display: flex;
-        align-items: center;
-        .locationvalue{
+        .locationvalue,.locationarea{
             font-weight: 600;
             font-size: 15px;
-            color: rgba(252, 156, 103, 0.5);
+            color: #fc9c6780;
             padding-left: 10px;
             width: 170px;
             overflow: hidden;
@@ -20,6 +18,21 @@
             width: 20px;
             height:25px;
             object-fit: contain;
+        }
+        .location{
+            font-weight: 600;
+            font-size: 15px;
+            color: #000000;
+            // margin-right: 5px;
+        }
+        .locationarea{
+            font-weight: 600;
+            font-size: 15px;
+            color: #fc9c6780;
+            width: 170px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 }
     .headerrightside{

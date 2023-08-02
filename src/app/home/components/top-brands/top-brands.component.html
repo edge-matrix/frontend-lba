@@ -6,7 +6,7 @@
       <div class="brands" [routerLink]="'./menu/'+shop.slug" *ngFor="let shop of shops">
         <img [src]="storageLink + shop.profileImage" alt="shop" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
         <img src="assets/imagefolder/favshops.png" alt="shop"  *ngIf="shop.profileImage === null || shop.profileImage === ''"/>
-        <span>{{shop.title}}</span>
+        <span class="shoptitle">{{shop.title}}</span>
       </div>
   </div>
 </div>

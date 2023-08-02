@@ -44,7 +44,7 @@ body {
     transform: translate(0, -50%);
     width: auto;
     padding: 8px;
-    color: white;
+    color: #000000;
     font-weight: bold;
     font-size: 16px;
     border-radius: 0 8px 8px 0;
@@ -95,4 +95,7 @@ body {
     to {
       transform: scale(1) rotateY(0deg);
     }
+  }
+  .w-100 {
+      width: 270px!important;
   }
