@@ -11,6 +11,7 @@
         <div class="items" [ngClass]="{'active': cat.isActive}" *ngFor="let cat of categories" [title]="cat.data.name" (click)="updateCategory(cat.data.id)">
             <img src="assets/imagefolder/resturantimg.jfif" *ngIf="cat.data.image === null || cat.data.image === ''" referrerpolicy="no-referrer" class="itemimage" alt="first" width="60px" height="60px" [alt]="cat.data.name">
             <img [src]="storageUrl + cat.data.image" *ngIf="cat.data.image !== null && cat.data.image !== ''" referrerpolicy="no-referrer" class="itemimage" alt="first" width="60px" height="60px" [alt]="cat.data.name" />
+            <div class="categoryname">All</div>
         </div>
     </div>
 </div>

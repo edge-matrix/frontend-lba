@@ -10,7 +10,7 @@
   padding-bottom: 10px;
 }
 .searchbar{
-  display: flex;
+  // display: flex;
 }
 .searchbar input {
   height: 45px;
@@ -29,11 +29,11 @@
 }
 .arrow{
   position: relative;
-  right: 22px;
-  top: 9px;
+  top: -45px;
+  float: right;
+  right: 6px;
 }
 .orderhistorylist{
-  padding-top: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;

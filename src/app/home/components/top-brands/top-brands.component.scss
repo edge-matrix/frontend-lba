@@ -8,11 +8,13 @@
   }
   .topbrandlist{
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap:10px;
+    gap:15px;
+    overflow-y: hidden;
+    overflow-x: auto;
     margin-top: 10px;
+  }
+  .shoptitle{
+    white-space: nowrap;
   }
   .brands{
     display: flex;
@@ -36,7 +38,7 @@
     font-size:15px;
     font-weight: 500;
     margin-top: 5px;
-    width:95px;
+    width:100px;
     max-height:50px;
     overflow: hidden;
     text-overflow: ellipsis;

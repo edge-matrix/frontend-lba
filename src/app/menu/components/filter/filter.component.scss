@@ -35,15 +35,21 @@
   outline: none;
 }
 .search-fields{
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
+}
+.arrow{
+  position: relative;
+  top: -47px;
+  float: right;
+  right: -18px;
 }
 .itemcategorylist{
   display: flex;
-  align-items: center;
   gap: 10px;
-  overflow-y:hidden;
-  overflow-x: auto;
+  align-items: center;
+  overflow-y: hidden !important;
+  overflow-x: auto !important;
 }
 .category{
   text-align: center;
