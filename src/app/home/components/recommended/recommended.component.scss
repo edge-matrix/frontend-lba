@@ -123,3 +123,24 @@
   padding:5px 12px;
   color: #ffffff;
 }
+.location{
+    color: #7E7E7E;
+    font-size: 14px;
+    font-weight: 500;
+}
+.distanceandtime{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #7E7E7E;
+    font-size: 14px;
+    font-weight: 500;
+}
+.timerimg img{
+    height: 15px ;
+    width: 15px;
+}
+.timerimg{
+    position: relative;
+    top: -3px;
+}

@@ -41,6 +41,19 @@
   text-decoration: none;
   color:#000000;
 }
+.statuspageright{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.cancelbtn img{
+  height: 18px;
+  width: 18px;
+}
+.cancelbtn{
+  position: relative;
+  top: -3px;
+}
 .statuspageright .orderstatusheading{
   text-align: center;
   font-size:14px;
