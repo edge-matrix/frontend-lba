@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class OrderHistoryComponent implements OnInit {
 
-  data!: Array<Orders>;
+  data: Array<Orders> = [];
   allData!: Array<Orders>;
   links!: Array<Link>;
   page = 1;
@@ -41,7 +41,10 @@ export class OrderHistoryComponent implements OnInit {
       } else {
         if(response.paginate){
           let paginate: Paginate = response?.paginate;
-          this.data = paginate.data;
+          // this.data = paginate.data;
+          paginate.data.forEach(e => {
+            this.data.push(e);
+          });
           this.allData = paginate.data;
           this.links = paginate.links;
           this.lastPage = paginate.last_page?paginate.last_page:0;

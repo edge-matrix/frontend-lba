@@ -6,6 +6,8 @@
         padding-bottom:10px;
     }
     .lists{
+      height: 800px;
+      overflow: scroll;
         .list{
             width: 100%;
             display: flex;

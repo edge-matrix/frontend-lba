@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { NotificationRoutingModule } from './notification-routing.module';
 import { NotificationComponent } from './notification.component';
 import { CommonComponentModule } from '../_components/common-component.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CommonComponentModule } from '../_components/common-component.module';
     NotificationRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonComponentModule
+    CommonComponentModule,
+    InfiniteScrollModule
   ]
 })
 export class NotificationModule { }

@@ -18,23 +18,29 @@
                       <div class="markasread" (click)="markAsAllRead()"><span class="doubletick"><img src="assets/icons/markasread.png" alt=""></span><span>Mark as read</span></div>
                   </div>
                   <ng-container *ngIf="notifications && notifications.length > 0; else noItem">
-                    <div class="messagecontainer offerscontainer" *ngFor="let notify of notifications;let i = index" (click)="markAsRead(notify.id)" [routerLink]="'/'+notify.link">
-                      <div class="typeofmessage">
-                          <img src="assets/icons/order.png" alt="offers">
+                    <div class="search-results"
+                      infinite-scroll
+                      [infiniteScrollDistance]="1"
+                      [scrollWindow]="false"
+                      (scrolled)="paginate( page + 1)">
+                        <div class="messagecontainer offerscontainer" *ngFor="let notify of notifications;let i = index" (click)="markAsRead(notify.id)" [routerLink]="'/'+notify.link">
+                          <div class="typeofmessage">
+                              <img src="assets/icons/order.png" alt="offers">
+                          </div>
+                          <div class="meassagedetails">
+                              <div class="messagecontent">{{notify.description}}</div>
+                              <div class="messagedatetime">{{notify.created_at | date: 'medium'}}</div>
+                          </div>
+                          <div class="profilepic">
+                              <img src="assets/imagefolder/userimage.jfif" alt="profile pic">
+                          </div>
+                        </div>
                       </div>
-                      <div class="meassagedetails">
-                          <div class="messagecontent">{{notify.description}}</div>
-                          <div class="messagedatetime">{{notify.created_at | date: 'medium'}}</div>
-                      </div>
-                      <div class="profilepic">
-                          <img src="assets/imagefolder/userimage.jfif" alt="profile pic">
-                      </div>
-                    </div>
                   </ng-container>
                   <ng-template #noItem>
                     <no-item-page text="0 Notifications Found"></no-item-page>
                   </ng-template>
-                  <paginate *ngIf="links && links.length > 3" [page]="page" [links]="links" [lastPage]="lastPage" (paginate)="paginate($event)"></paginate>
+                  <!-- <paginate *ngIf="links && links.length > 3" [page]="page" [links]="links" [lastPage]="lastPage" (paginate)="paginate($event)"></paginate> -->
               </div>
               </ng-container>
               <ng-template #noLogin>

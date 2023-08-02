@@ -5,6 +5,7 @@ import { ShopListRoutingModule } from './shop-list-routing.module';
 import { ShopListComponent } from './shop-list.component';
 import { CommonComponentModule } from '../_components/common-component.module';
 import { FilterComponent, SearchComponent, ShopComponent } from './components';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FilterComponent, SearchComponent, ShopComponent } from './components';
     ShopListRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonComponentModule
+    CommonComponentModule,
+    InfiniteScrollModule
   ]
 })
 export class ShopListModule { }

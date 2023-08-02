@@ -17,7 +17,6 @@ export class PaginateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.links);
   }
 
   jumpToPage(page: string){

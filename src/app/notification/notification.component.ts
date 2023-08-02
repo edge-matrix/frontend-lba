@@ -11,7 +11,7 @@ import { SharedService, NotifyService } from '@service';
 })
 export class NotificationComponent implements OnInit {
 
-  notifications!: Array<Notification>;
+  notifications: Array<Notification> = [];
   links!: Link[];
   lastPage = 0;
 
@@ -38,7 +38,10 @@ export class NotificationComponent implements OnInit {
         if(response.paginate){
           let paginate: Paginate = response?.paginate;
           this.total = paginate.total?paginate.total:0;
-          this.notifications = paginate.data;
+          // this.notifications = paginate.data;
+          paginate.data.forEach(e => {
+            this.notifications.push(e);
+          });
           this.links = paginate.links;
           this.lastPage = paginate.last_page?paginate.last_page:0;
           this.notifications.sort((a, b) => (a.created_at < b.created_at ? 1 : -1));

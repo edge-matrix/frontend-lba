@@ -31,7 +31,10 @@ export class ShopComponent implements OnInit {
         this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.paginate){
-          this.shops = response.paginate.data;
+          // this.shops = response.paginate.data;
+          response.paginate.data.forEach(e => {
+            this.shops.push(e);
+          });
           this.links = response.paginate.links;
         }
       }

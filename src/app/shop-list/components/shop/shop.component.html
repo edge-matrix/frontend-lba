@@ -1,6 +1,9 @@
 <div class="resturantlist">
     <div class="listheading">All Restaurants</div>
-    <div class="lists">
+    <div class="lists" infinite-scroll
+    [infiniteScrollDistance]="1"
+    [scrollWindow]="false"
+    (scrolled)="paginate( page + 1)">
         <div class="list" *ngFor="let shop of shops" [routerLink]="'/menu/' + shop.slug">
             <div class="resturantimage">
               <img [src]="storageLink + shop.profileImage" alt="shop" *ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
