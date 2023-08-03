@@ -17,8 +17,10 @@
 .tabcontainer{
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 15px 0px 15px 0px;
+  gap: 15px;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 .tabs{
   border-radius:20px;

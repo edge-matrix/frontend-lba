@@ -73,3 +73,18 @@
 .cartrightpart button .cartcheckoutheading{
   color: #fff;
 }
+
+@media screen and (max-width:350px){
+  .cartrightpart button .cartvalue{
+    font-size:14px;
+  }
+  .cartrightpart button .cartcheckoutheading{
+    font-size: 12px;
+  }
+  .cartrightpart button{
+    padding:2px 18px !important;
+  }
+  .cartrightpart{
+    gap: 10px;
+  }
+}

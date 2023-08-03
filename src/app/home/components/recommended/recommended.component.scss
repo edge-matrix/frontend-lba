@@ -17,17 +17,17 @@
     color: #15597E;
 }
 .recommendedsection{
-    overflow: auto;
     margin-top: 10px;
     display: flex;
     align-items: center;
     gap: 15px;
+    flex-direction: column;
 }
 .recommendedcard{
     display: flex;
     flex-direction: column;
     gap: 0;
-    width: 250px;
+    width: 100%;
 }
 .favouritelogo{
     background-color: #FFFFFF;
@@ -36,9 +36,11 @@
     border-radius: 50%;
     position: relative;
     top:50px;
-    left: 208px;
+    float: right;
     text-align: center;
     cursor: pointer;
+    border: 1px solid #FC9C67;
+    right: 10px;
 }
 .favouritelogo span i{
     font-size:18px;
@@ -48,10 +50,11 @@
 }
 .recommendedimage{
     height: 190px;
+    width: 100%;
 }
 .recommendedimage img{
     height: 190px;
-    width: 250px;
+    width: 100%;
     object-fit: cover;
     border-radius: 8px 8px 0px 0px;
 }

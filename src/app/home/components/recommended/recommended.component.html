@@ -6,11 +6,13 @@
 
     <div class="recommendedsection">
         <div class="recommendedcard" *ngFor="let item of itemLists">
-            <div class="favouritelogo" *ngIf="sharedService.user && sharedService.user.id !== 0">
-                <span>
-                  <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
-                  <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
-                </span>
+            <div class="ab">
+                <div class="favouritelogo" *ngIf="sharedService.user && sharedService.user.id !== 0">
+                    <span>
+                      <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
+                      <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
+                    </span>
+                </div>
             </div>
             <div class="recommendedimage">
                 <img [src]="storageUrl + item.item.image" alt="item" *ngIf="item.item.image !== null && item.item.image !== ''"/>
