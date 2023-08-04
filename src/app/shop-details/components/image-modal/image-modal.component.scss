@@ -33,7 +33,14 @@ body {
   /* Hide the images by default */
   .mySlides img {
     display: block;
-    width: 100%;
+    object-fit: fill;
+    height: 280px;
+    width: 280px;
+  }
+  .mySlides {
+    object-fit: cover;
+    height: 280px;
+    width: 280px;
   }
   /* Next & previous buttons */
   .prev,
@@ -97,5 +104,6 @@ body {
     }
   }
   .w-100 {
-      width: 270px!important;
+      width: 280px!important;
+      height: 280px;
   }
