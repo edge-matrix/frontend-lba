@@ -69,12 +69,12 @@ export class OrderDetailsComponent implements OnInit {
       {id: 1, title: 'Pending', class: 'ordercooking', img: 'status/pending.png'},
       {id: 2, title: 'Accepted', class: 'orderconfirmed', img: 'status/accepted.png'},
       {id: 3, title: 'Rejected', class: 'orderrejected', img: 'status/rejected.png'},
-      {id: 4, title: 'In Process', class: 'ordercooking', img: 'status/in_process.png'},
+      {id: 4, title: 'In Process', class: 'ordercooking', img: 'status/pending.png'},
       {id: 5, title: 'Cooking', class: 'ordercooking', img: 'status/cooking.png'},
       {id: 6, title: 'Ready To Serve', class: 'orderreadytoserve', img: 'status/ready_to_serve.png'},
       {id: 7, title: 'Complete', class: 'orderconfirmed', img: 'status/completed.png'},
-      {id: 8, title: 'Complete & Paid', class: 'orderconfirmed', img: 'status/completed.png'},
-      {id: 9, title: 'Cancled', class: 'orderrejected', img: 'status/rejected.png'},
+      {id: 8, title: 'Complete & Paid', class: 'orderconfirmed', img: 'status/complete_paid.png'},
+      {id: 9, title: 'Canceld', class: 'orderrejected', img: 'status/cancel.png'},
     ];
     return status.filter(e => e.id === id)[0];
   }

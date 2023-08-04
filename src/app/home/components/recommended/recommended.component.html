@@ -21,8 +21,8 @@
             <div class="recommendeditemdetail">
                 <div class="itemname">{{item.item.name}}</div>
                 <div class="itemdescription">{{item.item.category?.name}}</div>
-                <div class="location">Civil Lines,Prayagraj</div>
-                <div class="distanceandtime">
+                <div class="location" *ngIf="item.item.shop">{{ item.item.shop.title }}</div>
+                <div class="distanceandtime" *ngIf="item.item.shop && item.item.shop.address">
                     <div class="timerimg"><img src="assets/imagefolder/stopwatch.png" alt=""></div>
                     <div>25-30 min . </div>
                     <div>1 Km</div>
