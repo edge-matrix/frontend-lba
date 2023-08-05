@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Paginate, Link, Response, Orders, Cart, OrdersProducts } from '@models';
 import { ComboDetailsService, OrdersService, SharedService, StorageService } from '@service';
+import { interval } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
@@ -19,6 +20,7 @@ export class OrderHistoryComponent implements OnInit {
   lastPage = 0;
   storageUrl = environment.storage;
   searchKeyword = '';
+  timer!: any;
   constructor(public sharedService: SharedService,
     private storageService: StorageService,
     private orderService: OrdersService,
@@ -30,8 +32,15 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.sharedService.user && this.sharedService.user.id !== 0){
-      this.orderList();
+      this.timer = interval(1*60*1000).subscribe(() => {
+        this.orderList();
+      });
     }
+    this.orderList();
+  }
+
+  ngOnDestroy() {
+    this.timer.unsubscribe();
   }
 
   orderList(){

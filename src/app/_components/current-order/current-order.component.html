@@ -1,4 +1,4 @@
-<div class="orderstatusnavigation" *ngIf="data && data.shop">
+<div class="orderstatusnavigation" *ngIf="data && data.shop && sharedService.bottomBadgeVisible.order">
   <div class="orderstatusnavigationfloat">
       <div class="statuspageleft">
         <img src="assets/imagefolder/resturantimg.jfif" *ngIf="data.shop.profileImage === null || data.shop.profileImage === ''" referrerpolicy="no-referrer"  alt="restaurant image" />
@@ -13,7 +13,7 @@
       </div>
       <div class="statuspageright">
         <div [class]="'orderstatusheading orderstausbadge ' + getStatus(data.status).class">{{getStatus(data.status).title}}</div>
-        <div class="cancelbtn"><img src="assets/imagefolder/cancel.png" alt=""></div>
+        <div class="cancelbtn" (click)="sharedService.bottomBadgeVisible.order = 0"><img src="assets/imagefolder/cancel.png" alt=""></div>
       </div>
   </div>
 </div>

@@ -40,6 +40,17 @@ export class OnlinePaymentsComponent implements OnInit {
     });
   }
 
+  // openPaymentModal(){
+  //   let transactionId = '';
+  //   this.order.payment_details?.forEach(e => {
+  //     if(e.paymentMethod === 4 && e.status === 0){
+  //       transactionId = e.transactionId;
+  //     }
+  //   });
+  //   const url = environment.paymentUrl + '?token=' + transactionId;
+  //   window.location.href = url;
+  // }
+
   openPaymentModal(){
     let transactionId = '';
     this.order.payment_details?.forEach(e => {
@@ -47,7 +58,7 @@ export class OnlinePaymentsComponent implements OnInit {
         transactionId = e.transactionId;
       }
     });
-    const url = environment.paymentUrl + '?token=' + transactionId;
+    const url = environment.paymentUrl + transactionId;
     window.location.href = url;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Paginate, Link, Response, Orders } from '@models';
 import { OrdersService, SharedService } from '@service';
+import { interval } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,6 +14,7 @@ export class CurrentOrderComponent implements OnInit {
   data!: Orders;
   page = 1;
   storageUrl = environment.storage;
+  timer: any;
   constructor(public sharedService: SharedService,
     private orderService: OrdersService,
     ) {
@@ -21,8 +23,15 @@ export class CurrentOrderComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.sharedService.user && this.sharedService.user.id !== 0){
+      this.timer = interval(1*60*1000).subscribe(() => {
+        this.orderList();
+      });
       this.orderList();
     }
+  }
+
+  ngOnDestroy() {
+    this.timer.unsubscribe();
   }
 
   orderList(){

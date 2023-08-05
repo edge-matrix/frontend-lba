@@ -31,6 +31,10 @@ export class SharedService {
     category: 0,
   };
   private cart: BehaviorSubject<Array<Cart>>;
+  bottomBadgeVisible = {
+    'cart': 1,
+    'order': 1,
+  };
 
   constructor(
     private location: Loc,

@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { Cart, Orders, OrdersProducts, Response } from '@models';
 import { BookService, ComboDetailsService, OrdersService, SharedService, StorageService } from '@service';
 
-import { Subscription } from 'rxjs';
+import { Subscription, interval } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Location as Loc } from '@angular/common';
 
@@ -18,6 +18,7 @@ export class OrderDetailsComponent implements OnInit {
   navSubscription!: Subscription;
   storageUrl = environment.storage;
   cancleStatus = false
+  timer!: Subscription;
   constructor(
     public sharedService: SharedService,
     private storageService: StorageService,
@@ -41,9 +42,13 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.orderId = this.activeRoute.snapshot.params['orderId'];
     this.orderDetails();
+    this.timer = interval(1*60*1000).subscribe(() => {
+      this.orderDetails()
+    });
   }
 
   ngOnDestroy() {
+    this.timer.unsubscribe();
     this.navSubscription.unsubscribe();
   }
 

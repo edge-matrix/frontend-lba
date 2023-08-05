@@ -25,7 +25,7 @@
                       (scrolled)="paginate( page + 1)">
                         <div class="messagecontainer offerscontainer" *ngFor="let notify of notifications;let i = index" (click)="markAsRead(notify.id)" [routerLink]="'/'+notify.link">
                           <div class="typeofmessage">
-                              <img src="assets/icons/order.png" alt="offers">
+                              <img src="assets/icons/exclamation.png" alt="offers">
                           </div>
                           <div class="meassagedetails">
                               <div class="messagecontent">{{notify.description}}</div>
