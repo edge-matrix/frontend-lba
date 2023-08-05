@@ -1,0 +1,85 @@
+<section>
+  <div class="container">
+    <div class="title">Campus Ambassador Program</div>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="user__details">
+        <div class="input__box">
+          <span class="details">Full Name</span>
+          <input type="text" placeholder="John Smith" formControlName="name">
+          <div *ngIf="submitted && contactForm.invalid && g['name'].errors">
+            <div *ngIf="g['name'].errors['required']" class="invalid-error">
+              <p>Name is Required</p>
+            </div>
+          </div>
+        </div>
+        <div class="input__box">
+          <span class="details">College Name</span>
+          <input type="text" placeholder="IIT Bombay" formControlName="collageName">
+          <div *ngIf="submitted && contactForm.invalid && g['collageName'].errors">
+            <div *ngIf="g['collageName'].errors['required']" class="invalid-error">
+              <p>Collage Name is Required</p>
+            </div>
+          </div>
+        </div>
+        <div class="input__box">
+          <span class="details">Email</span>
+          <input type="email" placeholder="johnsmith@hotmail.com" formControlName="email">
+          <div *ngIf="submitted && g['email'].errors">
+            <div *ngIf="g['email'].errors['required']" class="invalid-error">
+              <p>Email is required</p>
+            </div>
+            <div *ngIf="g['email'].errors['pattern']" class="invalid-error">
+            <p>Email must be a Valid.</p>
+            </div>
+          </div>
+        </div>
+        <div class="input__box">
+          <span class="details">Phone Number</span>
+          <input type="tel" placeholder="9219236645" formControlName="phone">
+          <div *ngIf="submitted && g['phone'].errors">
+            <div *ngIf="g['phone'].errors['required']" class="invalid-error">
+              <p>Phone is required</p>
+            </div>
+            <div *ngIf="g['phone'].errors['pattern']" class="invalid-error">
+            <p>Phone Number must be a Valid.</p>
+            </div>
+          </div>
+        </div>
+        <div class="input__box">
+          <span class="details">Year</span>
+          <select formControlName="year">
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="gender__details">
+        <input type="radio" name="gender" id="dot-1" value="Male" formControlName="gender" checked>
+        <input type="radio" name="gender" id="dot-2" value="Female" formControlName="gender">
+        <input type="radio" name="gender" id="dot-3" value="Prefer not to say" formControlName="gender">
+        <span class="gender__title">Gender</span>
+        <div class="category">
+          <label for="dot-1">
+            <span class="dot one"></span>
+            <span>Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span>Female</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span>Prefer not to say</span>
+          </label>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Apply Now">
+      </div>
+    </form>
+  </div>
+</section>
+<app-loader></app-loader>

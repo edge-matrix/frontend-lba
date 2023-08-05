@@ -44,7 +44,10 @@ export class ItemComponent implements OnInit {
 
 
   findItemFromCart(i: number){
-    return this.cart.find(e => e.itemId === i);
+    if(this.cart){
+      return this.cart.find(e => e.itemId === i);
+    }
+    return;
   }
 
   isShopSame(shopId: number){

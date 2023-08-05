@@ -1,0 +1,348 @@
+<section class="headersection">
+  <div class="header">
+      <div>
+          <!-- <img src="https://letsbunkagain.com/assets/imagefolder/lbalogo.png" alt="lets bunk again logo" width="50px"> -->
+          <span class="yellow">Lets</span><span class="blue"> Bunk </span><span class="yellow"> Again </span>
+      </div>
+      <div>
+        <button class="joinnowbtn" routerLink="../vendor-page-form">
+            Get Started
+        </button>
+      </div>
+  </div>
+</section>
+<div class="container">
+  <section class="laptopsection">
+      <div class="textcentermobile">
+          <div class="lbaheading">Lets <span>Bunk</span> Again</div>
+          <div class="tagline"><span class="highlighted">No</span> High <span class="highlighted">Commission</span> get order with <span class="lbaheading"> Zero % </span> Commissions</div>
+      </div>
+      <div class="laptopandmobileimg">
+          <span class="laptopimgarea"><img src="assets/imagefolder/vendor-form/laptopandmobile.png" alt=""></span>
+      </div>
+  </section>
+  <section class="modernorderingsection">
+      <div class="modernorderingsoltionheading">Modern Ordering Solution for Restaurants / Cafe</div>
+      <div class="mordernorderingdescription">Attract customers and grow your restaurant revenue with your own online
+          ordering system</div>
+      <div class="modernorderingsolutions">
+          <div>
+              <div class="mordernorderingsectionimg"><img src="assets/imagefolder/vendor-form/digitalmenu.png" alt=""></div>
+              <div>Digital Menu</div>
+          </div>
+          <div>
+              <div class="mordernorderingsectionimg"><img src="assets/imagefolder/vendor-form/onlineordering.png" alt=""></div>
+              <div> QR Based Ordering System</div>
+          </div>
+          <div>
+              <div class="mordernorderingsectionimg"><img src="assets/imagefolder/vendor-form/preordering.png" alt=""></div>
+              <div>
+                  <div>Pre-ordering system/ Take aways</div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <section class="benefitssection">
+      <div class="benefitsheading">Benefits</div>
+      <div class="benefitmenuandbusinessdashboard">
+          <div>
+              <div class="benefititemsheading">Digital Menu</div>
+              <div class="benefititemsdescription">Develop visually appealing digital menus that incorporate item images, descriptions, customizable options, and enticing add-ons. These menus are designed to enhance the customer experience by providing clear information and a personalized selection process, resulting in a delightful dining experience.</div>
+          </div>
+          <div class="benefitimages"><img src="assets/imagefolder/vendor-form/QRcode.svg" alt=""></div>
+      </div>
+      <div class="benefitorderdashboardanddinning">
+          <div class="benefitimages"><img src="assets/imagefolder/vendor-form/laptop.png" alt=""></div>
+          <div>
+              <div class="benefititemsheading">Order Dashboard</div>
+              <div class="benefititemsdescription">Efficiently oversee your store operations, monitor item availability, and keep track of all active orders. Streamline your workflow by managing inventory, ensuring timely order fulfillment, and maintaining organized records. Stay on top of your business with a comprehensive system that enables smooth store management and efficient order tracking.
+              </div>
+          </div>
+      </div>
+      <div class="benefitmenuandbusinessdashboard">
+          <div>
+              <div class="benefititemsheading">Business Dashboard</div>
+              <div class="benefititemsdescription">Efficiently oversee your menu, implement marketing strategies, maintain business control, and review performance. Manage and optimize your menu offerings, market your business effectively, maintain control over key details, and regularly assess performance to drive improvement. Stay in command of your business operations with ease and effectiveness.</div>
+          </div>
+          <div class="benefitimages"><img src="assets/imagefolder/vendor-form/bussinessdashboard.png" alt="" style="border:2px solid #15597E;border-radius: 10px;"></div>
+      </div>
+      <div class="benefitorderdashboardanddinning">
+          <div class="benefitimages"><img src="assets/imagefolder/vendor-form/mobile.png" alt="" style="border-radius: 10px;object-fit: contain;"></div>
+          <div>
+              <div class="benefititemsheading">Excess From Any Device</div>
+              <div class="benefititemsdescription">Owners have the flexibility to access all data from any device at any time. This allows them to conveniently monitor and retrieve information about their business operations, including sales, inventory, customer data, and performance metrics, providing a seamless experience for managing their business efficiently.</div>
+          </div>
+      </div>
+  </section>
+  <section class="howitworksection">
+      <div class="howitworksectionheading">How It work sections</div>
+      <div class="tabnavigationsection">
+          <section class="section-wrapper">
+              <div class="tab-wrapper">
+                  <!-- use data-target value as ID to show tab content -->
+                  <div class="tab-btns">
+                      <button class="btn tab-btn qrandpreordering"  [ngClass]="{'active':tab === 1}" (click)="tab = 1">QR Steps:</button>
+                      <button class="btn tab-btn qrandpreordering"  [ngClass]="{'active':tab === 2}" (click)="tab = 2">Pre-Order:</button>
+                      <button class="btn tab-btn"  [ngClass]="{'active':tab === 3}" (click)="tab = 3">Online Order:</button>
+                  </div>
+                  <div class="tab-contents">
+                      <!-- single item -->
+                      <div class="content" [ngClass]="{'active':tab === 1}">
+                          <div class="howitworksstepsinvolved">
+                              <div class="allstepswidth">
+                                  <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/qr-code.png" alt=""></div>
+                                  <div>1. Scan QR Code</div>
+                              </div>
+                              <div class="allstepswidth">
+                                  <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/place-order.png" alt=""></div>
+                                  <div>
+                                      2. Select items & Place Orders
+                                  </div>
+                              </div>
+                              <div class="allstepswidth">
+                                  <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/payment.png" alt=""></div>
+                                  <div>
+                                  3. Choose Between Pay Now or Pay at Shop
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- end of single item -->
+                      <!-- single item -->
+                      <div class="content"  [ngClass]="{'active':tab === 2}">
+                          <div class="howitworksstepsinvolved">
+                          <div class="allstepswidth">
+                              <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/qr-code.png" alt=""></div>
+                              <div>
+                              1. Open Shop Via QR or By Searching
+                              </div>
+                          </div>
+                          <div class="allstepswidth">
+                              <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/place-order.png" alt=""></div>
+                              <div>
+                                  2. Select items & Place Orders
+                              </div>
+                          </div>
+                          <div class="allstepswidth">
+                              <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/payment.png" alt=""></div>
+                              <div>
+                                  3. Choose Between Pay Now or Pay at Shop
+                              </div>
+                          </div>
+                          </div>
+                      </div>
+                      <!-- end of single item -->
+                      <!-- single item -->
+                      <div class="content"  [ngClass]="{'active':tab === 3}">
+                          <div class="howitworksstepsinvolved">
+                              <div class="allstepswidth">
+                                  <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/qr-code.png" alt=""></div>
+                                  <div>
+                                  1. Open Shop Via QR or By Searching
+                                  </div>
+                              </div>
+                              <div class="allstepswidth">
+                                  <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/place-order.png" alt=""></div>
+                                  <div>
+                                      2. Select items & Place Orders
+                                  </div>
+                              </div>
+                              <div class="allstepswidth">
+                                  <div class="howitworkimg"><img src="assets/imagefolder/vendor-form/section/payment.png" alt=""></div>
+                                  <div>
+                                      3. Fill Complete Address and Pay Securely
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- end of single item -->
+                  </div>
+              </div>
+          </section>
+      </div>
+  </section>
+  <!-- <section class="pricingsection">
+      <div class="pricingsectionheader">
+          <div class="pricingheading">Pricing</div>
+          <div class="pricingtagline">Plans designed for organizations of all sizes. </div>
+          <div class="pricingheaderdiscount">
+              <span>Monthly</span>
+              <span>
+                  <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider round"></span></label>
+              </span>
+              <span>Yearly</span>
+              <span class="pricingsectionheaderdiscount">-15%</span>
+          </div>
+      </div>
+      <div class="pricingcardscontainer">
+          <div class="pricingcards recommendedpricingcards">
+              <div class="recommendedheading">Recommended</div>
+              <div class="pricingcardsprice"><span class="pricecardsamount">0</span> / <span>Month</span></div>
+              <div class="pricingcardsname">Standard</div>
+              <div class="pricingcardsdescription">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ea sapiente nisi aliquid beatae
+                  perferendis eius tenetur reiciendis natus saepe, ducimus ipsa laudantium minus similique commodi
+                  voluptate. Totam ullam voluptas id repellat quo sequi aspernatur aliquam veniam? Iure, quas veniam?
+              </div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+          </div>
+          <div class="pricingcards">
+              <div class="pricingcardsprice"><span class="pricecardsamount">0</span> / <span>Month</span></div>
+              <div class="pricingcardsname">Standard</div>
+              <div class="pricingcardsdescription">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ea sapiente nisi aliquid beatae
+                  perferendis eius tenetur reiciendis natus saepe, ducimus ipsa laudantium minus similique commodi
+                  voluptate. Totam ullam voluptas id repellat quo sequi aspernatur aliquam veniam? Iure, quas veniam?
+              </div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+          </div>
+          <div class="pricingcards">
+              <div class="pricingcardsprice"><span class="pricecardsamount">0</span> / <span>Month</span></div>
+              <div class="pricingcardsname">Standard</div>
+              <div class="pricingcardsdescription">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ea sapiente nisi aliquid beatae
+                  perferendis eius tenetur reiciendis natus saepe, ducimus ipsa laudantium minus similique commodi
+                  voluptate. Totam ullam voluptas id repellat quo sequi aspernatur aliquam veniam? Iure, quas veniam?
+              </div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+              <div class="pricingcardscorrecttextarea"><span class="pricingcardscorrectsign"><i
+                          class="fas fa-check-circle" style="color: #fc9c69;"></i></span><span>Text</span></div>
+          </div>
+      </div>
+  </section> -->
+  <section class="gotquestionsection">
+      <div class="questionsheading">Got Questions?</div>
+      <div class="commonquestionhesding">Below you'll find answers to some of the most common questions about LBA.
+      </div>
+      <div class="accordionofquestions">
+          <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <span class="questionlogo"><img src="assets/imagefolder/vendor-form/questionwhere.png" alt=""></span><span>How to sign up in LBA?</span>
+                      </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                          Please fill out the below form on this page. One of our experts will reach you and schedule a custom demo for your business shortly.
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <span class="questionlogo"><img src="assets/imagefolder/vendor-form/questionwho.png" alt=""></span><span>How long does it take to set up LBA?</span>
+                      </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                          On receiving your confirmation and restaurant menu, normally it takes us a maximum of 2 working days to set up LBA. We are currently working on reducing this time, so that LBAis implemented in less than 2 days.
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          <span class="questionlogo"><img src="assets/imagefolder/vendor-form/questionresponsible.png" alt=""></span><span>Can I change the price of an item?</span>
+                      </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                          Yes, you can change the price at any time from your dashboard.
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                          <span class="questionlogo"><img src="assets/imagefolder/vendor-form/questionswhat.png" alt=""></span><span>Does LBA require any additional hardware?</span>
+                      </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                          No. LBA does not require any additional hardware. It can work on any mobile, tablets or desktop/laptop device.
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                          <span class="questionlogo"><img src="assets/imagefolder/vendor-form/questionwho.png" alt=""></span><span>Are you offering delivery services?</span>
+                      </button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                          No. We are not offering for now, But We are planning to do so shortly.
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="morequestionheading">Have more questions? Get in touch with our team.</div>
+      <div class="contactusbutton">
+          <button><span><i class="fab fa-whatsapp" style="color: #fc9c69;"></i></span><span>Chat with us on
+                  Whatsapp</span></button>
+          <button><span><i class="fas fa-at"
+                      style="color: #fc9c69;"></i></span><span>Drop a mail in our inbox</span></button>
+      </div>
+  </section>
+  <section class="getstartedsection">
+      <div class="getstartedheading">Get Started</div>
+      <div class="getstartedtagline">Stop high commission</div>
+      <div class="acceptordersheading">Accept orders directly from customers without paying hefty commissions.</div>
+      <div class="getstartedbuttonsection">
+          <div class="getstartedbuttonsectionimg"><img src="assets/imagefolder/vendor-form/stopwatch.png" alt=""></div>
+          <div class="getstartedbutton">
+              <button class= "joinnowbtn" routerLink="../vendor-page-form">
+                  Start Now
+              </button>
+          </div>
+          <div class="getstartedbuttonsectionimg"><img src="assets/imagefolder/vendor-form/book.png" alt=""></div>
+      </div>
+  </section>
+</div>
+<footer [show]="false"></footer>
+<bottom-nav></bottom-nav>

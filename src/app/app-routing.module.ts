@@ -19,6 +19,8 @@ const routes: Routes = [
   { path: 'search', loadChildren: () => import('./search-result/search-result.module').then(m => m.SearchResultModule) },
 
   { path: 'notification', loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule), canActivate: [AuthGuard], },
+  { path: 'policies', loadChildren: () => import('./policies/policies.module').then(m => m.PoliciesModule) },
+  { path: 'programs', loadChildren: () => import('./programs/programs.module').then(m => m.ProgramsModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 

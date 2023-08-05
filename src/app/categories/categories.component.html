@@ -8,7 +8,7 @@
         </div>
         <div class="allcategorylist">
             <div class="category" *ngFor="let cat of categories" [title]="cat.data.name" (click)="updateCategory(cat.data.id)">
-              <img src="assets/imagefolder/resturantimg.jfif" *ngIf="cat.data.image === null || cat.data.image === ''" referrerpolicy="no-referrer" alt="first" [alt]="cat.data.name">
+              <img src="assets/icons/all.png" *ngIf="cat.data.image === null || cat.data.image === ''" referrerpolicy="no-referrer" alt="first" [alt]="cat.data.name">
               <img [src]="storageUrl + cat.data.image" *ngIf="cat.data.image !== null && cat.data.image !== ''" referrerpolicy="no-referrer" alt="first" [alt]="cat.data.name" />
               <span>{{cat.data.name}}</span>
             </div>

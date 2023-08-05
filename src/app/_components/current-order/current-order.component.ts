@@ -31,7 +31,9 @@ export class CurrentOrderComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.timer.unsubscribe();
+    if(this.sharedService.user && this.sharedService.user.id !== 0){
+      this.timer.unsubscribe();
+    }
   }
 
   orderList(){

@@ -1,0 +1,87 @@
+<div class="vendorregistrationform container">
+  <div class="row">
+      <div class="col-md-5">
+          <div class="vendor-onboarding-left-side">
+              <div class="companyname" routerLink="../vendor-page">
+                  <!-- <img src="https://letsbunkagain.com/assets/home/img/lbalogo.png" alt="" width="40px" height="40px"/> -->
+                  &nbsp;&nbsp;&nbsp;
+                  <span class="highlightedtext">Lets</span><span class="secondhighlight"> Bunk</span><span class="highlightedtext"> Again</span>
+              </div>
+              <h1 class="heading">Set up your online food ordering system in 15 minutes!</h1>
+              <h3 class="subheading">Accept orders directly from customers without paying hefty aggregator commissions.</h3>
+              <img src="assets/home/img/vendor-form/primaryimg.png" alt="" width="100%"/>
+          </div>
+      </div>
+      <div class="col-md-1">
+          &nbsp;
+      </div>
+      <div class="col-md-6">
+          <div class="vendoronboardingform">
+              <h1 class="heading">Onboard Now With <span class="highlightedtext">Zero %</span> commission</h1>
+              <h3 class="subheading">Please keep the information ready for a smooth signup and fill the form below!</h3>
+              <div class="document-required-for-vendor">
+                  <ul>
+                      <li>FSSAI Certificate</li>
+                      <li>GST Number ( If Applicable )</li>
+                      <li>Your Outlet location </li>
+                      <li>Bank account detail</li>
+                  </ul>
+              </div>
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                  <input class="vendor-onboarding-input" type="text"  placeholder="* Your Full Name" formControlName="name" />
+                  <div *ngIf="submitted && contactForm.invalid && g['name'].errors">
+                    <div *ngIf="g['name'].errors['required']" class="invalid-error">
+                      <p>Name is Required</p>
+                    </div>
+                  </div>
+                  <input class="vendor-onboarding-input" type="tel" placeholder="Mobile Number" formControlName="phone" />
+                  <div *ngIf="submitted && g['phone'].errors">
+                    <div *ngIf="g['phone'].errors['required']" class="invalid-error">
+                      <p>Phone is required</p>
+                    </div>
+                    <div *ngIf="g['phone'].errors['pattern']" class="invalid-error">
+                    <p>Phone Number must be a Valid.</p>
+                    </div>
+                  </div>
+                  <input class="vendor-onboarding-input" type="email" placeholder="Email" formControlName="email"/>
+                  <div *ngIf="submitted && g['email'].errors">
+                    <div *ngIf="g['email'].errors['required']" class="invalid-error">
+                      <p>Email is required</p>
+                    </div>
+                    <div *ngIf="g['email'].errors['pattern']" class="invalid-error">
+                    <p>Email must be a Valid.</p>
+                    </div>
+                  </div>
+                  <input class="vendor-onboarding-input" type="text" placeholder="Restaurant Name" formControlName="shopName" />
+                  <div *ngIf="submitted && contactForm.invalid && g['shopName'].errors">
+                    <div *ngIf="g['shopName'].errors['required']" class="invalid-error">
+                      <p>Shop Name is Required</p>
+                    </div>
+                  </div>
+                  <input class="vendor-onboarding-input" type="number" placeholder="Number of Outlets" formControlName="outlets" min="1" />
+                  <div *ngIf="submitted && contactForm.invalid && g['outlets'].errors">
+                    <div *ngIf="g['outlets'].errors['required']" class="invalid-error">
+                      <p>Field is Required</p>
+                    </div>
+                  </div>
+                  <input class="vendor-onboarding-input" type="text" placeholder="Address" formControlName="address" />
+                  <div *ngIf="submitted && contactForm.invalid && g['address'].errors">
+                    <div *ngIf="g['address'].errors['required']" class="invalid-error">
+                      <p>Field is Required</p>
+                    </div>
+                  </div>
+                  <button class="submit-btn" type='submit'>Submit</button>
+              </form>
+              <div class="agreementtext">
+                  By creating an account on letsbunkagain.com,
+                  you confirm that you agree with the
+                  <!-- <a href="#">Merchant Agreement</a>, -->
+                  <a href="https://letsbunkagain.com/policies/terms-condition">Terms of Use</a> and
+                  <a href="https://letsbunkagain.com/policies/privacy-policy">Privacy Policy.</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<footer [show]="false"></footer>
+<bottom-nav></bottom-nav>

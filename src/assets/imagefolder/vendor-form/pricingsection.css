@@ -1,0 +1,143 @@
+.pricingsection{
+    padding: 20px;
+}
+.pricingsectionheader{
+    text-align: center;
+}
+.pricingheading{
+    font-weight: 600;
+    font-size: 30px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+.pricingtagline{
+    font-weight: 500;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+.pricingheaderdiscount{
+    font-weight: 600;
+    color: #000000;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    height: 25px;
+}
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cccccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 5px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+} 
+input:checked + .slider {
+    background-color: #15597E;
+} 
+input:focus + .slider {
+    box-shadow: 0 0 1px #15597E;
+}
+input:checked + .slider:before {
+    -webkit-transform: translateX(29px);
+    -ms-transform: translateX(29px);
+    transform: translateX(34px);
+}
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+.pricingsectionheaderdiscount{
+    background: #47B21480;
+    border-radius: 10px;
+    padding: 4px 10px;
+}
+.pricingcardscontainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.pricingcards{
+    max-width: 380px;
+    background: #FFFCF3;
+    border: 1px solid #FC9C67;
+    border-radius: 10px;
+    padding: 40px 20px 30px 20px;
+}
+.pricingcardsprice{
+    color: #15597ECC;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.pricecardsamount{
+    font-weight: 600;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+.pricingcardsname{
+    font-weight: 600;
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+.pricingcardsdescription{
+    color: #00000080;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 15px 0px;
+    margin: 20px 0px;
+    border-bottom: 1px solid #FC9C6780;
+}
+.pricingcardscorrecttextarea{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #000000;
+    margin: 10px 0px;
+}
+.pricingcardscorrectsign i{
+    font-size: 30px;
+}
+.recommendedheading{
+    background: #FC9C67;
+    border-radius: 10px;
+    color: #FFFFFF;
+    padding: 12px 16px;
+    display: inline-block;
+    position: relative;
+    top: -65px;
+    left: 30px;
+}

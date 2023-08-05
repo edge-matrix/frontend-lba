@@ -1,0 +1,148 @@
+.header{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.yellow{
+    font-weight:500;
+    font-size:20px;
+    color: #FEB300;
+}
+.blue{
+    font-weight:500;
+    font-size:20px;
+    color: #15597E;
+}
+.header img{
+    margin-right: 10px;
+}
+.header button{
+    background: #FEB300;
+    border-radius: 5px;
+    border: none;
+    color: #F5F5F5;
+    padding: 10px 20px;
+}
+.centerpart{
+    /* padding-top:80px; */
+    display: flex;
+    align-items: center;
+}
+.centerpart .yellow{
+    font-weight:500;
+    font-size:32px;
+    color: #FEB300;
+}
+.centerpart .blue{
+    font-weight:500;
+    font-size:32px;
+    color: #15597E;
+}
+.centerpart p{
+    padding-top: 30px;
+    font-weight: 500;
+    font-size:36px;
+    color: #15597E;
+}
+.centerleft span{
+    margin-top: 25px;
+    font-weight: 400;
+    font-size:20px;
+    color: #968B8B;
+}
+.centerinfo{
+    padding-top:40px;
+}
+.centerinfo .info{
+    padding-left: 10px;
+    font-weight: 400;
+    font-size:18px;
+
+    color: #585858;
+}
+.apply{
+    padding-top: 40px;
+}
+.apply button{
+    background: #FA5457;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+}
+.centerpartsecond{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.hiringprocessheading{
+    font-weight: 500;
+    font-size:32px;
+    color: #15597E;
+}
+.hiringprocess{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.cards{
+    width:150px;
+    height: 150px;
+    padding: 20px 15px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #C9C9C9;
+    margin:10px;
+    font-weight: 500;
+    font-size:18px;
+    text-align: center;
+}
+.centerthird{
+    /* text-align: center; */
+    padding-bottom: 20px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.benfitsheading{
+    font-weight: 700;
+    font-size: 36px;
+    color: #15597E;
+    /* text-align: center; */
+    padding-bottom: 10px;
+}
+.centerthird i{
+    font-size:32px;
+    padding-right: 10px;
+}
+.centerfourth{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    margin-bottom:50px;
+}
+.benefit{
+    font-size:24px;
+}
+.fandqheading{
+    font-weight: 700;
+    font-size:32px;
+    line-height: 58px;
+    color: #15597E;
+    text-align: center;
+    padding-bottom:25px;
+}
+.accordion{
+    font-size: 20px;
+}
+@media screen and (max-width: 768px){
+    .centerpart{
+        flex-direction: column;
+        align-items: center;
+    }
+}

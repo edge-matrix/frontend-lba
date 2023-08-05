@@ -1,0 +1,84 @@
+.vendorregistrationform{
+    font-family: 'Inter';
+    font-style: normal;
+    padding: 25px 0px;
+}
+.highlightedtext{
+    color: #FEB300 !important;
+}
+.vendoronboardingform{
+    background: #FFFCF3;
+    border: 1px solid #FC9C67;
+    border-radius: 15px;
+    padding:20px 30px;
+}
+.vendoronboardingform .heading{
+    font-weight: 600;
+    font-size:26px;
+    color: #15597E;
+}
+.vendoronboardingform .subheading{
+    font-weight: 500;
+    font-size:15px;
+    color:#808080;
+    padding:5px 0px;
+}
+.document-required-for-vendor ul li{
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+.vendor-onboarding-input{
+    width: 100%;
+    outline: none;
+    border: 1px solid #FC9C67;
+    border-radius: 10px;
+    padding:14px 20px;
+    background:#FFFCF3;
+    font-weight: 500;
+    font-size:16px;
+    margin-bottom:15px;
+}
+.vendor-onboarding-input::placeholder{
+    font-weight: 500;
+    font-size:16px;
+    color: #15597E;
+}
+.submit-btn{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #15597E;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: #FFFFFF;
+    padding:10px 40px;
+    margin-bottom:20px;
+}
+.agreementtext{
+    text-align: center;
+    font-weight: 500;
+    font-size:12px;
+    color:#808080;
+}
+.vendor-onboarding-left-side .heading{
+    font-weight: 600;
+    font-size: 30px;
+    color: #000000;
+    padding-bottom: 15px;
+}
+.vendor-onboarding-left-side .subheading{
+    font-weight: 500;
+    font-size: 16px;
+    color: #15597E;
+    padding-bottom: 25px;
+}
+.companyname{
+    padding-bottom: 30px;
+}
+.secondhighlight{
+    font-weight: 600;
+    font-size: 15px;
+}

@@ -40,7 +40,9 @@ export class FilterComponent implements OnInit {
           this.categories = [];
           this.categories.push({data: {id: 0, name: 'All', slug: 'all', status: 1, image: ''}, isActive: true});
           response.data.forEach(cat => {
-            this.categories.push({data: cat, isActive: false});
+            if(this.shop.items.filter(e => e.items_categories_id === cat.id).length > 0){
+              this.categories.push({data: cat, isActive: false});
+            }
           });
         }
       }

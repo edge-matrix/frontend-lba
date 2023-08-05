@@ -1,0 +1,46 @@
+.settingpage{
+  width: 100% !important;
+}
+.settingpageheader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
+}
+.settngpageheading{
+  color: #000;
+  font-size:22px;
+  font-weight: 600;
+}
+.settingpagequickaccess{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.settingpagequickaccess span i{
+  font-size: 20px;
+}
+.settingpageoption{
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding: 0 10px;
+}
+.settingoption{
+  display: flex;
+  align-items: center;
+  gap:20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom:2px solid rgba(252, 156, 103, 0.25);
+  cursor: pointer;
+}
+.settingoption i{
+  font-size: 20px;
+  color:#848484;
+}
+.optionheading{
+  font-size: 18px;
+  font-weight:500;
+  color: #000000;
+}
