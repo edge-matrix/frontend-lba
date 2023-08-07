@@ -29,6 +29,10 @@
   display: flex;
 }
 .cartshopdetails .shopname{
+  width: 120px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 14px;
   font-weight: 500;
 }
