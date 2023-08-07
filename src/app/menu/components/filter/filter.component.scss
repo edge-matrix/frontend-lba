@@ -60,6 +60,7 @@
   width:90px;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex-shrink: 0;
 }
 .category img{
   width:70px;
