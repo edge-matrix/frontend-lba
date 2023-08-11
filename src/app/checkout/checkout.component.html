@@ -50,23 +50,44 @@
                 </div>
             </div>
             <div class="summaryheading">Order Summary</div>
-            <div class="summaryamount">
-                <div class="summarydetailname">
-                    <div>SubTotal</div>
-                    <div *ngIf="payments.taxes != 0">Taxes (GST + Service Charge) {{payments.taxes}}%</div>
-                    <div>Grand Total</div>
-                    <div>Discount</div>
+            <div class="summarytotalsection">
+                <div class="summaryamount">
+                    <div class="summarydetailname">
+                        <div>Item Total</div>
+                        <div>Delivery Fee</div>
+                    </div>
+                    <div class="summarydetailprice">
+                        <div>&#8377; 200</div>
+                        <div>&#8377; 20</div>
+                    </div>
                 </div>
-                <div class="summarydetailprice">
-                    <div><span>{{payments.subTotal | currency: 'INR'}}</span></div>
-                    <div *ngIf="payments.taxes != 0"><span>{{payments.taxesRate | currency: 'INR'}}</span></div>
-                    <div><span>{{payments.grandTotal | currency: 'INR'}}</span></div>
-                    <div><span>{{payments.discount | currency: 'INR'}}</span></div>
+                <div class="totalsection">
+                    <div>Total</div>
+                    <div>&#8377; 220</div>
                 </div>
             </div>
-            <div class="totalamount">
-                <div>Payable Amount</div>
-                <div>{{payments.payableAmount | currency: 'INR'}}</div>
+            <div class="shopdetailsheading">Shop Details</div>
+            <div class="shopdetailsection">
+                <div class="shopname">ShopName Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, ipsam?</div>
+                <div class="shopaddress">shopadrress Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit eligendi fugiat nemo laboriosam voluptas aperiam quasi corporis excepturi totam. Sit!</div>
+                <div class="visitshopsection">
+                    <div>Visit Shop & Menu</div>
+                    <div class="visitbtn"><i class="fas fa-angle-right" style="color: #000000;"></i></div>
+                </div>
+            </div>
+            <div class="userdetailsheadingsection">
+                <div class="userdetailsheading">User Details</div>
+                <div class="editbtn"><i class="fas fa-edit" style="color: #000000;"></i></div>
+            </div>
+            <div class="userdetailsection">
+                <div class="usernamesection">
+                    <div><i class="fas fa-user-alt" style="color: #000000;"></i></div>
+                    <div>UserName</div>
+                </div>
+                <div class="usernumbersection">
+                    <div><i class="fas fa-phone" style="color: #000000;"></i></div>
+                    <div>Usercontent</div>
+                </div>
             </div>
 
             <div class="paynowbtn">

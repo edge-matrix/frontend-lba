@@ -267,11 +267,89 @@ header{
   align-items: center;
   justify-content: space-between;
   background: #FFFCF3;
-  margin: 0px 0px 15px 0px;
   box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
 }
-.paymentheading{
+.paymentheading,.refundheading{
   color: #000000;
   font-size: 15px;
   font-weight: 600;
+}
+.ordersummaryheading,.shopdetailsheading,.userdetailsheading{
+  color: #000000;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+}
+.shopdetailsheading{
+  margin: 10px 0px;
+}
+.shopdetailsection{
+  background: #FFFCF3;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+}
+.shopname{
+  color: #000000;
+  font-size: 15px;
+  font-weight: 600;
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.shopaddress{
+  color: #00000080;
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.visitshopsection{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #00000033;
+  padding: 10px 15px;
+  margin-top: 10px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+}
+.visitbtn,.editbtn{
+  cursor: pointer;
+}
+.userdetailsheadingsection{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.usernamesection,.usernumbersection{
+  border-radius: 20px;
+  background: #FFFCF3;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0px 5px 0px;
+}
+.refundstatussection{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFCF3;
+  padding: 10px 12px;
+}
+.orderstatus {
+  background: #FFFFFF;
+  border: 1px solid #FEB300;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  color: #FEB300;
+  padding: 3px 10px;
 }
