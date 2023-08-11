@@ -5,11 +5,11 @@
         <div class="orderhistoryheading">
           <h1>Order History</h1>
         </div>
-        <div class="searchbar">
-          <input type="text" placeholder="Search with token number..." [(ngModel)]="searchKeyword" (keyup)="search()">
-          <div class="arrow" (click)="searchKeyword = ''; search()"><i class="fas fa-times-circle" title="Remove History"></i></div>
-        </div>
         <ng-container *ngIf="sharedService.user && sharedService.user.id !== 0; else noLogin">
+          <div class="searchbar">
+            <input type="text" placeholder="Search with token number..." [(ngModel)]="searchKeyword" (keyup)="search()">
+            <div class="arrow" (click)="searchKeyword = ''; search()"><i class="fas fa-times-circle" title="Remove History"></i></div>
+          </div>
           <div class="orderhistorylist">
             <ng-container *ngIf="data && data.length > 0; else noItem">
               <div class="search-results"
@@ -24,7 +24,8 @@
                       <img [src]="storageUrl + order.shop.profileImage" *ngIf="order.shop && order.shop.profileImage !== null && order.shop.profileImage !== ''" referrerpolicy="no-referrer" [alt]="order.orderId" />
                     </div>
                     <div class="resturantdetails">
-                      <div class="shopname">{{order.shop?.title}}  #{{order.orderId.slice(-5)}}</div>
+                      <div class="shopname">#{{order.orderId.slice(-5)}}</div>
+                      <div class="shopaddress">{{order.shop?.title}}  </div>
                       <div class="shopaddress" *ngIf="order.shop && order.shop.address && order.shop.address.length > 0">{{order.shop.address[0].addressLine}}, {{order.shop.address[0].landmark}}</div>
                       <div class="orderbefore">{{order.booking_details?.bookingDate | date}}</div>
                     </div>
@@ -70,7 +71,7 @@
         </ng-template>
       </div>
     </div>
-    <footer [show]="false"></footer>
+    <app-footer [show]="false"></app-footer>
     <bottom-nav></bottom-nav>
   </div>
 </div>

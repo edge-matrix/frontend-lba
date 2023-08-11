@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   appUrl: 'https://dev.letsbunkagain.com/',
-  baseUrl: 'https://dev.letsbunkagain.com/backend/api',
-  storage: 'https://dev.letsbunkagain.com/backend/storage/',
+  baseUrl: 'http://127.0.0.1:8000/api',
+  storage: 'http://127.0.0.1:8000/storage/',
   redirectUrl: 'https://dev.letsbunkagain.com/login',
   GoogleCaptchaKey: '6LftGB4jAAAAAGLknjW4C5iBBPxcclUv6BfhXm6J',
   Google_client_id: '997443453271-0cqbcm3icjuglbl8cg7nld72jqq40suv.apps.googleusercontent.com',
@@ -20,7 +20,8 @@ export const environment = {
     appId: "1:347467439723:web:3d9fbf8a128b56b55d1b2e",
     measurementId: "G-WCQ5LJLX8S"
   },
-  paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator',
+  // paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator',
+  paymentUrl: 'https://www.instamojo.com/@lets_bunk_again/'
 };
 
 /*

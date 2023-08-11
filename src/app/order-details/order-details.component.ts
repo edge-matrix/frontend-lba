@@ -79,7 +79,7 @@ export class OrderDetailsComponent implements OnInit {
       {id: 6, title: 'Ready To Serve', class: 'orderreadytoserve', img: 'status/ready_to_serve.png'},
       {id: 7, title: 'Complete', class: 'orderconfirmed', img: 'status/completed.png'},
       {id: 8, title: 'Complete & Paid', class: 'orderconfirmed', img: 'status/complete_paid.png'},
-      {id: 9, title: 'Canceld', class: 'orderrejected', img: 'status/cancel.png'},
+      {id: 9, title: 'Cancel', class: 'orderrejected', img: 'status/cancel.png'},
     ];
     return status.filter(e => e.id === id)[0];
   }

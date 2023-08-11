@@ -133,7 +133,7 @@
       </div>
       <cancel-order *ngIf="cancleStatus" [orderId]="this.order.id" (newItemEvent)="output($event)"></cancel-order>
     </div>
-    <footer [show]="false"></footer>
+    <app-footer [show]="false"></app-footer>
     <bottom-nav></bottom-nav>
   </div>
 </div>
