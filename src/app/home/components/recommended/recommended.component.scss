@@ -131,6 +131,12 @@
     color: #7E7E7E;
     font-size: 14px;
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .distanceandtime{
     display: flex;
