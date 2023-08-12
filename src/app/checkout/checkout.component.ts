@@ -27,6 +27,7 @@ export class CheckoutComponent implements OnInit {
   orderId = '';
   isOrderCreated = false;
   isPaymentStart = false;
+  isUserDetailEdit = false;
   constructor(public sharedService: SharedService,
     private storageService: StorageService,
     private comboDetailService: ComboDetailsService,

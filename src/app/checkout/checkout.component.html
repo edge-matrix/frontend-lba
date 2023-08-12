@@ -36,57 +36,61 @@
                 <button class="applybtn">Apply</button>
             </div> -->
 
-            <div class="paymentmethodsection">
-                <div class="paymentmethodheading">Payment Method</div>
-            </div>
-            <div class="paynowsection" *ngFor="let method of paymentMethod" (click)="updateMethod(method.id)">
-                <span><input type="radio" [id]="method.id" [checked]="method.active"></span>
-                <span class="paymentoptionheading"><label [for]="method.id" class="payatshop">{{method.name}}</label></span>
-            </div>
-            <div class="checkoutpageuserinfo" *ngIf="sharedService.user.isNameReal === 0">
-                <div class="heading">Your Name</div>
-                <div class="inputbox">
-                    <input type="text" placeholder="Please Write Your Name here" [(ngModel)]="sharedService.user.name" />
-                </div>
-            </div>
-            <div class="summaryheading">Order Summary</div>
-            <div class="summarytotalsection">
-                <div class="summaryamount">
-                    <div class="summarydetailname">
-                        <div>Item Total</div>
-                        <div>Delivery Fee</div>
-                    </div>
-                    <div class="summarydetailprice">
-                        <div>&#8377; 200</div>
-                        <div>&#8377; 20</div>
-                    </div>
-                </div>
-                <div class="totalsection">
-                    <div>Total</div>
-                    <div>&#8377; 220</div>
-                </div>
-            </div>
             <div class="shopdetailsheading">Shop Details</div>
             <div class="shopdetailsection">
-                <div class="shopname">ShopName Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, ipsam?</div>
-                <div class="shopaddress">shopadrress Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit eligendi fugiat nemo laboriosam voluptas aperiam quasi corporis excepturi totam. Sit!</div>
-                <div class="visitshopsection">
+                <div class="shopname">{{ shops.title }}</div>
+                <div class="shopaddress" *ngIf="shops.address && shops.address.length > 0">{{ shops.address[0].addressLine }}, {{ shops.address[0].landmark }}<br> {{ shops.address[0].city }}, {{ shops.address[0].pincode }}</div>
+                <div class="visitshopsection" routerLink="/menu/{{shops.slug}}">
                     <div>Visit Shop & Menu</div>
                     <div class="visitbtn"><i class="fas fa-angle-right" style="color: #000000;"></i></div>
                 </div>
             </div>
             <div class="userdetailsheadingsection">
                 <div class="userdetailsheading">User Details</div>
-                <div class="editbtn"><i class="fas fa-edit" style="color: #000000;"></i></div>
+                <div *ngIf="!isUserDetailEdit" class="editbtn" (click)="isUserDetailEdit = true"><i class="fas fa-edit" style="color: #000000;"></i></div>
+                <div *ngIf="isUserDetailEdit" class="editbtn" (click)="isUserDetailEdit = false"><i class="fas fa-check" style="color: #000000;"></i></div>
             </div>
-            <div class="userdetailsection">
+            <div class="userdetailsection" *ngIf="!isUserDetailEdit">
                 <div class="usernamesection">
                     <div><i class="fas fa-user-alt" style="color: #000000;"></i></div>
-                    <div>UserName</div>
+                    <div>{{ sharedService.user.name }}</div>
                 </div>
-                <div class="usernumbersection">
+                <!-- <div class="usernumbersection">
                     <div><i class="fas fa-phone" style="color: #000000;"></i></div>
-                    <div>Usercontent</div>
+                    <div>{{ sharedService.user.medium[0].value }}</div>
+                </div> -->
+            </div>
+            <div class="checkoutpageuserinfo" *ngIf="isUserDetailEdit">
+              <div class="inputbox">
+                  <input type="text" placeholder="Please Write Your Name here" [(ngModel)]="sharedService.user.name" />
+              </div>
+            </div>
+            <div class="paymentmethodsection">
+              <div class="paymentmethodheading">Payment Method</div>
+            </div>
+            <div class="paynowsection" *ngFor="let method of paymentMethod" (click)="updateMethod(method.id)">
+                <span><input type="radio" [id]="method.id" [checked]="method.active"></span>
+                <span class="paymentoptionheading"><label [for]="method.id" class="payatshop">{{method.name}}</label></span>
+            </div>
+            <div class="summaryheading">Order Summary</div>
+            <div class="summarytotalsection">
+                <div class="summaryamount">
+                    <div class="summarydetailname">
+                      <div>SubTotal</div>
+                      <div *ngIf="payments.taxes != 0">Taxes (GST + Service Charge) {{payments.taxes}}%</div>
+                      <div>Grand Total</div>
+                      <div>Discount</div>
+                    </div>
+                    <div class="summarydetailprice">
+                      <div><span>{{payments.subTotal | currency: 'INR'}}</span></div>
+                      <div *ngIf="payments.taxes != 0"><span>{{payments.taxesRate | currency: 'INR'}}</span></div>
+                      <div><span>{{payments.grandTotal | currency: 'INR'}}</span></div>
+                      <div><span>{{payments.discount | currency: 'INR'}}</span></div>
+                    </div>
+                </div>
+                <div class="totalsection">
+                    <div>Payable Amount</div>
+                    <div>{{payments.payableAmount | currency: 'INR'}}</div>
                 </div>
             </div>
 
