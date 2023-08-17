@@ -35,8 +35,8 @@ export class OrderHistoryComponent implements OnInit {
       this.timer = interval(1*60*1000).subscribe(() => {
         this.orderList();
       });
+      this.orderList();
     }
-    this.orderList();
   }
 
   ngOnDestroy() {
@@ -85,7 +85,7 @@ export class OrderHistoryComponent implements OnInit {
       {id: 6, title: 'Ready To Serve', class: 'completed'},
       {id: 7, title: 'Complete', class: 'completed'},
       {id: 8, title: 'Complete & Paid', class: 'completed'},
-      {id: 9, title: 'Canceled', class: 'rejected'},
+      {id: 9, title: 'Cancel', class: 'rejected'},
     ];
     return status.filter(e => e.id === id)[0];
   }

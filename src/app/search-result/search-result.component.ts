@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ComboDetailsService, SharedService, StorageService } from '@service';
 import { Response } from '@models';
@@ -11,6 +11,12 @@ import { Response } from '@models';
 })
 export class SearchResultComponent implements OnInit {
 
+  @ViewChild('input', { static: false })
+   set input(element: ElementRef<HTMLInputElement>) {
+     if(element) {
+       element.nativeElement.focus()
+     }
+  }
   searchHistory: Array<{title: string, url: string, type: number}> = [];
   searchSuggestion: Array<{title: string, url: string, type: number}> = [];
   suggestionStatus = 0;

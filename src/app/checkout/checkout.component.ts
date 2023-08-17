@@ -27,6 +27,7 @@ export class CheckoutComponent implements OnInit {
   orderId = '';
   isOrderCreated = false;
   isPaymentStart = false;
+  isUserDetailEdit = false;
   constructor(public sharedService: SharedService,
     private storageService: StorageService,
     private comboDetailService: ComboDetailsService,
@@ -44,8 +45,16 @@ export class CheckoutComponent implements OnInit {
     });
     this.getShopDetails();
     this.activeRoute.queryParams.subscribe(params => {
-      if(params['transactionId']){
-        this.updatePaymentStatus(params['transactionId']);
+      // if(params['transactionId']){
+      //   this.updatePaymentStatus(params['transactionId']);
+      // }
+      if(params['payment_id'] && params['payment_status'] && params['payment_request_id']){
+        const paymentResult = {
+          'payment_id': params['payment_id'],
+          'payment_status': params['payment_status'],
+          'payment_request_id': params['payment_request_id']
+        }
+        this.updatePaymentStatus(paymentResult);
       }
     });
   }
@@ -240,15 +249,50 @@ export class CheckoutComponent implements OnInit {
       this.isPaymentStart = true;
       return;
     }else{
+      // const paymentDetails = {
+      //   paymentMethod: 0,
+      //   transactionId: this.orderId,
+      // };
       const paymentDetails = {
+        orderStatus: 1,
         paymentMethod: 0,
-        transactionId: this.orderId,
+        transactionId: '',
+        payment_id: '',
+        orderDetails_id: this.orderId
       };
       this.updatePaymentDetails(paymentDetails);
     }
   }
 
-  updatePaymentDetails(data: { paymentMethod: number; transactionId: string;}){
+  // updatePaymentDetails(data: { paymentMethod: number; transactionId: string;}){
+  //   this.bookService.updatePaymentDetails(data).subscribe((response: Response) => {
+  //     if (response.statusCode != 200 && response.statusCode != 201) {
+  //       this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
+  //     } else {
+  //       this.storageService.updatemyCart([]);
+  //       if(response.singleData){
+  //         this.orderId = response.singleData;
+  //         this.router.navigate(['/order-page/'+this.orderId],{ queryParams: { orderPlaced: "true"}});
+  //       }
+  //     }
+  //   },
+  //   error => {
+  //     this.sharedService.showMessage(1,'Something Went Wrong');
+  //   });
+  // }
+
+  // updatePaymentStatus(transactionId: string){
+  //   this.isPaymentStart = false;
+  //   if(transactionId !== ''){
+  //     const paymentDetails = {
+  //       paymentMethod: 1,
+  //       transactionId: transactionId,
+  //     };
+  //     this.updatePaymentDetails(paymentDetails);
+  //   }
+  // }
+
+  updatePaymentDetails(data: { orderStatus: number, paymentMethod: number; transactionId?: string; payment_id?: string, orderDetails_id?: string}){
     this.bookService.updatePaymentDetails(data).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
         this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
@@ -256,7 +300,9 @@ export class CheckoutComponent implements OnInit {
         this.storageService.updatemyCart([]);
         if(response.singleData){
           this.orderId = response.singleData;
-          this.router.navigate(['/order-page/'+this.orderId],{ queryParams: { orderPlaced: "true"}});
+          this.router.navigate(['./order-page/'+this.orderId],{ queryParams: { orderPlaced: "true"}}).then(() => {
+            window.location.reload();
+          });
         }
       }
     },
@@ -265,12 +311,15 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  updatePaymentStatus(transactionId: string){
+  updatePaymentStatus(event: {payment_status: string, payment_id?: string, payment_request_id?: string}){
     this.isPaymentStart = false;
-    if(transactionId !== ''){
+    if(event.payment_status === 'Credit' && event.payment_id && event.payment_request_id){
       const paymentDetails = {
+        orderStatus: 1,
         paymentMethod: 1,
-        transactionId: transactionId,
+        transactionId: event.payment_request_id,
+        payment_id: event.payment_id,
+        orderDetails_id: ''
       };
       this.updatePaymentDetails(paymentDetails);
     }

@@ -40,10 +40,22 @@ export class BookService {
     );
   }
 
-  updatePaymentDetails(data: { paymentMethod: number; transactionId: string;}){
+  // updatePaymentDetails(data: { paymentMethod: number; transactionId: string;}){
+  //   return this.http.post<Response>(`${this.url}/updatePaymentDetails`,{
+  //     'orderId': data.transactionId,
+  //     'paymentMethod': data.paymentMethod
+  //   }).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  updatePaymentDetails(data: { orderStatus: number, paymentMethod: number; transactionId?: string; payment_id?: string, orderDetails_id?: string}){
     return this.http.post<Response>(`${this.url}/updatePaymentDetails`,{
-      'orderId': data.transactionId,
-      'paymentMethod': data.paymentMethod
+      'orderId': data.orderDetails_id,
+      'paymentMethod': data.paymentMethod,
+      'payment_request_id': data.transactionId,
+      'payment_id': data.payment_id,
+      'status': data.orderStatus
     }).pipe(
       catchError(this.handleError)
     );

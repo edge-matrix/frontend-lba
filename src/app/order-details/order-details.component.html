@@ -61,15 +61,21 @@
                 {{ order.paymentMethod === 1?'Pay Now':'Pay At Shop' }}
               </div>
             </div>
-            <div class="refundstatussection">
+            <div class="paymentsection" *ngIf="order.status === 3 || order.status === 9">
+              <div class="paymentheading">{{ order.status === 3?'Reject':'Cancel' }} Reason</div>
+              <div>
+                {{ order.reject_order?.reason }}
+              </div>
+            </div>
+            <!-- <div class="refundstatussection">
               <div class="refundheading">Refund Status</div>
               <div class="orderstatus">Pending</div>
-            </div>
+            </div> -->
             <div class="shopdetailsheading">Shop Details</div>
-            <div class="shopdetailsection">
-              <div class="shopname">ShopName Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, ipsam?</div>
-              <div class="shopaddress">shopadrress Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit eligendi fugiat nemo laboriosam voluptas aperiam quasi corporis excepturi totam. Sit!</div>
-              <div class="visitshopsection">
+            <div class="shopdetailsection" *ngIf="order.shop">
+              <div class="shopname">{{ order.shop.title }}</div>
+              <div class="shopaddress" *ngIf="order.shop.address && order.shop.address.length > 0">{{ order.shop.address[0].addressLine }}, {{ order.shop.address[0].landmark }}, {{ order.shop.address[0].city }}, {{ order.shop.address[0].pincode }}</div>
+              <div class="visitshopsection" routerLink="/menu/{{order.shop.slug}}">
                   <div>Visit Shop & Menu</div>
                   <div class="visitbtn"><i class="fas fa-angle-right" style="color: #000000;"></i></div>
               </div>
@@ -81,12 +87,12 @@
           <div class="userdetailsection">
               <div class="usernamesection">
                   <div><i class="fas fa-user-alt" style="color: #000000;"></i></div>
-                  <div>UserName</div>
+                  <div>{{ sharedService.user.name }}</div>
               </div>
-              <div class="usernumbersection">
+              <!-- <div class="usernumbersection">
                   <div><i class="fas fa-phone" style="color: #000000;"></i></div>
-                  <div>Usercontent</div>
-              </div>
+                  <div>{{ sharedService.user.medium[0].value }}</div>
+              </div> -->
           </div>
 
             <div class="ordersummaryheading">Order Summary</div>
@@ -162,7 +168,7 @@
       </div>
       <cancel-order *ngIf="cancleStatus" [orderId]="this.order.id" (newItemEvent)="output($event)"></cancel-order>
     </div>
-    <footer [show]="false"></footer>
+    <app-footer [show]="false"></app-footer>
     <bottom-nav></bottom-nav>
   </div>
 </div>

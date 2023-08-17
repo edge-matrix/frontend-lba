@@ -5,8 +5,8 @@
       <div class="searchresult">
         <div class="searchbox">
           <div class="searchbar">
-              <input type="text" placeholder="Search for a restaurant or food" (input)="showSuggestion()" [(ngModel)]="searchKeyword" (keyup.enter)="search()">
-              <div class="searcharrow" (click)="searchKeyword = ''; search()"><i class="fas fa-times-circle" title="Remove History"></i></div>
+              <input type="text" placeholder="Search for a restaurant or food" (input)="showSuggestion()" [(ngModel)]="searchKeyword" (keyup.enter)="search()" #input>
+              <div class="arrow" (click)="searchKeyword = ''; search()"><i class="fas fa-times-circle" title="Remove History"></i></div>
           </div>
 
           <!-- recent searches -->
@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <footer></footer>
+    <app-footer></app-footer>
     <bottom-nav></bottom-nav>
   </div>
 </div>
