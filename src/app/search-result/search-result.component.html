@@ -6,7 +6,7 @@
         <div class="searchbox">
           <div class="searchbar">
               <input type="text" placeholder="Search for a restaurant or food" (input)="showSuggestion()" [(ngModel)]="searchKeyword" (keyup.enter)="search()">
-              <div class="arrow" (click)="searchKeyword = ''; search()"><i class="fas fa-times-circle" title="Remove History"></i></div>
+              <div class="searcharrow" (click)="searchKeyword = ''; search()"><i class="fas fa-times-circle" title="Remove History"></i></div>
           </div>
 
           <!-- recent searches -->
@@ -23,7 +23,7 @@
 
           <div class="recentsearchsuggestion" *ngFor="let suggestion of searchSuggestion;let i = index" (click)="jumpToSuggest(i, 1)">
               <div class="suggestionsection">
-                  <div class="clock">
+                  <div class="clock1">
                     <div class="arrow" *ngIf="suggestion.type === 0" (click)="removeSuggestion(i)"><i class="fas fa-shop" title="Visit Shop"></i></div>
                     <div class="arrow" *ngIf="suggestion.type === 1" (click)="removeSuggestion(i)"><i class="fas fa-cheese" title="Visit Item"></i></div>
                   </div>
