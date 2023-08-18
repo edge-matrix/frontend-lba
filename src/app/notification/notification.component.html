@@ -13,9 +13,11 @@
               </div>
               <ng-container *ngIf="sharedService.user && sharedService.user.id !== 0; else noLogin">
                 <div class="messageboxcontainer">
+                  <div class="markasreadcontaner">
+                    <div class="markasread" (click)="markAsAllRead()"><span class="doubletick"><img src="assets/icons/markasread.png" alt=""></span><span>Mark as read</span></div>
+                  </div>
                   <div class="meassagecontainerheader">
-                      <div class="timeofmessage"></div>
-                      <div class="markasread" (click)="markAsAllRead()"><span class="doubletick"><img src="assets/icons/markasread.png" alt=""></span><span>Mark as read</span></div>
+                      <div class="timeofmessage">New</div>
                   </div>
                   <ng-container *ngIf="notifications && notifications.length > 0; else noItem">
                     <div class="search-results"
@@ -23,7 +25,7 @@
                       [infiniteScrollDistance]="1"
                       [scrollWindow]="false"
                       (scrolled)="paginate( page + 1)">
-                        <div class="messagecontainer offerscontainer" *ngFor="let notify of notifications;let i = index" (click)="markAsRead(notify.id)" [routerLink]="'/'+notify.link">
+                        <div class="messagecontainer offerscontainer readmessage" *ngFor="let notify of notifications;let i = index" (click)="markAsRead(notify.id)" [routerLink]="'/'+notify.link">
                           <div class="typeofmessage">
                               <img src="assets/icons/exclamation.png" alt="offers">
                           </div>
@@ -35,13 +37,13 @@
                               <img src="assets/imagefolder/userimage.jfif" alt="profile pic">
                           </div>
                         </div>
-                      </div>
+                    </div>
                   </ng-container>
                   <ng-template #noItem>
                     <no-item-page text="0 Notifications Found"></no-item-page>
                   </ng-template>
                   <!-- <paginate *ngIf="links && links.length > 3" [page]="page" [links]="links" [lastPage]="lastPage" (paginate)="paginate($event)"></paginate> -->
-              </div>
+                </div>
               </ng-container>
               <ng-template #noLogin>
                 <no-login-page></no-login-page>
