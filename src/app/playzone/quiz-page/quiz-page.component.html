@@ -1,0 +1,18 @@
+<div class="header">
+  <div routerLink="/playzone"><img src="assets/imagefolder/playzone/closebtn.png" alt="" height="30px" width="30px"></div>
+  <div><span class="status">{{ currentIndex + 1 }}</span></div>
+  <div>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<div class="questionscontainer" *ngIf="questions && questions.length > 0">
+  <div class="watchimg"><img src="assets/imagefolder/playzone/watchinglogo.png" alt=""></div>
+  <div class="leveldetails">
+      <div class="level">Question {{ currentIndex + 1 }} of {{ questions.length }}</div>
+      <div class="experience">{{ selectedQuestion.question }}?</div>
+  </div>
+  <div class="optionbtn" *ngFor="let op of selectedQuestion.options" (click)="checkAnswer(op.id)">
+    <button>option 3</button>
+  </div>
+</div>

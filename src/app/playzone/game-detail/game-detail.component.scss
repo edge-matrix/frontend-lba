@@ -1,0 +1,59 @@
+.closebtn{
+  margin: 10px 25px;
+}
+.experiencecontainer{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.watchimg img{
+  height: 200px;
+  width: 200px;
+}
+.level,.experience{
+  color: #15597E;
+  font-weight: 600;
+}
+.experience{
+  font-size: 24px;
+}
+.level{
+  font-size: 15px;
+}
+
+.text{
+  font-weight: 400;
+  font-size: 15px;
+  color: #FEB300;
+}
+.text1{
+  margin-top: 20px;
+}
+.continuebtn{
+  margin-top: 50px;
+
+}
+.continuebtn button{
+  background: #47B214;
+  border-radius: 10px;
+  color: #FFFFFF;
+  padding: 10px 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+}
+@media screen and (max-width:768px){
+  .leveldetails{
+      text-align: left !important;
+  }
+  .text{
+      display: flex;
+      flex-direction: column;
+  }
+  body{
+      background: #FFFCF3;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="centering" *ngIf="game">
+  <div class="wrapper">
+    <div class="closebtn" routerLink="/playzone"><img src="assets/imagefolder/playzone/closebtn.png" alt="" height="30px" width="30px"></div>
+    <div class="experiencecontainer">
+        <div class="watchimg"><img src="assets/imagefolder/playzone/{{ game.image }}.png" alt=""></div>
+        <div class="leveldetails">
+            <div class="level">Level {{ game.level }}</div>
+            <div class="experience">{{ game.title }}</div>
+            <div class="text text1">
+                <span>{{ game.details }}</span>
+            </div>
+        </div>
+        <div class="continuebtn" (click)="startQuiz()"><button>Start Game</button></div>
+    </div>
+    <app-footer [show]="false"></app-footer>
+    <bottom-nav></bottom-nav>
+  </div>
+</div>

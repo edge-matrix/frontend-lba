@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'shops', loadChildren: () => import('./shop-list/shop-list.module').then(m => m.ShopListModule) },
   { path: 'menu/:slug', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
   { path: 'shop/:slug', loadChildren: () => import('./shop-details/shop-details.module').then(m => m.ShopDetailModule) },
-  { path: 'order-history', loadChildren: () => import('./order-history/order-history.module').then(m => m.OrderHistoryModule) },
-  { path: 'order-page/:orderId', loadChildren: () => import('./order-details/order-details.module').then(m => m.OrderDetailsModule) },
+  { path: 'order-history', loadChildren: () => import('./order-history/order-history.module').then(m => m.OrderHistoryModule), canActivate: [AuthGuard], },
+  { path: 'order-page/:orderId', loadChildren: () => import('./order-details/order-details.module').then(m => m.OrderDetailsModule), canActivate: [AuthGuard], },
   { path: 'scanner', loadChildren: () => import('./scanner/scanner.module').then(m => m.ScannerModule) },
   { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
   { path: 'search', loadChildren: () => import('./search-result/search-result.module').then(m => m.SearchResultModule) },
@@ -21,6 +21,8 @@ const routes: Routes = [
   { path: 'notification', loadChildren: () => import('./notification/notification.module').then(m => m.NotificationModule), canActivate: [AuthGuard], },
   { path: 'policies', loadChildren: () => import('./policies/policies.module').then(m => m.PoliciesModule) },
   { path: 'programs', loadChildren: () => import('./programs/programs.module').then(m => m.ProgramsModule) },
+  { path: 'playzone', loadChildren: () => import('./playzone/playzone.module').then(m => m.PlayzoneModule) },
+
   { path: '**', component: PageNotFoundComponent }
 ];
 

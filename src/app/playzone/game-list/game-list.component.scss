@@ -1,0 +1,98 @@
+/* CSS of header */
+.header{
+    padding-bottom: 30px;
+    margin: 20px 25px;
+}
+.headertxtdiv{
+    margin: 5px 25px;
+}
+.headeroptions{
+    float: right;
+}
+.headerheart img,.headeruser img{
+    height: 25px;
+    width: 25px;
+}
+.headerheart,.headeruser{
+    background: #FFFCF3;
+    border: 1px solid var(--ternarycolor);
+    border-radius: 50%;
+    padding: 10px 8px;
+}
+.headerheart{
+    margin-right: 20px;
+}
+.headeruser img{
+    position: relative;
+    top: -4px;
+    left: 2px;
+}
+.headerheart img{
+    position: relative;
+    top: -4px;
+}
+.letsplayheading{
+    font-weight: 600;
+    font-size: 28px;
+    color: #FEB300;
+}
+.befirstheading{
+    font-weight: 500;
+    font-size: 18px;
+    color: #000000;
+}
+/* CSS of levelwise div */
+.awardsections{
+    margin: 0px 25px;
+}
+.levelwisediv{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    margin-top: 90px;
+}
+.awarddiv{
+    background: linear-gradient(265.68deg, #ED709E 0%, #EC8A70 99.47%);
+}
+.seatdiv{
+    background: linear-gradient(265.68deg, #EC70DF 0%, #5474ED 99.47%);
+}
+.watchingdiv{
+    background: linear-gradient(265.68deg, #A58FD1 0%, #F2BDEA 99.47%);
+}
+.awardsicon img{
+    height: 200px;
+    width: 200px;
+    position: relative;
+    top:-75px;
+}
+.leveldetails{
+    color: #FFFFFF;
+}
+.malamaalheading{
+    font-weight: 600;
+    font-size: 28px;
+    margin-top: 10px;
+}
+input{
+    height: 23px;
+    width: 23px;
+    accent-color: #FFFCF3;
+}
+@media screen and (max-width:768px){
+    .awardsicon img{
+        height: 120px;
+        width: 120px;
+    }
+    input{
+        height: 15px;
+        width: 15px;
+    }
+    .malamaalheading{
+        font-size: 20px;
+    }
+    .letsplayheading{
+        font-size: 25px;
+    }
+}

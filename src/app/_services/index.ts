@@ -19,3 +19,4 @@ export * from './page-service/user/users.service';
 export * from './page-service/user/orders.service';
 export * from './page-service/user/notify.service';
 export * from './page-service/user/fav.service';
+export * from './page-service/home/playzone.service';

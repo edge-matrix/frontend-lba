@@ -1,0 +1,54 @@
+.playgroundlogin{
+  font-family: 'Inter';
+  font-style: normal;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  img{
+    height: 286px;
+    width: 314px;
+  }
+  .logo{
+    margin-bottom: 35px;
+  }
+  .areyouparticipate{
+    color: #15597E;
+    font-size: 24px;
+  }
+  .guestmode{
+    margin: 20px 0px;
+  }
+  .guestmode a{
+    text-decoration: none;
+    color: #FC9C67;
+    font-size: 20px;
+  }
+  input{
+    background: #FFFCF3;
+    border: 1px solid var(--ternarycolor);
+    border-radius: 10px;
+    padding: 15px 20px;
+    font-size: 15px;
+    outline: none;
+    color: #15597E;
+  }
+  input::placeholder{
+    color: var(--ternarycolor);
+    font-size: 15px;
+  }
+  button{
+    background: #FEB300;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    padding: 13px 55px;
+    font-size: 20px;
+    margin-top: 40px;
+  }
+}

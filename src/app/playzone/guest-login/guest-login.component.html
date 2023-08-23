@@ -1,0 +1,12 @@
+<div class="playgroundlogin">
+  <div class="logo"><img src="assets/imagefolder/playzone/loginimage.png" alt=""></div>
+  <div class="areyouparticipate">Are you ready to Participate in </div>
+  <div class="areyouparticipate">the funniest game ?</div>
+  <div><button (click)="login()">Login</button></div><br>
+  <div class="areyouparticipate">OR</div>
+  <div class="guestmode"><a href="#">Play as a guest</a></div>
+  <div>
+    <input type="text" placeholder="Please Write Your Name here" [(ngModel)]="sharedService.playzoneUser.name" />
+  </div>
+  <div><button (click)="playAsGuest()">Continue</button></div>
+</div>

@@ -26,7 +26,7 @@ export class ShopComponent implements OnInit {
   }
 
   getShops(){
-    this.comboDetailService.getShops(this.sharedService.myBunkDetails).subscribe((response: Response) => {
+    this.comboDetailService.getShops(this.sharedService.myBunkDetails, this.page).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
         this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {

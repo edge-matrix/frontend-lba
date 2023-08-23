@@ -170,6 +170,14 @@ export class LoginComponent implements OnInit {
           this.sharedService.showMessage(0,"Login Successfully !!");
           this.storageService.updateUser(data.data);
           this.commonFunctionService.getFavs();
+          this.sharedService.playzoneUser = {
+            isGuest: -1, // 0 => No, 1 => Yes
+            name: this.sharedService.user.name,
+            slug: '',
+            index: 0,
+            isCompleted: false,
+            score: 0
+          };
           this.router.navigate([this.returnUrl]);
         }
         this.loading = false;
@@ -199,6 +207,14 @@ export class LoginComponent implements OnInit {
         } else {
           this.sharedService.showMessage(0,"Login Successfully !!");
           this.storageService.updateUser(data.data);
+          this.sharedService.playzoneUser = {
+            isGuest: -1, // 0 => No, 1 => Yes
+            name: this.sharedService.user.name,
+            slug: '',
+            index: 0,
+            isCompleted: false,
+            score: 0
+          };
           this.router.navigate([this.returnUrl]);
         }
         this.loading = false;
@@ -227,6 +243,14 @@ export class LoginComponent implements OnInit {
           this.sharedService.showMessage(0,"Login Successfully !!");
           this.storageService.updateUser(data.data);
           this.commonFunctionService.getFavs();
+          this.sharedService.playzoneUser = {
+            isGuest: -1, // 0 => No, 1 => Yes
+            name: this.sharedService.user.name,
+            slug: '',
+            index: 0,
+            isCompleted: false,
+            score: 0
+          };
           this.router.navigate([this.returnUrl]);
         }
         this.loading = false;

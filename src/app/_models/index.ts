@@ -61,3 +61,9 @@ export * from './vendor/shop-bank-details.model';
 export * from './settings/shop-settings.model';
 export * from './settings/system-settings.model';
 export * from  './settings/user-settings.model';
+
+/*Playzone Models */
+export * from './playzone/game';
+export * from './playzone/question';
+export * from './playzone/options';
+export * from './playzone/answer';

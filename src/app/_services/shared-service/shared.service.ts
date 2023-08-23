@@ -10,7 +10,7 @@ import { ToastService } from '@service';
 })
 export class SharedService {
 
-  version = '23.07.30.02';
+  version = '23.08.23.01';
   user: User;
   userFav: Array<Fav> = [];
   sideMenuSelectedIndex = 0;
@@ -36,6 +36,16 @@ export class SharedService {
     'order': 1,
   };
 
+  //Playzone Variable
+  playzoneUser = {
+    isGuest: -1, // 0 => No, 1 => Yes
+    name: '',
+    slug: '',
+    index: 0,
+    isCompleted: false,
+    score: 0
+  };
+
   constructor(
     private location: Loc,
     private toastService: ToastService
@@ -46,6 +56,7 @@ export class SharedService {
     this.myLocation = JSON.parse(localStorage.getItem('myLocation') || 'null')||[];
     this.myLocationHistory = JSON.parse(localStorage.getItem('myLocationHistory') || 'null')||[];
     this.cart = new BehaviorSubject<Array<Cart>>( JSON.parse(localStorage.getItem('cart') || 'null')|| []);
+    this.playzoneUser = JSON.parse(localStorage.getItem('playzoneUser') || 'null')||[];
   }
 
   getCartDetails(): Observable<Array<Cart>> {

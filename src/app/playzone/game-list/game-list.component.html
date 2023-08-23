@@ -1,0 +1,41 @@
+<div class="centering">
+  <div class="wrapper">
+      <div class="header">
+        <div class="headeroptions">
+            <!-- <span class="headerheart">
+              <img src="assets/imagefolder/playzone/heartstatus.png" alt="">
+            </span> -->
+            <span class="headeruser">
+              <img src="assets/imagefolder/playzone/userbtn.png" alt="">
+            </span>
+        </div>
+      </div>
+      <div class="headertxtdiv">
+        <div class="letsplayheading">Let's Play</div>
+        <div class="befirstheading">Be the First!</div>
+      </div>
+      <div class="awardsections">
+        <ng-container *ngIf="gameList && gameList.length > 0; else noItem">
+          <div class="search-results"
+            infinite-scroll
+            [infiniteScrollDistance]="1"
+            [scrollWindow]="false"
+            (scrolled)="paginate( page + 1)">
+            <div class="levelwisediv {{game.color}}" *ngFor="let game of gameList" routerLink="/playzone/{{ game.slug }}">
+              <div class="leveldetails">
+                  <div>Level {{ game.level }}</div>
+                  <div class="malamaalheading">{{ game.title }}</div>
+              </div>
+              <div class="awardsicon"><img src="assets/imagefolder/playzone/{{ game.image }}.png" alt=""></div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noItem>
+          <no-item-page text="No New Game Found"></no-item-page>
+        </ng-template>
+      </div>
+      <app-footer [show]="false"></app-footer>
+      <bottom-nav></bottom-nav>
+  </div>
+</div>
+

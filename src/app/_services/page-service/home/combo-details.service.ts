@@ -22,8 +22,8 @@ export class ComboDetailsService {
     );
   }
 
-  getShops(data: any): Observable<Response> {
-    return this.http.post<Response>(`${this.url}/getShop`, {data}).pipe(
+  getShops(data: any, page: number): Observable<Response> {
+    return this.http.post<Response>(`${this.url}/getShop?page=${page}`, {data}).pipe(
       catchError(this.handleError)
     );
   }

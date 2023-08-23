@@ -40,6 +40,11 @@ export class StorageService {
     this.sharedService.setCartDetails(data);
   }
 
+  updateplayzoneUser(data: any){
+    localStorage.setItem('playzoneUser', JSON.stringify(data));
+    this.sharedService.playzoneUser = JSON.parse(localStorage.getItem('playzoneUser') || 'null')||[];
+  }
+
   removeStorage(){
     localStorage.removeItem("currentUser");
     localStorage.removeItem("mySearchHistory");
@@ -47,5 +52,6 @@ export class StorageService {
     localStorage.removeItem("myLocationHistory");
     localStorage.removeItem("cart");
     localStorage.removeItem("userFav");
+    localStorage.removeItem("playzoneUser");
   }
 }

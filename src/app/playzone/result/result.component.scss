@@ -1,0 +1,57 @@
+/* CSS of body */
+.usericon{
+  background: #FFFCF3;
+  border: 1px solid var(--ternarycolor);
+  border-radius: 10px;
+  display: inline-block;
+  padding: 7px 5px 5px 9px;
+  margin-bottom: 30px;
+}
+.details{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+.congratualationcontainer{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.watchimg img{
+  height: 200px;
+  width: 200px;
+}
+.level,.experience{
+  color: #15597E;
+  font-weight: 700;
+}
+.experience{
+  font-size: 30px;
+}
+.level{
+  font-size: 15px;
+}
+.playagainbtn button{
+  background: #FEB300;
+  border-radius: 10px;
+  color: #FFFFFF;
+  padding: 10px 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+  white-space: nowrap;
+}
+.sharescore{
+  font-weight: 600;
+  font-size: 15px;
+  color: #15597E;
+}
+@media screen and (max-width:768px){
+  body{
+      background: #FFFCF3;
+  }
+}
