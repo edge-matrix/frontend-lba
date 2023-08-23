@@ -57,6 +57,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  text-align: right;
+}
+.markasreadcontaner{
+  float: right;
 }
 .timeofmessage{
   color: #000000;
@@ -71,7 +75,6 @@
   align-items: center;
   gap:15px;
   justify-content: space-between;
-  background: #FFFCF3;
   margin-bottom: 15px;
   padding:10px;
   box-shadow: 0px 8px 15px -3px rgba(0,0,0,0.1);
@@ -107,4 +110,7 @@
   color: #393939;
   font-size: 14px;
   font-weight:500;
+}
+.readmessage{
+  background:#f2f2f2 !important;
 }
