@@ -85,3 +85,28 @@
   font-size: 17px;
   font-weight: 500;
 }
+
+.socialmedia{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 30px 0px;
+}
+.socialmedia a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #FFFCF3;
+  border: 2px solid #FC9C67;
+  font-size: 18px;
+  border-radius: 50%;
+  color: #FC9C67;
+  transition: .5s ease;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00000080;
+}
+.socialmedia a:hover{
+  box-shadow: none;
+}
