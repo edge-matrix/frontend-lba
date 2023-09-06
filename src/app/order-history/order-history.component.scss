@@ -42,7 +42,8 @@
 .pastorderdetails{
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.20);
-  background: #FFF;
+  background: #FFFFFF;
+  margin: 15px 0px;
 }
 .pastorderdetails .upperpart{
   display: flex;
@@ -152,4 +153,10 @@
 .itemquantityorderhistory{
   font-size:13px !important;
   color: grey;
+}
+
+@media screen and (max-width:340px){
+  .upperpart{
+    gap: 5px !important;
+  }
 }
