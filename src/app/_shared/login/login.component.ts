@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   medium = 'direct';
   loading = false;
-  returnUrl: string = '';
+  returnUrl = '';
+  loginMessage = '';
   @ViewChildren('formRow') rows: any;
   @HostListener('window:message', ['$event'])
   onMessage(e: any)
@@ -125,6 +126,7 @@ export class LoginComponent implements OnInit {
     this.authService.sendOTP(this.f['username'].value, this.f['type'].value, this.f['token'].value).subscribe((data: Response) => {
         if (data.statusCode != 200 && data.statusCode != 201) {
           this.sharedService.showMessage(1,this.sharedService.errorMessage(data.Error));
+          this.loginMessage = this.sharedService.errorMessage(data.Error);
         } else {
           this.sharedService.showMessage(0,"OTP Send to Your Number, Please check!");
           this.sendingOTP = false;
@@ -132,8 +134,9 @@ export class LoginComponent implements OnInit {
         this.loading = false;
       },
       error => {
-          this.sharedService.showMessage(1,'Something Went Wrong');
-          this.loading = false;
+        this.loginMessage = 'Something Went Wrong';
+        this.sharedService.showMessage(1,'Something Went Wrong');
+        this.loading = false;
       });
       this.recaptchaV3Service.execute('importantAction').subscribe((token: string) => {
         this.loginForm.patchValue({
@@ -166,6 +169,7 @@ export class LoginComponent implements OnInit {
     this.authService.verifyOTP(this.f['username'].value, this.f['type'].value, this.f['token'].value, this.extractOTPCode()).subscribe((data: Response) => {
         if (data.statusCode != 200 && data.statusCode != 201) {
           this.sharedService.showMessage(1,this.sharedService.errorMessage(data.Error));
+          this.loginMessage = this.sharedService.errorMessage(data.Error);
         } else {
           this.sharedService.showMessage(0,"Login Successfully !!");
           this.storageService.updateUser(data.data);
@@ -184,6 +188,7 @@ export class LoginComponent implements OnInit {
       },
         error => {
           this.sharedService.showMessage(1,'Something Went Wrong');
+          this.loginMessage = 'Something Went Wrong';
           this.loading = false;
       });
       this.recaptchaV3Service.execute('importantAction').subscribe((token: string) => {
@@ -204,6 +209,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginWithPassword(this.f['username'].value, this.f['password'].value, this.f['type'].value, this.f['token'].value).subscribe((data: Response) => {
         if (data.statusCode != 200 && data.statusCode != 201) {
           this.sharedService.showMessage(1,this.sharedService.errorMessage(data.Error));
+          this.loginMessage = this.sharedService.errorMessage(data.Error);
         } else {
           this.sharedService.showMessage(0,"Login Successfully !!");
           this.storageService.updateUser(data.data);
@@ -221,6 +227,7 @@ export class LoginComponent implements OnInit {
       },
         error => {
           this.sharedService.showMessage(1,'Something Went Wrong');
+          this.loginMessage = 'Something Went Wrong';
           this.loading = false;
       });
       this.recaptchaV3Service.execute('importantAction').subscribe((token: string) => {
@@ -239,6 +246,7 @@ export class LoginComponent implements OnInit {
       this.authService.socialLogin(this.medium, e.data.value).subscribe((data: Response) => {
         if (data.statusCode != 200 && data.statusCode != 201) {
           this.sharedService.showMessage(1,this.sharedService.errorMessage(data.Error));
+          this.loginMessage = this.sharedService.errorMessage(data.Error);
         } else {
           this.sharedService.showMessage(0,"Login Successfully !!");
           this.storageService.updateUser(data.data);
@@ -257,6 +265,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.sharedService.showMessage(1,'Something Went Wrong');
+        this.loginMessage = 'Something Went Wrong';
         this.loading = false;
       });
     }

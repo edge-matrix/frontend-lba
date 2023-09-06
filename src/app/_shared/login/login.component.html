@@ -5,10 +5,16 @@
         <img src="assets/imagefolder/loginpage.png" alt="loginpageimage">
       </div>
       <div class="loginpagecontain">
+        <div></div>
         <div class="loginpageheader">
           <span class="yellow">Let's </span>
           <span class="blue">Bunk </span>
           <span class="yellow">Again</span>
+        </div>
+        <div>
+          <span style="float:right;margin-bottom:15px;color: rgb(165, 164, 164);font-size: 14px;cursor: pointer;" class="crossbtn" routerLink="/">
+            <i class="far fa-times-circle fa-2x"></i>
+          </span>
         </div>
       </div>
       <div class="subheading">
@@ -26,10 +32,10 @@
           <input type="tel" placeholder="Enter Mobile Number (Don't use +91)" formControlName="username" [readOnly]="!sendingOTP"/><br>
           <div *ngIf="submitted && loginForm.invalid && f['username'].errors">
             <div *ngIf="f['username'].errors['required']" class="invalid-error">
-              <p>Mobile Number is required</p>
+              <p class="invalidmessage">Mobile Number is required</p>
             </div>
             <div *ngIf="f['username'].errors['pattern']" class="invalid-error">
-              <p>Mobile Number must be valid and Upto 10 digits.</p>
+              <p class="invalidmessage">Mobile Number must be valid and Upto 10 digits.</p>
             </div>
           </div>
         </div>
@@ -38,6 +44,9 @@
           <div class="otp" *ngIf="!sendingOTP" formGroupName="code">
             <input #formRow class="fillotp" type="number" pattern="[0-9]{1}" *ngFor="let t of [1,2,3,4]; let i = index" [formControlName]="'input'+[t]" inputmode="numeric" maxlength="1" (keyup)="keyUpEvent($event, i)">
           </div>
+        </div>
+        <div *ngIf="loginMessage !== ''" class="invalid-error">
+          <p class="invalidmessage">{{loginMessage}}</p>
         </div>
         <div class="verfiybtn">
           <button class="otpbtn" *ngIf="sendingOTP">Send OTP</button>
