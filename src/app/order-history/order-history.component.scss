@@ -88,6 +88,10 @@
   font-weight: 600;
   margin-left:auto;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
 }
 .viewmenu a{
   color: #FC9C67;
@@ -139,8 +143,8 @@
 .reorderbtn button{
   padding: 5px 20px;
   border: none;
-  border-radius: 5px;
-  background: rgba(252, 156, 103, 0.50);
+  border-radius: 10px;
+  background: #fc9c6780;
 }
 
 /* badges */
@@ -153,6 +157,13 @@
 .itemquantityorderhistory{
   font-size:13px !important;
   color: grey;
+}
+.orderstatustag{
+  border-radius: 15px;
+  background: #fc9c6780;
+  padding: 2px 18px;
+  color: #00000080;
+  font-weight: 600;
 }
 
 @media screen and (max-width:340px){
