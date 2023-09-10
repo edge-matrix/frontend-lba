@@ -11,7 +11,7 @@
             </div>
             <div class="resturantdetails">
                 <div class="shopname">{{shop.title}}</div>
-                <div class="description">{{shop.category?.name}}</div>
+                <div class="description" *ngIf="shop.address && shop.address.length > 0">{{shop.address[0].category?.name}}</div>
                 <div class="rating">
                     <span>⭐</span>
                     <span class="ratingvalue">4.5</span>

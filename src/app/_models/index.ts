@@ -56,6 +56,7 @@ export * from './vendor/shop-categories.model';
 export * from './vendor/shop-photos.model';
 export * from './vendor/shop-timings.model';
 export * from './vendor/shop-bank-details.model';
+export * from './vendor/shop-social-media.model';
 
 /* Settings Models */
 export * from './settings/shop-settings.model';

@@ -1,12 +1,4 @@
-import { Combos } from "../product/combos.model";
-import { Items } from "../product/items.model";
-import { ShopSettings } from "../settings/shop-settings.model";
-import { User } from "../user/user.model";
-import { ShopAddress } from "./shop-address.model";
-import { ShopCategories } from "./shop-categories.model";
-import { ShopPhotos } from "./shop-photos.model";
-import { ShopReviews } from "./shop-reviews.model";
-import { Shoptimings } from "./shop-timings.model";
+import { ShopSocialMedia, Combos, Items, ShopSettings, ShopAddress, ShopPhotos, ShopReviews, Shoptimings } from "@models";
 
 export interface Shop {
     id: number;
@@ -14,8 +6,6 @@ export interface Shop {
     slug: string;
     code: string;
     profileImage?: string;
-    shop_categories_id: number;
-    category?: ShopCategories;
     verified: number;
     about: string;
     speciality?: string;
@@ -28,6 +18,7 @@ export interface Shop {
     shop_reviews: Array<ShopReviews>;
     photos: Array<ShopPhotos>;
     timings: Array<Shoptimings>;
+    social_media?: Array<ShopSocialMedia>;
     settings?: ShopSettings;
     status: number;
     tags: string;
