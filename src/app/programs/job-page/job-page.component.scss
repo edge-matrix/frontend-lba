@@ -1,0 +1,259 @@
+.jobpagecontainer{
+    padding: 10px !important;
+}
+.languagechange{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.languagechange select{
+    border: 1px solid #F68C34;
+    padding: 6px 14px;
+    border-radius: 10px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+}
+.languagechangesection{
+    float: right;
+}
+.languagechange div{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+}
+.logocontainer{
+    text-align: center;
+}
+.lbalogo{
+    color: #FEB300;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 10px;
+    background: #FFFCF3;
+    padding: 15px;
+    position: relative;
+    top: 40px;
+    left: 80px;
+}
+.lbalogo img{
+    height: 51px;
+    width: 50px;
+}
+.lbalogo span{
+    color: #15597E;
+}
+.hiringtextcontainercover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hiringtextcontainer{
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(94deg, #FEB300 2.13%, #FFB572 100%);
+    padding: 90px 10px 30px 30px;
+    width: 80%;
+}
+.hiringheading{
+    color: #FFFFFF;
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.hiringheading2{
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+.hiringheading3{
+    color: #15597E;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 12px 0px;
+}
+.eligibility{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    top: -20px;
+}
+.eligibility1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.tickmark{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    text-align: center;
+    border: 1px solid #F68C34;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+}
+.tickmark i {
+    position: relative;
+    top: 8px;
+}
+.eligibilitytext{
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+.openningsheading{
+    color: #15597E;
+    font-size: 35px;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px 0px ;
+}
+.openningoptions{
+    text-align: center;
+}
+.openningoptions div select{
+    border-radius: 10px;
+    border: 1px solid #FFB572;
+    background: #FFFCF3;
+    padding: 12px 20px;
+    width: 50%;
+    outline: none;
+}
+.openningoptions div{
+   margin: 15px 0px;
+}
+.openningoptions div textarea{
+    border-radius: 10px;
+    border: 1px solid #FFB572;
+    background: #FFFCF3;
+    width: 50%;
+    padding: 10px 20px;
+    resize: none;
+    outline: none;
+}
+.openningoptions div select,.openningoptions div textarea::placeholder{
+    color: rgba(0, 0, 0, 0.80);
+    font-size: 15px;
+    font-weight: 500;
+}
+.lbaanddescription{
+    display: flex;
+    justify-content: space-around;
+    gap: 60px;
+    padding: 0px 250px;
+    margin: 15px 0px 35px 0px;
+}
+.decriptiontext{
+    color: #000;
+    font-size: 15px;
+    font-weight: 500;
+}
+.jobdescheading,.whyLBAheading{
+    color: #000;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.applybtn{
+    text-align: center;
+    margin: 10px 0px;
+}
+.applybtn button{
+    border-radius: 10px;
+    background: #47B214;
+    padding: 15px 40px;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.or{
+    margin: 5% auto 1%;
+    position: relative;
+    text-align: center;
+}
+.hr{
+    height: 2px;
+    width: 70%;
+    background: #ddd;
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 0;
+}
+.orr{
+    line-height: calc(1vw - 5px);
+    color: #444444;
+    font-weight: 300;
+    background: #fff;
+    padding: 1% 2%;
+    z-index: 1;
+    position: relative;
+    display: inline-block;
+    margin-top: -2%;
+}
+.scanheading{
+    color: #15597E;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    margin: 6px 0px;
+}
+.scanlogo{
+    text-align: center;
+}
+.scanlogo img{
+    height: 200px;
+    width: 200px;
+}
+@media screen and (max-width: 425px){
+    .lbalogo{
+        left: 0px;
+    }
+}
+@media screen and (max-width: 768px){
+    .lbaanddescription{
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0px 100px;
+    }
+    .jobdescheading,.whyLBAheading{
+        text-align: center;
+    }
+    .lbaanddescription{
+        gap: 40px;
+    }
+    .openningoptions div select,.openningoptions div textarea{
+        width: 85%;
+    }
+    .lbaanddescription{
+        padding: 0px 75px !important;
+    }
+}
+@media screen and (max-width: 1060px){
+    .lbaanddescription{
+        padding: 0px 150px;
+    }
+}
+@media screen and (max-width: 450px){
+    .lbaanddescription{
+        padding: 0px 35px !important;
+    }
+}
+@media screen and (max-width: 500px){
+   .eligibilitytext{
+    font-size: 14px;
+   }
+   .lbalogo{
+    font-size: 14px;
+   }
+}
