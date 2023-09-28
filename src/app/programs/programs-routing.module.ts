@@ -8,7 +8,7 @@ const routes: Routes = [
 
   { path: 'vendor-page', component: VendorPageComponent  },
   { path: 'vendor-page-form', component: VendorFormComponent  },
-  { path: 'job-page', component: JobPageComponent  }
+  { path: 'jobs', component: JobPageComponent  }
 ];
 
 @NgModule({

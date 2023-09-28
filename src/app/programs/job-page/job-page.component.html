@@ -3,10 +3,8 @@
         <div class="languagechange">
             <div>Language</div>
             <div>
-                <select name="" id="">
-                    <option value="-1">English</option>
-                    <!-- <option value="">Hindi</option>
-                    <option value="">Urdu</option> -->
+                <select>
+                    <option *ngFor="let lang of languages" [value]="lang.id">{{ lang.label }}</option>
                 </select>
             </div>
         </div>
@@ -49,17 +47,13 @@
 
     <div class="openningoptions">
         <div>
-            <select name="" id="">
-                <option value="-1">Job Profile</option>
-                <option value="">QR Sales</option>
-                <option value="">Machine Sales</option>
+            <select>
+              <option *ngFor="let pro of profiles" [value]="pro.id">{{ pro.label }}</option>
             </select>
         </div>
         <div>
-            <select name="" id="">
-                <option value="-1">Select State</option>
-                <option value="">Uttar Pradesh</option>
-                <option value="">Madhya Pradesh</option>
+            <select>
+              <option *ngFor="let s of state" [value]="s.id">{{ s.label }}</option>
             </select>
         </div>
         <div>
