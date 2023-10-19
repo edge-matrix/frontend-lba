@@ -1,0 +1,255 @@
+<div class="onboardingcontainer">
+  <div>
+     <input type="radio" id="s1" name="s" [checked]="selectedTab === 0" (checked)="selectedTab = 0" />
+     <input type="radio" id="s2" name="s" [checked]="selectedTab === 1" (checked)="selectedTab = 1" />
+     <input type="radio" id="s3" name="s" [checked]="selectedTab === 2" (checked)="selectedTab = 2" />
+     <input type="radio" id="s4" name="s" [checked]="selectedTab === 3" (checked)="selectedTab = 3" />
+     <input type="radio" id="s5" name="s" [checked]="selectedTab === 4" (checked)="selectedTab = 4"/>
+     <div class="horizontalline"></div>
+     <div class="tabs">
+       <label for="s1" class="pagetabs"><img src="assets/icons/onboard/shopdetails.png" alt="shopdetails"></label>
+       <label for="s2" class="pagetabs"><img src="assets/icons/onboard/location.png" alt="shop location"></label>
+       <label for="s3" class="pagetabs"><img src="assets/icons/onboard/shopuserdetails.png" alt="shopuseretails"></label>
+       <label for="s4" class="pagetabs"><img src="assets/icons/onboard/timing.png" alt="shop settings"></label>
+       <label for="s5" class="pagetabs"><img src="assets/icons/onboard/legaldetails.png" alt="bankdetails"></label>
+     </div>
+     <ul class="sections">
+      <!-- shopdetails -->
+
+       <li>
+        <form [formGroup]="shopForm">
+          <div class="shopdetailsheading">Shop Details</div>
+          <div class="fileuploadcontainer">
+            <div class="drop-zone fileuploaddropzone" (click)="updateImage()">
+              <div class="uploadfilelogo"><img [src]="uploadImageUrl" alt=""></div>
+              <div><span class="drop-zone__prompt">Drop file here or click to upload</span></div>
+              <div><input class="drop-zone__input" type="file" hidden="true" id="image" accept="image/*" (change)="onFileChange($event)" /></div>
+            </div>
+          </div>
+          <div>
+            <input type="text" class="inputs" title="Shop Name" (keyup)="slugGenerate()" formControlName="title" placeholder="* Shop Name____">
+            <div *ngIf="submitted && f['title'].errors">
+              <span class="text-danger" *ngIf="submitted && f['title'].errors['required']">Field is Required</span>
+            </div>
+          </div>
+          <div>
+            <select formControlName="shop_categories_id" class="inputsoption">
+              <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name}} </option>
+            </select>
+          </div>
+          <div>
+            <textarea class="inputs" title="About Shop" formControlName="about" placeholder="* About Shop ..." rows="4" col="30"></textarea>
+            <div *ngIf="submitted && f['about'].errors">
+              <span class="text-danger" *ngIf="submitted && f['about'].errors['required']">Field is Required</span>
+            </div>
+          </div>
+          <div class="botombtns">
+            <button class="nextbtn" (click)="nextStep(shopForm, 1)">
+              <span>Next</span>
+              <span><img src="assets/icons/onboard/leftarrow.png" alt=""></span>
+            </button>
+          </div>
+        </form>
+       </li>
+       <!-- shop location -->
+
+       <li>
+        <form [formGroup]="shopAddressForm">
+          <div class="userdetails">Shop Location</div>
+          <div>
+            <textarea cols="30" rows="3" class="inputs" title="* Enter Address.." formControlName="addressLine" placeholder="* Enter Complete Shop Address.."></textarea>
+            <div *ngIf="submitted && g['addressLine'].errors">
+              <span class="text-danger" *ngIf="submitted && g['addressLine'].errors['required']">Field is Required</span>
+            </div>
+          </div>
+          <div><input type="text" class="inputs" title="Enter Landmark." formControlName="landmark" placeholder="Enter Near By Landmark.."></div>
+          <div>
+            <textarea cols="30" rows="3" class="inputs" title="* Enter Google Map Link.." formControlName="mapLink" placeholder="Enter Google Map Link.."></textarea>
+          </div>
+          <div>
+            <input type="text" class="inputs" title="* Enter Latitude.." formControlName="lat" placeholder="* Enter Latitude..">
+            <div *ngIf="submitted && g['lat'].errors">
+              <span class="text-danger" *ngIf="submitted && g['lat'].errors['required']">Field is Required</span>
+              <span class="text-danger" *ngIf="submitted && g['lat'].errors['pattern']">Latitude is invalid (Valid Lat: -90.00 to 90.00)</span>
+            </div>
+          </div>
+          <div>
+            <input type="text" class="inputs" title="* Enter Longitude.." formControlName="long" placeholder="* Enter Longitude..">
+            <div *ngIf="submitted && g['long'].errors">
+              <span class="text-danger" *ngIf="submitted && g['long'].errors['required']">Field is Required</span>
+              <span class="text-danger" *ngIf="submitted && g['long'].errors['pattern']">Longitude is invalid (Valid Lat: -180.00 to 180.00)</span>
+            </div>
+          </div>
+          <div>
+            <input type="text" class="inputs" title="* Enter City.." formControlName="city" placeholder="* Enter City Name..">
+            <div *ngIf="submitted && g['city'].errors">
+              <span class="text-danger" *ngIf="submitted && g['city'].errors['required']">Field is Required</span>
+            </div>
+          </div>
+          <div>
+            <input type="number" class="inputs"  title="* Enter PinCode.." formControlName="pincode" placeholder="* Enter 6 Digit PinCode..">
+            <div *ngIf="submitted && g['pincode'].errors">
+              <span class="text-danger" *ngIf="submitted && g['pincode'].errors['required']">Field is Required</span>
+              <span class="text-danger" *ngIf="submitted && g['pincode'].errors['pattern']">Pincode must be 6 digits only</span>
+            </div>
+          </div>
+          <div class="botombtns">
+            <button class="previousbtn" (click)="selectedTab = 0">
+              <span><img src="assets/icons/onboard/leftarrow.png" alt=""></span>
+              <span>Previous</span>
+            </button>
+            <button class="nextbtn" (click)="nextStep(shopAddressForm, 2)">
+              <span>Next</span>
+              <span><img src="assets/icons/onboard/leftarrow.png" alt=""></span>
+            </button>
+          </div>
+
+        </form>
+       </li>
+        <!-- shopuserdetails -->
+
+        <li>
+          <form [formGroup]="userForm">
+            <div class="userdetails">Shop User Details</div>
+            <div>
+              <input type="text" class="inputs" title="Name" formControlName="name" placeholder="* Name____">
+              <div *ngIf="submitted && h['name'].errors">
+                <span class="text-danger" *ngIf="submitted && h['name'].errors['required']">Field is Required</span>
+              </div>
+            </div>
+            <div>
+              <input class="inputs" type="tel" title="Enter mobile.." formControlName="value" placeholder="* Enter mobile...">
+              <div *ngIf="submitted && h['value'].errors">
+                <span class="text-danger" *ngIf="submitted && h['value'].errors['required']">Field is Required</span>
+                <span class="text-danger" *ngIf="submitted && h['value'].errors['pattern']">Value is invalid</span>
+              </div>
+            </div>
+            <div>
+              <input class="inputs" type="tel" title="Enter Whatsapp.." formControlName="whatsapp" placeholder="Enter Whatsapp...">
+              <div *ngIf="submitted && h['whatsapp'].errors">
+                <span class="text-danger" *ngIf="submitted && h['whatsapp'].errors['pattern']">Value is invalid</span>
+              </div>
+            </div>
+            <div>
+              <input class="inputs" type="email" title="Enter Email.." formControlName="email" placeholder="Enter Email...">
+              <div *ngIf="submitted && h['email'].errors">
+                <span class="text-danger" *ngIf="submitted && h['email'].errors['pattern']">Value is invalid</span>
+              </div>
+            </div>
+            <div>
+              <input [type]="showPassword?'text':'password'" class="inputs" title="Enter Password" formControlName="password" placeholder="Enter Password..." >
+              <span><i class="fas fa-eye" *ngIf="!showPassword" (click)="showPassword = true" title="Show Password"></i></span>
+              <span><i class="fas fa-eye-slash" *ngIf="showPassword" (click)="showPassword = false" title="Hide password"></i></span>
+            </div>
+            <div class="botombtns">
+              <button class="previousbtn" (click)="selectedTab = 1">
+                <span><img src="assets/icons/onboard/leftarrow.png" alt=""></span>
+                <span>Previous</span>
+              </button>
+              <button class="nextbtn" (click)="nextStep(userForm, 3)">
+                <span>Next</span>
+                <span><img src="assets/icons/onboard/leftarrow.png" alt=""></span>
+              </button>
+            </div>
+          </form>
+        </li>
+
+       <!-- shop timing -->
+
+
+       <li>
+        <form [formGroup]="shopSettingsForm">
+          <div class="shoptimingheading">Shop Timing</div>
+          <div class="dayandtimingsection">
+            <div class="timingsection">
+              <div>
+                <input type="text" class="timeinputs" placeholder="HH:MM" [value]="i['openTime'].value" (keyup)="updateTime(0,$event)">
+                <div *ngIf="submitted && i['openTime'].value === ''">
+                  <span class="text-danger">Field is Required</span>
+                </div>
+                <div *ngIf="submitted && i['openTime'].value !== '' && !validateTime(0, i['openTime'].value)">
+                  <span class="text-danger">Open Time in invalid</span>
+                </div>
+              </div>
+              <div>---</div>
+              <div>
+                <input type="text" class="timeinputs" placeholder="HH:MM" [value]="i['closeTime'].value" (keyup)="updateTime(1,$event)">
+                <div *ngIf="submitted && i['closeTime'].value=== ''">
+                  <span class="text-danger">Field is Required</span>
+                </div>
+                <div *ngIf="submitted && i['closeTime'].value !== '' && !validateTime(1, i['closeTime'].value)">
+                  <span class="text-danger">Close Time in invalid</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="shoptimingheading">Shop Settings</div>
+          <div class="textcontainer">
+            <div>
+              <input type="checkbox" name="isPayLaterEnabled" id="isPayLaterEnabled" formControlName="isPayLaterEnabled">
+            </div>
+            <div>
+              <label for="isPayLaterEnabled">Is Pay At Shop option available</label>
+            </div>
+          </div>
+          <div class="textcontainer">
+            <div>
+              <input type="checkbox" name="isPayNowEnabled" id="isPayNowEnabled" formControlName="isPayNowEnabled">
+            </div>
+            <div>
+              <label for="isPayNowEnabled">Is Pay Now option available</label>
+            </div>
+          </div>
+          <div class="shoptimingheading">Bank Details</div>
+          <div>
+            <input type="text" class="inputs" title="* Enter Bank Name" formControlName="bankName" placeholder="* Enter Bank Name ...">
+            <div *ngIf="submitted && i['bankName'].errors">
+              <span class="text-danger" *ngIf="submitted && i['bankName'].errors['required']">Field is Required</span>
+            </div>
+          </div>
+          <div>
+            <input type="text" class="inputs" title="* Enter Account Number" formControlName="accountNumber" placeholder="* Enter Account Number..">
+            <div *ngIf="submitted && i['accountNumber'].errors">
+              <span class="text-danger" *ngIf="submitted && i['accountNumber'].errors['required']">Field is Required</span>
+              <span class="text-danger" *ngIf="submitted && i['accountNumber'].errors['pattern']">Account Number is invalid</span>
+            </div>
+          </div>
+          <div>
+            <input type="text" class="inputs" title="* Enter IFSC Code.." formControlName="ifscCode" placeholder="* Enter IFSC Code..">
+            <div *ngIf="submitted && i['ifscCode'].errors">
+              <span class="text-danger" *ngIf="submitted && i['ifscCode'].errors['required']">Field is Required</span>
+              <span class="text-danger" *ngIf="submitted && i['ifscCode'].errors['pattern']">IFSC Code is invalid</span>
+            </div>
+          </div>
+          <div>
+            <input type="text" class="inputs" title="* Account Holder Name" formControlName="holderName" placeholder="Account Holder Name..">
+          </div>
+          <div>
+            <input type="text" class="inputs" title="Enter UPI." formControlName="upi" placeholder="Enter UPI..">
+            <div *ngIf="submitted && i['upi'].errors">
+              <span class="text-danger" *ngIf="submitted && i['upi'].errors['pattern']">UPI is invalid</span>
+            </div>
+          </div>
+          <div *ngIf="submitted && loginMessage !== ''">
+            <span class="text-danger" *ngIf="submitted && loginMessage !== ''">{{ loginMessage }}</span>
+          </div>
+          <div class="botombtns">
+            <button class="previousbtn" (click)="selectedTab = 2">
+              <span><img src="assets/icons/onboard/leftarrow.png" alt=""></span>
+              <span>Previous</span>
+            </button>
+            <button class="nextbtn" (click)="nextStep(shopSettingsForm, 4)">
+              <span>Next</span>
+              <span><img src="assets/icons/onboard/leftarrow.png" alt=""></span>
+            </button>
+          </div>
+        </form>
+       </li>
+
+       <!-- Success Screen -->
+       <li>
+        <div>Success</div>
+       </li>
+     </ul>
+   </div>
+</div>

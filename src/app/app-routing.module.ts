@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent, PageNotFoundComponent } from './_shared';
+import { LoginComponent, PageNotFoundComponent, OnboardingComponent } from './_shared';
 import { AuthGuard } from './_guards';
 
 const routes: Routes = [
@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'programs', loadChildren: () => import('./programs/programs.module').then(m => m.ProgramsModule) },
   { path: 'playzone', loadChildren: () => import('./playzone/playzone.module').then(m => m.PlayzoneModule) },
 
+  { path: 'onboarding', component: OnboardingComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

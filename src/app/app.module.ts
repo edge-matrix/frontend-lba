@@ -8,7 +8,7 @@ import { JwtInterceptor, ErrorInterceptor, InternetInterceptor, LoaderIntercepto
 import { AuthGuard } from './_guards';
 import { AppComponent } from './app.component';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
-import { PageNotFoundComponent, LoginComponent } from './_shared';
+import { PageNotFoundComponent, LoginComponent, OnboardingComponent } from './_shared';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 // import { AngularFireModule } from '@angular/fire/compat';
@@ -21,7 +21,8 @@ import { environment } from '../environments/environment';
     PageNotFoundComponent,
 
     /* Auth Components*/
-    LoginComponent
+    LoginComponent,
+    OnboardingComponent
   ],
   imports: [
     BrowserModule,
