@@ -242,8 +242,8 @@
                         alt=""></div>
                 <div class="carddetails">
                     <div class="shopname">Bullet Chai</div>
-                    <div class="feedback">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque blanditiis
-                        incidunt quasi. aspernatur quia vitae!</div>
+                    <div class="feedback">express my utmost satisfaction with the software, Lets Bunk Again. As a business owner, I have been searching for the perfect solution to manage my orders
+                      and streamline my operations. Let me tell you, this software has exceeded all my expectations.</div>
                 </div>
             </div>
             <div class="customercard">
@@ -252,8 +252,8 @@
                         alt=""></div>
                 <div class="carddetails">
                     <div class="shopname">Chappan Swad</div>
-                    <div class="feedback">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque blanditiis
-                        incidunt quasi. aspernatur quia vitae!</div>
+                    <div class="feedback">Lets Bunk Again has proven to be the best POS software I have come across. Its user-friendly interface and intuitive features have made order management
+                       a breeze. From the moment I started using it, I noticed a significant improvement in the efficiency of my business processes.</div>
                 </div>
             </div>
             <div class="customercard">
@@ -262,8 +262,8 @@
                         alt=""></div>
                 <div class="carddetails">
                     <div class="shopname">Chatore: The Swad</div>
-                    <div class="feedback">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque blanditiis
-                        incidunt quasi. aspernatur quia vitae!</div>
+                    <div class="feedback">Whether you are a small business owner or a large enterprise, Lets Bunk Again is the
+                       solution you need to streamline your operations and take your business to new heights.</div>
                 </div>
             </div>
             <div class="customercard">
@@ -272,8 +272,8 @@
                         alt=""></div>
                 <div class="carddetails">
                     <div class="shopname">House Of Tea</div>
-                    <div class="feedback">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque blanditiis
-                        incidunt quasi. aspernatur quia vitae!</div>
+                    <div class="feedback">One of the standout features of Lets Bunk Again is its ability to handle orders seamlessly.
+                      With just a few clicks, I am able to process orders, track inventory, and generate invoices effortlessly.!</div>
                 </div>
             </div>
             <div class="customercard">
@@ -282,8 +282,8 @@
                         alt=""></div>
                 <div class="carddetails">
                     <div class="shopname">Maggi Point</div>
-                    <div class="feedback">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque blanditiis
-                        incidunt quasi. aspernatur quia vitae!</div>
+                    <div class="feedback">I highly recommend Lets Bunk Again as the perfect software to manage orders and the best POS software in the market. Its user-friendly interface, seamless
+                       order management, and exceptional customer support have made it an invaluable tool for my business.</div>
                 </div>
             </div>
         </div>
@@ -295,23 +295,25 @@
             <div class="pricingdesc">Plans designed for organizations of all sizes. </div>
             <div class="selector">
                 <div>Monthly</div>
-                <div><input type="checkbox"></div>
+                <div><input type="checkbox" [checked]="option === 1" (change)="option = option === 1?0:1"></div>
                 <div>Yearly</div>
             </div>
         </div>
 
         <div class="pricingcardcontainer">
             <div class="card">
-                <div class="subscripprice"><span>0</span> / Month</div>
+                <div class="subscripprice" *ngIf="option === 0"><span>0</span> / Month</div>
+                <div class="subscripprice" *ngIf="option === 1"><span>0</span> / Year</div>
                 <div class="subscriptiontype">Free</div>
-                <div class="subscriptiondesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quo nisi exercitationem,
-                    facilis libero dicta illum optio necessitatibus a eum ratione nemo animi nesciunt perferendis sunt
-                    eaque? Voluptas, et vero.</div>
-
+                <div class="subscriptiondesc">Perfect pricing option for small vendors who just want our QR based ordering system for making order placement smooth.</div>
                 <div class="pointscontainer">
                     <div class="points">
                         <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                        <div>3 QR standee</div>
+                        <div>Upto 5 QR standee</div>
+                    </div>
+                    <div class="points">
+                      <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                      <div> Upto 50 Items listing</div>
                     </div>
                     <div class="points">
                         <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
@@ -335,22 +337,26 @@
             <div class="recommemdedcard">
                 <div class="recommemdedtag">Recommended</div>
                 <div class="card">
-                    <div class="subscripprice"><span>0</span> / Month</div>
-                    <div class="subscriptiontype">Free</div>
-                    <div class="subscriptiondesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quo nisi exercitationem,
-                        facilis libero dicta illum optio necessitatibus a eum ratione nemo animi nesciunt perferendis sunt
-                        eaque? Voluptas, et vero.</div>
-    
+                    <div class="subscripprice" *ngIf="option === 0"><span>299</span> / Month</div>
+                    <div class="subscripprice" *ngIf="option === 1"><span>2999</span> / Year</div>
+                    <div class="subscriptiontype">Standard</div>
+                    <div class="subscriptiondesc">Providing complete software for creating, managing and reporting all orders/sales along with our QR ordering system.</div>
+
                     <div class="pointscontainer">
                         <div class="points">
                             <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                            <div>7 QR standee</div>
+                            <div>Upto 7 QR standee</div>
                         </div>
                         <div class="points">
                             <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
                             <div> Unlimited Item Listing
                             </div>
                         </div>
+                        <div class="points">
+                          <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                          <div> Multiple Location Listing
+                          </div>
+                      </div>
                         <div class="points">
                             <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
                             <div>Digital Shop & Digital Menu
@@ -363,33 +369,20 @@
                         </div>
                         <div class="points">
                             <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                            <div>Link Social Media Accounts
-                            </div>
+                            <div>Accept Unlimited Orders from user via QR or create new from panel</div>
                         </div>
                         <div class="points">
-                            <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                            <div>Pocket Printer included
-                            </div>
-                        </div>
-                        <div class="points">
-                            <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                            <div>3 Rolls per months
-                            </div>
-                        </div>
-                        <div class="points">
-                            <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                            <div>2 Monthly visits</div>
-                        </div>
-                        <div class="points">
-                            <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                            <div>Accept Unlimited Orders from user via QR or create new</div>
-                        </div>
+                          <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                          <div>Link Social Media Accounts
+                          </div>
+                      </div>
                     </div>
                 </div>
             </div>
 
             <div class="card">
-                <div class="subscripprice"><span>0</span> / Month</div>
+                <div class="subscripprice" *ngIf="option === 0"><span>499</span> / Month</div>
+                <div class="subscripprice" *ngIf="option === 1"><span>4999</span> / Year</div>
                 <div class="subscriptiontype">Free</div>
                 <div class="subscriptiondesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quo nisi exercitationem,
                     facilis libero dicta illum optio necessitatibus a eum ratione nemo animi nesciunt perferendis sunt
@@ -398,31 +391,39 @@
                 <div class="pointscontainer">
                     <div class="points">
                         <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                        <div>5 QR standee</div>
+                        <div>Upto 10 QR standee</div>
                     </div>
                     <div class="points">
-                        <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                        <div>Link Social Media Accounts</div>
+                      <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                      <div> Unlimited Item Listing</div>
                     </div>
                     <div class="points">
                         <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
                         <div>Multiple Shop Locations </div>
                     </div>
                     <div class="points">
+                      <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                      <div>Digital Shop & Digital Menu</div>
+                    </div>
+                    <div class="points">
                         <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
                         <div> Same Day Payout</div>
                     </div>
                     <div class="points">
-                        <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                        <div>Digital Shop & Digital Menu</div>
+                      <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                      <div>Accept Unlimited Orders from user via QR or create new from panel</div>
                     </div>
                     <div class="points">
-                        <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                        <div> Unlimited Item Listing</div>
+                      <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                      <div>Link Social Media Accounts</div>
                     </div>
                     <div class="points">
-                        <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
-                        <div>Create and Manage Orders (Dine in, Pick up, Delivery)</div>
+                      <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                      <div>Pocket Printer included</div>
+                    </div>
+                    <div class="points">
+                      <div><img src="assets/imagefolder/check-mark.png" alt="checkmark"></div>
+                      <div>Upto 3 Rolls per months</div>
                     </div>
                 </div>
             </div>
@@ -548,4 +549,3 @@
     </section>
 </div>
 <app-footer [show]="false"></app-footer>
-<bottom-nav></bottom-nav>
