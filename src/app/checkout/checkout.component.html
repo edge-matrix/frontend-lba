@@ -37,7 +37,7 @@
             </div> -->
 
             <div class="shopdetailsheading">Shop Details</div>
-            <div class="shopdetailsection">
+            <div class="shopdetailsection" *ngIf="shops">
                 <div class="shopname">{{ shops.title }}</div>
                 <div class="shopaddress" *ngIf="shops.address && shops.address.length > 0">{{ shops.address[0].addressLine }}, {{ shops.address[0].landmark }}<br> {{ shops.address[0].city }}, {{ shops.address[0].pincode }}</div>
                 <div class="visitshopsection" routerLink="/menu/{{shops.slug}}">

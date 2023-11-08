@@ -1,4 +1,4 @@
-<div class="centering">
+<div class="centering" *ngIf="!isShortLink">
   <div class="wrapper">
     <div class="mainpage">
       <div class="errorpage">
@@ -11,4 +11,7 @@
       </div>
     </div>
   </div>
+</div>
+<div id="preloader" [hidden]="!loading">
+  <div id="loader"></div>
 </div>

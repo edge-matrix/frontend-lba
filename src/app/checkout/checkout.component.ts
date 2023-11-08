@@ -45,17 +45,17 @@ export class CheckoutComponent implements OnInit {
     });
     this.getShopDetails();
     this.activeRoute.queryParams.subscribe(params => {
-      // if(params['transactionId']){
-      //   this.updatePaymentStatus(params['transactionId']);
-      // }
-      if(params['payment_id'] && params['payment_status'] && params['payment_request_id']){
-        const paymentResult = {
-          'payment_id': params['payment_id'],
-          'payment_status': params['payment_status'],
-          'payment_request_id': params['payment_request_id']
-        }
-        this.updatePaymentStatus(paymentResult);
+      if(params['transactionId']){
+        this.updatePaymentStatus(params['transactionId']);
       }
+      // if(params['payment_id'] && params['payment_status'] && params['payment_request_id']){
+      //   const paymentResult = {
+      //     'payment_id': params['payment_id'],
+      //     'payment_status': params['payment_status'],
+      //     'payment_request_id': params['payment_request_id']
+      //   }
+      //   this.updatePaymentStatus(paymentResult);
+      // }
     });
   }
 
@@ -131,7 +131,7 @@ export class CheckoutComponent implements OnInit {
     this.cart.forEach(e => {
       subTotal += e.itemDetails.price * e.quantity;
     });
-    if(this.shops.settings && this.shops.settings.chargeableTax === 1){
+    if(this.shops && this.shops.settings && this.shops.settings.chargeableTax === 1){
       taxes = this.shops.settings.taxAmount;
     }
     let grandTotal = subTotal + ( subTotal * taxes/100);
@@ -147,7 +147,7 @@ export class CheckoutComponent implements OnInit {
 
   isShopCloseCheck(){
     let isShopOpen = true;
-    if(this.shops.timings && this.shops.timings.length > 0){
+    if(this.shops && this.shops.timings && this.shops.timings.length > 0){
       let currentTiming = this.shops.timings.find(time => time.dayId === new Date().getDay());
       if(currentTiming){
         if(currentTiming.isOpen){
@@ -249,50 +249,23 @@ export class CheckoutComponent implements OnInit {
       this.isPaymentStart = true;
       return;
     }else{
-      // const paymentDetails = {
-      //   paymentMethod: 0,
-      //   transactionId: this.orderId,
-      // };
       const paymentDetails = {
         orderStatus: 1,
         paymentMethod: 0,
-        transactionId: '',
-        payment_id: '',
-        orderDetails_id: this.orderId
+        transactionId: this.orderId,
       };
+      // const paymentDetails = {
+      //   orderStatus: 1,
+      //   paymentMethod: 0,
+      //   transactionId: '',
+      //   payment_id: '',
+      //   orderDetails_id: this.orderId
+      // };
       this.updatePaymentDetails(paymentDetails);
     }
   }
 
-  // updatePaymentDetails(data: { paymentMethod: number; transactionId: string;}){
-  //   this.bookService.updatePaymentDetails(data).subscribe((response: Response) => {
-  //     if (response.statusCode != 200 && response.statusCode != 201) {
-  //       this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
-  //     } else {
-  //       this.storageService.updatemyCart([]);
-  //       if(response.singleData){
-  //         this.orderId = response.singleData;
-  //         this.router.navigate(['/order-page/'+this.orderId],{ queryParams: { orderPlaced: "true"}});
-  //       }
-  //     }
-  //   },
-  //   error => {
-  //     this.sharedService.showMessage(1,'Something Went Wrong');
-  //   });
-  // }
-
-  // updatePaymentStatus(transactionId: string){
-  //   this.isPaymentStart = false;
-  //   if(transactionId !== ''){
-  //     const paymentDetails = {
-  //       paymentMethod: 1,
-  //       transactionId: transactionId,
-  //     };
-  //     this.updatePaymentDetails(paymentDetails);
-  //   }
-  // }
-
-  updatePaymentDetails(data: { orderStatus: number, paymentMethod: number; transactionId?: string; payment_id?: string, orderDetails_id?: string}){
+  updatePaymentDetails(data: { orderStatus: number, paymentMethod: number; transactionId: string;}){
     this.bookService.updatePaymentDetails(data).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
         this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
@@ -300,9 +273,7 @@ export class CheckoutComponent implements OnInit {
         this.storageService.updatemyCart([]);
         if(response.singleData){
           this.orderId = response.singleData;
-          this.router.navigate(['./order-page/'+this.orderId],{ queryParams: { orderPlaced: "true"}}).then(() => {
-            window.location.reload();
-          });
+          this.router.navigate(['/order-page/'+this.orderId],{ queryParams: { orderPlaced: "true"}});
         }
       }
     },
@@ -311,17 +282,48 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  updatePaymentStatus(event: {payment_status: string, payment_id?: string, payment_request_id?: string}){
+  updatePaymentStatus(transactionId: string){
     this.isPaymentStart = false;
-    if(event.payment_status === 'Credit' && event.payment_id && event.payment_request_id){
+    if(transactionId !== ''){
       const paymentDetails = {
         orderStatus: 1,
         paymentMethod: 1,
-        transactionId: event.payment_request_id,
-        payment_id: event.payment_id,
-        orderDetails_id: ''
+        transactionId: transactionId,
       };
       this.updatePaymentDetails(paymentDetails);
     }
   }
+
+  // updatePaymentDetails(data: { orderStatus: number, paymentMethod: number; transactionId?: string; payment_id?: string, orderDetails_id?: string}){
+  //   this.bookService.updatePaymentDetails(data).subscribe((response: Response) => {
+  //     if (response.statusCode != 200 && response.statusCode != 201) {
+  //       this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
+  //     } else {
+  //       this.storageService.updatemyCart([]);
+  //       if(response.singleData){
+  //         this.orderId = response.singleData;
+  //         this.router.navigate(['./order-page/'+this.orderId],{ queryParams: { orderPlaced: "true"}}).then(() => {
+  //           window.location.reload();
+  //         });
+  //       }
+  //     }
+  //   },
+  //   error => {
+  //     this.sharedService.showMessage(1,'Something Went Wrong');
+  //   });
+  // }
+
+  // updatePaymentStatus(event: {payment_status: string, payment_id?: string, payment_request_id?: string}){
+  //   this.isPaymentStart = false;
+  //   if(event.payment_status === 'Credit' && event.payment_id && event.payment_request_id){
+  //     const paymentDetails = {
+  //       orderStatus: 1,
+  //       paymentMethod: 1,
+  //       transactionId: event.payment_request_id,
+  //       payment_id: event.payment_id,
+  //       orderDetails_id: ''
+  //     };
+  //     this.updatePaymentDetails(paymentDetails);
+  //   }
+  // }
 }

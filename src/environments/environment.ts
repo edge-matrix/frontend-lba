@@ -20,8 +20,9 @@ export const environment = {
     appId: "1:347467439723:web:3d9fbf8a128b56b55d1b2e",
     measurementId: "G-WCQ5LJLX8S"
   },
-  // paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator',
-  paymentUrl: 'https://www.instamojo.com/@lets_bunk_again/'
+  // paymentUrl: 'https://mercury-t2.phonepe.com/transact/pg',   //Phone Pay Prod
+  paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator', //Phone Pay Demo
+  // paymentUrl: 'https://www.instamojo.com/@lets_bunk_again/'
 };
 
 /*
