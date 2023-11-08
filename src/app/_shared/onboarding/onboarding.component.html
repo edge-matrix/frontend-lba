@@ -1,192 +1,244 @@
 <div class="stepofonboarding">
-    <div class="stepper">
+    <div class="stepper" (click)="selectedTab = selectedTab >= 0?0:selectedTab">
       <img src="https://letsbunkagain.com/assets/icons/onboard/shopdetails.png"/>
     </div>
-    <div class="stepper">
+    <div class="stepper" (click)="selectedTab = selectedTab >= 1?1:selectedTab">
       <img src="https://letsbunkagain.com/assets/icons/onboard/location.png"/>
     </div>
-    <div class="stepper">
+    <div class="stepper" (click)="selectedTab = selectedTab >= 2?2:selectedTab">
       <img src="https://letsbunkagain.com/assets/icons/onboard/shopuserdetails.png"/>
     </div>
-    <div class="stepper">
+    <div class="stepper" (click)="selectedTab = selectedTab >= 3?3:selectedTab">
       <img src="https://letsbunkagain.com/assets/icons/onboard/shopdetails.png"/>
     </div>
-    <div class="stepper">
+    <div class="stepper" (click)="selectedTab = selectedTab >= 4?4:selectedTab">
       <img src="	https://letsbunkagain.com/assets/icons/onboard/timing.png"/>
-    </div>
-    <div class="stepper">
-      <img src="https://letsbunkagain.com/assets/icons/onboard/legaldetails.png"/>
     </div>
 </div>
 <div class="onboarding-page">
   <div class="center">
-    <div class="shop-detail-page paddings">
+    <div class="shop-detail-page paddings" *ngIf="selectedTab === 0">
       <p>Shop basic detail</p>
-      <div class="take-input">
-        <div class="subheading">Shop Name</div>
-        <input type="text" placeholder="Enter shop name"/>
-      </div>
-      <label for="fileInput" class="custom-file-input">
-        <div class="addimage">
-          <img src= "https://letsbunkagain.com/assets/icons/onboard/uploadfile.png" width="50px" height="50px"/>
-          <span><br>Click to add an image</span>
-          <input type="file" id="fileInput" hidden />
+      <form [formGroup]="shopForm">
+        <div class="take-input">
+          <div class="subheading">Shop Name</div>
+          <input type="text" title="Shop Name" (keyup)="slugGenerate()" formControlName="title" placeholder="* Shop Name____">
+          <div *ngIf="submitted && f['title'].errors">
+            <span class="text-danger" *ngIf="submitted && f['title'].errors['required']">Field is Required</span>
+          </div>
         </div>
-      </label>
-      <div class="shop-type">
-        <label for="shop-type" class="subheading">Type of shop</label><br>
-        <select id="shop-type" name="shop-type">
-          <option value="Cafe">Cafe</option>
-          <option value="Restaurant">Restaurant</option>
-          <option value="Hotel">Hotel</option>
-        </select>
-      </div>      
-      <div class="take-input">
-        <div class="subheading">About shop</div>
-        <textarea placeholder="Enter the address"></textarea>
-      </div>
-      <div class="buttons">
-        <button>Next</button>
-      </div>
+        <label for="fileInput" class="custom-file-input">
+          <div class="addimage" (click)="updateImage()">
+            <img [src]="uploadImageUrl" width="50px" height="50px"/>
+            <span><br>Drop file here or click to upload</span>
+            <input type="file" hidden="true" id="image" accept="image/*" (change)="onFileChange($event)" />
+          </div>
+        </label>
+        <div class="shop-type">
+          <label for="shop-type" class="subheading">Type of shop</label><br>
+          <select formControlName="shop_categories_id" id="shop-type" name="shop-type">
+            <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name}} </option>
+          </select>
+        </div>
+        <div class="take-input">
+          <div class="subheading">About shop</div>
+          <textarea title="About Shop" formControlName="about" placeholder="* About Shop ..." rows="4" col="30"></textarea>
+          <div *ngIf="submitted && f['about'].errors">
+            <span class="text-danger" *ngIf="submitted && f['about'].errors['required']">Field is Required</span>
+          </div>
+        </div>
+        <div class="buttons">
+          <button (click)="nextStep(shopForm, 1)">Next</button>
+        </div>
+      </form>
     </div>
-    <!-- <div class="shop-location-page paddings">
+    <div class="shop-location-page paddings" *ngIf="selectedTab === 1">
       <p>Shop location detail</p>
-      <div class="take-input">
-        <div class="subheading">Shop Complete Address</div>
-        <input type="text" placeholder="Enter address"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">Any nearby landmark</div>
-        <input type="text" placeholder="Enter landmark"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">City name</div>
-        <input type="text" placeholder="Enter city"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">Pincode</div>
-        <input type="text" placeholder="Enter Pincode"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">Latitude</div>
-        <input type="number" placeholder="Enter latitude"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">Longitude</div>
-        <input type="number" placeholder="Enter longitude"/>
-      </div>    
-      <div class="buttons firstbutton">
-        <button>Next</button>
-      </div>
-      <div class="buttons">
-        <button>Back</button>
-      </div>
-    </div> -->
-    <!-- <div class="shop-owner-page paddings">
+      <form [formGroup]="shopAddressForm">
+        <div class="take-input">
+          <div class="subheading">Shop Complete Address</div>
+          <textarea cols="30" rows="3" title="* Enter Address.." formControlName="addressLine" placeholder="* Enter Complete Shop Address.."></textarea>
+          <div *ngIf="submitted && g['addressLine'].errors">
+            <span class="text-danger" *ngIf="submitted && g['addressLine'].errors['required']">Field is Required</span>
+          </div>
+        </div>
+        <div class="take-input">
+          <div class="subheading">Nearby Landmark</div>
+          <input type="text" title="Enter Landmark." formControlName="landmark" placeholder="Enter Near By Landmark..">
+        </div>
+        <div class="take-input">
+          <div class="subheading">City name</div>
+          <input type="text" title="* Enter City.." formControlName="city" placeholder="* Enter City Name..">
+          <div *ngIf="submitted && g['city'].errors">
+            <span class="text-danger" *ngIf="submitted && g['city'].errors['required']">Field is Required</span>
+          </div>
+        </div>
+        <div class="take-input">
+          <div class="subheading">Pincode</div>
+          <input type="number" title="* Enter PinCode.." formControlName="pincode" placeholder="* Enter 6 Digit PinCode.."/>
+          <div *ngIf="submitted && g['pincode'].errors">
+            <span class="text-danger" *ngIf="submitted && g['pincode'].errors['required']">Field is Required</span>
+            <span class="text-danger" *ngIf="submitted && g['pincode'].errors['pattern']">Pincode must be 6 digits only</span>
+          </div>
+        </div>
+        <div class="take-input">
+          <div class="subheading">Latitude (ex: 28.679079)</div>
+          <input type="text" title="* Enter Latitude.." formControlName="lat" placeholder="* Enter Latitude.."/>
+          <div *ngIf="submitted && g['lat'].errors">
+            <span class="text-danger" *ngIf="submitted && g['lat'].errors['required']">Field is Required</span>
+            <span class="text-danger" *ngIf="submitted && g['lat'].errors['pattern']">Latitude is invalid (Valid Lat: -90.00 to 90.00)</span>
+          </div>
+        </div>
+        <div class="take-input">
+          <div class="subheading">Longitude (ex: 77.069710)</div>
+          <input type="text" title="* Enter Longitude.." formControlName="long" placeholder="* Enter Longitude.."/>
+          <div *ngIf="submitted && g['long'].errors">
+            <span class="text-danger" *ngIf="submitted && g['long'].errors['required']">Field is Required</span>
+            <span class="text-danger" *ngIf="submitted && g['long'].errors['pattern']">Longitude is invalid (Valid Lat: -180.00 to 180.00)</span>
+          </div>
+        </div>
+        <div class="buttons firstbutton">
+          <button (click)="nextStep(shopAddressForm, 2)">Next</button>
+        </div>
+        <div class="buttons">
+          <button (click)="selectedTab = 0">Back</button>
+        </div>
+      </form>
+    </div>
+    <div class="shop-owner-page paddings" *ngIf="selectedTab === 2">
         <p>Shop Owner detail</p>
-        <div class="take-input">
-          <div class="subheading">Shop Owner name</div>
-          <input type="text" placeholder="Enter name"/>
-        </div>
-        <div class="take-input">
-          <div class="subheading">Owner Phone Number</div>
-          <input type="number" placeholder="Enter phone number"/>
-        </div>
-        <div class="take-input">
-          <div class="subheading">Password</div>
-          <input type="text" placeholder="Enter password"/>
-        </div>
-      <div class="buttons firstbutton">
-        <button>Next</button>
-      </div>
-      <div class="buttons">
-        <button>Back</button>
-      </div>
-    </div> -->
-    <!-- <div class="shop-bank-page paddings">
+        <form [formGroup]="userForm">
+          <div class="take-input">
+            <div class="subheading">Shop Owner name</div>
+            <input type="text" title="Name" formControlName="name" placeholder="* Name____" />
+            <div *ngIf="submitted && h['name'].errors">
+              <span class="text-danger" *ngIf="submitted && h['name'].errors['required']">Field is Required</span>
+            </div>
+          </div>
+          <div class="take-input">
+            <div class="subheading">Owner Phone Number</div>
+            <input type="tel" title="Enter mobile.." formControlName="value" placeholder="* Enter mobile...">
+            <div *ngIf="submitted && h['value'].errors">
+              <span class="text-danger" *ngIf="submitted && h['value'].errors['required']">Field is Required</span>
+              <span class="text-danger" *ngIf="submitted && h['value'].errors['pattern']">Value is invalid</span>
+            </div>
+          </div>
+          <div class="take-input">
+            <div class="subheading">Password</div>
+            <input [type]="showPassword?'text':'password'" title="Enter Password" formControlName="password" placeholder="Enter Password..." >
+            <span><i class="fas fa-eye" *ngIf="!showPassword" (click)="showPassword = true" title="Show Password"></i></span>
+            <span><i class="fas fa-eye-slash" *ngIf="showPassword" (click)="showPassword = false" title="Hide password"></i></span>
+          </div>
+          <div class="buttons firstbutton">
+            <button (click)="nextStep(userForm, 3)">Next</button>
+          </div>
+          <div class="buttons">
+            <button (click)="selectedTab = 1">Back</button>
+          </div>
+        </form>
+    </div>
+    <div class="shop-bank-page paddings" *ngIf="selectedTab === 3">
       <p>Owner / shop Bank detail</p>
       <div class="note">यह बैंक विवरण सभी ऑनलाइन राशि हस्तांतरित करने के लिए उपयोग किया जाएगा और यह केवल तभी लागू होगा जब आप अभी भुगतान करें विकल्प से सहमत हों</div>
-      <div class="checkboxes">
-        <div class="paymentoption">
-          <input type="checkbox" name="paynow" value="paynow" checked/>
-          <span>Pay now</span>
+      <form [formGroup]="shopSettingsForm">
+        <div class="checkboxes">
+          <div class="paymentoption">
+            <input type="checkbox" name="isPayLaterEnabled" id="isPayLaterEnabled" formControlName="isPayLaterEnabled">
+            <label for="isPayLaterEnabled">Pay at counter</label>
+          </div>
+          <div class="paymentoption">
+            <input type="checkbox" name="isPayNowEnabled" id="isPayNowEnabled" formControlName="isPayNowEnabled">
+            <label for="isPayNowEnabled">Pay now</label>
+          </div>
         </div>
-        <div class="paymentoption">
-          <input type="checkbox" name="payatshop" value="payatshop" checked/>
-          <span>Pay at counter</span>
+        <div class="take-input" *ngIf="i['isPayNowEnabled'].value">
+          <div class="subheading">Bank Name</div>
+          <input type="text" title="* Enter Bank Name" formControlName="bankName" placeholder="* Enter Bank Name ...">
+            <div *ngIf="submitted && i['bankName'].errors">
+              <span class="text-danger" *ngIf="submitted && i['bankName'].errors['required']">Field is Required</span>
+            </div>
         </div>
-      </div>
-      <div class="take-input">
-        <div class="subheading">Bank Name</div>
-        <input type="text" placeholder="Enter Bank name"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">Account Number</div>
-        <input type="number" placeholder="Enter account number"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">IFSC Code</div>
-        <input type="number" placeholder="Enter IFSC code"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">Account holder name</div>
-        <input type="email" placeholder="Enter name"/>
-      </div>
-      <div class="take-input">
-        <div class="subheading">Enter UPI for Fast Payment</div>
-        <input type="text" placeholder="Enter UPI Id"/>
-      </div>
-    <div class="buttons firstbutton">
-      <button>Next</button>
-    </div>
-    <div class="buttons">
-      <button>Back</button>
-    </div>
-  </div> -->
-    <!-- <div class="shop-timing-page paddings">
-      <p>Shop opening time detail</p>
-      <div class="note">Note : Write Timing as 13:00 for 1 pm</div>
+        <div class="take-input" *ngIf="i['isPayNowEnabled'].value">
+          <div class="subheading">Account Number</div>
+          <input type="text" title="* Enter Account Number" formControlName="accountNumber" placeholder="* Enter Account Number..">
+          <div *ngIf="submitted && i['accountNumber'].errors">
+            <span class="text-danger" *ngIf="submitted && i['accountNumber'].errors['required']">Field is Required</span>
+            <span class="text-danger" *ngIf="submitted && i['accountNumber'].errors['pattern']">Account Number is invalid</span>
+          </div>
+        </div>
+        <div class="take-input" *ngIf="i['isPayNowEnabled'].value">
+          <div class="subheading">IFSC Code</div>
+          <input type="text" title="* Enter IFSC Code.." formControlName="ifscCode" placeholder="* Enter IFSC Code..">
+          <div *ngIf="submitted && i['ifscCode'].errors">
+            <span class="text-danger" *ngIf="submitted && i['ifscCode'].errors['required']">Field is Required</span>
+            <span class="text-danger" *ngIf="submitted && i['ifscCode'].errors['pattern']">IFSC Code is invalid</span>
+          </div>
+        </div>
+        <div class="take-input" *ngIf="i['isPayNowEnabled'].value">
+          <div class="subheading">Account holder name</div>
+          <input type="text" title="Account Holder Name" formControlName="holderName" placeholder="Account Holder Name..">
+        </div>
+        <div class="take-input" *ngIf="i['isPayNowEnabled'].value">
+          <div class="subheading">Enter UPI for Fast Payment</div>
+          <input type="text" title="Enter UPI." formControlName="upi" placeholder="Enter UPI..">
+          <div *ngIf="submitted && i['upi'].errors">
+            <span class="text-danger" *ngIf="submitted && i['upi'].errors['pattern']">UPI is invalid</span>
+          </div>
+        </div>
+        <div class="buttons firstbutton">
+          <button (click)="nextStep(shopSettingsForm, 4)">Next</button>
+        </div>
+        <div class="buttons">
+          <button (click)="selectedTab = 2">Back</button>
+        </div>
+      </form>
+  </div>
+  <div class="shop-timing-page paddings" *ngIf="selectedTab === 4">
+    <p>Shop opening time detail</p>
+    <div class="note">Note : Write Timing as 13:00 for 1 PM (24 Hour Format)</div>
+    <form [formGroup]="shopOtherForm">
       <div class="take-input">
         <div class="subheading">Opening time</div>
-        <input type="text" placeholder="Enter opening time"/>
+        <input type="text" placeholder="HH:MM" [value]="j['openTime'].value" (keyup)="updateTime(0,$event)">
+        <div *ngIf="submitted && j['openTime'].value === ''">
+          <span class="text-danger">Field is Required</span>
+        </div>
+        <div *ngIf="submitted && j['openTime'].value !== '' && !validateTime(0, j['openTime'].value)">
+          <span class="text-danger">Open Time in invalid</span>
+        </div>
       </div>
       <div class="take-input">
         <div class="subheading">Closing time</div>
-        <input type="text" placeholder="Enter closing time"/>
+        <input type="text" placeholder="HH:MM" [value]="j['closeTime'].value" (keyup)="updateTime(1,$event)">
+        <div *ngIf="submitted && j['closeTime'].value=== ''">
+          <span class="text-danger">Field is Required</span>
+        </div>
+        <div *ngIf="submitted && j['closeTime'].value !== '' && !validateTime(1, j['closeTime'].value)">
+          <span class="text-danger">Close Time in invalid</span>
+        </div>
       </div>
-      <div class="buttons firstbutton">
-        <button>Next</button>
-      </div>
-      <div class="buttons">
-        <button>Back</button>
-      </div>
-    </div> -->
-    <!-- <div class="shop-QR-page paddings">
       <p>Shop QR detail</p>
       <div class="take-input">
         <div class="subheading">Enter QR number</div>
-        <input type="number" placeholder="Enter QR number"/>
+        <input type="number" placeholder="Enter QR number" [(ngModel)]='qr' [ngModelOptions]="{standalone: true}" />
       </div>
       <div class="buttons">
-        <button>Add QR</button>
+        <button (click)="addQr()">Add QR</button>
       </div>
-      <div class="qrdetails">
-        <div class="qrnumber">161452145</div>
-        <div><i class="fa-solid fa-trash"></i></div>
-      </div>
-      <div class="qrdetails">
-        <div class="qrnumber">161452145</div>
-        <div><i class="fa-solid fa-trash"></i></div>
+      <div class="qrdetails" *ngFor="let qr of qrCodes; let i = index">
+        <div class="qrnumber">{{ qr }}</div>
+        <div><i class="fa-solid fa-trash" (click)="deleteQr(i)"></i></div>
       </div>
       <div class="buttons firstbutton">
-        <button>Next</button>
+        <button (click)="nextStep(shopOtherForm, 5)">Next</button>
       </div>
       <div class="buttons">
-        <button>Back</button>
+        <button (click)="selectedTab = 3">Back</button>
       </div>
-    </div> -->
-    <!-- <div class="sucesspage paddings">
-      <div>Thank you your shop has been created please use your Phone number and password to login to your Shop panel</div>
-    </div> -->
+    </form>
+  </div>
+  <div class="sucesspage paddings" *ngIf="selectedTab === 5">
+    <div>Thank you your shop has been created please use your Phone number and password to login to your Shop panel</div>
+  </div>
   </div>
 </div>

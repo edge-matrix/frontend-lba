@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Response, ShopCategories } from '@models'
 import { ComboDetailsService, CommonService, SharedService } from '@service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -18,6 +18,9 @@ export class OnboardingComponent implements OnInit {
   shopAddressForm!: FormGroup;
   userForm!: FormGroup;
   shopSettingsForm!: FormGroup;
+  shopOtherForm!: FormGroup;
+  qr = '';
+  qrCodes: Array<string> = [];
   submitted = false;
 
   loading = false;
@@ -60,15 +63,17 @@ export class OnboardingComponent implements OnInit {
       password: [''],
     });
     this.shopSettingsForm = this.fb.group({
-      openTime: ['', Validators.required],
-      closeTime: ['', Validators.required],
-      isPayLaterEnabled: [0, Validators.required],
-      isPayNowEnabled: [0, Validators.required],
-      bankName: ['', Validators.required],
-      accountNumber: ['', [Validators.required,Validators.pattern('^[0-9]{9,18}$')]],
-      ifscCode: ['', [Validators.required,Validators.pattern('^[A-Za-z]{4}[0][0-9]{6}$')]],
+      isPayLaterEnabled: [1, Validators.required],
+      isPayNowEnabled: [1, Validators.required],
+      bankName: [''],
+      accountNumber: ['', Validators.pattern('^[0-9]{9,18}$')],
+      ifscCode: ['', Validators.pattern('^[A-Za-z]{4}[0][0-9]{6}$')],
       holderName: [''],
       upi: ['',Validators.pattern('^[a-zA-Z0-9.\-_]{2,49}@[a-zA-Z._]{2,49}$')],
+    });
+    this.shopOtherForm = this.fb.group({
+      openTime: ['', Validators.required],
+      closeTime: ['', Validators.required]
     });
   }
 
@@ -80,6 +85,19 @@ export class OnboardingComponent implements OnInit {
   get h() { return this.userForm.controls; }
 
   get i() { return this.shopSettingsForm.controls; }
+
+  get j() { return this.shopOtherForm.controls; }
+
+  addQr() {
+    if(this.qr !== ''){
+      this.qrCodes.push(this.qr);
+      this.qr = '';
+    }
+  }
+
+  deleteQr(index: number) {
+    this.qrCodes.splice(index, 1);
+  }
 
   slugGenerate(){
     let slug = this.f['title'].value;
@@ -112,7 +130,7 @@ export class OnboardingComponent implements OnInit {
       return;
     }
     this.submitted = false;
-    if(to === 4){
+    if(to === 5){
       this.shopSettingsForm.patchValue({
         'isPayLaterEnabled':  this.shopSettingsForm.value.isPayLaterEnabled?1:0,
         'isPayNowEnabled': this.shopSettingsForm.value.isPayNowEnabled?1:0
@@ -129,7 +147,7 @@ export class OnboardingComponent implements OnInit {
       return false;
     }else if(!/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time as string)){
       return false
-    }else if(type === 1 && Date.parse('01/01/2011 ' +  time) <= Date.parse('01/01/2011 ' + this.shopSettingsForm.value.openTime ) ){
+    }else if(type === 1 && Date.parse('01/01/2011 ' +  time) <= Date.parse('01/01/2011 ' + this.shopOtherForm.value.openTime ) ){
       return false;
     }
     return true;
@@ -137,11 +155,11 @@ export class OnboardingComponent implements OnInit {
 
   updateTime(type: number, ev: any){
     if(type === 0){
-      this.shopSettingsForm.patchValue({
+      this.shopOtherForm.patchValue({
         'openTime':  ev.target.value
       });
     }else if(type === 1){
-      this.shopSettingsForm.patchValue({
+      this.shopOtherForm.patchValue({
         'closeTime':  ev.target.value
       });
     }
@@ -149,7 +167,7 @@ export class OnboardingComponent implements OnInit {
 
   submit() {
     this.submitted = true;
-    if (this.shopForm.invalid || this.shopAddressForm.invalid || this.userForm.invalid || this.shopSettingsForm.invalid) {
+    if (this.shopForm.invalid || this.shopAddressForm.invalid || this.userForm.invalid || this.shopSettingsForm.invalid || this.shopOtherForm.invalid) {
       this.loginMessage = 'All Fill all required fields';
       return;
     }
@@ -172,13 +190,18 @@ export class OnboardingComponent implements OnInit {
       ([key, value]: any[]) => {
         formData.set(key, value);
     });
+    Object.entries(this.shopOtherForm.value).forEach(
+      ([key, value]: any[]) => {
+        formData.set(key, value);
+    });
+    formData.append('qrCode', JSON.stringify(this.qrCodes));
     this.commonService.onBoardingForm(formData).subscribe((data: Response) => {
         if (data.statusCode != 200 && data.statusCode != 201) {
           this.sharedService.showMessage(1,this.sharedService.errorMessage(data.Error));
           this.loginMessage = this.sharedService.errorMessage(data.Error);
         } else {
           this.sharedService.showMessage(0,"Onboarding successfully !!");
-          this.selectedTab = 4;
+          this.selectedTab = 5;
         }
         this.loading = false;
       },
