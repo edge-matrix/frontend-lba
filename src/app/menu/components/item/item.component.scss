@@ -50,7 +50,22 @@
   color:#FC9C67;
 }
 .addbutton{
-  margin-left:auto;
+  // margin-left:auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.addbutton img{
+  margin-right:8px;
+}
+.addbutton span{
+  font-size:15px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+.variants{
+  font-size: 18px;
+  color: #7a7a7a;
 }
 .addbutton button{
   border-radius: 4px;

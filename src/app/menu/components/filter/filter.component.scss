@@ -12,13 +12,38 @@
   align-items: center;
   justify-content: space-between;
 }
+.shopleft{
+  display: flex;
+  align-items: center;
+}
+.shopleft span{
+  margin-right: 20px;
+  i{
+    font-size: 20px;
+  }
+}
 .shopname{
-  font-size: 24px;
+  font-size: 20px;
   font-weight:500;
   width: 175px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+.shopaddress{
+  text-transform: capitalize;
+  font-size:12px;
+  font-weight:400;
+  width:190px;
+  color: #7f7f7f;
+  display: -webkit-box; 
+  display: -moz-box; 
+  -webkit-box-orient: vertical; 
+  -moz-box-orient: vertical; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -moz-box-lines: multiple;
 }
 .vistshopbutton button{
   border: none;

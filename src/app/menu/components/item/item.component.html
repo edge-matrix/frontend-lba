@@ -17,6 +17,11 @@
               </div>
           </div>
           <div class="addbutton" *ngIf="!item.isSelected">
+            <div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Veg_symbol.svg/1200px-Veg_symbol.svg.png" class="categoryimg" alt="veg/non-veg" width="20px" height="20px"/>
+              <span>Veg</span>
+              <span class="variants">2 Variants available</span>
+            </div>
               <button (click)="addToCart(item.item.id)">
                   <span><i class="fa-solid fa-plus"></i></span>
                   <span>Add</span>
