@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="mainpage">
       <header></header>
-      <div class="orderstatuspage" [ngClass]="{'disabled': cancleStatus }">
+      <div class="orderstatuspage" [ngClass]="{'disabled': cancleStatus }" *ngIf="order">
         <div [class]="getStatus(order.status).class">
             <div class="headingsection">
               <div class="backbtn" (click)="sharedService.back()"><i class="fas fa-arrow-left"></i></div>

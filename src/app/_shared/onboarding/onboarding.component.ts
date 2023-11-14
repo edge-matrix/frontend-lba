@@ -103,7 +103,7 @@ export class OnboardingComponent implements OnInit {
     let slug = this.f['title'].value;
     this.shopForm.patchValue({
       'slug': slug.toLowerCase().replace(/[^\w-]+/g, '-'),
-      'code': '10' + Math.floor(1000 + Math.random() * 9000)
+      'code': '10' + Math.floor(100 + Math.random() * 900)
     });
   }
 

@@ -18,5 +18,10 @@ export const environment = {
   },
   paymentUrl: 'https://mercury-t2.phonepe.com/transact/pg',   //Phone Pay Prod
   // paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator', //Phone Pay Demo
-  // paymentUrl: 'https://www.instamojo.com/@lets_bunk_again/',
+  // paymentUrl: 'https://www.instamojo.com/@lets_bunk_again/', // Insta Mojo Prod
+  //paymentUrl: 'https://test.instamojo.com/@edgematrixtechnologies/', // Insta Mojo Test
+  pusher: '5bdb30b6e88270a5117a',
+
+  EncryptKey: 'bbZMZJWf90AhF9tOeJSQ0XOrIaFlsB8b4G1BLflovY4=',
+  EncryptIV: 'AES-256-CBC'
 };

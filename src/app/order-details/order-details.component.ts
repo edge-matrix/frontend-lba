@@ -40,14 +40,11 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.orderId = this.activeRoute.snapshot.params['orderId'];
     this.orderDetails();
-    this.timer = interval(1*60*1000).subscribe(() => {
-      this.orderDetails()
+    this.sharedService.newNotification.subscribe((v: Notification | null) => {
+      if(v != null){
+        this.orderDetails();
+      }
     });
-  }
-
-  ngOnDestroy() {
-    this.timer.unsubscribe();
-    this.navSubscription.unsubscribe();
   }
 
   orderDetails(){

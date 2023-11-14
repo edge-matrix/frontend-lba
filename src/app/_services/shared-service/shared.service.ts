@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Fav, Location, User } from '@models';
+import { BeforeInstallPromptEvent, Fav, Location, User } from '@models';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Cart } from '@models';
 import { Location as Loc } from '@angular/common';
@@ -45,6 +45,9 @@ export class SharedService {
     isCompleted: false,
     score: 0
   };
+
+  promptEvent!: BeforeInstallPromptEvent;
+  public newNotification = new BehaviorSubject(null);
 
   constructor(
     private location: Loc,

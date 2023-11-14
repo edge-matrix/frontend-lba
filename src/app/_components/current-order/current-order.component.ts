@@ -23,16 +23,12 @@ export class CurrentOrderComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.sharedService.user && this.sharedService.user.id !== 0){
-      this.timer = interval(1*60*1000).subscribe(() => {
-        this.orderList();
+      this.sharedService.newNotification.subscribe((v: Notification | null) => {
+        if(v != null){
+          this.orderList();
+        }
       });
       this.orderList();
-    }
-  }
-
-  ngOnDestroy() {
-    if(this.sharedService.user && this.sharedService.user.id !== 0){
-      this.timer.unsubscribe();
     }
   }
 

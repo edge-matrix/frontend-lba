@@ -3,10 +3,14 @@ export * from './shared-service/storage.service';
 export * from './shared-service/constants.service';
 export * from './shared-service/common-function.service';
 export * from './shared-service/toast.service';
+export * from './shared-service/notification.service';
+export * from './shared-service/web-socket.service';
 
 /* Auth Services  */
 export * from './auth-service/authentication.service';
 export * from './auth-service/social.service';
+export * from './auth-service/encrypt-decrypt.service';
+export * from './auth-service/web-notification.service';
 
 /*Page Services */
 /* Home Page Services */

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { SwUpdate } from '@angular/service-worker';
+import { NotificationService, SharedService, WebSocketService } from '@service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,11 @@ import { Meta, Title } from '@angular/platform-browser';
 export class AppComponent implements OnInit{
   constructor(
     private meta: Meta,
-    private title: Title){
+    private title: Title,
+    private swUpdate: SwUpdate,
+    private notificationService: NotificationService,
+    private pusherNotificationService: WebSocketService,
+    private sharedService: SharedService){
     this.meta.addTags([
       {name: 'description', content: 'Lets bunk again is a bunk planner help which help students/office works to plan and execute thier bunk in budget freindly and perfect hangout place.'},
       {name: 'robots', content: 'index, follow'},
@@ -21,5 +27,22 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.notificationService.listen();
+    this.serviceWorkerUpdate();
+    window.addEventListener('beforeinstallprompt', event => {
+      event.preventDefault();
+      this.sharedService.promptEvent = event;
+    });
+    if(this.sharedService.user && this.sharedService.user.id !== 0 ){
+      this.pusherNotificationService.listenChannel(['user-' + this.sharedService.user.id]);
+    }
+  }
+
+  serviceWorkerUpdate(){
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+          window.location.reload();
+        });
+    }
   }
 }
