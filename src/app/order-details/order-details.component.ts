@@ -5,7 +5,6 @@ import { BookService, ComboDetailsService, OrdersService, SharedService, Storage
 
 import { Subscription, interval } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Location as Loc } from '@angular/common';
 
 @Component({
   templateUrl: './order-details.component.html',
@@ -27,7 +26,6 @@ export class OrderDetailsComponent implements OnInit {
     private comboService: ComboDetailsService,
     private orderService: OrdersService,
     private router: Router,
-    private location: Loc,
     private activeRoute: ActivatedRoute
   ){
     this.sharedService.sideMenuSelectedIndex = 3;
@@ -138,7 +136,7 @@ export class OrderDetailsComponent implements OnInit {
   output(ev: number){
     this.cancleStatus = false;
     if(ev === 1){
-      this.location.back()
+      this.sharedService.back()
     }
   }
 }

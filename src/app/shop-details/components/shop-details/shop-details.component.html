@@ -1,5 +1,17 @@
 <div class="shopnameandimages" *ngIf="shop">
-  <div class="shopnameheading">{{shop.title}}</div>
+  <!-- <div class="shopnameheading">{{shop.title}}</div> -->
+  <div class="shopdetials" *ngIf="shop">
+    <div class="shopleft">
+      <span (click)="back()"><i class="fa-solid fa-arrow-left"></i></span>
+      <div>
+        <div class="shopname">{{ shop.title }}</div>
+        <div class="shopaddress-title" *ngIf="shop.address && shop.address.length > 0">{{shop.address[0].addressLine}}, {{shop.address[0].city}}</div>
+      </div>
+    </div>
+      <div class="vistshopbutton" [routerLink]="'/menu/' + shop.slug">
+          <button>Open Menu</button>
+      </div>
+  </div>
   <div class="shopimage">
     <img [src]="storageLink + shop.profileImage" alt="shop"*ngIf="shop.profileImage !== null && shop.profileImage !== ''"/>
     <img src="assets/imagefolder/favshops.png" alt="shop" *ngIf="shop.profileImage === null || shop.profileImage === ''"/>

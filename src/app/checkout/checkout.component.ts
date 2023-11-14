@@ -169,15 +169,20 @@ export class CheckoutComponent implements OnInit {
     let combos = '';
     let comboQuantity = '';
     let items = '';
+    let variants = '';
     let itemsQuantity = '';
     let addOns = '';
     let addOnsQuantity = '';
     this.cart.forEach(e => {
       items += e.itemDetails.id + ',';
+      variants += '-1,';
       itemsQuantity += e.quantity + ',';
     });
     if(items !== ''){
       items = items.slice(0, -1)
+    }
+    if(variants !== ''){
+      variants = variants.slice(0, -1)
     }
     if(itemsQuantity !== ''){
       itemsQuantity = itemsQuantity.slice(0, -1)
@@ -203,6 +208,7 @@ export class CheckoutComponent implements OnInit {
       combos: combos,
       comboQuantity: comboQuantity,
       items: items,
+      items_variant: variants,
       itemsQuantity: itemsQuantity,
       addOns: addOns,
       addOnsQuantity: addOnsQuantity,

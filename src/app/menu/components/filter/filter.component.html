@@ -1,10 +1,10 @@
 <div class="upperpartofitemlist">
   <div class="shopdetials" *ngIf="type === 0">
     <div class="shopleft">
-      <span><i class="fa-solid fa-arrow-left"></i></span>
+      <span (click)="sharedService.back()"><i class="fa-solid fa-arrow-left"></i></span>
       <div>
         <div class="shopname">{{ shop.title }}</div>
-        <div class="shopaddress">Dez Medical united college of engineering and research prayagraj 211010</div>
+        <div class="shopaddress" *ngIf="shop.address && shop.address.length > 0">{{shop.address[0].addressLine}}, {{shop.address[0].city}}</div>
       </div>
     </div>
       <div class="vistshopbutton" [routerLink]="'/shop/' + shop.slug">

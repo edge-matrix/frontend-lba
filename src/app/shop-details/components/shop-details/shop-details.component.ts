@@ -85,4 +85,8 @@ export class ShopDetailsComponent implements OnInit {
     this.clipboard.copy(environment.appUrl + this.router.url);
   }
 
+  back(){
+    this.sharedService.back();
+  }
+
 }
