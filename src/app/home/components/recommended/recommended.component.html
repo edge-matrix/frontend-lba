@@ -22,25 +22,36 @@
                 <div class="itemname">{{item.item.name}}</div>
                 <div class="itemdescription">{{item.item.category?.name}}</div>
                 <div class="location" *ngIf="item.item.shop">{{ item.item.shop.title }}</div>
-                <div class="distanceandtime" *ngIf="item.item.shop && item.item.shop.address">
-                    <div class="timerimg"><img src="assets/imagefolder/stopwatch.png" alt=""></div>
-                    <div>25-30 min . </div>
-                    <div>1 Km</div>
+                <div class="distanceandtime">
+                    <div class="timerimg">
+                      <img src="assets/imagefolder/veg.png" alt="veg" *ngIf="item.item.nutrition_type === 0"/>
+                      <img src="assets/imagefolder/non-veg.png" alt="veg" *ngIf="item.item.nutrition_type === 1"/>
+                      <img src="assets/imagefolder/egg.png" alt="veg" *ngIf="item.item.nutrition_type === 2"/>
+                    </div>
+                    <div>{{ item.item.nutrition_type === 0?'Veg':(item.item.nutrition_type === 0?'Non-Veg':'Egg') }}</div>
+                    <div *ngIf="item.item.isVariants === 1 && item.item.variants && item.item.variants.length > 0">{{ item.item.variants.length }} Variants available</div>
                 </div>
                 <div class="pricingsection">
                     <div><span class="effectiveprice"><span>{{item.item.price | currency: 'INR'}}</span></span></div>
-                    <div class="itemsleft" *ngIf="!item.isSelected" (click)="addToCart(item.item.id)">
+                    <div class="itemsleft" *ngIf="!item.isSelected && item.item.isVariants === 0 || item.item.variants.length === 0" (click)="addToCart(item.item.id)">
                       Add
                     </div>
-                    <div class="itemnumbercounter" *ngIf="item.isSelected">
+                    <div class="itemsleft" *ngIf="!item.isSelected && item.item.isVariants === 1 && item.item.variants.length > 0" (click)="openVariantModal(item.item)">
+                      Add
+                    </div>
+                    <div class="itemnumbercounter" *ngIf="item.isSelected && (item.item.isVariants === 0 || item.item.variants.length === 0)">
                       <span><button class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></button></span>
                       <span class="itemcount">
                           {{item.count}}
                       </span>
                       <span><button class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></button></span>
                     </div>
+                    <div class="itemsleft" *ngIf="item.isSelected && item.item.isVariants === 1 && item.item.variants.length > 0"  (click)="openVariantModal(item.item)">
+                      Add More
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<variants *ngIf="openModal && selectedItem.shop" [item]="selectedItem" [shop]="selectedItem.shop" (newItemEvent)="closeVariantModal($event)"></variants>

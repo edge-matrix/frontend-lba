@@ -116,7 +116,8 @@ export class OrderDetailsComponent implements OnInit {
             shop: response.singleData.shop,
             type: 'Item',
             quantity: pro.quantity,
-            date: new Date().toISOString()
+            date: new Date().toISOString(),
+            isVariantSelected: false
           });
         }
       }
@@ -135,5 +136,9 @@ export class OrderDetailsComponent implements OnInit {
     if(ev === 1){
       this.sharedService.back()
     }
+  }
+
+  getVariant(variants: Array<any>, id: number){
+    return variants.filter(e => e.id === id)[0].name;
   }
 }

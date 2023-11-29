@@ -4,7 +4,7 @@
         <div class="checkoutpage" >
         <div class="mycart">
             <div class="mycartheading">Checkout</div>
-            <div class="itemsection" *ngFor="let item of cart">
+            <div class="itemsection" *ngFor="let item of cart; let i = index">
                 <div class="itemsdetails">
                     <div class="itemimage">
                       <img src="assets/imagefolder/resturantimg.jfif" *ngIf="item.itemDetails.image === null || item.itemDetails.image === ''" referrerpolicy="no-referrer" alt="item image">
@@ -12,13 +12,14 @@
                     </div>
                     <div class="itemnamesection">
                         <div class="itemname">{{item.itemDetails.name}}</div>
-                        <div class="itemprice"><span>&#8377; {{item.itemDetails.price}}</span></div>
+                        <div class="itemprice" *ngIf="!item.isVariantSelected"><span>&#8377; {{item.itemDetails.price}}</span></div>
+                        <div class="itemprice" *ngIf="item.isVariantSelected"><span>&#8377; {{item.variant?.price}}</span> <span *ngIf="item.isVariantSelected"> ( {{ item.variant?.name }} )</span></div>
                     </div>
                 </div>
                 <div class="itemquantity">
-                    <div class="decreasequantity" (click)="descQuanity(item.itemDetails.id)"><span>-</span></div>
+                    <div class="decreasequantity" (click)="descQuanity(i)"><span>-</span></div>
                     <div>{{item.quantity}}</div>
-                    <div class="increasequantity" (click)="increaseQuanity(item.itemDetails.id)"><span>+</span></div>
+                    <div class="increasequantity" (click)="increaseQuanity(i)"><span>+</span></div>
                 </div>
             </div>
             <div class="itemsection"  *ngIf="cart && cart.length === 0">

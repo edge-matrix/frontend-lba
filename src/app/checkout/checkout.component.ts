@@ -59,32 +59,21 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  findItemFromCart(i: number){
-    return this.cart.find(e => e.itemDetails.id === i);
-  }
-
   removeFromCart(i: number){
-    let index = this.cart.findIndex(e => e.itemDetails.id === i);
-    this.cart.splice(index,1);
+    this.cart.splice(i,1);
     this.storageService.updatemyCart(this.cart);
   }
 
   increaseQuanity(i: number){
-    const cartItem = this.findItemFromCart(i);
-    if(cartItem){
-      cartItem.quantity = cartItem.quantity + 1;
-    }
+    this.cart[i].quantity = this.cart[i].quantity + 1;
     this.storageService.updatemyCart(this.cart);
   }
 
   descQuanity(i:number){
-    const cartItem = this.findItemFromCart(i);
-    if(cartItem){
-      if(cartItem.quantity > 1){
-        cartItem.quantity = cartItem.quantity - 1;
-      } else if(cartItem.quantity === 1){
-        this.removeFromCart(i);
-      }
+    if(this.cart[i].quantity > 1){
+      this.cart[i].quantity = this.cart[i].quantity - 1;
+    } else if(this.cart[i].quantity === 1){
+      this.removeFromCart(i);
     }
     this.storageService.updatemyCart(this.cart);
   }
@@ -129,7 +118,11 @@ export class CheckoutComponent implements OnInit {
     let subTotal = 0;
     let taxes = 0;
     this.cart.forEach(e => {
-      subTotal += e.itemDetails.price * e.quantity;
+      if(e.isVariantSelected && e.variant){
+        subTotal += e.variant.price * e.quantity;
+      }else{
+        subTotal += e.itemDetails.price * e.quantity;
+      }
     });
     if(this.shops && this.shops.settings && this.shops.settings.chargeableTax === 1){
       taxes = this.shops.settings.taxAmount;
@@ -175,7 +168,11 @@ export class CheckoutComponent implements OnInit {
     let addOnsQuantity = '';
     this.cart.forEach(e => {
       items += e.itemDetails.id + ',';
-      variants += '-1,';
+      if(e.isVariantSelected && e.variant){
+        variants +=  e.variant.id +',';
+      }else{
+        variants += '-1,';
+      }
       itemsQuantity += e.quantity + ',';
     });
     if(items !== ''){

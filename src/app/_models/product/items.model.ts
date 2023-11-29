@@ -12,7 +12,7 @@ export interface Items {
     description?: string;
     nutrition_type: number;
     isVariants: number;
-    variants: Array<{ name: string, price: number; type: number; quantity: number }>
+    variants: Array<{ id: number, name: string, price: number; type: number; quantity: number }>
     isAddon: number;
     locations: string;
     isPreBooking: number;

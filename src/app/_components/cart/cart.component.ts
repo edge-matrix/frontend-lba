@@ -20,7 +20,11 @@ export class CartComponent implements OnInit {
       this.cart = value;
       this.amount = 0;
       this.cart.forEach(e => {
-        this.amount += e.itemDetails.price * e.quantity;
+        if(e.isVariantSelected && e.variant){
+          this.amount += e.variant.price * e.quantity;
+        }else{
+          this.amount += e.itemDetails.price * e.quantity;
+        }
       });
     });
   }

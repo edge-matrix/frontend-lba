@@ -27,12 +27,19 @@
                       <img [src]="storageUrl + product.image" *ngIf="product.image !== null && product.image !== ''" referrerpolicy="no-referrer" alt="item image" />
                     </div>
                     <div class="itemcarddetails">
-                      <div class="checkoutpageitemname">{{product.name}}</div>
+                      <div class="checkoutpageitemname">{{product.name}}
+                        <span *ngIf="product.items_variants_id !== -1 && product.items_variants_id !== null && product.item">( {{ getVariant(product.item.variants, product.items_variants_id)}} )</span>
+                      </div>
                       <div>
                         <span class="effectiveprice">
                           <span>
-                            <span>{{product.quantity}}</span>
-                          </span> X <span>{{product.price | currency: 'INR'}}</span>
+                            <span>
+                              <img src="assets/imagefolder/veg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="product.item?.nutrition_type === 0"/>
+                              <img src="assets/imagefolder/non-veg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="product.item?.nutrition_type === 1"/>
+                              <img src="assets/imagefolder/egg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="product.item?.nutrition_type === 2"/>
+                            </span>
+                            <span> {{product.quantity}}</span>
+                          </span> X <span>{{product.price | currency: 'INR'}} </span>
                         </span>
                       </div>
                       <!-- <div><span class="percent">%</span><span class="freedeliveryheading">Free Delivery</span></div> -->
