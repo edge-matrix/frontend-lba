@@ -1,6 +1,12 @@
 <div class="upperpartofitemlist">
   <div class="shopdetials" *ngIf="type === 0">
-      <div class="shopname">{{ shop.title }}</div>
+    <div class="shopleft">
+      <span (click)="sharedService.back()"><i class="fa-solid fa-arrow-left"></i></span>
+      <div>
+        <div class="shopname">{{ shop.title }}</div>
+        <div class="shopaddress" *ngIf="shop.address && shop.address.length > 0">{{shop.address[0].addressLine}}, {{shop.address[0].city}}</div>
+      </div>
+    </div>
       <div class="vistshopbutton" [routerLink]="'/shop/' + shop.slug">
           <button>Visit Shop</button>
       </div>

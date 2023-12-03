@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class VendorPageComponent implements OnInit {
 
   tab =1;
+  option = 0;
   constructor(
   ) {}
 

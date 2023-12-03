@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.stepofonboarding {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.stepper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: #FC9C67;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+.stepper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 2px;
+  background-color: #FC9C67;
+}
+.onboarding-page {
+  width: 100wh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.paddings{
+  padding: 20px 10px 30px 10px;
+}
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shop-detail-page p{
+  text-align: center;
+  font-size:24px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+.shop-location-page p{
+  text-align: center;
+  font-size:24px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+.shop-owner-page p{
+  text-align: center;
+  font-size:24px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+.shop-timing-page p{
+  text-align: center;
+  font-size:24px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+.shop-bank-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.shop-QR-page p{
+  text-align: center;
+  font-size:24px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+.shop-bank-page p{
+  text-align: center;
+  font-size:24px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+.shop-preview-page p{
+  text-align: center;
+  font-size:24px;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+.take-input,.shop-type{
+  margin-bottom: 20px;
+}
+.take-input input{
+  width:300px;
+  border: 1px solid #fc9c67;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 10px;
+  outline: none;
+}
+.take-input textarea{
+  width:300px;
+  height: 150px;
+  border: 1px solid #fc9c67;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+}
+#shop-type{
+  width: 300px;
+  padding: 10px 20px;
+  border: 1px solid #fc9c67;
+  background-color: transparent;
+  border-radius: 10px;
+  outline: none;
+}
+.subheading{
+  font-size:18px;
+  font-weight: 500;
+  padding-bottom:10px;
+}
+.note{
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  margin-bottom: 10px;
+  color: gray;
+}
+.shop-type span{
+  padding-left: 10px;
+  font-size:15px;
+  font-weight:400;
+}
+.buttons{
+  margin-top:20px;
+}
+.firstbutton{
+  margin-top:50px;
+}
+.buttons button{
+  background: #15597E;
+  color: #ffffff;
+  border-radius:8px;
+  border: none;
+  width:300px;
+  padding:8px 0px;
+  font-size:18px;
+}
+.checkboxes{
+  display: block !important;
+  margin-bottom: 15px;
+}
+.paymentoption label{
+  padding-left:10px;
+  font-size:18px;
+}
+.qrdetails{
+  width:300px;
+  display: flex;
+  justify-content: space-between;
+  padding-top:10px;
+}
+.sucesspage{
+  display: absolute;
+  top: 50%;
+  left: 50%;
+}
+.custom-file-input {
+  width: 300px;
+  height: 110px;
+  text-align: center;
+  cursor: pointer;
+  color: #fc9c67cc;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 10px;
+  border: 1px dashed #FC9C67;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.addimage img{
+  margin-top:10px;
+  margin-bottom: 10px;
+}

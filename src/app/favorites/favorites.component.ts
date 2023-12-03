@@ -16,6 +16,8 @@ export class FavoritesComponent implements OnInit {
   cart!: Array<Cart>;
   itemLists: Array<{item: Items, isSelected: boolean, count: number}> = [];
   shopLists: Array<Shop> = [];
+  openModal = false;
+  selectedItem!: Items;
   constructor(public sharedService: SharedService,
     private storageService: StorageService,
     public commonService: CommonFunctionService,
@@ -82,7 +84,8 @@ isShopSame(shopId: number){
         quantity: 1,
         date: new Date().toISOString(),
         shop_id: itemDetail.item.shop_id,
-        shop: itemDetail.item.shop
+        shop: itemDetail.item.shop,
+        isVariantSelected: false
       };
       this.cart.push(cart);
       this.storageService.updatemyCart(this.cart);
@@ -129,5 +132,33 @@ isShopSame(shopId: number){
   removeFavItem(id: number){
     this.commonService.deleteFav(1, id);
     //window.location.reload();
+  }
+
+  openVariantModal(item: Items){
+    let itemDetail = this.itemLists.find(e => e.item.id === item.id);
+    if(itemDetail && !this.isShopSame(itemDetail.item.shop_id))
+    {
+      this.sharedService.showMessage(1,"Item's shop is different from cart shop, clear cart to add this.");
+      return;
+    }
+    this.openModal = true;
+    this.selectedItem = item;
+  }
+
+  closeVariantModal(ev: any){
+    this.openModal = false;
+    if(ev === 1){
+      let itemDetail = this.itemLists.find(e => e.item.id === this.selectedItem.id);
+      if(itemDetail)
+      {
+        itemDetail.isSelected = true;
+      }
+    }else if(ev === -1){
+      let itemDetail = this.itemLists.find(e => e.item.id === this.selectedItem.id);
+      if(itemDetail)
+      {
+        itemDetail.isSelected = false;
+      }
+    }
   }
 }

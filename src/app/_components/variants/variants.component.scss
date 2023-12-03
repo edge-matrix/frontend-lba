@@ -1,0 +1,94 @@
+.variant{
+  .offcanvas{
+    border-radius: 20px 20px 0 0 !important;
+  }
+  .offcanvas-body{
+      background-color: rgb(240, 241, 241) !important;
+      padding: 0px !important;
+  }
+  .varientcontainer{
+      padding: 0px 20px !important;
+  }
+  .quantityheading{
+      font-size: 20px;
+      font-weight:600;
+  }
+  .subheading{
+      font-size: 18px;
+      font-weight:400;
+      margin-bottom: 15px;
+  }
+  .varientoption{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+  }
+  .varientoption span{
+      margin-right:15px;
+      font-size:19px;
+      font-weight: 500;
+  }
+  input[type="radio"] {
+      transform: scale(1.5);
+  }
+    input[type="radio"]:active {
+      outline: none;
+      border-color: #FC9C67;
+  }
+  .varientname{
+      font-size: 20px;
+      font-weight: 500;
+  }
+  .bottomvalue{
+      width: 100%;
+      padding: 10px 20px;
+      position: fixed;
+      bottom: 0;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .bottomvalue button{
+      border-radius: 10px;
+      background: #FA5457;
+      color: #fff;
+      font-size: 17px;
+      font-weight:500;
+      padding: 8px 20px;
+      outline: none;
+      border: none;
+  }
+  .values{
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight:500;
+      outline: none;
+      border: none;
+      display: flex;
+  }
+  .deccremnt{
+      border-radius: 4px;
+      background: #E1E1E1;
+      border: none;
+      padding: 5px 12px;
+      color: #fff;
+  }
+  .increment{
+      border-radius: 4px;
+      background: #47B214;
+      border: none;
+      padding: 5px 12px;
+      color: #fff;
+  }
+  .delete-icon{
+    border: none;
+    padding: 5px 12px;
+    color: red;
+  }
+  .itemquantityvalue{
+      background-color: #f8f5f2;
+      padding: 6px 12px;
+  }
+}

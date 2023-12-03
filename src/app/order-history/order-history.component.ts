@@ -32,16 +32,12 @@ export class OrderHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.sharedService.user && this.sharedService.user.id !== 0){
-      this.timer = interval(1*60*1000).subscribe(() => {
-        this.orderList();
+      this.sharedService.newNotification.subscribe((v: Notification | null) => {
+        if(v != null){
+          this.orderList();
+        }
       });
       this.orderList();
-    }
-  }
-
-  ngOnDestroy() {
-    if(this.sharedService.user && this.sharedService.user.id !== 0){
-      this.timer.unsubscribe();
     }
   }
 
@@ -119,7 +115,8 @@ export class OrderHistoryComponent implements OnInit {
             shop: response.singleData.shop,
             type: 'Item',
             quantity: pro.quantity,
-            date: new Date().toISOString()
+            date: new Date().toISOString(),
+            isVariantSelected: false
           });
         }
       }
@@ -140,5 +137,9 @@ export class OrderHistoryComponent implements OnInit {
         }
       });
     }
+  }
+
+  getVariant(variants: Array<any>, id: number){
+    return variants.filter(e => e.id === id)[0].name;
   }
 }

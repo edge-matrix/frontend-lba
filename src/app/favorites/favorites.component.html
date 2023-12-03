@@ -53,17 +53,32 @@
                     <div class="favoriteitemdescription">
                         <div class="favitemname">{{item.item.name}}</div>
                         <div class="favdecriptionname">{{item.item.category?.name}}</div>
+                        <div class="favbadges">
+                          <span>
+                            <img src="assets/imagefolder/veg.png" class="categoryimg" alt="veg" *ngIf="item.item.nutrition_type === 0"/>
+                            <img src="assets/imagefolder/non-veg.png" class="categoryimg" alt="veg" *ngIf="item.item.nutrition_type === 1"/>
+                            <img src="assets/imagefolder/egg.png" class="categoryimg" alt="veg" *ngIf="item.item.nutrition_type === 2"/>
+                            {{ item.item.nutrition_type === 0?'Veg':(item.item.nutrition_type === 0?'Non-Veg':'Egg') }}
+                          </span>
+                          <span class="variants" *ngIf="item.item.isVariants === 1 && item.item.variants.length > 0">{{ item.item.variants.length }} Variants available</span>
+                        </div>
                         <div class="priceandbtn">
                             <div class="favitemprice">{{item.item.price | currency: 'INR'}}</div>
-                            <div class="favitembtn" *ngIf="!item.isSelected" (click)="addToCart(item.item.id)">
+                            <div class="favitembtn" *ngIf="!item.isSelected && item.item.isVariants === 0 || item.item.variants.length === 0" (click)="addToCart(item.item.id)">
                               <button>Add</button>
                             </div>
-                            <div class="itemnumbercounter" *ngIf="item.isSelected">
+                            <div class="favitembtn" *ngIf="!item.isSelected && item.item.isVariants === 1 && item.item.variants.length > 0" (click)="openVariantModal(item.item)">
+                              <button>Add</button>
+                            </div>
+                            <div class="itemnumbercounter" *ngIf="item.isSelected && (item.item.isVariants === 0 || item.item.variants.length === 0)">
                               <span><span class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></span></span>
                               <span class="itemcount">
                                   {{item.count}}
                               </span>
                               <span><span class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></span></span>
+                            </div>
+                            <div class="favitembtn" *ngIf="item.isSelected && item.item.isVariants === 1 && item.item.variants.length > 0"  (click)="openVariantModal(item.item)">
+                              <button>Add More</button>
                             </div>
                         </div>
                     </div>
@@ -79,3 +94,4 @@
     <bottom-nav></bottom-nav>
     </div>
 </div>
+<variants *ngIf="openModal && selectedItem.shop" [item]="selectedItem" [shop]="selectedItem.shop" (newItemEvent)="closeVariantModal($event)"></variants>

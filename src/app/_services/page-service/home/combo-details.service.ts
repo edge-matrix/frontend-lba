@@ -16,6 +16,12 @@ export class ComboDetailsService {
     this.url = environment.baseUrl + '/common/combo';
   }
 
+  getShopCategories(): Observable<Response> {
+    return this.http.get<Response>(`${this.url}/shopCategories`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getItemCategories(): Observable<Response> {
     return this.http.get<Response>(`${this.url}/itemCategories`).pipe(
       catchError(this.handleError)

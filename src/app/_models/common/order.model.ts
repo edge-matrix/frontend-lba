@@ -20,6 +20,7 @@ export interface CreateOrder{
   combos?: string;
   comboQuantity?: string;
   items?: string;
+  items_variant?: string;
   itemsQuantity?: string;
   addOns?: string;
   addOnsQuantity?: string;

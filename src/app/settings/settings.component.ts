@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService, SharedService, StorageService } from '@service';
+import { AuthenticationService, NotificationService, SharedService, StorageService } from '@service';
 import { environment } from 'src/environments/environment';
 
 
@@ -11,10 +11,12 @@ import { environment } from 'src/environments/environment';
 export class SettingsComponent implements OnInit {
 
   storageLink = environment.storage;
+  isDisable = false;
   constructor(
     public sharedService: SharedService,
     private authenticationService: AuthenticationService,
     private storageService: StorageService,
+    private notificationService: NotificationService,
     private router: Router
     ) {
     this.sharedService.sideMenuSelectedIndex = 4;
@@ -39,6 +41,14 @@ export class SettingsComponent implements OnInit {
     error => {
       console.log('Unable to Logout');
     });
+  }
+
+  download(){
+    this.sharedService.promptEvent.prompt();
+  }
+
+  enableNotification(){
+    this.notificationService.subscribeToNotifications();
   }
 
 }

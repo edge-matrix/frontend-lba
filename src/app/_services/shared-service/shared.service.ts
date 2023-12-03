@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Fav, Location, User } from '@models';
+import { BeforeInstallPromptEvent, Fav, Location, User } from '@models';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Cart } from '@models';
 import { Location as Loc } from '@angular/common';
@@ -10,7 +10,7 @@ import { ToastService } from '@service';
 })
 export class SharedService {
 
-  version = '23.09.29.01';
+  version = '23.11.29.01';
   user: User;
   userFav: Array<Fav> = [];
   sideMenuSelectedIndex = 0;
@@ -45,6 +45,9 @@ export class SharedService {
     isCompleted: false,
     score: 0
   };
+
+  promptEvent!: BeforeInstallPromptEvent;
+  public newNotification = new BehaviorSubject(null);
 
   constructor(
     private location: Loc,

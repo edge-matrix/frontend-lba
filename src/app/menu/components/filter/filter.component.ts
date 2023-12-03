@@ -21,7 +21,7 @@ export class FilterComponent implements OnInit {
   searchKeyword = '';
   constructor(
     private comboDetailService: ComboDetailsService,
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     private router: Router,
 
   ) { }

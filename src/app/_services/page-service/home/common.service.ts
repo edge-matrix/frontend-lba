@@ -34,6 +34,12 @@ export class CommonService {
     );
   }
 
+  onBoardingForm(details: FormData): Observable<Response>{
+    return this.http.post<Response>(`${this.url}/shop-onboarding`,details).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // Error handling
   handleError(error: any) {
     let errorMessage = '';

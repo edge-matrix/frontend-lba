@@ -5,7 +5,6 @@ import { BookService, ComboDetailsService, OrdersService, SharedService, Storage
 
 import { Subscription, interval } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Location as Loc } from '@angular/common';
 
 @Component({
   templateUrl: './order-details.component.html',
@@ -27,7 +26,6 @@ export class OrderDetailsComponent implements OnInit {
     private comboService: ComboDetailsService,
     private orderService: OrdersService,
     private router: Router,
-    private location: Loc,
     private activeRoute: ActivatedRoute
   ){
     this.sharedService.sideMenuSelectedIndex = 3;
@@ -42,14 +40,11 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.orderId = this.activeRoute.snapshot.params['orderId'];
     this.orderDetails();
-    this.timer = interval(1*60*1000).subscribe(() => {
-      this.orderDetails()
+    this.sharedService.newNotification.subscribe((v: Notification | null) => {
+      if(v != null){
+        this.orderDetails();
+      }
     });
-  }
-
-  ngOnDestroy() {
-    this.timer.unsubscribe();
-    this.navSubscription.unsubscribe();
   }
 
   orderDetails(){
@@ -121,7 +116,8 @@ export class OrderDetailsComponent implements OnInit {
             shop: response.singleData.shop,
             type: 'Item',
             quantity: pro.quantity,
-            date: new Date().toISOString()
+            date: new Date().toISOString(),
+            isVariantSelected: false
           });
         }
       }
@@ -138,7 +134,11 @@ export class OrderDetailsComponent implements OnInit {
   output(ev: number){
     this.cancleStatus = false;
     if(ev === 1){
-      this.location.back()
+      this.sharedService.back()
     }
+  }
+
+  getVariant(variants: Array<any>, id: number){
+    return variants.filter(e => e.id === id)[0].name;
   }
 }

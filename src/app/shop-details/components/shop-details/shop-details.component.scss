@@ -1,3 +1,49 @@
+.shopdetials{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.shopleft{
+  display: flex;
+  align-items: center;
+}
+.shopleft span{
+  margin-right: 20px;
+  i{
+    font-size: 20px;
+  }
+}
+.shopname{
+  font-size: 20px;
+  font-weight:500;
+  width: 175px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.shopaddress-title{
+  text-transform: capitalize;
+  font-size:12px;
+  font-weight:400;
+  width:190px;
+  color: #7f7f7f;
+  display: -webkit-box;
+  display: -moz-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -moz-box-lines: multiple;
+}
+.vistshopbutton button{
+  border: none;
+  border-radius: 10px;
+  background: #FA5457;
+  padding:7px 15px;
+  color:#FFFFFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+}
 .shopimage img{
   height: 250px;
   width: 100%;
