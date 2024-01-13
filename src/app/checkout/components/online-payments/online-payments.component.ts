@@ -4,6 +4,7 @@ import { BookService, SharedService } from '@service';
 import { Orders, Response } from '@models';
 import { environment } from 'src/environments/environment';
 
+declare var Cashfree: any;
 
 @Component({
   selector: 'online-payments',
@@ -47,9 +48,28 @@ export class OnlinePaymentsComponent implements OnInit {
         transactionId = e.transactionId;
       }
     });
-    const url = environment.paymentUrl + '?token=' + transactionId;
-    window.location.href = url;
+    const cashfree =  new Cashfree({
+      mode: "sandbox" //or production
+    });
+
+    let checkoutOptions = {
+      paymentSessionId: transactionId,
+      redirectTarget: "_self" //optional (_self or _blank)
+    }
+
+    cashfree.checkout(checkoutOptions);
   }
+
+  // openPaymentModal(){
+  //   let transactionId = '';
+  //   this.order.payment_details?.forEach(e => {
+  //     if(e.paymentMethod === 4 && e.status === 0){
+  //       transactionId = e.transactionId;
+  //     }
+  //   });
+  //   const url = environment.paymentUrl + '?token=' + transactionId;
+  //   window.location.href = url;
+  // }
 
   // openPaymentModal(){
   //   let transactionId = '';

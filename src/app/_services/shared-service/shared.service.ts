@@ -10,7 +10,7 @@ import { ToastService } from '@service';
 })
 export class SharedService {
 
-  version = '23.11.29.01';
+  version = '24.01.13.01';
   user: User;
   userFav: Array<Fav> = [];
   sideMenuSelectedIndex = 0;

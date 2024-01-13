@@ -21,7 +21,7 @@ export const environment = {
     measurementId: "G-WCQ5LJLX8S"
   },
   // paymentUrl: 'https://mercury-t2.phonepe.com/transact/pg',   //Phone Pay Prod
-  paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator', //Phone Pay Demo
+  // paymentUrl: 'https://mercury-uat.phonepe.com/transact/simulator', //Phone Pay Demo
   // paymentUrl: 'https://www.instamojo.com/@lets_bunk_again/', // Insta Mojo Prod
   //paymentUrl: 'https://test.instamojo.com/@edgematrixtechnologies/', // Insta Mojo Test
   pusher: '5bdb30b6e88270a5117a',
