@@ -33,10 +33,10 @@
                 </div>
                 <div class="pricingsection">
                     <div><span class="effectiveprice"><span>{{item.item.price | currency: 'INR'}}</span></span></div>
-                    <div class="itemsleft" *ngIf="!item.isSelected && item.item.isVariants === 0 || item.item.variants.length === 0" (click)="addToCart(item.item.id)">
+                    <div class="itemsleft" *ngIf="!item.isSelected && (item.item.isVariants === 0 || item.item.variants.length === 0)" (click)="addToCart(item.item.id)">
                       Add
                     </div>
-                    <div class="itemsleft" *ngIf="!item.isSelected && item.item.isVariants === 1 && item.item.variants.length > 0" (click)="openVariantModal(item.item)">
+                    <div class="itemsleft" *ngIf="!item.isSelected && (item.item.isVariants === 1 && item.item.variants.length > 0)" (click)="openVariantModal(item.item)">
                       Add
                     </div>
                     <div class="itemnumbercounter" *ngIf="item.isSelected && (item.item.isVariants === 0 || item.item.variants.length === 0)">

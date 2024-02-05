@@ -137,8 +137,4 @@ export class OrderDetailsComponent implements OnInit {
       this.sharedService.back()
     }
   }
-
-  getVariant(variants: Array<any>, id: number){
-    return variants.filter(e => e.id === id)[0].name;
-  }
 }

@@ -28,7 +28,7 @@
                     </div>
                     <div class="itemcarddetails">
                       <div class="checkoutpageitemname">{{product.name}}
-                        <span *ngIf="product.items_variants_id !== -1 && product.items_variants_id !== null && product.item">( {{ getVariant(product.item.variants, product.items_variants_id)}} )</span>
+                        <span *ngIf="product.items_variants_id !== -1 && product.items_variants_id !== null && product.item">( {{ product.item_variants_name }} )</span>
                       </div>
                       <div>
                         <span class="effectiveprice">
@@ -112,7 +112,7 @@
                             <td class="grandtotalfont">{{order.subTotal | currency: 'INR'}}</td>
                           </tr>
                           <tr>
-                            <td class="wrap">Taxes <span class="gasttext">(GST + Service charge) </span></td>
+                            <td class="wrap">Taxes <span class="gasttext">(GST + Service charge) {{ (order.taxAmount * 100 / order.subTotal).toFixed(2) }}%</span></td>
                             <td>{{order.taxAmount | currency: 'INR'}}</td>
                           </tr>
                           <tr>

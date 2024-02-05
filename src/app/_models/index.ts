@@ -63,6 +63,7 @@ export * from './vendor/shop-social-media.model';
 export * from './settings/shop-settings.model';
 export * from './settings/system-settings.model';
 export * from  './settings/user-settings.model';
+export * from './settings/shop-taxes.model';
 
 /*Playzone Models */
 export * from './playzone/game';

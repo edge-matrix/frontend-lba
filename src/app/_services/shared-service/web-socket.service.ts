@@ -43,7 +43,7 @@ export class WebSocketService {
       channel.bind('pusher:subscription_succeeded', function() {
         console.log('successfully subscribed!');
       });
-      channel.bind('ShopEvent', (message: any) => {
+      channel.bind('UserEvent', (message: any) => {
         this.sharedService.newNotification.next(message.data);
       });
     }

@@ -46,7 +46,7 @@
                             <img src="assets/imagefolder/egg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="product.item?.nutrition_type === 2"/>
                           </span>
                           <span class="itemquantityorderhistory">&nbsp;&nbsp;{{product.quantity}}&nbsp;&nbsp;X</span>
-                          <span>&nbsp;&nbsp;&nbsp;{{product.name}} <span *ngIf="product.items_variants_id !== -1 && product.items_variants_id !== null && product.item">( {{ getVariant(product.item.variants, product.items_variants_id)}} )</span></span>
+                          <span>&nbsp;&nbsp;&nbsp;{{product.name}} <span *ngIf="product.items_variants_id !== -1 && product.items_variants_id !== null && product.item">( {{ product.item_variants_name }} )</span></span>
                         </span>
                       </div>
                     </div>

@@ -1,4 +1,4 @@
-import { ShopSocialMedia, Combos, Items, ShopSettings, ShopAddress, ShopPhotos, ShopReviews, Shoptimings } from "@models";
+import { ShopSocialMedia, Combos, Items, ShopSettings, ShopAddress, ShopPhotos, ShopReviews, Shoptimings, ShopTaxes } from "@models";
 
 export interface Shop {
     id: number;
@@ -20,6 +20,7 @@ export interface Shop {
     timings: Array<Shoptimings>;
     social_media?: Array<ShopSocialMedia>;
     settings?: ShopSettings;
+    taxes: Array<ShopTaxes>;
     status: number;
     tags: string;
     accommodations: string;

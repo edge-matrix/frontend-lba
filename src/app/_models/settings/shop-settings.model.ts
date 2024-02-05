@@ -6,8 +6,6 @@ export interface ShopSettings {
     shop?: Shop;
     isPayLaterEnabled: number;
     isPayNowEnabled: number;
-    chargeableTax: number;
-    taxAmount: number;
     isBunkCoinEnabled: number;
     isDeliveryAvailble: number;
     created_at?: string;

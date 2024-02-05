@@ -6,7 +6,8 @@ export interface OrdersProducts {
     orderDetails_id: number;
     name?: string;
     items_id: number;
-    items_variants_id: number;
+    items_variants_id?: number;
+    item_variants_name?: string;
     item?: Items
     combos_id: number;
     combo?: Combos

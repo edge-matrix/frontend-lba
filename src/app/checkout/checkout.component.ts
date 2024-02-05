@@ -124,9 +124,17 @@ export class CheckoutComponent implements OnInit {
         subTotal += e.itemDetails.price * e.quantity;
       }
     });
-    if(this.shops && this.shops.settings && this.shops.settings.chargeableTax === 1){
-      taxes = this.shops.settings.taxAmount;
+    if(this.shops && this.shops.taxes){
+      this.shops.taxes.forEach(t => {
+        console.log(t.isIncluded);
+        if(t.isIncluded === 0){
+          taxes = taxes + t.tax_amount;
+        }
+      });
     }
+    // if(this.shops && this.shops.settings && this.shops.settings.chargeableTax === 1){
+    //   taxes = this.shops.settings.taxAmount;
+    // }
     let grandTotal = subTotal + ( subTotal * taxes/100);
     this.payments = {
       subTotal: subTotal,
