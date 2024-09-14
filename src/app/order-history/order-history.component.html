@@ -46,13 +46,15 @@
                             <img src="assets/imagefolder/egg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="product.item?.nutrition_type === 2"/>
                           </span>
                           <span class="itemquantityorderhistory">&nbsp;&nbsp;{{product.quantity}}&nbsp;&nbsp;X</span>
-                          <span>&nbsp;&nbsp;&nbsp;{{product.name}} <span *ngIf="product.items_variants_id !== -1 && product.items_variants_id !== null && product.item">( {{ product.item_variants_name }} )</span></span>
+                          <span *ngIf="product.isAddOn === 0">&nbsp;&nbsp;&nbsp;{{product.name}} <span *ngIf="product.items_variants_id !== -1 && product.items_variants_id !== null && product.item">( {{ product.item_variants_name }} )</span></span>
+                          <span *ngIf="product.isAddOn !== 0">&nbsp;&nbsp;&nbsp;<span *ngIf="product.item">{{ product.item_variants_name }}</span></span>
                         </span>
                       </div>
                     </div>
                     <div class="totalbill">
                       <div class="totalbillheading">Total Bill</div>
-                      <div class="totalbillamount">{{ order.payableAmount | currency: 'INR' }}</div>
+                      <div class="totalbillamount" *ngIf="order.status !== 7 && order.status !== 8">{{ order.payableAmount | currency: 'INR' }}</div>
+                      <div class="totalbillamount" *ngIf="order.status === 7 || order.status === 8">{{ order.paidAmount| currency: 'INR' }}</div>
                     </div>
                     <div class="extrasection">
                       <div class="statuscommon {{getStatus(order.status).class}}">

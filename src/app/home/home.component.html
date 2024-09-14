@@ -8,7 +8,7 @@
         <home-banner></home-banner>
         <home-top-filter></home-top-filter>
         <home-categories></home-categories>
-        <home-fav-shop></home-fav-shop>
+        <home-fav-shop *ngIf="sharedService.user"></home-fav-shop>
         <home-top-brands></home-top-brands>
         <home-recommended></home-recommended>
       </ng-container>

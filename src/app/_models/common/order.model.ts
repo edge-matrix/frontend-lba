@@ -21,7 +21,6 @@ export interface CreateOrder{
   comboQuantity?: string;
   items?: string;
   items_variant?: string;
+  items_addon?: string;
   itemsQuantity?: string;
-  addOns?: string;
-  addOnsQuantity?: string;
 }

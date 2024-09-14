@@ -27,8 +27,11 @@
                       <img [src]="storageUrl + product.image" *ngIf="product.image !== null && product.image !== ''" referrerpolicy="no-referrer" alt="item image" />
                     </div>
                     <div class="itemcarddetails">
-                      <div class="checkoutpageitemname">{{product.name}}
+                      <div class="checkoutpageitemname" *ngIf="product.isAddOn === 0">{{product.name}}
                         <span *ngIf="product.items_variants_id !== -1 && product.items_variants_id !== null && product.item">( {{ product.item_variants_name }} )</span>
+                      </div>
+                      <div class="checkoutpageitemname" *ngIf="product.isAddOn !== 0">
+                        <span *ngIf="product.item">{{ product.item_variants_name }}</span>
                       </div>
                       <div>
                         <span class="effectiveprice">

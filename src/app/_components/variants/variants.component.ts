@@ -59,7 +59,7 @@ export class VariantsComponent implements OnInit {
   }
 
   addToCart(){
-    let shop = this.shop;
+    let shop = Object.assign({}, this.shop);
     Object.keys(shop).forEach(k => {
       if(Array.isArray(shop[k as keyof typeof shop])){
         delete shop[k as keyof typeof shop];

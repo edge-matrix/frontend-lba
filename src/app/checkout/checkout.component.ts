@@ -171,9 +171,8 @@ export class CheckoutComponent implements OnInit {
     let comboQuantity = '';
     let items = '';
     let variants = '';
+    let addons = '';
     let itemsQuantity = '';
-    let addOns = '';
-    let addOnsQuantity = '';
     this.cart.forEach(e => {
       items += e.itemDetails.id + ',';
       if(e.isVariantSelected && e.variant){
@@ -181,6 +180,7 @@ export class CheckoutComponent implements OnInit {
       }else{
         variants += '-1,';
       }
+      addons += '-1,';
       itemsQuantity += e.quantity + ',';
     });
     if(items !== ''){
@@ -188,6 +188,9 @@ export class CheckoutComponent implements OnInit {
     }
     if(variants !== ''){
       variants = variants.slice(0, -1)
+    }
+    if(addons !== ''){
+      addons = addons.slice(0, -1)
     }
     if(itemsQuantity !== ''){
       itemsQuantity = itemsQuantity.slice(0, -1)
@@ -214,9 +217,8 @@ export class CheckoutComponent implements OnInit {
       comboQuantity: comboQuantity,
       items: items,
       items_variant: variants,
-      itemsQuantity: itemsQuantity,
-      addOns: addOns,
-      addOnsQuantity: addOnsQuantity,
+      items_addon: addons,
+      itemsQuantity: itemsQuantity
     }
     return request;
   }

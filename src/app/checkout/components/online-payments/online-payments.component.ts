@@ -49,7 +49,7 @@ export class OnlinePaymentsComponent implements OnInit {
       }
     });
     const cashfree =  new Cashfree({
-      mode: "sandbox" //or production
+      mode: environment.production?"production":"sandbox" //sanbox or production
     });
 
     let checkoutOptions = {
