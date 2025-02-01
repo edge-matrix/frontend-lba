@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./style/index.scss";
 
 body {
@@ -20,18 +20,18 @@ body::-webkit-scrollbar {
 }
 .bottomnavigation {
   position: fixed;
-  bottom:0px;
-  background-color: #FFFCF3;
-  width: 90%;
-  max-width: 450px;
+  bottom: 0px;
+  background-color: #fffcf3;
+  width: 100%;
+  max-width: 500px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 10px;
+  // border-radius: 10px;
   padding: 14px 10px;
-  box-shadow: 0px 0px 53px 9px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 53px 9px rgba(0, 0, 0, 0.1);
 }
-.options{
+.options {
   color: #848484;
   cursor: pointer;
   i {
@@ -54,30 +54,30 @@ body::-webkit-scrollbar {
 }
 .mainpage {
   width: 100%;
-  zoom: 0.90;
-  padding-bottom:180px;
+  zoom: 0.9;
+  padding-bottom: 180px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.active{
-  color: #FC9C67 !important;
+.active {
+  color: #fc9c67 !important;
 }
 @media screen and (max-width: 768px) {
-.mainpage {
+  .mainpage {
     zoom: 1 !important;
-}
+  }
 }
 
-.centering{
+.centering {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-backdrop.show {
-  opacity:0 !important;
+  opacity: 0 !important;
 }
 .offcanvas-backdrop.show {
-  opacity:0 !important;
+  opacity: 0 !important;
 }

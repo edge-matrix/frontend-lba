@@ -1,9 +1,131 @@
-.itemlistingpage{
+.itemlistingpage {
   width: 100% !important;
 }
-.itemlisting{
+.itemlisting {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
+//
+
+h2 {
+  columns: #000000;
+  font-size: 22px;
+}
+
+.food-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.food-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.food-details {
+  flex-grow: 1;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.veg-icon {
+  font-size: 14px;
+  color: green;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #000000;
+}
+
+.rating {
+  color: gold;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+}
+
+.description {
+  font-size: 14px;
+  color: #9d9c9c;
+}
+.image-container {
+  position: relative;
+  padding: 15px;
+}
+
+.image-container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.add-btn {
+  position: absolute;
+  bottom: 0px;
+  left: 27%;
+  background: white;
+  color: #ff6600;
+  border: 1px solid #ff6600;
+  padding: 2px 19px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+// .add-btn {
+//   background: #ffffff;
+//   color: #fc9c67;
+//   border: 2px solid #fc9c67;
+//   padding: 2px 12px;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   font-size: 12px;
+//   font-weight: bold;
+//   margin: 0px 0px 25px 55px;
+//   // margin: 10px auto 0; /* Centered at bottom */
+//   display: flex;
+//   cursor: pointer;
+// }
+
+/* Responsive */
+// @media (max-width: 600px) {
+//   .food-item {
+//     flex-direction: column;
+//     align-items: flex-start;
+//   }
+
+//   .food-item img {
+//     width: 100%;
+//     height: auto;
+//     margin: 10px 0 0;
+//   }
+
+//   .add-btn {
+//     width: 100%;
+//     text-align: center;
+//   }
+// }

@@ -1,16 +1,104 @@
 <div class="centering">
   <div class="wrapper">
-      <div class="mainpage">
-        <div class="itemlistingpage">
-          <div class="itemlisting" *ngIf="shops">
-            <menu-filter [type]="0" [catId]="catId" [shop]="shops" (newItemEvent)="updateCat($event)"></menu-filter>
-            <menu-item *ngIf="items" [shop]="shops" [menu]="items"></menu-item>
-            <no-item-page *ngIf="items && items.length === 0" text="No Item Present"></no-item-page>
+    <div class="mainpage">
+      <div class="itemlistingpage">
+        <div class="itemlisting" *ngIf="shops">
+          <menu-filter
+            [type]="0"
+            [catId]="catId"
+            [shop]="shops"
+            (newItemEvent)="updateCat($event)"
+          ></menu-filter>
+          <!-- <menu-item *ngIf="items" [shop]="shops" [menu]="items"></menu-item> -->
+          <h2>Recommended for you</h2>
+
+          <div class="food-list">
+            <div class="food-item">
+              <div class="food-details">
+                <div class="title-section">
+                  <span class="veg-icon">
+                    <img
+                      src="assets/imagefolder/veg.png"
+                      class="categoryimg"
+                      alt="veg"
+                      width="20px"
+                      height="20px"
+                    />
+                    <!-- <img
+                      src="assets/imagefolder/non-veg.png"
+                      class="categoryimg"
+                      alt="veg"
+                      width="20px"
+                      height="20px"
+                    />
+                    <img
+                      src="assets/imagefolder/egg.png"
+                      class="categoryimg"
+                      alt="veg"
+                      width="20px"
+                      height="20px"
+                    /> -->
+                  </span>
+                  <h3>Peri Peri Paneer Pizza</h3>
+                </div>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <p class="price">₹199</p>
+                <p class="description">
+                  Cheese and corn pizza & bite into cheesy delight of golden
+                  corn & gooey mozzarella cheese.
+                </p>
+              </div>
+              <div class="image-container">
+                <img src="assets\imagefolder\sliderimage1.png" alt="Pizza" />
+                <button class="add-btn">ADD +</button>
+              </div>
+            </div>
+
+            <div class="food-item">
+              <div class="food-details">
+                <div class="title-section">
+                  <span class="veg-icon">
+                    <!-- <img
+                      src="assets/imagefolder/veg.png"
+                      class="categoryimg"
+                      alt="veg"
+                      width="20px"
+                      height="20px"
+                    /> -->
+                    <img
+                      src="assets/imagefolder/non-veg.png"
+                      class="categoryimg"
+                      alt="veg"
+                      width="20px"
+                      height="20px"
+                    />
+                    <!-- <img
+                      src="assets/imagefolder/egg.png"
+                      class="categoryimg"
+                      alt="veg"
+                      width="20px"
+                      height="20px"
+                    /> -->
+                  </span>
+                  <h3>Non Veg Paneer Pizza</h3>
+                </div>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+                <p class="price">₹199</p>
+                <p class="description">
+                  Cheese and corn pizza & bite into cheesy delight of golden
+                  corn & gooey mozzarella cheese.
+                </p>
+              </div>
+              <div class="image-container">
+                <img src="assets\imagefolder\sliderimage1.png" alt="Pizza" />
+                <button class="add-btn">ADD +</button>
+              </div>
+            </div>
           </div>
         </div>
+        <app-footer></app-footer>
+        <bottom-nav></bottom-nav>
       </div>
-    <app-footer></app-footer>
-    <bottom-nav></bottom-nav>
+    </div>
   </div>
 </div>
-
