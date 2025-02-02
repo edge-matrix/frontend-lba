@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Response, ShopCategories } from '@models'
 import { ComboDetailsService, CommonService, SharedService } from '@service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { passwordValidator } from './password-validator';
 
 @Component({
   templateUrl: './onboarding.component.html',
@@ -18,6 +19,7 @@ export class OnboardingComponent implements OnInit {
   shopAddressForm!: FormGroup;
   userForm!: FormGroup;
   shopSettingsForm!: FormGroup;
+  orderSettingsForm!: FormGroup;
   shopOtherForm!: FormGroup;
   qr = '';
   qrCodes: Array<string> = [];
@@ -42,9 +44,10 @@ export class OnboardingComponent implements OnInit {
       title: ['', Validators.required],
       slug: ['', Validators.required],
       code: ['', Validators.required],
-      about: ['', Validators.required],
+      about: [''],
       profileImage: [''],
       shop_categories_id: [1, Validators.required],
+      restroType: [0, Validators.required],
     });
     this.shopAddressForm = this.fb.group({
       addressLine: ['', Validators.required],
@@ -58,18 +61,37 @@ export class OnboardingComponent implements OnInit {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       value: ['', [Validators.required, Validators.pattern('^[5-9]{1}[0-9]{9}$')]],
-      whatsapp: ['', [Validators.pattern('^[5-9]{1}[0-9]{9}$')]],
+      isOnWhatsapp: [0],
       email: ['', [Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      password: [''],
+      password: ['', [Validators.required, passwordValidator()]],
     });
     this.shopSettingsForm = this.fb.group({
       isPayLaterEnabled: [1, Validators.required],
-      isPayNowEnabled: [1, Validators.required],
+      isPayNowEnabled: [0, Validators.required],
+      isWalkingAvailable: [1, Validators.required],
+      isUserDetailRequired: [0, Validators.required],
+      isUserVerificationRequired: [0, Validators.required],
+      isGst: [0, Validators.required],
+      gst_no: ['', Validators.pattern('^[0-3][0-9][A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}[Z]{1}[0-9A-Z]{1}$')],
+      printItem: ['2', Validators.required],
       bankName: [''],
       accountNumber: ['', Validators.pattern('^[0-9]{9,18}$')],
       ifscCode: ['', Validators.pattern('^[A-Za-z]{4}[0][0-9]{6}$')],
       holderName: [''],
       upi: ['',Validators.pattern('^[a-zA-Z0-9.\-_]{2,49}@[a-zA-Z._]{2,49}$')],
+    });
+    this.orderSettingsForm = this.fb.group({
+      isDineInAvailable: [0, Validators.required],
+      isPickUpAvailable: [0, Validators.required],
+      isDeliveryAvailble: [0, Validators.required],
+      isRoomDropAvailable	: [0, Validators.required],
+      isTablesActive: [0, Validators.required],
+      noOfCounters: [1, Validators.required],
+      isSelfDelivery: [0, Validators.required],
+      isOnZomoto	: [0, Validators.required],
+      isOnSwiggy: [0, Validators.required],
+      isOnMagicPin: [0, Validators.required],
+      isRoomsActive: [0, Validators.required],
     });
     this.shopOtherForm = this.fb.group({
       openTime: ['', Validators.required],
@@ -87,6 +109,8 @@ export class OnboardingComponent implements OnInit {
   get i() { return this.shopSettingsForm.controls; }
 
   get j() { return this.shopOtherForm.controls; }
+
+  get k() { return this.orderSettingsForm.controls; }
 
   addQr() {
     if(this.qr !== ''){
@@ -130,15 +154,37 @@ export class OnboardingComponent implements OnInit {
       return;
     }
     this.submitted = false;
-    if(to === 5){
+    if(to === 3){
+      this.userForm.patchValue({
+        'isOnWhatsapp':  this.userForm.value.isOnWhatsapp?1:0,
+      });
+    }else if(to === 4){
       this.shopSettingsForm.patchValue({
         'isPayLaterEnabled':  this.shopSettingsForm.value.isPayLaterEnabled?1:0,
-        'isPayNowEnabled': this.shopSettingsForm.value.isPayNowEnabled?1:0
+        'isPayNowEnabled': this.shopSettingsForm.value.isPayNowEnabled?1:0,
+        'isWalkingAvailable': this.shopSettingsForm.value.isWalkingAvailable?1:0,
+        'isUserDetailRequired': this.shopSettingsForm.value.isUserDetailRequired?1:0,
+        'isUserVerificationRequired': this.shopSettingsForm.value.isUserVerificationRequired?1:0,
+        'isGst': this.shopSettingsForm.value.isGst?1:0,
       });
+    }else if(to === 5){
+      this.orderSettingsForm.patchValue({
+        'isDineInAvailable':  this.orderSettingsForm.value.isDineInAvailable?1:0,
+        'isPickUpAvailable': this.orderSettingsForm.value.isPickUpAvailable?1:0,
+        'isDeliveryAvailble':  this.orderSettingsForm.value.isDeliveryAvailble?1:0,
+        'isRoomDropAvailable': this.orderSettingsForm.value.isRoomDropAvailable?1:0,
+        'isTablesActive': this.orderSettingsForm.value.isTablesActive?1:0,
+        'isSelfDelivery': this.orderSettingsForm.value.isSelfDelivery?1:0,
+        'isOnZomoto': this.orderSettingsForm.value.isOnZomoto?1:0,
+        'isOnSwiggy': this.orderSettingsForm.value.isOnSwiggy?1:0,
+        'isOnMagicPin': this.orderSettingsForm.value.isOnMagicPin?1:0,
+        'isRoomsActive': this.orderSettingsForm.value.isRoomsActive?1:0
+      });
+    }else if(to === 6){
       this.submit();
-    }else{
-      this.selectedTab = to;
+      return;
     }
+    this.selectedTab = to;
   }
 
   validateTime(type: number, time: string | undefined){
@@ -167,7 +213,7 @@ export class OnboardingComponent implements OnInit {
 
   submit() {
     this.submitted = true;
-    if (this.shopForm.invalid || this.shopAddressForm.invalid || this.userForm.invalid || this.shopSettingsForm.invalid || this.shopOtherForm.invalid) {
+    if (this.shopForm.invalid || this.shopAddressForm.invalid || this.userForm.invalid || this.shopSettingsForm.invalid || this.orderSettingsForm.invalid || this.shopOtherForm.invalid) {
       this.loginMessage = 'All Fill all required fields';
       return;
     }
@@ -190,6 +236,10 @@ export class OnboardingComponent implements OnInit {
       ([key, value]: any[]) => {
         formData.set(key, value);
     });
+    Object.entries(this.orderSettingsForm.value).forEach(
+      ([key, value]: any[]) => {
+        formData.set(key, value);
+    });
     Object.entries(this.shopOtherForm.value).forEach(
       ([key, value]: any[]) => {
         formData.set(key, value);
@@ -201,7 +251,7 @@ export class OnboardingComponent implements OnInit {
           this.loginMessage = this.sharedService.errorMessage(data.Error);
         } else {
           this.sharedService.showMessage(0,"Onboarding successfully !!");
-          this.selectedTab = 5;
+          this.selectedTab = 6;
         }
         this.loading = false;
       },

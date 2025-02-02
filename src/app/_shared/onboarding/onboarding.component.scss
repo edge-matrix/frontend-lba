@@ -29,7 +29,7 @@
   background-color: #FC9C67;
 }
 .onboarding-page {
-  width: 100wh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,6 +168,42 @@
   display: absolute;
   top: 50%;
   left: 50%;
+
+  h2 {
+    color: #28a745;
+  }
+  .step {
+      margin: 15px 0;
+      padding: 10px;
+      background: #e9f7ef;
+      border-left: 5px solid #28a745;
+      text-align: left;
+      border-radius: 5px;
+  }
+  .link {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+  }
+  .link:hover {
+      background: #0056b3;
+  }
+  .credentials {
+      background: #fff3cd;
+      padding: 10px;
+      border-radius: 5px;
+      border-left: 5px solid #ffc107;
+      text-align: left;
+  }
+  .tip {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #777;
+  }
 }
 .custom-file-input {
   width: 300px;
