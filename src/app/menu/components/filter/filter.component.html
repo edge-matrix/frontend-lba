@@ -3,7 +3,7 @@
     <!-- Back Button & Label -->
     <div class="top-bar">
       <span (click)="sharedService.back()"
-        ><i class="fa-solid fa-arrow-left"></i
+        ><i class="fa-solid fa-angle-left"></i
       ></span>
       <span class="veg-label">✅ Pure Veg</span>
     </div>
@@ -11,7 +11,8 @@
     <!-- Restaurant Info -->
     <h2>Mirch Masala</h2>
     <p class="restaurant-info">
-      ⏳ 44 mins 🚴 4.5Km <i class="fas fa-map-marker-alt"></i> xyz, Lucknow
+      ⏳44 mins &nbsp; 🚴4.5Km &nbsp; <i class="fas fa-map-marker-alt"></i>xyz,
+      Lucknow
     </p>
     <p class="delivery-info">🚴 Free Delivery above ₹199</p>
 
@@ -23,7 +24,7 @@
 
     <!-- Filter Buttons -->
     <div class="filter-buttons">
-      <select class="dropdown">
+      <select class="filter-btn">
         <option>🔧 Sort</option>
         <option>Price: Low to High</option>
         <option>Price: High to Low</option>
@@ -34,26 +35,30 @@
       <button class="filter-btn">⭐ Rated 4+</button>
     </div>
   </div>
-  <div class="itemcategorylist">
-    <div
-      class="category"
-      *ngFor="let cat of categories"
-      [title]="cat.data.name"
-      (click)="updateCategory(cat.data.id)"
-    >
-      <img
-        src="assets/icons/all.png"
-        *ngIf="cat.data.image === null || cat.data.image === ''"
-        referrerpolicy="no-referrer"
-        [alt]="cat.data.name"
-      />
-      <img
-        [src]="storageUrl + cat.data.image"
-        *ngIf="cat.data.image !== null && cat.data.image !== ''"
-        referrerpolicy="no-referrer"
-        [alt]="cat.data.name"
-      />
-      <span class="categoryname">{{ cat.data.name }}</span>
+  <div class="itemcategorylistout">
+    <button class="slidebutton left-button"><</button>
+    <div class="itemcategorylist">
+      <div
+        class="category"
+        *ngFor="let cat of categories"
+        [title]="cat.data.name"
+        (click)="updateCategory(cat.data.id)"
+      >
+        <img
+          src="assets/icons/all.png"
+          *ngIf="cat.data.image === null || cat.data.image === ''"
+          referrerpolicy="no-referrer"
+          [alt]="cat.data.name"
+        />
+        <img
+          [src]="storageUrl + cat.data.image"
+          *ngIf="cat.data.image !== null && cat.data.image !== ''"
+          referrerpolicy="no-referrer"
+          [alt]="cat.data.name"
+        />
+        <span class="categoryname">{{ cat.data.name }}</span>
+      </div>
     </div>
+    <button class="slidebutton right-button">></button>
   </div>
 </div>
