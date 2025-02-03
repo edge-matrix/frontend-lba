@@ -281,7 +281,7 @@ h2 {
   }
 
   .filter-btn {
-    padding: 10px 4px;
+    padding: 10px 3px;
     font-size: 11px;
     font-weight: bold;
   }
@@ -309,25 +309,11 @@ h2 {
     padding: 5px 2px;
   }
 
-  .left-button,
-  .right-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #fffcf3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    scroll-behavior: smooth;
-  }
-
   .left-button {
-    left: 0;
     top: 32px;
   }
 
   .right-button {
-    right: 0;
     top: 32px;
   }
 }
