@@ -28,9 +28,7 @@
           </div>
           <div class="addbutton">
             <div class="description">
-              Cheese and corn pizza & bite into cheesy delight of golden
-                  corn & gooey mozzarella cheese. Cheese and corn pizza & bite
-                  into cheesy delight of golden corn & gooey mozzarella cheese.
+              {{ item.item.description }}
             </div>
             <div class="itemnumbercounter" *ngIf="!item.isSelected">
               <button class="addbutton-button" *ngIf="item.item.isVariants === 0 || item.item.variants.length === 0" (click)="addToCart(item.item.id)">
