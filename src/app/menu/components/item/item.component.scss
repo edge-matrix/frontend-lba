@@ -15,6 +15,7 @@
 .iteminfo {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   gap: 15px;
 }
 .itemimage img {
@@ -54,6 +55,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .description{
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: 400;
+    width: 240px;
+    color: #7f7f7f;
+    display: -webkit-box;
+    display: -moz-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+  }
 }
 .addbutton img {
   margin-right: 8px;
@@ -69,10 +84,10 @@
 }
 .addbutton-button {
   border-radius: 4px;
-  background: #47b214;
+  color: #ff6600;
   padding: 8px 16px;
-  border: none;
-  color: #ffffff;
+  border: 1px solid #ff6600;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -101,7 +116,7 @@
 }
 .incremental {
   border-radius: 4px;
-  background: #47b214;
+  background: #ff6600;
   border: none;
   padding: 5px 12px;
   color: #ffffff;

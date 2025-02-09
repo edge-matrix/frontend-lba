@@ -1,32 +1,38 @@
 <div class="belowpartitemlist">
   <div class="itemlisting">
+    <h2>Recommended for you</h2>
       <div class="items" *ngFor="let item of itemLists">
           <div class="iteminfo">
+              <div class="itemdetails">
+                  <div class="itemname">
+                    <span>
+                      <img src="assets/imagefolder/veg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 0"/>
+                      <img src="assets/imagefolder/non-veg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 1"/>
+                      <img src="assets/imagefolder/egg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 2"/>
+                    </span>
+                    {{item.item.name}}
+                  </div>
+                  <div class="rating">⭐⭐⭐⭐⭐</div>
+                  <div class="itemcategory">{{item.item.category?.name}}</div>
+                  <div class="itemprice" *ngIf="item.item.isVariants === 0 || item.item.variants.length === 0">{{ item.item.price | currency: 'INR'}}</div>
+                  <div class="itemprice" *ngIf="item.item.isVariants === 1 && item.item.variants.length > 0"> {{ item.item.variants.length }} Variants available</div>
+              </div>
               <div class="itemimage">
                 <img [src]="storageUrl + item.item.image" alt="item" *ngIf="item.item.image !== null && item.item.image !== ''"/>
                 <img src="assets/imagefolder/resturantimg.jfif" alt="item" *ngIf="item.item.image === null || item.item.image === ''"/>
-              </div>
-              <div class="itemdetails">
-                  <div class="itemname">{{item.item.name}}</div>
-                  <div class="itemprice" *ngIf="item.item.isVariants === 0 || item.item.variants.length === 0">{{ item.item.price | currency: 'INR'}}</div>
-                  <div class="itemprice" *ngIf="item.item.isVariants === 1 && item.item.variants.length > 0"> {{ item.item.variants.length }} Variants available</div>
-                  <div class="itemcategory">{{item.item.category?.name}}</div>
-              </div>
-              <div class="addtofaviorite" *ngIf="sharedService.user && sharedService.user.id !== 0">
-                <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
-                <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
+                <div class="addtofaviorite">
+                  <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
+                  <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
+                </div>
               </div>
           </div>
-          <div class="addbutton" *ngIf="!item.isSelected">
-            <div>
-              <img src="assets/imagefolder/veg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 0"/>
-              <img src="assets/imagefolder/non-veg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 1"/>
-              <img src="assets/imagefolder/egg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 2"/>
-              <!-- <i class="fas fa-leaf" title="Veg"  [style.color]="'green'" *ngIf="item.item.nutrition_type === 0"></i>
-              <i class="fas fa-drumstick-bite" title="Non Veg"  [style.color]="'red'" *ngIf="item.item.nutrition_type === 1"></i>
-              <i class="fas fa-egg" title="Contains Egg"  [style.color]="'#fc9c67'" *ngIf="item.item.nutrition_type === 2"></i> -->
-              <span>{{ item.item.nutrition_type === 0?'Veg':(item.item.nutrition_type === 0?'Non-Veg':'Egg') }}</span>
+          <div class="addbutton">
+            <div class="description">
+              Cheese and corn pizza & bite into cheesy delight of golden
+                  corn & gooey mozzarella cheese. Cheese and corn pizza & bite
+                  into cheesy delight of golden corn & gooey mozzarella cheese.
             </div>
+            <div class="itemnumbercounter" *ngIf="!item.isSelected">
               <button class="addbutton-button" *ngIf="item.item.isVariants === 0 || item.item.variants.length === 0" (click)="addToCart(item.item.id)">
                   <span><i class="fa-solid fa-plus"></i></span>
                   <span>Add</span>
@@ -35,19 +41,20 @@
                 <span><i class="fa-solid fa-plus"></i></span>
                 <span>Add</span>
               </button>
-          </div>
-          <div class="itemnumbercounter" *ngIf="item.isSelected && (item.item.isVariants === 0 || item.item.variants.length === 0)">
-            <span><button class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></button></span>
-            <span class="itemcount">
-              {{item.count}}
-            </span>
-            <span><button class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></button></span>
-          </div>
-          <div class="itemnumbercounter" *ngIf="item.isSelected && item.item.isVariants === 1 && item.item.variants.length > 0">
-            <button class="addbutton-button" (click)="openVariantModal(item.item)">
-              <span><i class="fa-solid fa-plus"></i></span>
-              <span>Add More</span>
-            </button>
+            </div>
+            <div class="itemnumbercounter" *ngIf="item.isSelected && (item.item.isVariants === 0 || item.item.variants.length === 0)">
+              <span><button class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></button></span>
+              <span class="itemcount">
+                {{item.count}}
+              </span>
+              <span><button class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></button></span>
+            </div>
+            <div class="itemnumbercounter" *ngIf="item.isSelected && item.item.isVariants === 1 && item.item.variants.length > 0">
+              <button class="addbutton-button" (click)="openVariantModal(item.item)">
+                <span><i class="fa-solid fa-plus"></i></span>
+                <span>Add More</span>
+              </button>
+            </div>
           </div>
       </div>
   </div>

@@ -5,6 +5,7 @@ export interface Shop {
     title: string;
     slug: string;
     code: string;
+    restroType: number;
     profileImage?: string;
     verified: number;
     about: string;
