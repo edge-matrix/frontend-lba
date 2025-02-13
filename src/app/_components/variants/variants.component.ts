@@ -19,6 +19,7 @@ export class VariantsComponent implements OnInit {
   cart!: Array<Cart>;
   cartWithItem: Array<{index:number; cart: Cart}> = [];
   height = 20;
+  storageUrl = environment.storage;
   constructor(public sharedService: SharedService,private storageService: StorageService) { }
 
 
@@ -48,14 +49,15 @@ export class VariantsComponent implements OnInit {
   }
 
   calHight(){
-    if(this.isItemExist){
-      this.height = 20 + (this.cartWithItem.length * 8);
-    }else{
-      this.height = 20 + (this.item.variants.length * 8);
-    }
-    if(this.height >= 48){
-      this.height = 48;
-    }
+    // if(this.isItemExist){
+    //   this.height = 20 + (this.cartWithItem.length * 8);
+    // }else{
+    //   this.height = 20 + (this.item.variants.length * 8);
+    // }
+    // if(this.height >= 48){
+    //   this.height = 48;
+    // }
+    this.height = 70;
   }
 
   addToCart(){

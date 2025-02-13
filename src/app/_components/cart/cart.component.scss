@@ -1,7 +1,8 @@
 .cartfloatarea {
   position: fixed;
-  bottom: 55px;
-  background-color: #fffcf3;
+  bottom: 0px;
+  color: #fff;
+  background-color: #fc9c67;
   width: 100%;
   max-width: 480px;
   display: flex;
@@ -93,4 +94,19 @@
   .cartrightpart {
     gap: 5px;
   }
+}
+
+.bottomnavigationn {
+  width: 100%;
+  max-width: 500px;
+}
+
+.text-1 {
+  text-align: center;
+  font-size: 15px;
+}
+
+.text-2 {
+  font-size: 11px;
+  text-align: center;
 }

@@ -2,28 +2,79 @@
   <button hidden type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" id="model-btn"></button>
   <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" [ngStyle]="{'height': height + '%' }" data-bs-backdrop="false">
     <div class="offcanvas-header"  *ngIf="item">
-      <h5 class="offcanvas-title" id="offcanvasBottomLabel">{{ isItemExist?'REPEAT LAST USED VARIANT':'ADD A NEW VARIANT' }}</h5>
-      <button type="button" class="btn-close text-reset" (click)="(cartWithItem.length > 0 && !isItemExist)?closeToSelect():close(0)"></button>
+      <!-- <h5 class="offcanvas-title" id="offcanvasBottomLabel">{{ isItemExist?'REPEAT LAST USED VARIANT':'ADD A NEW VARIANT' }}</h5> -->
+      <button type="button" class="btn-close text-reset closeBtn" (click)="(cartWithItem.length > 0 && !isItemExist)?closeToSelect():close(0)"></button>
       <button hidden data-bs-dismiss="offcanvas" aria-label="Close" id="modal-close-btn"></button>
     </div>
-    <div class="offcanvas-body small" *ngIf="!isItemExist">
+    <div class="offcanvas-body small">
       <div class="varientcontainer">
           <div class="header">
-              <div class="quantityheading">{{ item.name }}</div>
-              <div class="subheading">Select any 1 variant option</div>
-              <div class="varientoption" *ngFor="let vari of item.variants" (click)="!checkVariantExists(vari.id)?selectedVariant = vari:''"  [ngStyle]="{'color':  checkVariantExists(vari.id) ? 'grey' : '#212529' }">
-                  <div>
-                      <div class="varientname">{{ vari.name }}</div>
-                      <div class="varientquantity">{{ vari.quantity }} {{ vari.type == 0?'Pcs':(vari.type == 1?'size':'Plate') }}</div>
-                  </div>
-                  <label class="varientoption">
-                      <span>{{ vari.price | currency: 'INR' }}</span>
-                      <input type="radio" [checked]="selectedVariant && (selectedVariant.id === vari.id)" [disabled]="checkVariantExists(vari.id)">
-                  </label>
+            <!-- variant -->
+            <div class="pizza-container">
+              <div class="pizza-header">
+                <img [src]="storageUrl + item.image" [alt]="item.name" class="pizza-image" />
+                <div class="pizza-info">
+                  <h3>{{ item.name }}</h3>
+                </div>
+                <div class="icon-circle">
+                  <i class="fas fa-bookmark"></i>
+                </div>
+
+                <div class="icon-circle">
+                  <i class="fas fa-share-alt"></i>
+                </div>
               </div>
+
+              <div class="pizza-options">
+                <h4>Size</h4>
+                <p class="subtext">Requires • Select any 1 option</p>
+
+                <div *ngIf="!isItemExist">
+                  <div class="option" *ngFor="let vari of item.variants" (click)="!checkVariantExists(vari.id)?selectedVariant = vari:''">
+                    <label>
+                      <input type="radio" [checked]="selectedVariant && (selectedVariant.id === vari.id)" [disabled]="checkVariantExists(vari.id)" />
+                      <span class="custom-radio"></span>
+                      <span class="size-text">{{ vari.name }}</span>
+                      <span class="price">{{ vari.price | currency: 'INR' }}</span>
+                    </label>
+                  </div>
+                </div>
+                <div *ngIf="isItemExist">
+                  <div class="varientoption" *ngFor="let item of cartWithItem; index as i">
+                    <div>
+                        <div class="varientname">{{ item.cart.variant?.name }}</div>
+                        <div class="varientquantity">{{ item.cart.variant?.quantity }} {{ item.cart.variant?.type == 0?'Pcs':(item.cart.variant?.type == 1?'size':'Plate') }}</div>
+                    </div>
+                    <label class="varientoption">
+                      <div class="values">
+                        <div class="deccremnt" (click)="descQuanity(i, item.index)">
+                            <i class="fas fa-minus"></i>
+                        </div>
+                        <div class="itemquantityvalue">
+                          {{item.cart.quantity}}
+                        </div>
+                        <div class="increment" (click)="increaseQuanity(i, item.index)">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="delete-icon" (click)="removeFromCart(i, item.index)">
+                          <i class="fas fa-trash"></i>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
       </div>
-      <div class="bottomvalue" *ngIf="selectedVariant">
+      <div class="bottomvalue" *ngIf="isItemExist">
+        <button (click)="isItemExist =  false; calHight()" style="width: 100%;">
+          Add New Variant
+        </button>
+      </div>
+      <div class="bottomvalue" *ngIf="!isItemExist && selectedVariant">
           <div class="values">
               <div class="deccremnt" (click)="qty = qty > 1?qty - 1:1">
                   <i class="fas fa-minus"></i>
@@ -37,41 +88,6 @@
           </div>
           <button (click)="addToCart()">
               Add Item {{ selectedVariant.price * qty | currency: 'INR'}}
-          </button>
-      </div>
-    </div>
-    <div class="offcanvas-body small" *ngIf="isItemExist">
-      <div class="varientcontainer">
-          <div class="header">
-              <div class="varientoption" *ngFor="let item of cartWithItem; index as i">
-                  <div>
-                      <div class="varientname">{{ item.cart.variant?.name }}</div>
-                      <div class="varientquantity">{{ item.cart.variant?.quantity }} {{ item.cart.variant?.type == 0?'Pcs':(item.cart.variant?.type == 1?'size':'Plate') }}</div>
-                  </div>
-                  <label class="varientoption">
-                    <div class="values">
-                      <div class="deccremnt" (click)="descQuanity(i, item.index)">
-                          <i class="fas fa-minus"></i>
-                      </div>
-                      <div class="itemquantityvalue">
-                        {{item.cart.quantity}}
-                      </div>
-                      <div class="increment" (click)="increaseQuanity(i, item.index)">
-                          <i class="fas fa-plus"></i>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="delete-icon" (click)="removeFromCart(i, item.index)">
-                        <i class="fas fa-trash"></i>
-                      </div>
-                    </div>
-                  </label>
-              </div>
-          </div>
-      </div>
-      <div class="bottomvalue">
-          <button (click)="isItemExist =  false; calHight()" style="width: 100%;">
-            Add New Variant
           </button>
       </div>
     </div>
