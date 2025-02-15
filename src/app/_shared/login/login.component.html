@@ -1,8 +1,13 @@
-<div class="centering">
+<!-- <div class="centering">
   <div class="wrapper">
     <div class="mainpage">
+      <div class="login-top">Peri Peri Paneer Pizza</div>
       <div class="loginpageimage">
         <img src="assets/imagefolder/loginpage.png" alt="loginpageimage">
+        <img
+          src="assets\imagefolder\status\loginpage_img.png"
+          alt="loginpageimage"
+        />
       </div>
       <div class="loginpagecontain">
         <div></div>
@@ -12,41 +17,73 @@
           <span class="yellow">Again</span>
         </div>
         <div>
-          <span style="float:right;margin-bottom:15px;color: rgb(165, 164, 164);font-size: 14px;cursor: pointer;" class="crossbtn" routerLink="/">
+          <span
+            style="
+              float: right;
+              margin-bottom: 15px;
+              color: rgb(165, 164, 164);
+              font-size: 14px;
+              cursor: pointer;
+            "
+            class="crossbtn"
+            routerLink="/"
+          >
             <i class="far fa-times-circle fa-2x"></i>
           </span>
         </div>
       </div>
-      <div class="subheading">
-        Your Personal Meetup App
-      </div>
+      <div class="subheading">Your Personal Meetup App</div>
       <div class="option">
-        <hr>
+        <hr />
         <span class="or">Log in or sign up</span>
       </div>
-      <div class="loginheading">
-        Please Enter Your 10 Digit Mobile Number
-      </div>
-      <form [formGroup]="loginForm" (ngSubmit)="!isLoginWithOtp?loginWithPassword():sendingOTP?sendOtp():verifyOtp()">
+      <div class="loginheading">Please Enter Your 10 Digit Mobile Number</div>
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="
+          !isLoginWithOtp
+            ? loginWithPassword()
+            : sendingOTP
+            ? sendOtp()
+            : verifyOtp()
+        "
+      >
         <div class="inputbox">
-          <input type="tel" placeholder="Enter Mobile Number (Don't use +91)" formControlName="username" [readOnly]="!sendingOTP"/><br>
+          <input
+            type="tel"
+            placeholder="Enter Mobile Number (Don't use +91)"
+            formControlName="username"
+            [readOnly]="!sendingOTP"
+          /><br />
           <div *ngIf="submitted && loginForm.invalid && f['username'].errors">
             <div *ngIf="f['username'].errors['required']" class="invalid-error">
               <p class="invalidmessage">Mobile Number is required</p>
             </div>
             <div *ngIf="f['username'].errors['pattern']" class="invalid-error">
-              <p class="invalidmessage">Mobile Number must be valid and Upto 10 digits.</p>
+              <p class="invalidmessage">
+                Mobile Number must be valid and Upto 10 digits.
+              </p>
             </div>
           </div>
         </div>
         <div class="otpbox" *ngIf="isLoginWithOtp">
           <div class="otpheading" *ngIf="!sendingOTP">Enter 4 digit OTP</div>
           <div class="otp" *ngIf="!sendingOTP" formGroupName="code">
-            <input #formRow class="fillotp" type="number" pattern="[0-9]{1}" *ngFor="let t of [1,2,3,4]; let i = index" [formControlName]="'input'+[t]" inputmode="numeric" maxlength="1" (keyup)="keyUpEvent($event, i)">
+            <input
+              #formRow
+              class="fillotp"
+              type="number"
+              pattern="[0-9]{1}"
+              *ngFor="let t of [1, 2, 3, 4]; let i = index"
+              [formControlName]="'input' + [t]"
+              inputmode="numeric"
+              maxlength="1"
+              (keyup)="keyUpEvent($event, i)"
+            />
           </div>
         </div>
         <div *ngIf="loginMessage !== ''" class="invalid-error">
-          <p class="invalidmessage">{{loginMessage}}</p>
+          <p class="invalidmessage">{{ loginMessage }}</p>
         </div>
         <div class="verfiybtn">
           <button class="otpbtn" *ngIf="sendingOTP">Send OTP</button>
@@ -60,18 +97,100 @@
         </div>
       </form>
       <div class="option">
-        <hr>
+        <hr />
         <span class="or">or</span>
       </div>
-      <div (click)="signInWithGoogle()" class="loginwithgoogle" >
-        <a><img src="https://static.vecteezy.com/system/resources/previews/010/353/285/original/colourful-google-logo-on-white-background-free-vector.jpg" style="width:50px;height: 50px;border-radius:50%;padding: 10px;"/></a>
+      <div (click)="signInWithGoogle()" class="loginwithgoogle">
+        <a
+          ><img
+            src="https://static.vecteezy.com/system/resources/previews/010/353/285/original/colourful-google-logo-on-white-background-free-vector.jpg"
+            style="
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              padding: 10px;
+            "
+        /></a>
         &nbsp;
-        <span style="cursor:pointer">Login with Google</span>
+        <span style="cursor: pointer">Login with Google</span>
       </div>
       <div class="additionalcontent">
         <span>By continuing, you agree to our</span>
         <p><a routerLink="../policies/privacy-policy">Privacy Policy</a></p>
       </div>
     </div>
+  </div>
+</div>
+ -->
+
+<!-- New Login -->
+
+<div class="centering">
+  <div class="container">
+    <div class="header">
+      <i class="fas fa-angle-left back-arrow"></i>
+      <div>Peri Peri Paneer Pizza</div>
+    </div>
+    <div class="login-box">
+      <img
+        src="assets\imagefolder\status\loginpage_img.png"
+        alt="Login Illustration"
+        class="login-image"
+      />
+      <div class="login-text">LOGIN</div>
+      <br />
+      <p class="instruction">
+        <span class="text-1">Enter Your Mobile Number</span><br />we will send
+        you a confirmation code
+      </p>
+      <label for="mobile">10 digit mobile number</label>
+      <input
+        type="tel"
+        id="mobile"
+        placeholder="+91- 1234567890"
+        maxlength="14"
+      />
+      <button class="continue-btn">CONTINUE</button>
+      <hr />
+      <span class="or">OR</span>
+      <button class="google-login">Login with Google</button>
+      <p class="terms">
+        By clicking, I accept the <a href="#">Terms & Conditions</a> and
+        <a href="#">Privacy Policy</a>
+      </p>
+    </div>
+
+    <!-- New OTP Screen -->
+
+    <!-- <div class="verification-box">
+      <div class="verification-text">
+        <div class="veridet">VERIFY DETAILS</div>
+        <p class="veridetotp">OTP sent to 1234567890</p>
+      </div>
+      <div class="verification-image">
+        <img
+          src="assets\imagefolder\otppage_img.png"
+          alt="OTP Illustration"
+          width="100"
+        />
+      </div>
+    </div>
+    <div class="otp-section">
+      <div class="enterveri">Enter Verification code</div>
+      <div class="otpbox">
+        <input type="text" class="otp-input" maxlength="1" />
+        <input type="text" class="otp-input" maxlength="1" />
+        <input type="text" class="otp-input" maxlength="1" />
+        <input type="text" class="otp-input" maxlength="1" />
+      </div>
+      <p class="resend-otp">
+        Don't receive the OTP? <a href="#">RESEND OTP</a>
+      </p>
+    </div>
+    <button class="otp-btn">ENTER OTP</button> -->
+
+    <!-- Complete Screen -->
+
+    <!-- <div class="complete-box">Completed</div> -->
   </div>
 </div>
