@@ -1,7 +1,7 @@
 .upperpartofitemlist h1 {
   font-size: 18px;
   font-weight: 600;
-  padding-top: 10px;
+  // padding-top: 15px;
 }
 .itempageinput input::placeholder {
   color: #fc9c67;
@@ -29,6 +29,16 @@
   padding: 1px 5px;
   border-radius: 10px;
 }
+.non-veg-label {
+  background: linear-gradient(to right, #eb363693, #ffffff);
+  color: #c82d18;
+  font-size: 12px;
+  padding: 1px 5px;
+  border-radius: 10px;
+}
+.backbtn {
+  margin-bottom: 35px;
+}
 .shopname {
   font-size: 20px;
   font-weight: 500;
@@ -39,7 +49,7 @@
 }
 .shopaddress {
   text-transform: capitalize;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
   width: 240px;
   color: #7f7f7f;
@@ -49,19 +59,20 @@
   -moz-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
+  // -webkit-line-clamp: 2;
   -moz-box-lines: multiple;
 }
 .vistshopbutton button {
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   background: #fc9c67;
-  padding: 7px 7px;
+  padding: 5px 7px;
+  margin-bottom: 25px;
   color: #ffffff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2509803922);
 }
 .upperpartofitemlist .itempageinput input {
-  height: 45px;
+  height: 39px;
   border-radius: 10px;
   background: #fffcf3;
   padding: 0 10px;
@@ -71,13 +82,13 @@
   box-sizing: border-box;
   outline: none;
 }
-.search-fields {
-  // display: flex;
-  // align-items: center;
-}
+// .search-fields {
+// display: flex;
+// align-items: center;
+// }
 .arrow {
   position: relative;
-  top: -47px;
+  top: -45px;
   float: right;
   right: -18px;
 }
@@ -90,9 +101,9 @@
 }
 .filter-buttons {
   display: flex;
-  gap: 19px;
+  // gap: 19px;
   flex-wrap: wrap;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 
 .filter-btn {
@@ -109,16 +120,17 @@
 }
 .category {
   text-align: center;
-  width: 90px;
+  width: 70px;
   overflow: hidden;
   text-overflow: ellipsis;
   flex-shrink: 0;
 }
 .category img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
   object-fit: cover;
+  border: 1px solid black;
   box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.1);
   margin: 5px;
 }
@@ -136,17 +148,18 @@
 }
 
 .categoryname {
-  width: 50px !important;
+  width: 45px !important;
   white-space: nowrap;
   overflow: hidden;
 }
 
 .itemcategorylistout {
+  padding: 0px 21px;
   position: relative;
 }
 
 .slidebutton {
-  border-radius: 10px;
+  border-radius: 50%;
   padding: 4px 2px;
   border: 1px solid #000000;
   background-color: #fffcf3;
@@ -184,24 +197,24 @@
   }
 
   .dropdown {
-    padding: 1px;
+    padding: 3px;
   }
 
   .filter-btn {
     padding: 10px 3px;
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   .slidebutton {
-    padding: 14px 2px;
+    padding: 0px 5px 2px 5px;
   }
 
   .left-button {
-    top: 50px;
+    top: 31px;
   }
 
   .right-button {
-    top: 50px;
+    top: 31px;
   }
 }

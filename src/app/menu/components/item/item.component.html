@@ -1,60 +1,154 @@
 <div class="belowpartitemlist">
   <div class="itemlisting">
     <h2>Recommended for you</h2>
-      <div class="items" *ngFor="let item of itemLists">
-          <div class="iteminfo">
-              <div class="itemdetails">
-                  <div class="itemname">
-                    <span>
-                      <img src="assets/imagefolder/veg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 0"/>
-                      <img src="assets/imagefolder/non-veg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 1"/>
-                      <img src="assets/imagefolder/egg.png" class="categoryimg" alt="veg" width="20px" height="20px" *ngIf="item.item.nutrition_type === 2"/>
-                    </span>
-                    {{item.item.name}}
-                  </div>
-                  <div class="rating">⭐⭐⭐⭐⭐</div>
-                  <div class="itemcategory">{{item.item.category?.name}}</div>
-                  <div class="itemprice" *ngIf="item.item.isVariants === 0 || item.item.variants.length === 0">{{ item.item.price | currency: 'INR'}}</div>
-                  <div class="itemprice" *ngIf="item.item.isVariants === 1 && item.item.variants.length > 0"> {{ item.item.variants.length }} Variants available</div>
-              </div>
-              <div class="itemimage">
-                <img [src]="storageUrl + item.item.image" alt="item" *ngIf="item.item.image !== null && item.item.image !== ''"/>
-                <img src="assets/imagefolder/resturantimg.jfif" alt="item" *ngIf="item.item.image === null || item.item.image === ''"/>
-                <div class="addtofaviorite">
-                  <i *ngIf="!commonService.checkFav(1,item.item.id)" class="far fa-heart" (click)="commonService.addToFav(1,item.item.id)"></i>
-                  <i *ngIf="commonService.checkFav(1,item.item.id)" class="fas fa-heart" (click)="commonService.deleteFav(1,item.item.id)"></i>
-                </div>
-              </div>
+    <div class="items" *ngFor="let item of itemLists">
+      <div class="iteminfo">
+        <div class="itemdetails">
+          <div class="itemname">
+            <span>
+              <img
+                src="assets/imagefolder/veg.png"
+                class="categoryimg"
+                alt="veg"
+                width="20px"
+                height="20px"
+                *ngIf="item.item.nutrition_type === 0"
+              />
+              <img
+                src="assets/imagefolder/non-veg.png"
+                class="categoryimg"
+                alt="veg"
+                width="20px"
+                height="20px"
+                *ngIf="item.item.nutrition_type === 1"
+              />
+              <img
+                src="assets/imagefolder/egg.png"
+                class="categoryimg"
+                alt="veg"
+                width="20px"
+                height="20px"
+                *ngIf="item.item.nutrition_type === 2"
+              />
+            </span>
+            {{ item.item.name }}
           </div>
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <div class="itemcategory">{{ item.item.category?.name }}</div>
+          <div class="description">
+            {{ item.item.description }}
+          </div>
+          <div
+            class="itemprice"
+            *ngIf="
+              item.item.isVariants === 0 || item.item.variants.length === 0
+            "
+          >
+            {{ item.item.price | currency : "INR" }}
+          </div>
+          <div
+            class="itemprice"
+            *ngIf="item.item.isVariants === 1 && item.item.variants.length > 0"
+          >
+            {{ item.item.variants.length }} Variants available
+          </div>
+        </div>
+        <div class="itemimage">
+          <div class="addtofaviorite">
+            <i
+              *ngIf="!commonService.checkFav(1, item.item.id)"
+              class="far fa-heart"
+              (click)="commonService.addToFav(1, item.item.id)"
+            ></i>
+            <i
+              *ngIf="commonService.checkFav(1, item.item.id)"
+              class="fas fa-heart"
+              (click)="commonService.deleteFav(1, item.item.id)"
+            ></i>
+          </div>
+          <img
+            [src]="storageUrl + item.item.image"
+            alt="item"
+            *ngIf="item.item.image !== null && item.item.image !== ''"
+          />
+          <img
+            src="assets/imagefolder/resturantimg.jfif"
+            alt="item"
+            *ngIf="item.item.image === null || item.item.image === ''"
+          />
           <div class="addbutton">
-            <div class="description">
-              {{ item.item.description }}
-            </div>
             <div class="itemnumbercounter" *ngIf="!item.isSelected">
-              <button class="addbutton-button" *ngIf="item.item.isVariants === 0 || item.item.variants.length === 0" (click)="addToCart(item.item.id)">
-                  <span><i class="fa-solid fa-plus"></i></span>
-                  <span>Add</span>
+              <button
+                class="addbutton-button"
+                *ngIf="
+                  item.item.isVariants === 0 || item.item.variants.length === 0
+                "
+                (click)="addToCart(item.item.id)"
+              >
+                <span><i class="fa-solid fa-plus"></i></span>
+                <span>Add</span>
               </button>
-              <button class="addbutton-button" *ngIf="item.item.isVariants === 1 && item.item.variants.length > 0" (click)="openVariantModal(item.item)">
+              <button
+                class="addbutton-button"
+                *ngIf="
+                  item.item.isVariants === 1 && item.item.variants.length > 0
+                "
+                (click)="openVariantModal(item.item)"
+              >
                 <span><i class="fa-solid fa-plus"></i></span>
                 <span>Add</span>
               </button>
             </div>
-            <div class="itemnumbercounter" *ngIf="item.isSelected && (item.item.isVariants === 0 || item.item.variants.length === 0)">
-              <span><button class="decremental" (click)="descQuanity(item.item.id)"><i class="fa-solid fa-minus"></i></button></span>
+            <div
+              class="itemnumbercounter"
+              *ngIf="
+                item.isSelected &&
+                (item.item.isVariants === 0 || item.item.variants.length === 0)
+              "
+            >
+              <span
+                ><button
+                  class="decremental"
+                  (click)="descQuanity(item.item.id)"
+                >
+                  <i class="fa-solid fa-minus"></i></button
+              ></span>
               <span class="itemcount">
-                {{item.count}}
+                {{ item.count }}
               </span>
-              <span><button class="incremental" (click)="increaseQuanity(item.item.id)"><i class="fa-solid fa-plus"></i></button></span>
+              <span
+                ><button
+                  class="incremental"
+                  (click)="increaseQuanity(item.item.id)"
+                >
+                  <i class="fa-solid fa-plus"></i></button
+              ></span>
             </div>
-            <div class="itemnumbercounter" *ngIf="item.isSelected && item.item.isVariants === 1 && item.item.variants.length > 0">
-              <button class="addbutton-button" (click)="openVariantModal(item.item)">
+            <div
+              class="itemnumbercounter"
+              *ngIf="
+                item.isSelected &&
+                item.item.isVariants === 1 &&
+                item.item.variants.length > 0
+              "
+            >
+              <button
+                class="addbutton-button"
+                (click)="openVariantModal(item.item)"
+              >
                 <span><i class="fa-solid fa-plus"></i></span>
                 <span>Add More</span>
               </button>
             </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
-<variants *ngIf="openModal" [item]="selectedItem" [shop]="shop" (newItemEvent)="closeVariantModal($event)"></variants>
+<variants
+  *ngIf="openModal"
+  [item]="selectedItem"
+  [shop]="shop"
+  (newItemEvent)="closeVariantModal($event)"
+></variants>

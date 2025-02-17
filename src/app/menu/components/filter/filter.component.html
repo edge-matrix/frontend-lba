@@ -1,25 +1,48 @@
 <div class="upperpartofitemlist">
   <div class="shopdetials" *ngIf="type === 0">
     <div class="shopleft">
-      <span (click)="sharedService.back()"><i class="fa-solid fa-angle-left"></i></span>
+      <span (click)="sharedService.back()" class="backbtn"
+        ><i class="fa-solid fa-angle-left"></i
+      ></span>
       <div>
-        <span class="veg-label" *ngIf="shop.restroType == 0">✅ Pure Veg</span>
+        <span class="veg-label" *ngIf="shop.restroType == 0">🗸 Pure Veg</span>
+        <!-- <span class="non-veg-label" *ngIf="shop.restroType == 0"
+          >🗸 Non Veg</span
+        > -->
         <div class="shopname">{{ shop.title }}</div>
-        <div class="shopaddress" *ngIf="shop.address && shop.address.length > 0">⏳44 mins &nbsp; 🚴4.5Km &nbsp;</div>
-        <div class="shopaddress" *ngIf="shop.address && shop.address.length > 0"><i class="fas fa-map-marker-alt"></i> {{shop.address[0].addressLine}}, {{shop.address[0].city}}</div>
+        <div
+          class="shopaddress"
+          *ngIf="shop.address && shop.address.length > 0"
+        >
+          ⏳44 mins &nbsp; 🚴4.5Km &nbsp;
+        </div>
+        <div
+          class="shopaddress"
+          *ngIf="shop.address && shop.address.length > 0"
+        >
+          <i class="fas fa-map-marker-alt"></i>
+          {{ shop.address[0].addressLine }}, {{ shop.address[0].city }}
+        </div>
       </div>
     </div>
-      <div class="vistshopbutton" [routerLink]="'/shop/' + shop.slug">
-          <button>Visit Shop</button>
-      </div>
+    <div class="vistshopbutton" [routerLink]="'/shop/' + shop.slug">
+      <button>Visit Shop</button>
+    </div>
   </div>
 
   <div class="itempageinput">
     <div class="search-fields">
-      <input type="text" placeholder="Search for a dish...." [(ngModel)]="searchKeyword" (keyup)="search()">
-      <div class="arrow" (click)="searchKeyword = ''"><i class="fas fa-times-circle" title="Remove History"></i></div>
+      <input
+        type="text"
+        class="searchbox"
+        placeholder="Search for a dish...."
+        [(ngModel)]="searchKeyword"
+        (keyup)="search()"
+      />
+      <div class="arrow" (click)="searchKeyword = ''">
+        <i class="fas fa-times-circle" title="Remove History"></i>
+      </div>
     </div>
-
   </div>
 
   <!-- Filter Buttons -->
@@ -38,10 +61,25 @@
   <div class="itemcategorylistout">
     <button class="slidebutton left-button"><</button>
     <div class="itemcategorylist">
-      <div class="category" *ngFor="let cat of categories" [title]="cat.data.name" (click)="updateCategory(cat.data.id)">
-        <img src="assets/icons/all.png" *ngIf="cat.data.image === null || cat.data.image === ''" referrerpolicy="no-referrer" [alt]="cat.data.name">
-        <img [src]="storageUrl + cat.data.image" *ngIf="cat.data.image !== null && cat.data.image !== ''" referrerpolicy="no-referrer" [alt]="cat.data.name" />
-        <span class="categoryname">{{cat.data.name}}</span>
+      <div
+        class="category"
+        *ngFor="let cat of categories"
+        [title]="cat.data.name"
+        (click)="updateCategory(cat.data.id)"
+      >
+        <img
+          src="assets/icons/all.png"
+          *ngIf="cat.data.image === null || cat.data.image === ''"
+          referrerpolicy="no-referrer"
+          [alt]="cat.data.name"
+        />
+        <img
+          [src]="storageUrl + cat.data.image"
+          *ngIf="cat.data.image !== null && cat.data.image !== ''"
+          referrerpolicy="no-referrer"
+          [alt]="cat.data.name"
+        />
+        <span class="categoryname">{{ cat.data.name }}</span>
       </div>
     </div>
     <button class="slidebutton right-button">></button>
