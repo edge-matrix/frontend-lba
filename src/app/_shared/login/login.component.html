@@ -128,69 +128,101 @@
 <div class="centering">
   <div class="container">
     <div class="header">
-      <i class="fas fa-angle-left back-arrow"></i>
-      <div>Peri Peri Paneer Pizza</div>
+      <i class="fas fa-angle-left back-arrow" (click)="sharedService.back()"></i>
+      <div>{{ shopName }}</div>
     </div>
-    <div class="login-box">
-      <img
-        src="assets\imagefolder\status\loginpage_img.png"
-        alt="Login Illustration"
-        class="login-image"
-      />
+    <div class="login-box" *ngIf="sendingOTP">
+      <img src="assets\imagefolder\status\loginpage_img.png" alt="Login Illustration" class="login-image" />
       <div class="login-text">LOGIN</div>
       <br />
       <p class="instruction">
         <span class="text-1">Enter Your Mobile Number</span><br />we will send
         you a confirmation code
       </p>
-      <label for="mobile">10 digit mobile number</label>
-      <input
-        type="tel"
-        id="mobile"
-        placeholder="+91- 1234567890"
-        maxlength="14"
-      />
-      <button class="continue-btn">CONTINUE</button>
+      <form [formGroup]="loginForm" (ngSubmit)="sendOtp()">
+        <label for="mobile">10 digit mobile number</label>
+        <input
+          type="tel"
+          placeholder="Enter Mobile Number (Don't use +91)"
+          formControlName="username"
+          [readOnly]="!sendingOTP"
+          id="mobile"
+          maxlength="14"
+        />
+        <br />
+        <div *ngIf="submitted && loginForm.invalid && f['username'].errors">
+          <div *ngIf="f['username'].errors['required']" class="invalid-error">
+            <p class="invalidmessage">Mobile Number is required</p>
+          </div>
+          <div *ngIf="f['username'].errors['pattern']" class="invalid-error">
+            <p class="invalidmessage">
+              Mobile Number must be valid and Upto 10 digits.
+            </p>
+          </div>
+        </div>
+        <button class="continue-btn">CONTINUE</button>
+      </form>
       <hr />
       <span class="or">OR</span>
-      <button class="google-login">Login with Google</button>
+      <button class="google-login" (click)="signInWithGoogle()">Login with Google</button>
       <p class="terms">
-        By clicking, I accept the <a href="#">Terms & Conditions</a> and
-        <a href="#">Privacy Policy</a>
+        By clicking, I accept the <a routerLink="../policies/privacy-policy">Privacy Policy</a>
       </p>
     </div>
 
     <!-- New OTP Screen -->
-
-    <!-- <div class="verification-box">
-      <div class="verification-text">
-        <div class="veridet">VERIFY DETAILS</div>
-        <p class="veridetotp">OTP sent to 1234567890</p>
+     <div  *ngIf="!sendingOTP">
+      <div class="verification-box">
+        <div class="verification-text">
+          <div class="veridet">VERIFY DETAILS</div>
+          <p class="veridetotp">OTP sent to {{ f['username'].value }}</p>
+        </div>
+        <div class="verification-image">
+          <img
+            src="assets\imagefolder\otppage_img.png"
+            alt="OTP Illustration"
+            width="100"
+          />
+        </div>
       </div>
-      <div class="verification-image">
-        <img
-          src="assets\imagefolder\otppage_img.png"
-          alt="OTP Illustration"
-          width="100"
-        />
-      </div>
-    </div>
-    <div class="otp-section">
-      <div class="enterveri">Enter Verification code</div>
-      <div class="otpbox">
-        <input type="text" class="otp-input" maxlength="1" />
-        <input type="text" class="otp-input" maxlength="1" />
-        <input type="text" class="otp-input" maxlength="1" />
-        <input type="text" class="otp-input" maxlength="1" />
-      </div>
-      <p class="resend-otp">
-        Don't receive the OTP? <a href="#">RESEND OTP</a>
+      <div class="otp-section">
+        <div class="enterveri">Enter Verification code</div>
+        <form [formGroup]="loginForm">
+          <div class="otpbox" *ngIf="!sendingOTP" formGroupName="code">
+            <div class="otp" >
+              <input
+                #formRow
+                class="otp-input"
+                type="number"
+                pattern="[0-9]{1}"
+                *ngFor="let t of [1, 2, 3, 4]; let i = index"
+                [formControlName]="'input' + [t]"
+                inputmode="numeric"
+                maxlength="1"
+                (keyup)="keyUpEvent($event, i)"
+                (focus)="loginMessage = ''"
+              />
+            </div>
+            <p class="resend-otp" (click)="sendOtp()" >
+              Don't receive the OTP? <a *ngIf="!viewResendBtn">RESEND OTP</a><a *ngIf="viewResendBtn">{{ timeToDisplay }}</a>
+            </p>
+            <p class="resend-otp"  (click)="sendingOTP = true">
+              <a>Change Mobile Number</a>
+            </p>
+            <div *ngIf="loginMessage !== ''" class="invalid-error">
+              <p class="invalidmessage">{{ loginMessage }}</p>
+            </div>
+          </div>
+          <br>
+          <button class="otp-btn" (click)="verifyOtp()">ENTER OTP</button>
+        </form>
+      <hr />
+      <span class="or">OR</span>
+      <button class="google-login" (click)="signInWithGoogle()">Login with Google</button>
+      <p class="terms">
+        By clicking, I accept the <a routerLink="../policies/privacy-policy">Privacy Policy</a>
       </p>
-    </div>
-    <button class="otp-btn">ENTER OTP</button> -->
-
+     </div>
     <!-- Complete Screen -->
-
-    <!-- <div class="complete-box">Completed</div> -->
   </div>
 </div>

@@ -128,9 +128,9 @@
 //   outline: none;
 //   text-align: center;
 // }
-// .invalidmessage {
-//   color: #fa5457;
-// }
+.invalidmessage {
+  color: #fa5457;
+}
 // .verfiybtn {
 //   width: 90%;
 //   text-align: center;
@@ -231,6 +231,7 @@ label {
   color: gray;
   font-size: 13px;
   margin-top: 15px;
+  margin-bottom: 15px;
   text-align: left;
   padding-left: 5px;
 }
@@ -242,7 +243,7 @@ input {
   border: none;
   color: black;
   border-bottom: 2px solid #f09072;
-  font-size: 16px;
+  font-size: 18px;
   text-align: left;
 }
 
@@ -278,6 +279,7 @@ input {
   color: white;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   margin: 0px 45px;
+  margin-bottom: 15px;
 }
 
 .terms {
@@ -330,7 +332,11 @@ input {
 }
 
 .otp-section {
-  padding: 35px 35px 0px 75px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  // padding: 35px 35px 0px 75px;
 }
 .enterveri {
   font-size: 19px;

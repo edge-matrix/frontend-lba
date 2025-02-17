@@ -13,11 +13,16 @@ import { ReCaptchaV3Service } from 'ng-recaptcha';
 })
 export class LoginComponent implements OnInit {
 
+  shopName = 'User Login';
   isLoginWithOtp = false;
   sendingOTP = true;
   isPasswordShow = false;
   loginForm!: FormGroup;
   submitted = false;
+  viewResendBtn = false;
+  timeToDisplay = "";
+  timeCounter = 120;
+  interval: any;
 
   medium = 'direct';
   loading = false;
@@ -37,7 +42,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthenticationService,
     private socialService: SocialService,
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     private storageService: StorageService,
     private commonFunctionService: CommonFunctionService,
     ) {
@@ -56,6 +61,10 @@ export class LoginComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+    this.sharedService.getCartDetails().subscribe((value) => {
+      this.shopName = value[0].shop.title;
+    });
   }
 
   ngOnDestroy() {
@@ -130,6 +139,8 @@ export class LoginComponent implements OnInit {
         } else {
           this.sharedService.showMessage(0,"OTP Send to Your Number, Please check!");
           this.sendingOTP = false;
+          clearInterval(this.interval);
+          this.startTimer();
         }
         this.loading = false;
       },
@@ -145,24 +156,26 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  resendOtp(){
-    this.sendingOTP = true;
-    this.sendOtp();
-  }
-
   extractOTPCode(){
     let code = '';
     Object.entries(this.f['code'].value).forEach(e => {
       const [, value] = e;
-      code += value;
+      if(value != null){
+        code += value;
+      }
     });
     return code;
   }
 
   verifyOtp() {
+    this.loginMessage = '';
     this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      return;
+    }
+    if(this.extractOTPCode() == '' || this.extractOTPCode().length < 4){
+      this.loginMessage = 'OTP is invalid, please enter 4 digit correct otp.';
       return;
     }
     this.loading = true;
@@ -275,5 +288,21 @@ export class LoginComponent implements OnInit {
     let googleUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${environment.Google_client_id}&redirect_uri=${environment.redirectUrl}&response_type=code&scope=profile email`;
     this.medium = '2';
     this.socialService.login(googleUrl);
+  }
+
+  startTimer() {
+    this.viewResendBtn = true;
+    this.timeCounter = 120; // Reset to 2 minutes
+    this.timeToDisplay = Math.floor(this.timeCounter / 60).toString().padStart(2, '0') + ":" + (this.timeCounter % 60).toString().padStart(2, '0');
+
+    this.interval = setInterval(() => {
+      if (this.timeCounter > 0) {
+        this.timeCounter--;
+        this.timeToDisplay = Math.floor(this.timeCounter / 60).toString().padStart(2, '0') + ":" + (this.timeCounter % 60).toString().padStart(2, '0');
+      } else {
+        this.viewResendBtn = false;
+        clearInterval(this.interval);
+      }
+    }, 1000);
   }
 }
