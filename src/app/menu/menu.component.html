@@ -1,16 +1,167 @@
+<!-- <div class="centering">
+  <div class="wrapper">
+    <div class="mainpage">
+      <div class="itemlistingpage">
+        <div class="itemlisting" *ngIf="shops">
+          <menu-filter
+            [type]="0"
+            [catId]="catId"
+            [shop]="shops"
+            (newItemEvent)="updateCat($event)"
+          ></menu-filter>
+          <menu-item *ngIf="items" [shop]="shops" [menu]="items"></menu-item>
+          <no-item-page
+            *ngIf="items && items.length === 0"
+            text="No Item Present"
+          ></no-item-page>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer> -->
+<!-- <bottom-nav></bottom-nav> -->
+<!-- </div>
+</div> -->
+
+<!-- Checkout page code -->
+
 <div class="centering">
   <div class="wrapper">
-      <div class="mainpage">
-        <div class="itemlistingpage">
-          <div class="itemlisting" *ngIf="shops">
-            <menu-filter [type]="0" [catId]="catId" [shop]="shops" (newItemEvent)="updateCat($event)"></menu-filter>
-            <menu-item *ngIf="items" [shop]="shops" [menu]="items"></menu-item>
-            <no-item-page *ngIf="items && items.length === 0" text="No Item Present"></no-item-page>
+    <div>
+      <span>
+        <i class="fas fa-angle-left backbtn"></i>
+        <span class="shopname">Peri Peri Paneer Pizza</span>
+      </span>
+    </div>
+
+    <!-- Discount Banner -->
+    <div class="discount-banner">
+      <span>🥳 You're saving ₹15 on this order</span>
+    </div>
+
+    <!-- Product Card -->
+    <div class="product-card">
+      <div class="product-details">
+        <span class="itemimg">
+          <img
+            src="assets/imagefolder/veg.png"
+            class="categoryimg"
+            alt="veg"
+            width="15px"
+            height="15px"
+          />
+          <!-- <img
+            src="assets/imagefolder/non-veg.png"
+            class="categoryimg"
+            alt="veg"
+            width="20px"
+            height="20px"
+            *ngIf="item.item.nutrition_type === 1"
+          />
+          <img
+            src="assets/imagefolder/egg.png"
+            class="categoryimg"
+            alt="veg"
+            width="20px"
+            height="20px"
+            *ngIf="item.item.nutrition_type === 2"
+          /> -->
+        </span>
+        <div>
+          <div class="itemname">Peri Peri Paneer Pizza + Extra Cheese</div>
+          <p class="price">
+            <span class="originalprice">₹199</span>
+            <span class="editbtn">Edit ▸</span>
+          </p>
+        </div>
+      </div>
+      <div class="quantity">
+        <div class="orderqty">
+          <span class="qtybuttons">
+            <span class="buttons">-</span>
+            <span class="buttons">1</span>
+            <span class="buttons">+</span>
+          </span>
+          <p class="price"><span class="strikethrough">₹199</span> ₹199</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Note Section -->
+    <div class="note">
+      <i class="fas fa-sticky-note"></i>
+      <span class="notetext"> Add a note for the restaurant </span>
+    </div>
+
+    <!-- Offers Section -->
+    <div class="offers">
+      <div class="offer">
+        <div>
+          <div class="a">✅ You saved ₹52 on delivery</div>
+          <span class="small-text">
+            Auto-applied as your order is above ₹199
+          </span>
+        </div>
+      </div>
+      <div class="offer">
+        ✅ Items starting @ ₹139 only applied!
+        <span class="discount">-₹80.00</span>
+      </div>
+      <div class="coupon">
+        <p>
+          <span><img src="assets\icons\bxs_offer.png" /></span>
+          Save ₹175 more with GET175
+        </p>
+        <div class="applybtn">APPLY</div>
+      </div>
+      <div class="coupon">
+        <p>
+          <i class="fas fa-shopping-bag"></i>
+          Get a cashback with PAYTMUPI
+        </p>
+        <div class="applybtn">APPLY</div>
+      </div>
+    </div>
+
+    <!-- Delivery Info -->
+    <div class="delivery">
+      <p>Delivery in <span class="time">35 mins</span></p>
+      <div class="delivery-info">
+        <div>
+          <div>
+            <i class="fas fa-home"></i>
+            <span> Delivery at Home </span>
+            <span class="small-text">xyz, hey my name</span>
+            <span class="small-text"
+              >Add instructions for delivery partner</span
+            >
           </div>
         </div>
       </div>
-    <app-footer></app-footer>
-    <!-- <bottom-nav></bottom-nav> -->
+      <div class="contact">
+        <div>
+          <i class="fas fa-phone"></i>
+          +91-1234567890
+        </div>
+      </div>
+      <div class="totalbill">
+        <div>
+          <i class="fas fa-phone"></i>
+          Total Bill <b>₹699.18</b> <span class="saving">You saved ₹15</span>
+        </div>
+      </div>
+    </div>
+    <div class="bottompartofmainpage">
+      <div class="bottomnavigation">
+        <div>
+          <img src="assets\icons\google-pay.png" />
+          <span class="paybillbtn"> PAY USING ▸ </span>
+        </div>
+        <div>
+          <div class="amt">
+            Total ₹150 <span class="paybill"> Pay Bill ▸ </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
