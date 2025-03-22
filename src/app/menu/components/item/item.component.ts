@@ -52,29 +52,21 @@ export class ItemComponent implements OnInit {
     return;
   }
 
-  isShopSame(shopId: number){
-    let out = true;
-    this.cart.forEach(e => {
-      if(e.shop_id !== shopId){
-        out = false;
-      }
-    });
-    return out;
+  isShopDifferent(shopId: number){
+    if(this.sharedService.currentShop && this.sharedService.currentShop.id != shopId){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   addToCart(id: number){
     let itemDetail = this.itemLists.find(e => e.item.id === id);
-    if(itemDetail && !this.isShopSame(itemDetail.item.shop_id))
+    if(itemDetail && this.isShopDifferent(itemDetail.item.shop_id))
     {
       this.sharedService.showMessage(1,"Item's shop is different from cart shop, clear cart to add this.");
       return;
     }
-    let shop = Object.assign({}, this.shop);
-    Object.keys(shop).forEach(k => {
-      if(Array.isArray(shop[k as keyof typeof shop])){
-        delete shop[k as keyof typeof shop];
-      }
-    });
     if(itemDetail){
       itemDetail.isSelected = true;
       itemDetail.count = 1;
@@ -85,11 +77,11 @@ export class ItemComponent implements OnInit {
         quantity: 1,
         date: new Date().toISOString(),
         shop_id: itemDetail.item.shop_id,
-        shop: shop,
         isVariantSelected: false
       };
       this.cart.push(cart);
       this.storageService.updatemyCart(this.cart);
+      this.storageService.updateCurrentShop(this.shop);
     }
   }
 
@@ -102,6 +94,9 @@ export class ItemComponent implements OnInit {
     let index = this.cart.findIndex(e => e.itemId === i);
     this.cart.splice(index,1);
     this.storageService.updatemyCart(this.cart);
+    if(this.cart.length === 0){
+      this.storageService.updateCurrentShop(null);
+    }
   }
 
   increaseQuanity(i: number){
@@ -132,7 +127,7 @@ export class ItemComponent implements OnInit {
 
   openVariantModal(item: Items){
     let itemDetail = this.itemLists.find(e => e.item.id === item.id);
-    if(itemDetail && !this.isShopSame(itemDetail.item.shop_id))
+    if(itemDetail && this.isShopDifferent(itemDetail.item.shop_id))
     {
       this.sharedService.showMessage(1,"Item's shop is different from cart shop, clear cart to add this.");
       return;

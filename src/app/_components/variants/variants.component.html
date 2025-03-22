@@ -2,7 +2,6 @@
   <button hidden type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" id="model-btn"></button>
   <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel" [ngStyle]="{'height': height + '%' }" data-bs-backdrop="false">
     <div class="offcanvas-header"  *ngIf="item">
-      <!-- <h5 class="offcanvas-title" id="offcanvasBottomLabel">{{ isItemExist?'REPEAT LAST USED VARIANT':'ADD A NEW VARIANT' }}</h5> -->
       <button type="button" class="btn-close text-reset closeBtn" (click)="(cartWithItem.length > 0 && !isItemExist)?closeToSelect():close(0)"></button>
       <button hidden data-bs-dismiss="offcanvas" aria-label="Close" id="modal-close-btn"></button>
     </div>

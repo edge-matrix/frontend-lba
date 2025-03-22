@@ -44,6 +44,7 @@ export class FilterComponent implements OnInit {
               this.categories.push({data: cat, isActive: false});
             }
           });
+          this.categories.sort((a, b) => a.data.name.localeCompare(b.data.name));
         }
       }
     },

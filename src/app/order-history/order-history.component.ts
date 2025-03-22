@@ -112,12 +112,12 @@ export class OrderHistoryComponent implements OnInit {
             itemId: pro.items_id,
             itemDetails: response.singleData,
             shop_id: response.singleData.shop_id,
-            shop: response.singleData.shop,
             type: 'Item',
             quantity: pro.quantity,
             date: new Date().toISOString(),
             isVariantSelected: false
           });
+          this.storageService.updateCurrentShop(response.singleData.shop);
         }
       }
     },

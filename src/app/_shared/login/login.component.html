@@ -1,130 +1,3 @@
-<!-- <div class="centering">
-  <div class="wrapper">
-    <div class="mainpage">
-      <div class="login-top">Peri Peri Paneer Pizza</div>
-      <div class="loginpageimage">
-        <img src="assets/imagefolder/loginpage.png" alt="loginpageimage">
-        <img
-          src="assets\imagefolder\status\loginpage_img.png"
-          alt="loginpageimage"
-        />
-      </div>
-      <div class="loginpagecontain">
-        <div></div>
-        <div class="loginpageheader">
-          <span class="yellow">Let's </span>
-          <span class="blue">Bunk </span>
-          <span class="yellow">Again</span>
-        </div>
-        <div>
-          <span
-            style="
-              float: right;
-              margin-bottom: 15px;
-              color: rgb(165, 164, 164);
-              font-size: 14px;
-              cursor: pointer;
-            "
-            class="crossbtn"
-            routerLink="/"
-          >
-            <i class="far fa-times-circle fa-2x"></i>
-          </span>
-        </div>
-      </div>
-      <div class="subheading">Your Personal Meetup App</div>
-      <div class="option">
-        <hr />
-        <span class="or">Log in or sign up</span>
-      </div>
-      <div class="loginheading">Please Enter Your 10 Digit Mobile Number</div>
-      <form
-        [formGroup]="loginForm"
-        (ngSubmit)="
-          !isLoginWithOtp
-            ? loginWithPassword()
-            : sendingOTP
-            ? sendOtp()
-            : verifyOtp()
-        "
-      >
-        <div class="inputbox">
-          <input
-            type="tel"
-            placeholder="Enter Mobile Number (Don't use +91)"
-            formControlName="username"
-            [readOnly]="!sendingOTP"
-          /><br />
-          <div *ngIf="submitted && loginForm.invalid && f['username'].errors">
-            <div *ngIf="f['username'].errors['required']" class="invalid-error">
-              <p class="invalidmessage">Mobile Number is required</p>
-            </div>
-            <div *ngIf="f['username'].errors['pattern']" class="invalid-error">
-              <p class="invalidmessage">
-                Mobile Number must be valid and Upto 10 digits.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="otpbox" *ngIf="isLoginWithOtp">
-          <div class="otpheading" *ngIf="!sendingOTP">Enter 4 digit OTP</div>
-          <div class="otp" *ngIf="!sendingOTP" formGroupName="code">
-            <input
-              #formRow
-              class="fillotp"
-              type="number"
-              pattern="[0-9]{1}"
-              *ngFor="let t of [1, 2, 3, 4]; let i = index"
-              [formControlName]="'input' + [t]"
-              inputmode="numeric"
-              maxlength="1"
-              (keyup)="keyUpEvent($event, i)"
-            />
-          </div>
-        </div>
-        <div *ngIf="loginMessage !== ''" class="invalid-error">
-          <p class="invalidmessage">{{ loginMessage }}</p>
-        </div>
-        <div class="verfiybtn">
-          <button class="otpbtn" *ngIf="sendingOTP">Send OTP</button>
-          <button class="otpbtn" *ngIf="!sendingOTP">Verify OTP</button>
-        </div>
-        <div class="otpoption" *ngIf="!sendingOTP">
-          <div class="changenumber">
-            <a class="resend" (click)="resendOtp()">Resend OTP</a>
-            <a class="resend" (click)="sendingOTP = true">Change Number</a>
-          </div>
-        </div>
-      </form>
-      <div class="option">
-        <hr />
-        <span class="or">or</span>
-      </div>
-      <div (click)="signInWithGoogle()" class="loginwithgoogle">
-        <a
-          ><img
-            src="https://static.vecteezy.com/system/resources/previews/010/353/285/original/colourful-google-logo-on-white-background-free-vector.jpg"
-            style="
-              width: 50px;
-              height: 50px;
-              border-radius: 50%;
-              padding: 10px;
-            "
-        /></a>
-        &nbsp;
-        <span style="cursor: pointer">Login with Google</span>
-      </div>
-      <div class="additionalcontent">
-        <span>By continuing, you agree to our</span>
-        <p><a routerLink="../policies/privacy-policy">Privacy Policy</a></p>
-      </div>
-    </div>
-  </div>
-</div>
- -->
-
-<!-- New Login -->
-
 <div class="centering">
   <div class="container">
     <div class="header">
@@ -141,13 +14,9 @@
       </p>
       <form [formGroup]="loginForm" (ngSubmit)="sendOtp()">
         <label for="mobile">10 digit mobile number</label>
-        <input
-          type="tel"
-          placeholder="Enter Mobile Number (Don't use +91)"
-          formControlName="username"
-          [readOnly]="!sendingOTP"
-          id="mobile"
-          maxlength="14"
+        <input type="tel" placeholder="Enter Mobile Number (Don't use +91)"
+          formControlName="username" [readOnly]="!sendingOTP"
+          id="mobile" maxlength="14"
         />
         <br />
         <div *ngIf="submitted && loginForm.invalid && f['username'].errors">
@@ -166,7 +35,7 @@
       <span class="or">OR</span>
       <button class="google-login" (click)="signInWithGoogle()">Login with Google</button>
       <p class="terms">
-        By clicking, I accept the <a routerLink="../policies/privacy-policy">Privacy Policy</a>
+        By clicking, I accept the <a routerLink="../policies/terms-condition">Terms & Conditions</a> and <a routerLink="../policies/privacy-policy">Privacy Policy</a>
       </p>
     </div>
 
@@ -220,9 +89,12 @@
       <span class="or">OR</span>
       <button class="google-login" (click)="signInWithGoogle()">Login with Google</button>
       <p class="terms">
-        By clicking, I accept the <a routerLink="../policies/privacy-policy">Privacy Policy</a>
+        By clicking, I accept the <a routerLink="../policies/terms-condition">Terms & Conditions</a> and <a routerLink="../policies/privacy-policy">Privacy Policy</a>
       </p>
      </div>
+    </div>
+
     <!-- Complete Screen -->
+
   </div>
 </div>

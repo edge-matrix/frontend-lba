@@ -63,7 +63,9 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     this.sharedService.getCartDetails().subscribe((value) => {
-      this.shopName = value[0].shop.title;
+      if(value.length > 1){
+        this.shopName = this.sharedService.currentShop.title;
+      }
     });
   }
 

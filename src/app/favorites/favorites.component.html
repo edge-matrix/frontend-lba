@@ -2,25 +2,25 @@
     <div class="wrapper">
     <div class="mainpage">
       <div class="favoritepage">
-          <div class="favoritepageheading">
-            <div class="favheading">
-              <h1>Favorites</h1>
-              <div>{{ type === 0? shopLists.length + ' Shops': itemLists.length + ' Items' }}</div>
-            </div>
-
-            <div class="checkbox-wrapper-35">
-              <input value="private" name="switch" id="switch" type="checkbox" class="switch" (click)="type = (type == 0)?1:0">
-              <label for="switch">
-                <span class="switch-x-toggletext">
-                  <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Items</span>
-                  <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>Shop</span>
-                </span>
-              </label>
-            </div>
-
-
-          </div>
           <ng-container *ngIf="this.sharedService.user && this.sharedService.user.id !== 0; else noLogin">
+            <div class="favoritepageheading">
+              <div class="favheading">
+                <h1>Favorites</h1>
+                <div>{{ type === 0? shopLists.length + ' Shops': itemLists.length + ' Items' }}</div>
+              </div>
+
+              <div class="checkbox-wrapper-35">
+                <input value="private" name="switch" id="switch" type="checkbox" class="switch" (click)="type = (type == 0)?1:0">
+                <label for="switch">
+                  <span class="switch-x-toggletext">
+                    <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel">Unchecked: </span>Items</span>
+                    <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked: </span>Shop</span>
+                  </span>
+                </label>
+              </div>
+
+
+            </div>
             <div class="lists" *ngIf="type === 0">
               <div class="list" *ngFor="let shop of shopLists" [routerLink]="'/menu/' + shop.slug">
                 <div class="resturantimage">

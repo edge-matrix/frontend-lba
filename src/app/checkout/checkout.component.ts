@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Cart, Shop, Response, Shoptimings, CreateOrder } from '@models';
+import { Cart, Shop, Response, Shoptimings, CreateOrder, Items } from '@models';
 import { BookService, ComboDetailsService, SharedService, StorageService } from '@service';
 
 import { environment } from 'src/environments/environment';
@@ -59,6 +59,14 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  viewPriceWithQty(item: Cart){
+    if(item.isVariantSelected && item.variant){
+      return item.variant.price * item.quantity;
+    }else{
+      return item.itemDetails.price * item.quantity;
+    }
+  }
+
   removeFromCart(i: number){
     this.cart.splice(i,1);
     this.storageService.updatemyCart(this.cart);
@@ -79,18 +87,19 @@ export class CheckoutComponent implements OnInit {
   }
 
   getShopDetails(){
-    this.comboDetailService.getShopDetails(this.cart[0].shop.slug).subscribe((response: Response) => {
+    this.comboDetailService.getShopDetails(this.sharedService.currentShop.slug).subscribe((response: Response) => {
       if (response.statusCode != 200 && response.statusCode != 201) {
         this.sharedService.showMessage(1,this.sharedService.errorMessage(response.Error));
       } else {
         if(response.singleData){
           this.shops = response.singleData;
+          this.storageService.updateCurrentShop(this.shops);
           this.paymentMethod = [];
-          if(this.shops.settings && this.shops.settings.isPayNowEnabled === 1){
-            this.paymentMethod.push({ name: 'Pay Now', id: 1, active: false });
-          }
           if(this.shops.settings && this.shops.settings.isPayLaterEnabled === 1){
             this.paymentMethod.push({ name: 'Pay At Shop', id: 0, active: false });
+          }
+          if(this.shops.settings && this.shops.settings.isPayNowEnabled === 1){
+            this.paymentMethod.push({ name: 'Pay Now', id: 1, active: false });
           }
           if(this.paymentMethod && this.paymentMethod.length > 0){
             this.paymentMethod[0].active = true;
@@ -126,7 +135,6 @@ export class CheckoutComponent implements OnInit {
     });
     if(this.shops && this.shops.taxes){
       this.shops.taxes.forEach(t => {
-        console.log(t.isIncluded);
         if(t.isIncluded === 0){
           taxes = taxes + t.tax_amount;
         }

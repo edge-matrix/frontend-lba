@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BeforeInstallPromptEvent, Fav, Location, User } from '@models';
+import { BeforeInstallPromptEvent, Fav, Location, Shop, User } from '@models';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Cart } from '@models';
 import { Location as Loc } from '@angular/common';
@@ -31,6 +31,7 @@ export class SharedService {
     category: 0,
   };
   private cart: BehaviorSubject<Array<Cart>>;
+  currentShop: Shop;
   bottomBadgeVisible = {
     'cart': 1,
     'order': 1,
@@ -59,6 +60,7 @@ export class SharedService {
     this.myLocation = JSON.parse(localStorage.getItem('myLocation') || 'null')||[];
     this.myLocationHistory = JSON.parse(localStorage.getItem('myLocationHistory') || 'null')||[];
     this.cart = new BehaviorSubject<Array<Cart>>( JSON.parse(localStorage.getItem('cart') || 'null')|| []);
+    this.currentShop = JSON.parse(localStorage.getItem('currentShop') || 'null');
     this.playzoneUser = JSON.parse(localStorage.getItem('playzoneUser') || 'null')||[];
   }
 

@@ -1,108 +1,160 @@
+<!-- Checkout page code -->
+
 <div class="centering">
-    <div class="wrapper">
-    <div class="mainpage">
-        <div class="checkoutpage" >
-        <div class="mycart">
-            <div class="mycartheading">Checkout</div>
-            <div class="itemsection" *ngFor="let item of cart; let i = index">
-                <div class="itemsdetails">
-                    <div class="itemimage">
-                      <img src="assets/imagefolder/resturantimg.jfif" *ngIf="item.itemDetails.image === null || item.itemDetails.image === ''" referrerpolicy="no-referrer" alt="item image">
-                      <img [src]="storageUrl + item.itemDetails.image" *ngIf="item.itemDetails.image !== null && item.itemDetails.image !== ''" referrerpolicy="no-referrer" alt="item image" />
-                    </div>
-                    <div class="itemnamesection">
-                        <div class="itemname">{{item.itemDetails.name}}</div>
-                        <div class="itemprice" *ngIf="!item.isVariantSelected"><span>&#8377; {{item.itemDetails.price}}</span></div>
-                        <div class="itemprice" *ngIf="item.isVariantSelected"><span>&#8377; {{item.variant?.price}}</span> <span *ngIf="item.isVariantSelected"> ( {{ item.variant?.name }} )</span></div>
-                    </div>
-                </div>
-                <div class="itemquantity">
-                    <div class="decreasequantity" (click)="descQuanity(i)"><span>-</span></div>
-                    <div>{{item.quantity}}</div>
-                    <div class="increasequantity" (click)="increaseQuanity(i)"><span>+</span></div>
-                </div>
-            </div>
-            <div class="itemsection"  *ngIf="cart && cart.length === 0">
-              <div class="itemsdetails">
-                  <div class="itemnamesection">
-                    No item present in your cart
-                  </div>
-              </div>
-            </div>
-            <!-- <no-item-page text="No item present in your cart" *ngIf="cart && cart.length === 0"></no-item-page> -->
-
-            <!-- <div class="promocodeheading">Have a promo code ?</div>
-            <div class="applypromocode">
-                <input type="text" placeholder="Enter the Coupon Code">
-                <button class="applybtn">Apply</button>
-            </div> -->
-
-            <div class="shopdetailsheading">Shop Details</div>
-            <div class="shopdetailsection" *ngIf="shops">
-                <div class="shopname">{{ shops.title }}</div>
-                <div class="shopaddress" *ngIf="shops.address && shops.address.length > 0">{{ shops.address[0].addressLine }}, {{ shops.address[0].landmark }}<br> {{ shops.address[0].city }}, {{ shops.address[0].pincode }}</div>
-                <div class="visitshopsection" routerLink="/menu/{{shops.slug}}">
-                    <div>Visit Shop & Menu</div>
-                    <div class="visitbtn"><i class="fas fa-angle-right" style="color: #000000;"></i></div>
-                </div>
-            </div>
-            <div class="userdetailsheadingsection">
-                <div class="userdetailsheading">User Details</div>
-                <!-- <div *ngIf="!isUserDetailEdit" class="editbtn" (click)="isUserDetailEdit = true"><i class="fas fa-edit" style="color: #000000;"></i></div>
-                <div *ngIf="isUserDetailEdit" class="editbtn" (click)="isUserDetailEdit = false"><i class="fas fa-check" style="color: #000000;"></i></div> -->
-            </div>
-            <div class="userdetailsection" *ngIf="!isUserDetailEdit">
-                <div class="usernamesection">
-                    <div><i class="fas fa-user-alt" style="color: #000000;"></i></div>
-                    <div>{{ sharedService.user.name }}</div>
-                </div>
-                <!-- <div class="usernumbersection">
-                    <div><i class="fas fa-phone" style="color: #000000;"></i></div>
-                    <div>{{ sharedService.user.medium[0].value }}</div>
-                </div> -->
-            </div>
-            <div class="checkoutpageuserinfo" *ngIf="isUserDetailEdit">
-              <div class="inputbox">
-                  <input type="text" placeholder="Please Write Your Name here" [(ngModel)]="sharedService.user.name" />
-              </div>
-            </div>
-            <div class="paymentmethodsection">
-              <div class="paymentmethodheading">Payment Method</div>
-            </div>
-            <div class="paynowsection" *ngFor="let method of paymentMethod" (click)="updateMethod(method.id)">
-                <span><input type="radio" [id]="method.id" [checked]="method.active"></span>
-                <span class="paymentoptionheading"><label [for]="method.id" class="payatshop">{{method.name}}</label></span>
-            </div>
-            <div class="summaryheading">Order Summary</div>
-            <div class="summarytotalsection">
-                <div class="summaryamount">
-                    <div class="summarydetailname">
-                      <div>SubTotal</div>
-                      <div *ngIf="payments.taxes != 0">Taxes (GST + Service Charge) {{payments.taxes}}%</div>
-                      <div>Grand Total</div>
-                      <div>Discount</div>
-                    </div>
-                    <div class="summarydetailprice">
-                      <div><span>{{payments.subTotal | currency: 'INR'}}</span></div>
-                      <div *ngIf="payments.taxes != 0"><span>{{payments.taxesRate | currency: 'INR'}}</span></div>
-                      <div><span>{{payments.grandTotal | currency: 'INR'}}</span></div>
-                      <div><span>{{payments.discount | currency: 'INR'}}</span></div>
-                    </div>
-                </div>
-                <div class="totalsection">
-                    <div>Payable Amount</div>
-                    <div>{{payments.payableAmount | currency: 'INR'}}</div>
-                </div>
-            </div>
-
-            <div class="paynowbtn">
-              <button (click)="isOrderCreated?reOrder():placeOrder()">Place Order</button>
-            </div>
-        </div>
-        </div>
+  <div class="wrapper">
+    <div>
+      <span>
+        <i class="fas fa-angle-left backbtn" (click)="sharedService.back()"></i>
+        <span class="shopname" *ngIf="shops" >{{ shops.title }}</span>
+      </span>
     </div>
-    <bottom-nav></bottom-nav>
-    <app-footer [show]="false"></app-footer>
+
+    <!-- Discount Banner -->
+    <!-- <div class="discount-banner">
+      <span>🥳 You're saving ₹15 on this order</span>
+    </div> -->
+
+    <!-- Product Card -->
+    <div class="product-card" *ngFor="let item of cart; let i = index">
+      <div class="product-details">
+        <span class="itemimg">
+          <img
+            src="assets/imagefolder/veg.png"
+            class="categoryimg"
+            alt="veg"
+            width="15px"
+            height="15px"
+          />
+        </span>
+        <div>
+          <div class="itemname">{{item.itemDetails.name}}</div>
+          <p class="price">
+            <span class="originalprice" *ngIf="!item.isVariantSelected">{{item.itemDetails.price | currency: 'INR'}}</span>
+            <span class="originalprice" *ngIf="item.isVariantSelected">{{item.variant?.price | currency: 'INR'}}</span><span *ngIf="item.isVariantSelected"> ( {{ item.variant?.name }} )</span>
+          </p>
+          <p>
+            <span class="editbtn">Edit ▸</span>
+          </p>
+        </div>
+      </div>
+      <div class="quantity">
+        <div class="orderqty">
+          <span class="qtybuttons">
+            <span class="buttons" (click)="descQuanity(i)">-</span>
+            <span class="buttons">{{item.quantity}}</span>
+            <span class="buttons" (click)="increaseQuanity(i)">+</span>
+          </span>
+          <p class="price">
+            <!-- <span class="strikethrough">₹199</span> -->
+            {{ viewPriceWithQty(item) | currency: 'INR' }}</p>
+        </div>
+      </div>
     </div>
+
+    <div class="note tick" *ngIf="cart && cart.length === 0">
+      <img src="assets\icons\ph_note-light.jpg" />
+      <span class="notetext"> Your Cart is Empty!</span>
+    </div>
+
+    <!-- Note Section -->
+    <div class="note tick">
+      <img src="assets\icons\ph_note-light.jpg" />
+      <span class="notetext"> Add a note for the restaurant </span>
+    </div>
+
+    <!-- Offers Section -->
+    <!-- <div class="offers">
+      <div class="offer">
+        <div>
+          <div class="tick">
+            <img src="assets\icons\tickcircle.jpg" />
+            You saved ₹52 on delivery
+          </div>
+          <span class="small-text">
+            Auto-applied as your order is above ₹199
+          </span>
+        </div>
+      </div>
+      <div class="offer">
+        <div class="tick">
+          <img src="assets\icons\tickcircle.jpg" />
+          Items starting at ₹139 only applied!
+        </div>
+        <span class="discount">-₹80.00</span>
+      </div>
+      <div class="coupon">
+        <div>
+          <div>
+            <span><img src="assets\icons\bxs_offer.png" /></span>
+            Save ₹175 more with GET175
+          </div>
+          <div class="small-text1">View all restaurant coupons ▸</div>
+        </div>
+
+        <div class="applybtn">APPLY</div>
+      </div>
+      <div class="coupon">
+        <div>
+          <div class="tick">
+            <img src="assets\icons\cashback.jpg" />
+            Get a cashback with PAYTMUPI
+          </div>
+          <div class="small-text1">View all payment coupons ▸</div>
+        </div>
+        <div class="applybtn">APPLY</div>
+      </div>
+    </div> -->
+
+    <!-- Delivery Info -->
+    <div class="delivery">
+      <div class="tick">
+        <img src="assets\icons\clock.jpg" />&nbsp; Delivery in
+        <span class="time">35 mins</span>
+      </div>
+      <div class="delivery-info">
+        <div>
+          <div class="tick">
+            <img src="assets\icons\home.jpg" />
+            <span>&nbsp; Delivery at Home</span>
+            <div class="small-text">&nbsp;xxxyyzz, Lucknow</div>
+            <div class="small-text">
+              &nbsp;Add instructions for delivery partner
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="tick">
+          <img src="assets\icons\phone.jpg" />
+          &nbsp;{{ sharedService.user.name }}, +91-{{ sharedService.user.username }}
+        </div>
+      </div>
+      <div class="totalbill">
+        <div>
+          <div class="tick">
+            <img src="assets\icons\billlist.jpg" />
+            &nbsp;Total Bill <b>{{ payments.payableAmount | currency: 'INR'}}</b>
+            <span class="saving" *ngIf="payments.discount > 0">You saved {{ payments.discount | currency: 'INR' }}</span>
+          </div>
+          <div class="small-text">&nbsp;Incl.taxes and charges</div>
+        </div>
+      </div>
+    </div>
+    <div class="bottompartofmainpage">
+      <div class="bottomnavigation">
+        <div>
+          <img src="assets\icons\google-pay.png" />
+          <span class="paybillbtn"> PAY USING ▸ </span>
+        </div>
+        <div>
+          <div class="amt" (click)="isOrderCreated?reOrder():placeOrder()">
+            Total {{ payments.payableAmount | currency: 'INR' }}
+            <span class="paybill"> Pay Bill ▸ </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer [show]="false"></app-footer>
 </div>
 <online-payments *ngIf="isPaymentStart" [orderId]="orderId"></online-payments>

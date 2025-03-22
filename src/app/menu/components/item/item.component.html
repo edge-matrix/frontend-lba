@@ -35,9 +35,6 @@
           </div>
           <div class="rating">⭐⭐⭐⭐⭐</div>
           <div class="itemcategory">{{ item.item.category?.name }}</div>
-          <div class="description">
-            {{ item.item.description }}
-          </div>
           <div
             class="itemprice"
             *ngIf="
@@ -51,6 +48,9 @@
             *ngIf="item.item.isVariants === 1 && item.item.variants.length > 0"
           >
             {{ item.item.variants.length }} Variants available
+          </div>
+          <div class="description">
+            {{ item.item.description }}
           </div>
         </div>
         <div class="itemimage">

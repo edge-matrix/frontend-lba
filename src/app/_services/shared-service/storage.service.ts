@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cart, Fav, Location } from '@models';
+import { Cart, Fav, Location, Shop } from '@models';
 import { SharedService } from '@service';
 
 @Injectable({
@@ -40,6 +40,11 @@ export class StorageService {
     this.sharedService.setCartDetails(data);
   }
 
+  updateCurrentShop(data: Shop | null){
+    localStorage.setItem('currentShop', JSON.stringify(data));
+    this.sharedService.currentShop = JSON.parse(localStorage.getItem('currentShop') || 'null');
+  }
+
   updateplayzoneUser(data: any){
     localStorage.setItem('playzoneUser', JSON.stringify(data));
     this.sharedService.playzoneUser = JSON.parse(localStorage.getItem('playzoneUser') || 'null')||[];
@@ -51,6 +56,7 @@ export class StorageService {
     localStorage.removeItem("myLocation");
     localStorage.removeItem("myLocationHistory");
     localStorage.removeItem("cart");
+    localStorage.removeItem("currentShop");
     localStorage.removeItem("userFav");
     localStorage.removeItem("playzoneUser");
   }

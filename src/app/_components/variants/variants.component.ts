@@ -61,12 +61,6 @@ export class VariantsComponent implements OnInit {
   }
 
   addToCart(){
-    let shop = Object.assign({}, this.shop);
-    Object.keys(shop).forEach(k => {
-      if(Array.isArray(shop[k as keyof typeof shop])){
-        delete shop[k as keyof typeof shop];
-      }
-    });
     let cart:Cart = {
       itemId: this.item.id,
       isVariantSelected: true,
@@ -76,10 +70,10 @@ export class VariantsComponent implements OnInit {
       quantity: this.qty,
       date: new Date().toISOString(),
       shop_id: this.item.shop_id,
-      shop: shop
     };
     this.cart.push(cart);
     this.storageService.updatemyCart(this.cart);
+    this.storageService.updateCurrentShop(this.shop);
     (this.cartWithItem.length > 0 && !this.isItemExist)?this.closeToSelect():this.close(1);
   }
 
@@ -88,6 +82,9 @@ export class VariantsComponent implements OnInit {
     this.cart.splice(i,1);
     this.storageService.updatemyCart(this.cart);
     this.calHight();
+    if(this.cart.length === 0){
+      this.storageService.updateCurrentShop(null);
+    }
     if(this.cartWithItem.length === 0){
       this.close(-1);
     }
